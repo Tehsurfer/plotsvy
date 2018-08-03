@@ -1,0 +1,11 @@
+[
+   {
+      "GlyphGeometriesURL" : "models/organsViewerModels/cardiovascular/heart/picking_node_3.json",
+      "GroupName" : "Terminal",
+      "MorphColours" : false,
+      "MorphNormals" : false,
+      "MorphVertices" : true,
+      "Type" : "Glyph",
+      "URL" : "models/organsViewerModels/cardiovascular/heart/picking_node_2.json"
+   }
+]

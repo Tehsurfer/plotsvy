@@ -1,0 +1,10 @@
+[
+   {
+      "GroupName" : "Arterial Flow",
+      "MorphColours" : true,
+      "MorphNormals" : false,
+      "MorphVertices" : false,
+      "Type" : "Surfaces",
+      "URL" : "models/organsViewerModels/cardiovascular/arteries/arterial_flow_2.json"
+   }
+]

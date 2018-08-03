@@ -1,0 +1,55 @@
+[
+   {
+      "MorphColours" : false,
+      "MorphNormals" : false,
+      "MorphVertices" : true,
+      "Type" : "Surfaces",
+      "URL" : "models/organsViewerModels/cardiovascular/temp_models/noInfarct_highres_1.json"
+   },
+   {
+      "MorphColours" : false,
+      "MorphNormals" : false,
+      "MorphVertices" : true,
+      "Type" : "Surfaces",
+      "URL" : "models/organsViewerModels/cardiovascular/temp_models/noInfarct_highres_2.json"
+   },
+   {
+      "GroupName" : "Post_Top",
+      "MorphColours" : false,
+      "MorphNormals" : false,
+      "MorphVertices" : true,
+      "Type" : "Surfaces",
+      "URL" : "models/organsViewerModels/cardiovascular/temp_models/noInfarct_highres_3.json"
+   },
+   {
+      "GroupName" : "Post_Inner",
+      "MorphColours" : false,
+      "MorphNormals" : false,
+      "MorphVertices" : true,
+      "Type" : "Surfaces",
+      "URL" : "models/organsViewerModels/cardiovascular/temp_models/noInfarct_highres_4.json"
+   },
+   {
+      "GroupName" : "Post_Surface",
+      "MorphColours" : false,
+      "MorphNormals" : false,
+      "MorphVertices" : true,
+      "Type" : "Surfaces",
+      "URL" : "models/organsViewerModels/cardiovascular/temp_models/noInfarct_highres_5.json"
+   },
+   {
+      "GroupName" : "Ant_Surface",
+      "MorphColours" : false,
+      "MorphNormals" : false,
+      "MorphVertices" : true,
+      "Type" : "Surfaces",
+      "URL" : "models/organsViewerModels/cardiovascular/temp_models/noInfarct_highres_6.json"
+   },
+   {
+      "MorphColours" : false,
+      "MorphNormals" : false,
+      "MorphVertices" : true,
+      "Type" : "Surfaces",
+      "URL" : "models/organsViewerModels/cardiovascular/temp_models/noInfarct_highres_7.json"
+   }
+]

@@ -1,0 +1,10 @@
+[
+   {
+      "GroupName" : "Arterial Velocity",
+      "MorphColours" : true,
+      "MorphNormals" : false,
+      "MorphVertices" : false,
+      "Type" : "Surfaces",
+      "URL" : "models/organsViewerModels/cardiovascular/arteries/arterial_velocity_2.json"
+   }
+]
