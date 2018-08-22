@@ -22,6 +22,7 @@ exports.ManagerSidebar = require("./ui/ManagerSidebar").ManagerSidebar;
 exports.ModuleManager = require("./utilities/manager").ModuleManager;
 exports.MANAGER_ITEM_CHANGE = require("./utilities/manager").MANAGER_ITEM_CHANGE;
 exports.MODULE_CHANGE = require("./BaseModule").MODULE_CHANGE;
+exports.BlackfynnPanel = require("./blackfynn_panel").BlackfynnPanel;
 //exports.CellPanelDialog = require("./ui/CellPanelDialog").CellPanelDialog;
 exports.VERSION = '0.2.0';
 
