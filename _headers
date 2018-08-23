@@ -1,6 +1,6 @@
 # this headers file is to allow CORS on our netlify.com site
 /index.html
   # Headers for that path:
-  X-Frame-Options: ALLOW
-  X-XSS-Protection: 0; mode=allow
-  Access-Control-Allow-Origin: 1
+  X-Frame-Options: allow-from http://example.com/18.191.253.82
+  X-XSS-Protection: 0; 
+  Access-Control-Allow-Origin: http://example.com/18.191.253.82
