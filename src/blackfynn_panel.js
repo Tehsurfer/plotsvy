@@ -19,17 +19,18 @@ exports.BlackfynnPanel = function(dailogName)  {
     var organisation = ''
     var loaded_session_token = 0
     this.datasets = []
+    var savedData
 
     var cors_api_url = '';//'https://cors-anywhere.herokuapp.com/';
-    var baseURL = "http://127.0.0.1:5000/";
+    var baseURL = "http://18.191.253.82";
 	
 	var _this = this;
 
 
-	function drawBasic(){
+	function drawBasic(data2){
 
       var data = new google.visualization.DataTable();
-      data = processData(data);
+      data = processData(data2);
 
       var options = {
         hAxis: {
@@ -58,6 +59,20 @@ exports.BlackfynnPanel = function(dailogName)  {
 
 	}
 
+	function createChannelDropdown(response) {
+	    var select, i, option;
+
+	    select = document.getElementById( 'select_channel' );
+
+	    for (var i in response){
+	        option = document.createElement( 'option' );
+	        option.value = option.text = response[i]
+	        select.add( option );  
+	    }
+
+
+	}
+
 	function findTimeseriesData(){
 	    for (var i in this.allSets.children){
 	        if (this.allSets.children[i].subtype == 'Timeseries'){
@@ -67,14 +82,49 @@ exports.BlackfynnPanel = function(dailogName)  {
 
 	}
 
+	function channelNamesCall(dataset){
+		var cors_api_url = '';//'https://cors-anywhere.herokuapp.com/';
+    	var baseRestURL = "http://18.191.253.82";
+
+    	getChannelNames(cors_api_url + baseRestURL, dataset, function childrenCallBack(response) {
+	        this.allSets = response;
+	        createChannelDropdown(response.data)
+	    });
+
+	    function getChannelNames(baseRestURL, dataset_name, callback){
+	        var APIPath = "/api/get_channels";
+	        var completeRestURL = baseRestURL + APIPath;
+	        console.log("REST API URL: " + completeRestURL);
+
+	        var method = "GET";
+	        var url = completeRestURL;
+	        var async = true;
+	        var request2 = new XMLHttpRequest();
+	        request2.onload = function() {
+	                console.log("ONLOAD");
+	                var status = request2.status; // HTTP response status, e.g., 200 for "200 OK"
+	                console.log(status);
+	                window.blackfynn_response3 = JSON.parse(request2.responseText);
+	                var response = JSON.parse(request2.responseText);
+	                return callback(response)
+	        }
+
+	        request2.open(method, url, async);
+	        request2.setRequestHeader('Name', dataset_name);
+	        request2.send(null);
+	    }
+	}
+
 	function datasetCall(dataset){
 		var cors_api_url = '';//'https://cors-anywhere.herokuapp.com/';
-    	var baseRestURL = "http://127.0.0.1:5000";
+    	var baseRestURL = "http://18.191.253.82";
 
 	    getDataSet(cors_api_url + baseRestURL, $('#select_dataset :selected').text(), function childrenCallBack(response) {
 	        this.allSets = response;
 	        data = processData(JSON.parse(response.data))
-	        drawBasic(data)
+	        savedData = JSON.parse(response.data)
+	        drawBasic(JSON.parse(response.data))
+	        channelNamesCall($('#select_dataset :selected').text())
 	    });
 
 
@@ -105,24 +155,62 @@ exports.BlackfynnPanel = function(dailogName)  {
 	    }
 	}
 
+	function channelCall(){
+		var cors_api_url = '';//'https://cors-anywhere.herokuapp.com/';
+    	var baseRestURL = "http://18.191.253.82";
+
+	    getChannel(cors_api_url + baseRestURL, $('#select_channel :selected').text(), function childrenCallBack(response) {
+	        this.allSets = response;
+	        data = processData(JSON.parse(response.data))
+	        savedData = JSON.parse(response.data)
+	        drawBasic(JSON.parse(response.data))
+	    });
+
+	    function getChannel(baseRestURL, channel_name, callback){
+	        var APIPath = "/api/get_channel";
+	        var completeRestURL = baseRestURL + APIPath;
+	        console.log("REST API URL: " + completeRestURL);
+
+	        var method = "GET";
+	        var url = completeRestURL;
+	        var async = true;
+	        var request2 = new XMLHttpRequest();
+	        request2.onload = function() {
+	                console.log("ONLOAD");
+	                var status = request2.status; // HTTP response status, e.g., 200 for "200 OK"
+	                console.log(status);
+	                var response = JSON.parse(request2.responseText);
+	                return callback(response)
+	        }
+
+	        request2.open(method, url, async);
+	        request2.setRequestHeader('Name', $('#select_dataset :selected').text());
+	        request2.setRequestHeader('Channel', channel_name);
+	        request2.send(null);
+	    }
+
+	}
+
 	var login = function() {
 
 	var cors_api_url = '';
-    var baseRestURL = "http://127.0.0.1:5000";
+    var baseRestURL = "http://18.191.253.82";
 	createAuthToken(cors_api_url + baseRestURL, function authCallBack(response) {
         this.datasets = response
         createDatasetDropdown(response.names);
+        channelNamesCall(response.names[0])
         console.log('this', this)
         
 
 
     });
     document.getElementById('select_dataset').onchange = datasetCall
+    document.getElementById('select_channel').onchange = channelCall
 
     }
 
     function createAuthToken(baseRestURL, callback ) {
-        var APIPath = "/api/get_timeseries_names";
+        var APIPath = "/api/get_timeseries_dataset_names";
         var completeRestURL = baseRestURL + APIPath;
         console.log("REST API URL: " + completeRestURL);
 
@@ -161,7 +249,7 @@ exports.BlackfynnPanel = function(dailogName)  {
 	    var data2 = new google.visualization.DataTable();
 	    data2.addColumn('number', 'Time');
 	    data2.addColumn('number', 'EEG value');
-	    var ind = 0.02
+	    var ind = 0.00
 	    for (var i in data) {
 	        var row = [ind, data[i]]
 	        data2.addRow(row)
@@ -188,7 +276,7 @@ exports.BlackfynnPanel = function(dailogName)  {
 	this.drawBasic = function(){
 
       var data = new google.visualization.DataTable();
-      data = processData(data);
+      data = processData(savedData);
 
       var options = {
         hAxis: {
