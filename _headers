@@ -3,3 +3,4 @@
   # Headers for that path:
   X-Frame-Options: ALLOW
   X-XSS-Protection: 0; mode=allow
+  Access-Control-Allow-Origin: 1
