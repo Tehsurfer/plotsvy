@@ -36,6 +36,7 @@ Main = function()  {
     organsViewerDialog.setHeight("100%");
     organsViewerDialog.setLeft("0px");
     organsViewerDialog.setTop("0px");
+    this.blackfynnViewer = new physiomeportal.BlackfynnPanel('Blackfynn login');
   }
 
   initialise();
