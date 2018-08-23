@@ -2,5 +2,5 @@
 /index.html
   # Headers for that path:
   X-Frame-Options: allow-from http://example.com/18.191.253.82
-  X-XSS-Protection: 0; 
+  X-XSS-Protection: 0
   Access-Control-Allow-Origin: http://example.com/18.191.253.82
