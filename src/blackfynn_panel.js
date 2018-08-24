@@ -36,12 +36,18 @@ exports.BlackfynnPanel = function(dailogName)  {
         hAxis: {
           title: 'Time'
         },
+        animation: {
+	    	startup: true,
+			duration: 1000,
+			easing: 'out'},
         vAxis: {
           title: 'EEG Reading'
         }
       };
       var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
       chart.draw(data, options);
+
+      $()
     }
 
 	function createDatasetDropdown(response) {
@@ -49,6 +55,7 @@ exports.BlackfynnPanel = function(dailogName)  {
 
 	    console.log('response in createDatasetDropdown is : ' + response)
 	    select = document.getElementById( 'select_dataset' );
+	    $("#select_dataset").empty();
 
 	    for (var i in response){
 	        option = document.createElement( 'option' );
@@ -63,6 +70,7 @@ exports.BlackfynnPanel = function(dailogName)  {
 	    var select, i, option;
 
 	    select = document.getElementById( 'select_channel' );
+	    $("#select_channel").empty();
 
 	    for (var i in response){
 	        option = document.createElement( 'option' );
@@ -248,12 +256,14 @@ exports.BlackfynnPanel = function(dailogName)  {
 
 	    var data2 = new google.visualization.DataTable();
 	    data2.addColumn('number', 'Time');
+	    data2.addColumn({type:'string', role:'annotation'})
 	    data2.addColumn('number', 'EEG value');
+	    
 	    var ind = 0.00
 	    for (var i in data) {
-	        var row = [ind, data[i]]
+	        var row = [ind, null, data[i]]
 	        data2.addRow(row)
-	        ind = ind + .02;
+	        ind = ind + .04;
 	    }
 
 	    return data2
@@ -275,19 +285,55 @@ exports.BlackfynnPanel = function(dailogName)  {
 
 	this.drawBasic = function(){
 
-      var data = new google.visualization.DataTable();
-      data = processData(savedData);
+      this.chartData = new google.visualization.DataTable();
+      this.chartData = processData(savedData);
 
-      var options = {
+      // add a blank row to the end of the DataTable to hold the annotations
+      this.chartData.addRow([.5,  'point five', null]);
+      this.annotationRowIndex = data.getNumberOfRows();
+
+      this.chartOptions = {
         hAxis: {
           title: 'Time'
         },
+        
         vAxis: {
           title: 'ECG Reading'
-        }
+        },
+        annotation: {
+            1: {
+                // set the style of the domain column annotations to "line"
+                style: 'line'
+            }
+        },
       };
-      var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
-      chart.draw(data, options);
+      this.chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+      this.chart.draw(this.chartData, this.chartOptions);
+      
+
+    }
+    this.updateChart = function(time){
+    	this.chartData.setValue(this.annotationRowIndex, 0, time/100)
+    	this.chartData.setValue(this.annotationRowIndex, 1, '+')
+		this.chartData.setValue(this.annotationRowIndex, 2, null)
+    	this.chart.draw(this.chartData, this.chartOptions);
+    }
+
+    this.updateChartExternal = function(time){
+    	window.blackfynnViewer.chartData.setValue(window.blackfynnViewer.annotationRowIndex, 0, time/100)
+    	x_scaled = time*750/3000
+    	if(Math.ceil(x_scaled) == Math.floor(x_scaled)){
+    		interp_y = window.blackfynnViewer.chartData.getValue(x_scaled, 2)
+    	}
+    	else{
+			upper_y = window.blackfynnViewer.chartData.getValue(Math.ceil(x_scaled), 2)
+			lower_y = window.blackfynnViewer.chartData.getValue(Math.floor(x_scaled), 2)
+			interp_y = upper_y*(1-(Math.ceil(x_scaled)-x_scaled)) + lower_y*(1-(x_scaled-Math.floor(x_scaled)))
+		}
+    	time_indexed = time
+    	window.blackfynnViewer.chartData.setValue(window.blackfynnViewer.annotationRowIndex, 1, interp_y.toFixed(1))
+		window.blackfynnViewer.chartData.setValue(window.blackfynnViewer.annotationRowIndex, 2, null)
+    	window.blackfynnViewer.chart.draw(window.blackfynnViewer.chartData, window.blackfynnViewer.chartOptions);
     }
 
 
