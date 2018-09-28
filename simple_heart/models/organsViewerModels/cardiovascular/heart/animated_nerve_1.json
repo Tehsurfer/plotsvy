@@ -1,54 +1,59 @@
 [
    {
-      "GlyphGeometriesURL" : "models/organsViewerModels/cardiovascular/heart/animated_nerve_3.json",
-      "GroupName" : "Terminal",
+      "GroupName" : "ECG projection",
+      "MorphColours" : true,
+      "MorphNormals" : false,
+      "MorphVertices" : false,
+      "Type" : "Surfaces",
+      "URL" : "models/organsViewerModels/cardiovascular/heart/ecgAnimation.json"
+   },
+   {
+      "MorphColours" : false,
+      "MorphNormals" : false,
+      "MorphVertices" : false,
+      "Type" : "Surfaces",
+      "URL" : "models/organsViewerModels/cardiovascular/scaffold_heart/ventricle_1.json"
+   },
+   {
+      "GroupName" : "left ventricle",
+      "MorphColours" : false,
+      "MorphNormals" : false,
+      "MorphVertices" : false,
+      "Type" : "Surfaces",
+      "URL" : "models/organsViewerModels/cardiovascular/scaffold_heart/ventricle_2.json"
+   },
+   {
+      "GroupName" : "right ventricle",
+      "MorphColours" : false,
+      "MorphNormals" : false,
+      "MorphVertices" : false,
+      "Type" : "Surfaces",
+      "URL" : "models/organsViewerModels/cardiovascular/scaffold_heart/ventricle_3.json"
+   },
+   {
+      "GroupName" : "interventricular septum",
+      "MorphColours" : false,
+      "MorphNormals" : false,
+      "MorphVertices" : false,
+      "Type" : "Surfaces",
+      "URL" : "models/organsViewerModels/cardiovascular/scaffold_heart/ventricle_4.json"
+   },
+   {
+      "GroupName" : "conus arteriosus",
+      "MorphColours" : false,
+      "MorphNormals" : false,
+      "MorphVertices" : false,
+      "Type" : "Surfaces",
+      "URL" : "models/organsViewerModels/cardiovascular/scaffold_heart/ventricle_5.json"
+   },
+   {
+      "GlyphGeometriesURL" : "models/organsViewerModels/cardiovascular/heart/picking_node_3.json",
+      "GroupName" : "ECG Nodes",
       "MorphColours" : false,
       "MorphNormals" : false,
       "MorphVertices" : true,
       "Type" : "Glyph",
-      "URL" : "models/organsViewerModels/cardiovascular/heart/animated_nerve_2.json"
-   },
-   {
-      "GroupName" : "Nerves",
-      "MorphColours" : false,
-      "MorphNormals" : false,
-      "MorphVertices" : true,
-      "Type" : "Surfaces",
-      "URL" : "models/organsViewerModels/cardiovascular/heart/animated_nerve_4.json"
-   },
-   {
-      "GroupName" : "Ventricles",
-      "MorphColours" : false,
-      "MorphNormals" : false,
-      "MorphVertices" : true,
-      "Type" : "Surfaces",
-      "URL" : "models/organsViewerModels/cardiovascular/heart/animated_nerve_5.json"
-   },
-   {
-      "GroupName" : "Epicardium",
-      "MorphColours" : false,
-      "MorphNormals" : false,
-      "MorphVertices" : true,
-      "Type" : "Surfaces",
-      "URL" : "models/organsViewerModels/cardiovascular/heart/animated_nerve_6.json"
-   },
-   {
-      "GlyphGeometriesURL" : "models/organsViewerModels/cardiovascular/heart/glyphs_3.json",
-      "GroupName" : "Fibre Sheet",
-      "MorphColours" : false,
-      "MorphNormals" : false,
-      "MorphVertices" : true,
-      "Type" : "Glyph",
-      "URL" : "models/organsViewerModels/cardiovascular/heart/glyphs_2.json"
-   },
-   {
-      "GlyphGeometriesURL" : "models/organsViewerModels/cardiovascular/heart/glyphs_5.json",
-      "GroupName" : "Fibre Tube",
-      "MorphColours" : false,
-      "MorphNormals" : false,
-      "MorphVertices" : true,
-      "Type" : "Glyph",
-      "URL" : "models/organsViewerModels/cardiovascular/heart/glyphs_4.json"
+      "URL" : "models/organsViewerModels/cardiovascular/heart/picking_node_2.json"
    }
-]
 
+]

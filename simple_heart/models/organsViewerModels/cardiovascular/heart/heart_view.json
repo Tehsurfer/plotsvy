@@ -1,1 +1,1 @@
-{"farPlane": 619.719, "nearPlane": 0.0635308, "upVector": [ -0.985999, -0.0755618, -0.148649], "targetPosition": [ -1.79214, 6.73504, -5.51321], "eyePosition": [ 34.3462, -167.143, -156.835]}
+{"farPlane": 719.719, "nearPlane": 1, "upVector": [ 0, 1, 0], "targetPosition": [ 0, 0, -1], "eyePosition": [0, 0, 0]}
