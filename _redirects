@@ -1,0 +1,5 @@
+# Redirect to Cors-anywhere then to github where the models are stored
+/models/organsViewerModels/cardiovascular/heart/heart_view.json https://cors-anywhere.herokuapp.com/https://raw.githubusercontent.com/Tehsurfer/MPB/render_ECG_data/simple_heart/models/organsViewerModels/cardiovascular/heart/heart_view.json
+
+# For testing
+/google https://www.google.co.nz/
