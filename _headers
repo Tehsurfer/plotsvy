@@ -1,11 +1,6 @@
-# The headers file here redirects URLS from our static Netlify site and allows CORS from our AWS
+# The headers file allows CORS from our AWS
 /*
   # Allow Cors form our AWS IP
   X-Frame-Options: allow-from * #http://18.191.253.82
   X-XSS-Protection: 0
   Access-Control-Allow-Origin: * #http://18.191.253.82
-
-# redirect to Cors-anywhere then to github where the models are stored
-/models/organsViewerModels/cardiovascular/heart/heart_view.json https://cors-anywhere.herokuapp.com/https://raw.githubusercontent.com/Tehsurfer/MPB/render_ECG_data/simple_heart/models/organsViewerModels/cardiovascular/heart/heart_view.json
-
-/google https://www.google.co.nz/
