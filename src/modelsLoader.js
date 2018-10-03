@@ -111,6 +111,7 @@ exports.ModelsLoader = function()  {
 		}
 		var requestURL = url;
 		xmlhttp.open("GET", requestURL, true);
+		xmlhttp.setRequestHeader("X-Requested-With", "XMLHttpRequest")
 		xmlhttp.send();
 	}
 
@@ -127,6 +128,7 @@ exports.ModelsLoader = function()  {
 			    }
 			}
 			xmlhttp.open("GET", _this.systemMetaURL, true);
+			xmlhttp.setRequestHeader("X-Requested-With", "XMLHttpRequest")
 			xmlhttp.send();
 		}
 	}
