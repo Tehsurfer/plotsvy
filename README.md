@@ -18,4 +18,4 @@ npm run build
     
     Use `python -m http.server`
     
-    Go to http://0.0.0.0:8000/simple_heart/index.html with Chrom
+    Go to http://0.0.0.0:8000/simple_heart/index.html with Chrome
