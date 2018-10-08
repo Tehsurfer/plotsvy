@@ -2,6 +2,9 @@ Tehsurfer/MPB
 ======
 A Web viewer for viewing ECG data stored in Blackfynn on a 3D model of the heart exported from Zinc
 
+View the current online version at:
+https://physiome-test.netlify.com/simple_heart/
+
 Devloper Installation
 ------
 1. `git clone https://github.com/Tehsurfer/MPB.git`
