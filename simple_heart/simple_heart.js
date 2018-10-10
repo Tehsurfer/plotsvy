@@ -47,7 +47,7 @@ Main = function()  {
     this.organsViewer.addNotifier(eventNotifier);
     eventNotifier.suscribe(this, selectionCallback());
     this.organsViewer.loadOrgans("human", "Cardiovascular", "Heart");
-    organsViewerDialog.setWidth("40%");
+    organsViewerDialog.setWidth("90%");
     organsViewerDialog.setHeight("90%");
     organsViewerDialog.setLeft("0px");
     organsViewerDialog.setTop("0px");
