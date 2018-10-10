@@ -1,10 +1,10 @@
 [
    {
       "GlyphGeometriesURL" : "models/organsViewerModels/cardiovascular/heart/picking_node_3.json",
-      "GroupName" : "Terminal",
-      "MorphColours" : false,
+      "GroupName" : "ECG Nodes",
+      "MorphColours" : true,
       "MorphNormals" : false,
-      "MorphVertices" : true,
+      "MorphVertices" : false,
       "Type" : "Glyph",
       "URL" : "models/organsViewerModels/cardiovascular/heart/picking_node_2.json"
    }
