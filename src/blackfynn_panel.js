@@ -22,7 +22,7 @@ exports.BlackfynnPanel = function(dailogName)  {
     var savedData
 
     var cors_api_url = '';//'https://cors-anywhere.herokuapp.com/';
-    var baseURL = "http://18.191.253.82";
+    var baseURL = "http://0.0.0.1:80";
 	
 	var _this = this;
 
@@ -92,7 +92,7 @@ exports.BlackfynnPanel = function(dailogName)  {
 
 	function channelNamesCall(dataset){
 		var cors_api_url = '';//'https://cors-anywhere.herokuapp.com/';
-    	var baseRestURL = "http://18.191.253.82";
+    	var baseRestURL = baseURL;
 
     	getChannelNames(cors_api_url + baseRestURL, dataset, function childrenCallBack(response) {
 	        this.allSets = response;
@@ -125,7 +125,7 @@ exports.BlackfynnPanel = function(dailogName)  {
 
 	function datasetCall(dataset){
 		var cors_api_url = '';//'https://cors-anywhere.herokuapp.com/';
-    	var baseRestURL = "http://18.191.253.82";
+    	var baseRestURL = baseURL;
 
 	    getDataSet(cors_api_url + baseRestURL, $('#select_dataset :selected').text(), function childrenCallBack(response) {
 	        this.allSets = response;
@@ -165,7 +165,7 @@ exports.BlackfynnPanel = function(dailogName)  {
 
 	function channelCall(){
 		var cors_api_url = '';//'https://cors-anywhere.herokuapp.com/';
-    	var baseRestURL = "http://18.191.253.82";
+    	var baseRestURL = baseURL;
 
 	    getChannel(cors_api_url + baseRestURL, $('#select_channel :selected').text(), function childrenCallBack(response) {
 	        this.allSets = response;
@@ -202,7 +202,7 @@ exports.BlackfynnPanel = function(dailogName)  {
 	var login = function() {
 
 	var cors_api_url = '';
-    var baseRestURL = "http://18.191.253.82";
+    var baseRestURL = baseURL;
 	createAuthToken(cors_api_url + baseRestURL, function authCallBack(response) {
         this.datasets = response
         createDatasetDropdown(response.names);
