@@ -8,6 +8,14 @@
       "URL" : "models/organsViewerModels/cardiovascular/heart/ecgAnimation.json"
    },
    {
+      "GroupName" : "Video plane",
+      "MorphColours" : false,
+      "MorphNormals" : false,
+      "MorphVertices" : false,
+      "Type" : "Surfaces",
+      "URL" : "models/organsViewerModels/cardiovascular/heart/videoPlane.json"
+   },
+   {
       "MorphColours" : false,
       "MorphNormals" : false,
       "MorphVertices" : false,
