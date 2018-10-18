@@ -29,6 +29,7 @@ var OrgansSceneData = function() {
  */
 var OrgansViewer = function(ModelsLoaderIn)  {
   (require('./BaseModule').BaseModule).call(this);
+  	this.geodes = [];
 	var pickerScene = undefined;
 	var displayScene = undefined;
 	var defaultScene = undefined;
@@ -460,6 +461,8 @@ var OrgansViewer = function(ModelsLoaderIn)  {
 	
 	var _addDataGeometryCallback = function(GroupName, color) {
 		return function(geometry) {
+			this.geodes.push(geometry.groupName)
+			co
 			geometry.groupName = GroupName;
 			if (color && geometry.morph)
 				geometry.morph.material.color = color;
@@ -909,6 +912,7 @@ var OrgansViewer = function(ModelsLoaderIn)  {
 	      if (timeoutID == 0)
 	        timeoutID = setTimeout(loadOrgansTimeoutCallback(speciesName, systemName, partName), 500);
 	    }
+	    this.displayScene = displayScene;
 	  }
 	  
 	  var loadOrgansTimeoutCallback = function(speciesName, systemName, partName) {
