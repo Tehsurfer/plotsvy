@@ -302,16 +302,43 @@ exports.BlackfynnPanel = function(dailogName)  {
 	}
 
 	function createOpenCORlink(){
-		modelURL = baseURL + "/models/data/openCorExport.csv"
-		runModelButton = document.getElementById('OpenCORLinkButton')
-		runModelButton.onclick = function(){runModel(modelURL)};
+		
+		runModelButton = document.getElementById('OpenCORLinkButton');
+		runModelButton.onclick = runModel;
 
 	}
 
 
-	var runModel = function(modelURL) {
-		var opencorURL = 'opencor://openFile/' + modelURL;
-		window.open(opencorURL, '_self');
+	var runModel = function() {
+		
+		
+
+		getOpenCORURL(baseURL, function getCallBack(response){
+			var opencorURL = 'opencor://openFile/' + response.url;
+			window.open(opencorURL, '_self');
+		});
+
+		function getOpenCORURL(baseRestURL, callback){
+	        var APIPath = "/api/create_opeenCOR_URL";
+	        var completeRestURL = baseRestURL + APIPath;
+	        console.log("REST API URL: " + completeRestURL);
+
+	        var method = "GET";
+	        var url = completeRestURL;
+	        var async = true;
+	        var request2 = new XMLHttpRequest();
+	        request2.onload = function() {
+	                console.log("ONLOAD");
+	                var status = request2.status; // HTTP response status, e.g., 200 for "200 OK"
+	                console.log(status);
+	                var response = JSON.parse(request2.responseText);
+	                return callback(response)
+	        }
+
+	        request2.open(method, url, async);
+	        request2.setRequestHeader(null)
+	        request2.send(null);
+	    }
 	}
 
 	var createNewDialog = function(data) {
