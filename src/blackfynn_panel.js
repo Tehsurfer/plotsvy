@@ -295,10 +295,23 @@ exports.BlackfynnPanel = function(dailogName)  {
 
 	var initialiseBlackfynnPanel = function() {
 		
-
+		createOpenCORlink();
 		document.getElementById('login').onclick = login
 
 
+	}
+
+	function createOpenCORlink(){
+		modelURL = baseURL + "/models/data/openCorExport.csv"
+		runModelButton = document.getElementById('OpenCORLinkButton')
+		runModelButton.onclick = function(){runModel(modelURL)};
+
+	}
+
+
+	var runModel = function(modelURL) {
+		var opencorURL = 'opencor://openFile/' + modelURL;
+		window.open(opencorURL, '_self');
 	}
 
 	var createNewDialog = function(data) {
