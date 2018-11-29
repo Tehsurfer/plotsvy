@@ -246,7 +246,7 @@ exports.BlackfynnPanel = function(dailogName)  {
 		}
 
 	  	times = [];
-		for(var i in unprocessedData ) {
+		for(var i in createChartData ) {
     	  times.push(i);
 		}	
 
