@@ -145,7 +145,7 @@ exports.BlackfynnPanel = function(dailogName)  {
 
 	    getChannel(cors_api_url + baseRestURL, $('#select_channel :selected').text(), function childrenCallBack(response) {
 	        this.allSets = response;
-	        data = processData(JSON.parse(response.data))
+	        data = JSON.parse(response.data);
 	        if (plot !== undefined) {
 	    		addDataSeriesToChart(data, $('#select_channel :selected').text());
 	    	}
@@ -241,6 +241,14 @@ exports.BlackfynnPanel = function(dailogName)  {
 	
 
 	function createChart(createChartData, id){
+		if (plot !== undefined){
+			Plotly.purge('chart_div')
+		}
+
+	  	times = [];
+		for(var i in unprocessedData ) {
+    	  times.push(i);
+		}	
 
       chartData = processData(createChartData, id);
 
