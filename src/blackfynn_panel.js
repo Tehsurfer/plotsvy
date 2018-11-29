@@ -1,6 +1,5 @@
 var dat = require("./dat.gui.js");
 require("./styles/dat-gui-swec.css");
-google.charts.load('current', {packages: ['corechart', 'line']});
 
 
 /**
@@ -15,40 +14,18 @@ exports.BlackfynnPanel = function(dailogName)  {
 	var otherCellControls = undefined;
 	var dialogObject = undefined;
 	var localDialogName = dailogName;
-	var session_token = ''
-    var organisation = ''
-    var loaded_session_token = 0
-    this.datasets = []
-    var savedData
+	var session_token = '';
+    var organisation = '';
+    var loaded_session_token = 0;
+    this.datasets = [];
+    var times, x, plot, chart, data, chartOptions, chartData, inc, options, allData,savedData;
+    var colours= [];
 
     var cors_api_url = '';//'https://cors-anywhere.herokuapp.com/';
-    var baseURL = "http://0.0.0.1:80";
+    var baseURL = "https://blackfynnpythonlink.ml";
 	
 	var _this = this;
 
-
-	function drawBasic(data2){
-
-      var data = new google.visualization.DataTable();
-      data = processData(data2);
-
-      var options = {
-        hAxis: {
-          title: 'Time'
-        },
-        animation: {
-	    	startup: true,
-			duration: 1000,
-			easing: 'out'},
-        vAxis: {
-          title: 'EEG Reading'
-        }
-      };
-      var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
-      chart.draw(data, options);
-
-      $()
-    }
 
 	function createDatasetDropdown(response) {
 	    var select, i, option;   
@@ -91,7 +68,7 @@ exports.BlackfynnPanel = function(dailogName)  {
 	}
 
 	function channelNamesCall(dataset){
-		var cors_api_url = '';//'https://cors-anywhere.herokuapp.com/';
+		//'https://cors-anywhere.herokuapp.com/';
     	var baseRestURL = baseURL;
 
     	getChannelNames(cors_api_url + baseRestURL, dataset, function childrenCallBack(response) {
@@ -124,14 +101,13 @@ exports.BlackfynnPanel = function(dailogName)  {
 	}
 
 	function datasetCall(dataset){
-		var cors_api_url = '';//'https://cors-anywhere.herokuapp.com/';
+		//'https://cors-anywhere.herokuapp.com/';
     	var baseRestURL = baseURL;
 
 	    getDataSet(cors_api_url + baseRestURL, $('#select_dataset :selected').text(), function childrenCallBack(response) {
 	        this.allSets = response;
 	        data = processData(JSON.parse(response.data))
 	        savedData = JSON.parse(response.data)
-	        drawBasic(JSON.parse(response.data))
 	        channelNamesCall($('#select_dataset :selected').text())
 	    });
 
@@ -164,14 +140,20 @@ exports.BlackfynnPanel = function(dailogName)  {
 	}
 
 	function channelCall(){
-		var cors_api_url = '';//'https://cors-anywhere.herokuapp.com/';
+		//'https://cors-anywhere.herokuapp.com/';
     	var baseRestURL = baseURL;
 
 	    getChannel(cors_api_url + baseRestURL, $('#select_channel :selected').text(), function childrenCallBack(response) {
 	        this.allSets = response;
 	        data = processData(JSON.parse(response.data))
-	        savedData = JSON.parse(response.data)
-	        drawBasic(JSON.parse(response.data))
+	        if (plot !== undefined) {
+	    		addDataSeriesToChart(data, $('#select_channel :selected').text());
+	    	}
+	    	else {
+	        	savedData = data;
+	        	createChart(data, $('#select_channel :selected').text());
+	        	// document.getElementById('chartLoadingGif').remove();
+	    	}
 	    });
 
 	    function getChannel(baseRestURL, channel_name, callback){
@@ -201,7 +183,7 @@ exports.BlackfynnPanel = function(dailogName)  {
 
 	var login = function() {
 
-	var cors_api_url = '';
+	
     var baseRestURL = baseURL;
 	createAuthToken(cors_api_url + baseRestURL, function authCallBack(response) {
         this.datasets = response
@@ -251,91 +233,65 @@ exports.BlackfynnPanel = function(dailogName)  {
 
     }
 
-
-	function processData(data){
-
-	    var data2 = new google.visualization.DataTable();
-	    data2.addColumn('number', 'Time');
-	    data2.addColumn({type:'string', role:'annotation'})
-	    data2.addColumn('number', 'EEG value');
-	    
-	    var ind = 0.00
-	    for (var i in data) {
-	        var row = [ind, null, data[i]]
-	        data2.addRow(row)
-	        ind = ind + .04;
-	    }
-
-	    return data2
-	}	 
+	 
 
 	
 
 	
+	
+
+	function createChart(createChartData, id){
+
+      chartData = processData(createChartData, id);
+
+      chartOptions = {
+  		title: 'ECG signals', 
+  		xaxis: {
+  		  type: 'seconds',
+  		  title: 'Seconds'
+  		}, 
+  		yaxis: {
+  		  autorange: true, 
+  		  type: 'linear',
+  		  title: 'mV'
+  		}
+  	  };
+  	  plot = Plotly.newPlot('chart_div', chartData, chartOptions);
+    }
+
+    function processData(unprocessedData, id){
+
+	    var dataTrace = {
+	    	type: "scatter",
+ 			name: 'Electrode ' + id,
+ 			mode: "lines",
+ 			x: times,
+ 			y: unprocessedData,
+ 			line: {color: '#'+(Math.random()*0xFFFFFF<<0).toString(16)}
+	    }	    
+	    return [dataTrace]
+	}
+
+	function createColours() {
+		for (var i = 0; i < 100; i++){
+			colours.push('#'+(Math.random()*0xFFFFFF<<0).toString(16))
+		}
+	}
+
+    function addDataSeriesToChart(newSeries, id){
+		//createColours();
+		var newData = processData(newSeries, id)
+		Plotly.addTraces('chart_div', newData)
+
+	}
+
 	var initialiseBlackfynnPanel = function() {
-		cellGui = new dat.GUI({autoPlace: false});
-		cellGui.domElement.id = 'blackfynnLogin';
-		cellGui.close();
+		
 
 		document.getElementById('login').onclick = login
 
 
 	}
-
-
-	this.drawBasic = function(){
-
-      this.chartData = new google.visualization.DataTable();
-      this.chartData = processData(savedData);
-
-      // add a blank row to the end of the DataTable to hold the annotations
-      this.chartData.addRow([.5,  'point five', null]);
-      this.annotationRowIndex = data.getNumberOfRows();
-
-      this.chartOptions = {
-        hAxis: {
-          title: 'Time'
-        },
-        
-        vAxis: {
-          title: 'ECG Reading'
-        },
-        annotation: {
-            1: {
-                // set the style of the domain column annotations to "line"
-                style: 'line'
-            }
-        },
-      };
-      this.chart = new google.visualization.LineChart(document.getElementById('chart_div'));
-      this.chart.draw(this.chartData, this.chartOptions);
-      
-
-    }
-    this.updateChart = function(time){
-    	this.chartData.setValue(this.annotationRowIndex, 0, time/100)
-    	this.chartData.setValue(this.annotationRowIndex, 1, '+')
-		this.chartData.setValue(this.annotationRowIndex, 2, null)
-    	this.chart.draw(this.chartData, this.chartOptions);
-    }
-
-    this.updateChartExternal = function(time){
-    	window.blackfynnViewer.chartData.setValue(window.blackfynnViewer.annotationRowIndex, 0, time/100)
-    	x_scaled = time*750/3000
-    	if(Math.ceil(x_scaled) == Math.floor(x_scaled)){
-    		interp_y = window.blackfynnViewer.chartData.getValue(x_scaled, 2)
-    	}
-    	else{
-			upper_y = window.blackfynnViewer.chartData.getValue(Math.ceil(x_scaled), 2)
-			lower_y = window.blackfynnViewer.chartData.getValue(Math.floor(x_scaled), 2)
-			interp_y = upper_y*(1-(Math.ceil(x_scaled)-x_scaled)) + lower_y*(1-(x_scaled-Math.floor(x_scaled)))
-		}
-    	time_indexed = time
-    	window.blackfynnViewer.chartData.setValue(window.blackfynnViewer.annotationRowIndex, 1, interp_y.toFixed(1))
-		window.blackfynnViewer.chartData.setValue(window.blackfynnViewer.annotationRowIndex, 2, null)
-    	window.blackfynnViewer.chart.draw(window.blackfynnViewer.chartData, window.blackfynnViewer.chartOptions);
-    }
-
 
 	var createNewDialog = function(data) {
     dialogObject = require("./utility").createDialogContainer(localDialogName, data);

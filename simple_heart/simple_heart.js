@@ -39,18 +39,19 @@ Main = function()  {
   }
 
   var initialise = function() {
-    var modelsLoader = new physiomeportal.ModelsLoader();
-    modelsLoader.initialiseLoading();
-    this.organsViewer = new physiomeportal.OrgansViewer(modelsLoader);
-    var organsViewerDialog = new physiomeportal.OrgansViewerDialog(this.organsViewer);
-    var eventNotifier =  new physiomeportal.EventNotifier();
-    this.organsViewer.addNotifier(eventNotifier);
-    eventNotifier.suscribe(this, selectionCallback());
-    this.organsViewer.loadOrgans("human", "Cardiovascular", "Heart");
-    organsViewerDialog.setWidth("90%");
-    organsViewerDialog.setHeight("90%");
-    organsViewerDialog.setLeft("0px");
-    organsViewerDialog.setTop("0px");
+    window.blackfynnViewer = new physiomeportal.BlackfynnPanel('Blackfynn login');  
+    // var modelsLoader = new physiomeportal.ModelsLoader();
+    // modelsLoader.initialiseLoading();
+    // this.organsViewer = new physiomeportal.OrgansViewer(modelsLoader);
+    // var organsViewerDialog = new physiomeportal.OrgansViewerDialog(this.organsViewer);
+    // var eventNotifier =  new physiomeportal.EventNotifier();
+    // this.organsViewer.addNotifier(eventNotifier);
+    // eventNotifier.suscribe(this, selectionCallback());
+    // this.organsViewer.loadOrgans("human", "Cardiovascular", "Heart");
+    // organsViewerDialog.setWidth("90%");
+    // organsViewerDialog.setHeight("90%");
+    // organsViewerDialog.setLeft("0px");
+    // organsViewerDialog.setTop("0px");
 
   }
 
