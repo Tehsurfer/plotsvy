@@ -319,7 +319,7 @@ exports.BlackfynnPanel = function(dailogName)  {
 		});
 
 		function getOpenCORURL(baseRestURL, callback){
-	        var APIPath = "/api/create_opeenCOR_URL";
+	        var APIPath = "/api/create_openCOR_URL";
 	        var completeRestURL = baseRestURL + APIPath;
 	        console.log("REST API URL: " + completeRestURL);
 
@@ -336,7 +336,7 @@ exports.BlackfynnPanel = function(dailogName)  {
 	        }
 
 	        request2.open(method, url, async);
-	        request2.setRequestHeader(null)
+	        request2.setRequestHeader('notused','notused')
 	        request2.send(null);
 	    }
 	}
