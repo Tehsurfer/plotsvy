@@ -1,5 +1,3 @@
-var dat = require("./dat.gui.js");
-require("./styles/dat-gui-swec.css");
 
 
 /**
@@ -316,6 +314,7 @@ exports.BlackfynnPanel = function(dailogName)  {
 		getOpenCORURL(baseURL, function getCallBack(response){
 			var opencorURL = 'opencor://openFile/' + response.url;
 			window.open(opencorURL, '_self');
+			document.getElementById('exportURL').innerHTML = 'File is being stored at: ' + response.URL
 		});
 
 		function getOpenCORURL(baseRestURL, callback){

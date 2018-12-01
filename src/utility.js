@@ -14,8 +14,8 @@ exports.createDialogContainer = function (DialogNameIn, data) {
   var e1 = $('<div class="ui-widget-content" style="position:absolute;width:100%;height:100%;"></div>');
   e0.append(e1);
   e0.dialog({
-          width: 600,
-          height: 500});
+          width: 1200,
+          height: 1000});
   var childNodes = $.parseHTML(data);
   for (i = 0; i < childNodes.length; i++) {
     e1[0].appendChild(childNodes[i]);
