@@ -15,7 +15,7 @@ exports.createDialogContainer = function (DialogNameIn, data) {
   e0.append(e1);
   e0.dialog({
           width: 1200,
-          height: 1000});
+          height: 800});
   var childNodes = $.parseHTML(data);
   for (i = 0; i < childNodes.length; i++) {
     e1[0].appendChild(childNodes[i]);
