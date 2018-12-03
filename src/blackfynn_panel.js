@@ -257,7 +257,7 @@ exports.BlackfynnPanel = function(dailogName)  {
       chartData = processData(createChartData, id);
 
       chartOptions = {
-  		title: 'ECG signals', 
+  		title: 'Selected Channels Plot ', 
   		xaxis: {
   		  type: 'seconds',
   		  title: 'Seconds'
@@ -275,7 +275,7 @@ exports.BlackfynnPanel = function(dailogName)  {
 
 	    var dataTrace = {
 	    	type: "scatter",
- 			name: 'Electrode ' + id,
+ 			name: id,
  			mode: "lines",
  			x: times,
  			y: unprocessedData,
