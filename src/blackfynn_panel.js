@@ -236,7 +236,8 @@ exports.BlackfynnPanel = function(dailogName)  {
 	 
     function resetData(){
     	if ( plot !== undefined ) {
-    		Plotly.purge('chart_div') 		
+    		Plotly.purge('chart_div') 
+    		plot = undefined;	
     	}	
     }
 	

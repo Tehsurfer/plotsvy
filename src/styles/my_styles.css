@@ -382,6 +382,10 @@ img.model {
 	height:70%;
 }
 
+.dataUI {
+	visibility: hidden;
+}
+
 .organsImg {
 	max-height: 100%;
 	max-width: 100%;
