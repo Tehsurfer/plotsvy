@@ -103,6 +103,7 @@ exports.BlackfynnPanel = function(dailogName)  {
     	var baseRestURL = baseURL;
 
 	    getDataSet(cors_api_url + baseRestURL, $('#select_dataset :selected').text(), function childrenCallBack(response) {
+	    	resetData();
 	        this.allSets = response;
 	        data = processData(JSON.parse(response.data))
 	        savedData = JSON.parse(response.data)
@@ -187,6 +188,7 @@ exports.BlackfynnPanel = function(dailogName)  {
         this.datasets = response
         createDatasetDropdown(response.names);
         channelNamesCall(response.names[0])
+        showUI();
         console.log('this', this)
         
 
@@ -232,7 +234,11 @@ exports.BlackfynnPanel = function(dailogName)  {
     }
 
 	 
-
+    function resetData(){
+    	if ( plot !== undefined ) {
+    		Plotly.purge('chart_div') 		
+    	}	
+    }
 	
 
 	
@@ -338,6 +344,13 @@ exports.BlackfynnPanel = function(dailogName)  {
 	        request2.setRequestHeader('notused','notused')
 	        request2.send(null);
 	    }
+	}
+
+	var showUI = function(){
+		document.getElementById('dataset_div').style.visiblity = 'visible';
+		document.getElementById('channel_div').style.visiblity = 'visible';
+		document.getElementById('OpenCORLinkButton').style.visiblity = 'visible';
+		document.getElementById('instructions_div').style.visiblity = 'visible';
 	}
 
 	var createNewDialog = function(data) {
