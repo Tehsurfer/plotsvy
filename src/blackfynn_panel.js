@@ -182,13 +182,13 @@ exports.BlackfynnPanel = function(dailogName)  {
 
 	var login = function() {
 
-	
+	showUI();
     var baseRestURL = baseURL;
 	createAuthToken(cors_api_url + baseRestURL, function authCallBack(response) {
+
         this.datasets = response
         createDatasetDropdown(response.names);
-        channelNamesCall(response.names[0])
-        showUI();
+        channelNamesCall(response.names[0])  
         console.log('this', this)
         
 
