@@ -316,11 +316,9 @@ exports.BlackfynnPanel = function(dailogName)  {
 
 	var runModel = function() {
 		
-		
-
 		getOpenCORURL(baseURL, function getCallBack(response){
-			var opencorURL = 'opencor://openFile/' + response.url;
-			window.open(opencorURL, '_self');
+			// var opencorURL = 'opencor://openFile/' + response.url;
+			window.open(response.url, '_self');
 			document.getElementById('exportURL').innerHTML = 'File is being stored at: ' + response.url;
 		});
 
