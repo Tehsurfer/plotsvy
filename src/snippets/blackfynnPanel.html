@@ -4,19 +4,19 @@
 		 <input type="text" name="key" id="api_key" value="API key"><br>
 		 <input type="password" name="secret" id="secret" value="API Secret"><br>		 
         </div>
-    <div id="instructions_div" style="visibility: hidden;">Select a channel from a dataset to add it to the plot for export. Changing the dataset will clear the plot.</div>
+    <div class="datasetUI" id="instructions_div">Select a channel from a dataset to add it to the plot for export. Changing the dataset will clear the plot.</div>
     <br>
-	<div class="category_div" id="dataset_div" style="visibility: hidden;">Dataset Selection:
+	<div class="datasetUI" id="dataset_div">Dataset Selection:
         	<select id="select_dataset"></select>
 			
 	</div> 
-        <div class="category_div" id="channel_div" style="visibility: hidden;">Channel Selection: 
+        <div class="datasetUI" id="channel_div">Channel Selection: 
         	<select id='select_channel'></select>
         </div>
 	<div id="exportURL">
 			</div>
-        <div id="chart_div"></div> <br>
-	<div style="text-align:center;width:100%;position: absolute;bottom: 3%; visibility: hidden;">
+        <div class="datasetUI" id="chart_div"></div> <br>
+	<div  class="datasetUI" style="text-align:center;width:100%;position: absolute;bottom: 3%;">
 			<input id="OpenCORLinkButton" type="button" value="View Data in OpenCOR">
 	</div> 
 </div>
