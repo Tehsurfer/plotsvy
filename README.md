@@ -14,10 +14,10 @@ Devloper Installation
 npm install
 npm run build
 ```
-4. Open simple_heart/index.html in Firefox 
+4. Open index.html in Firefox 
 
     OR
     
     Use `python -m http.server`
     
-    Go to http://0.0.0.0:8000/simple_heart/index.html with Chrome
+    Go to http://0.0.0.0:8000/index.html with Chrome
