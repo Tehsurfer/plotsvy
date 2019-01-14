@@ -7,15 +7,14 @@ http://blackfynnpythonlink.ml/display/MPB/simple_heart/
 
 Devloper Installation
 ------
-1. `git clone https://github.com/Tehsurfer/MPB.git`
+1. `git clone https://github.com/Tehsurfer/blackfynn-csv-exporter.git`
 2. Install [Node.js](https://nodejs.org/en/) if you do not have it (check using `npm -v`)
 3. Navigate to the /MPB directory and: 
 ```
-npm install webpack@4.19.0
-npm install jquery
+npm install
 npm run build
 ```
-4. Open simple_heart/index.html in Firex 
+4. Open simple_heart/index.html in Firefox 
 
     OR
     
