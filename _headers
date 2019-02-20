@@ -1,6 +1,0 @@
-# The headers file allows CORS from our AWS
-/*
-  # Allow Cors form our AWS IP
-  X-Frame-Options: allow-from * #http://18.191.253.82
-  X-XSS-Protection: 0
-  Access-Control-Allow-Origin: * #http://18.191.253.82
