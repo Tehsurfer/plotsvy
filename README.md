@@ -3,7 +3,7 @@ Tehsurfer/MPB
 A Web viewer for viewing ECG data stored in Blackfynn on a 3D model of the heart exported from Zinc
 
 View the current online version at:
-https://blackfynnpythonlink.ml/blackfynn2openCOR/Data-Registration-Portal/
+https://blackfynnpythonlink.ml/blackfynn-csv-exporter/
 
 Devloper Installation
 ------
