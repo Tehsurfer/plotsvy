@@ -207,6 +207,10 @@ function logout(){
     localStorage.clear();
     $('.datasetUI').hide('slow')
     $('.container-login100').show('slow')
+    if (plot !== undefined) {
+        Plotly.purge('chart_div')
+    }
+    document.body.scrollTop = document.documentElement.scrollTop = 0;
 
 }
 
@@ -237,7 +241,7 @@ function runModel() {
 	var headerValues = ['unused'];
 	var APIPath = "/api/create_openCOR_URL";
     getRequest(cors_api_url + baseURL, APIPath, headerNames, headerValues, function childrenCallBack(response) {
-        var urlPrefix = 'opencor://openFile/';
+        var urlPrefix = 'opencor://importFile/';
         window.open(urlPrefix + response.url, '_self');
         document.getElementById('exportURL').innerHTML = 'File is being stored at: ' + response.url;
     });
