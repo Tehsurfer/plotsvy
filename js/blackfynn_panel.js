@@ -20,12 +20,9 @@ var _this = this;
 this.datasets = [];
 
 // login creates logs a user in on the backend with given API keys
-function login() {
-    showUI();
-    var baseRestURL = baseURL;
-    $('.container-login100').hide('slow')
-    $('.datasetUI').show('slow')
-    createAuthToken(cors_api_url + baseRestURL, function authCallBack(response) {
+function apiKeyLogin(apiKey, apiSecret) {
+   
+    createAuthToken(cors_api_url + baseURL, apiKey, apiSecret, function authCallBack(response) {
 
         this.datasets = response
         createDatasetDropdown(response.names);
@@ -33,16 +30,18 @@ function login() {
     });
     document.getElementById('select_dataset').onchange = datasetCall
     document.getElementById('select_channel').onchange = channelCall
+    $('.container-login100').hide('slow')
+    $('.datasetUI').show('slow')
     channelCall();
-    }
+}
 
-function createAuthToken(baseRestURL, callback) {
+function createAuthToken(baseRestURL, apiKey, apiSecret, callback) {
     var APIPath = "/api/get_timeseries_dataset_names";
     var completeRestURL = baseRestURL + APIPath;
     console.log("REST API URL: " + completeRestURL);
 
     var method = "POST";
-    var postData = "{\"tokenId\": \"" + document.getElementById('api_key').value + "\",\"secret\": \"" + document.getElementById('secret').value + "\",\"loginMode\": 1,\"applicationType\": 35}";
+    var postData = "{\"tokenId\": \"" + apiKey + "\",\"secret\": \"" + apiSecret + "\",\"loginMode\": 1,\"applicationType\": 35}";
     var url = completeRestURL;
     var async = true;
     var request = new XMLHttpRequest();
@@ -147,6 +146,7 @@ function createChart(createChartData, id) {
     if (plot !== undefined) {
         Plotly.purge('chart_div')
     }
+    document.getElementById('chart_div').style.height = '700px'
 
     times = [];
     for (var i in createChartData) {
@@ -196,13 +196,39 @@ var initialiseBlackfynnPanel = function() {
     $('.datasetUI').hide('fast')
     createOpenCORlink();
     document.getElementById('login').onclick = login
+    document.getElementById('login_switch').onclick = login_switch
+    document.getElementById('logout_button').onclick = logout
 
+    checkForSessionToken()
 
 }
+
+function logout(){
+    localStorage.clear();
+    $('.datasetUI').hide('slow')
+    $('.container-login100').show('slow')
+
+}
+
+function checkForSessionToken(){
+
+  const token = localStorage.getItem('auth_token');
+  if (token) {
+    checkSession(token, response => {
+        if ( response.status === 'success' ) {
+            apiKeyLogin(response.data.api_token, response.data.api_secret)
+        }
+    });
+  }
+}
+
 
 function createOpenCORlink() {
     runModelButton = document.getElementById('OpenCORLinkButton');
     runModelButton.onclick = runModel;
+
+    exportCSVButton = document.getElementById('csvExportButton');
+    exportCSVButton.onclick = exportCSV;
 }
 
 
@@ -211,8 +237,19 @@ function runModel() {
 	var headerValues = ['unused'];
 	var APIPath = "/api/create_openCOR_URL";
     getRequest(cors_api_url + baseURL, APIPath, headerNames, headerValues, function childrenCallBack(response) {
-        // var opencorURL = 'opencor://openFile/' + response.url;
-        window.open(response.url, '_self');
+        var urlPrefix = 'opencor://openFile/';
+        window.open(urlPrefix + response.url, '_self');
+        document.getElementById('exportURL').innerHTML = 'File is being stored at: ' + response.url;
+    });
+}
+
+function exportCSV() {
+    var headerNames = ['unused'];
+    var headerValues = ['unused'];
+    var APIPath = "/api/create_openCOR_URL";
+    getRequest(cors_api_url + baseURL, APIPath, headerNames, headerValues, function childrenCallBack(response) {
+        var urlPrefix = 'opencor://openFile/';
+        window.open(urlPrefix + response.url, '_self');
         document.getElementById('exportURL').innerHTML = 'File is being stored at: ' + response.url;
     });
 }
@@ -245,6 +282,129 @@ function getRequest(baseRestURL, APIPath, headerNames, headerValues, callback){
     	request2.setRequestHeader(headerNames[i], headerValues[i]);
     }
     request2.send(null);
+}
+
+function login_switch(){
+    if (document.getElementById('login_switch').innerHTML === "Email/Password"){
+        document.getElementById('api_key').placeholder = 'Email';
+        document.getElementById('secret').placeholder = 'Password';
+        document.getElementById('login_switch').innerHTML = 'API Keys';
+    }
+    else{
+        document.getElementById('api_key').placeholder = 'API Key';
+        document.getElementById('secret').placeholder = 'API Secret';
+        document.getElementById('login_switch').innerHTML = 'Email/Password';
+    }
+}
+
+function login(){
+    showUI();
+    var baseRestURL = baseURL;
+    if (document.getElementById('login_switch').innerHTML === "Email/Password"){
+
+            createSessionFromKeys( baseURL, response => {
+                localStorage.setItem('auth_token', response.auth_token)
+                
+            });
+            apiKeyLogin(document.getElementById('api_key').value, document.getElementById('secret').value)
+    }else{
+        emailLogin()
+    }
+
+
+}
+
+
+function emailLogin(){
+
+    
+    email_login_post_request(cors_api_url + baseURL, response => {
+        localStorage.setItem('auth_token', response.auth_token)
+        apiKeyLogin(response.api_token, response.api_secret)
+    });
+    
+}
+
+function email_login_post_request(baseRestURL, callback){
+    var APIPath = "/api2/auth/register";
+    var completeRestURL = baseRestURL + APIPath;
+    console.log("REST API URL: " + completeRestURL);
+    var method = "POST";
+    var postData = "{\"email\": \"" + document.getElementById('api_key').value + "\",\"password\": \"" + document.getElementById('secret').value + "\",\"loginMode\": 1,\"applicationType\": 35}";
+    var url = completeRestURL;
+    var async = true;
+    
+    var request = new XMLHttpRequest();
+    request.onreadystatechange = function() {
+        if (request.readyState == 4 && (request.status == 200 || request.status == 201)) {
+            console.log("ONLOAD");
+            var status = request.status; // HTTP response status, e.g., 200 for "200 OK"
+            console.log(status);
+            var response = JSON.parse(request.responseText);
+            console.log(response);
+            return callback(response);
+        }
+
+    }
+    request.open(method, url, async);
+    request.setRequestHeader("Content-Type", "application/json");
+    request.setRequestHeader("Accept", "application/json");
+    request.send(postData);
+}
+
+function createSessionFromKeys(baseRestURL, callback){
+    var APIPath = "/api2/auth/keys";
+    var completeRestURL = baseRestURL + APIPath;
+    console.log("REST API URL: " + completeRestURL);
+    var method = "POST";
+    var postData = "{\"api_token\": \"" + document.getElementById('api_key').value + "\",\"api_secret\": \"" + document.getElementById('secret').value + "\",\"loginMode\": 1,\"applicationType\": 35}";
+    var url = completeRestURL;
+    var async = true;
+    
+    var request = new XMLHttpRequest();
+    request.onreadystatechange = function() {
+        if (request.readyState == 4 && (request.status == 200 || request.status == 201)) {
+            console.log("ONLOAD");
+            var status = request.status; // HTTP response status, e.g., 200 for "200 OK"
+            console.log(status);
+            var response = JSON.parse(request.responseText);
+            console.log(response);
+            return callback(response);
+        }
+
+    }
+    request.open(method, url, async);
+    request.setRequestHeader("Content-Type", "application/json");
+    request.setRequestHeader("Accept", "application/json");
+    request.send(postData);
+}
+
+
+function checkSession(session_token, callback){
+    var APIPath = "/api2/auth/check";
+    var completeRestURL = baseURL + APIPath;
+    console.log("REST API URL: " + completeRestURL);
+    const authorization = 'Bearer ' + session_token
+    var method = "POST";
+    var postData = "{\"Authorization\": \"" + authorization + "\",\"loginMode\": 1,\"applicationType\": 35}";
+    var url = completeRestURL;
+    var async = true;
+    var request = new XMLHttpRequest();
+    request.onreadystatechange = function() {
+        if (request.readyState == 4 && (request.status == 200 || request.status == 201)) {
+            console.log("ONLOAD");
+            var status = request.status; // HTTP response status, e.g., 200 for "200 OK"
+            console.log(status);
+            var response = JSON.parse(request.responseText);
+            console.log(response);
+            return callback(response);
+        }
+
+    }
+    request.open(method, url, async);
+    request.setRequestHeader("Content-Type", "application/json");
+    request.setRequestHeader("Accept", "application/json");
+    request.send(postData);
 }
 
 initialiseBlackfynnPanel();

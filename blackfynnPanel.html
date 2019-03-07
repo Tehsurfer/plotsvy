@@ -10,6 +10,7 @@
 	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="fonts/iconic/css/material-design-iconic-font.min.css">
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
 <!--===============================================================================================-->
@@ -25,7 +26,8 @@
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="css/util.css">
 	<link rel="stylesheet" type="text/css" href="css/main.css">
-<!--===============================================================================================-->
+<!-- 	<link rel="stylesheet" type="text/css" href="css/dataform.css">
+ --><!--===============================================================================================-->
 </head>
 <body>
 	
@@ -61,42 +63,90 @@
 						</div>
 
 						<div>
-							<a href="#" class="txt1">
-								Username/Password
-							</a>
+							<a href="#" class="txt1" id="login_switch">Email/Password</a>
 						</div>
 					</div>
 
 					<div class="container-login100-form-btn m-t-17">
 						<input class="login100-form-btn" type="button" value='Login' id='login'>
 					</div>
-					</b>
-					
+					</b>					
 
 				</form>
 			</div>
-			
-    	<br>
-		
-		</div>
-		<div class="datasetUI" id="dataset_div">Dataset Selection:
-        	<select id="select_dataset"></select>
-			
-		</div> 
-        <div class="datasetUI" id="channel_div">Channel Selection: 
-        	<select id='select_channel'></select>
-        </div>
-		<div id="exportURL">
-			</div>
-        <div class="datasetUI" id="chart_div"></div> <br>
-        <div class="datasetUI" id="instructions_div">Select a channel from a dataset to add it to the plot for export. Changing the dataset will clear the plot.</div>
-		<div  class="datasetUI" style="text-align:center;width:100%;position: absolute;bottom: 3%;">
-			<input id="OpenCORLinkButton" type="button" value="Export data as .csv">
-		</div> 
-		
-		</div>
+		</div>		
+    	<br>	
+	</div>
 
-	
+	<div class="container-login100 datasetUI" id="dataset_div">
+	<div class="wrap-data100 p-t-50 p-b-90">
+			<form class="contact100-form validate-form">
+				<span class="login100-form-title p-b-51">
+					Data Viewer
+				</span>
+				<div class=" input100 wrap-input100 input100-select bg1">
+					<span class="label-input100"></span>
+					<div id="dataset_div">
+						<select class="js-select2" name="service" id="select_dataset">
+							<option>Dataset Selection</option>
+						</select>
+						<div class="dropDownSelect2"></div>
+					</div>
+				</div>
+				<div class=" input100 wrap-input100 input100-select bg1">
+					<span class="label-input100"></span>
+					<div id="channel_div">
+						<select class="js-select2" name="service" id="select_channel">
+							<option>Channel Selection</option>
+						</select>
+						<div class="dropDownSelect2"></div>
+					</div>
+				</div>
+
+				
+				</form>
+				<div id="exportURL">
+				</div>
+				<div class="datasetUI" id="chart_div" </div>
+		 <br>
+				<div  class="datasetUI container-login100-form-btn m-t-17" >
+					<input id="csvExportButton" class="login100-form-btn" type="button" value="Export data as .csv">
+				</div> 
+				<div  class="datasetUI container-login100-form-btn m-t-17">
+					<input id="OpenCORLinkButton" class="login100-form-btn" type="button" value="Open Data in OpenCOR">
+				</div> 
+				<div  class="datasetUI container-login100-form-btn m-t-17" >
+					<input id="logout_button" class="login100-form-btn" type="button" value="Logout">
+				</div> 
+
+				<div class="datasetUI" id="instructions_div"></div>
+							
+		</div>
+		
+	</div>
+		
+		
+	<!-- <div class="datasetUI" id="dataset_div">Dataset Selection:
+		        	<select id="select_dataset"></select>
+					
+				</div> 
+		        <div class="datasetUI" id="channel_div">Channel Selection: 
+		        	<select id='select_channel'></select>
+		        </div>
+				<div id="exportURL">
+					</div>
+		        
+		        <div class="datasetUI" id="instructions_div">Select a channel from a dataset to add it to the plot for export. Changing the dataset will clear the plot.</div>
+				<div  class="datasetUI login100-form-btn" style="text-align:center;width:100%;position: absolute;bottom: 15%;">
+					<input id="csvExportButton" type="button" value="Export data as .csv">
+				</div> 
+				<div  class="datasetUI login100-form-btn" style="text-align:center;width:100%;position: absolute;bottom: 10%;">
+					<input id="OpenCORLinkButton" type="button" value="Open Data in OpenCOR">
+				</div> 
+				<div  class="datasetUI login100-form-btn" style="text-align:center;width:100%;position: absolute;bottom: 5%;">
+					<input id="logout_button" type="button" value="Logout">
+				</div> 
+	 -->
 
 	<div id="dropDownSelect1"></div>
 	
@@ -116,9 +166,38 @@
 	<script src="vendor/countdowntime/countdowntime.js"></script>
 	<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 <!--===============================================================================================-->
-	<script src="js/main.js"></script>
+	
+
+	
+	<script src="vendor/select2/select2.min.js"></script>
+	<script>
+		$(".js-select2").each(function(){
+			$(this).select2({
+				minimumResultsForSearch: 20,
+				dropdownParent: $(this).next('.dropDownSelect2')
+			});
+
+
+			$(".js-select2").each(function(){
+				$(this).on('select2:close', function (e){
+					if($(this).val() == "Please chooses") {
+						$('.js-show-service').slideUp();
+					}
+					else {
+						$('.js-show-service').slideUp();
+						$('.js-show-service').slideDown();
+					}
+				});
+			});
+		})
+	</script>
 <!--===============================================================================================-->
+	<script src="js/main.js"></script>
 	<script src="js/blackfynn_panel.js"></script>
+
+<!--===============================================================================================-->
+	
+<!--===============================================================================================-->
 
 </body>
 </html>
