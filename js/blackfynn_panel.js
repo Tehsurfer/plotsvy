@@ -309,12 +309,13 @@ function login(){
     showUI();
     var baseRestURL = baseURL;
     if (document.getElementById('login_switch').innerHTML === "Email/Password"){
-
+        if( document.getElementById('ckb1').checked ){ 
             createSessionFromKeys( baseURL, response => {
                 localStorage.setItem('auth_token', response.auth_token)
                 
             });
-            apiKeyLogin(document.getElementById('api_key').value, document.getElementById('secret').value)
+        }
+        apiKeyLogin(document.getElementById('api_key').value, document.getElementById('secret').value)
     }else{
         emailLogin()
     }
@@ -327,7 +328,9 @@ function emailLogin(){
 
     
     email_login_post_request(cors_api_url + baseURL, response => {
-        localStorage.setItem('auth_token', response.auth_token)
+        if( document.getElementById('ckb1').checked ) { 
+            localStorage.setItem('auth_token', response.auth_token)
+        }
         apiKeyLogin(response.api_token, response.api_secret)
     });
     
