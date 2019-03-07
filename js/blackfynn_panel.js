@@ -291,12 +291,16 @@ function getRequest(baseRestURL, APIPath, headerNames, headerValues, callback){
 function login_switch(){
     if (document.getElementById('login_switch').innerHTML === "Email/Password"){
         document.getElementById('api_key').placeholder = 'Email';
+        document.getElementById('api_key').value = '';
         document.getElementById('secret').placeholder = 'Password';
+        document.getElementById('secret').value = '';
         document.getElementById('login_switch').innerHTML = 'API Keys';
     }
     else{
         document.getElementById('api_key').placeholder = 'API Key';
+        document.getElementById('api_key').value = '';
         document.getElementById('secret').placeholder = 'API Secret';
+        document.getElementById('secret').value = '';
         document.getElementById('login_switch').innerHTML = 'Email/Password';
     }
 }
