@@ -252,7 +252,7 @@ function exportCSV() {
     var headerValues = ['unused'];
     var APIPath = "/api/create_openCOR_URL";
     getRequest(cors_api_url + baseURL, APIPath, headerNames, headerValues, function childrenCallBack(response) {
-        var urlPrefix = 'opencor://openFile/';
+        var urlPrefix = '';
         window.open(urlPrefix + response.url, '_self');
         document.getElementById('exportURL').innerHTML = 'File is being stored at: ' + response.url;
     });
