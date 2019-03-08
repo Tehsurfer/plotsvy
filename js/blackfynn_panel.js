@@ -73,9 +73,10 @@ function datasetCall(dataset) {
 
     getRequest(cors_api_url + baseURL, APIPath, headerNames, headerValues, function childrenCallBack(response) {
         resetData();
+        channelNamesCall($('#select_dataset :selected').text())
         data = processData(JSON.parse(response.data))
         savedData = JSON.parse(response.data)
-        channelNamesCall($('#select_dataset :selected').text())
+        
     });
 }
 
