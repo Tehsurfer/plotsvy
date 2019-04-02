@@ -3,6 +3,35 @@
 */
 
 // dat.gui container for cellGui
+var $ = require('jquery')
+require('bootstrap')
+require('select2')
+require('daterangepicker')
+require('animsition')
+require('hamburgers')
+import 'typeface-ubuntu'
+import 'typeface-montserrat'
+require('.././node_modules/select2/dist/css/select2.min.css')
+require('.././css/main.css')
+
+// In your Javascript (external .js resource or <script> tag)
+$(document).ready(function () {
+  $('.js-select2').each(function () {
+    $(this).select2({
+      minimumResultsForSearch: 20
+    })
+    $('.js-select2').each(function () {
+      $(this).on('select2:close', function (e) {
+        if ($(this).val() === 'Choose a dataset') {
+          $('.js-show-service').slideUp()
+        } else {
+          $('.js-show-service').slideUp()
+          $('.js-show-service').slideDown()
+        }
+      })
+    })
+  })
+})
 
 var times, plot, data, chartOptions, chartData
 
@@ -11,8 +40,8 @@ var baseURL = 'https://blackfynnpythonlink.ml'
 this.datasets = []
 
 // login creates logs a user in on the backend with given API keys
-function apiKeyLogin(apiKey, apiSecret) {
-  createAuthToken(baseURL, apiKey, apiSecret, function authCallBack(response) {
+function apiKeyLogin (apiKey, apiSecret) {
+  createAuthToken(baseURL, apiKey, apiSecret, function authCallBack (response) {
     this.datasets = response
     createDatasetDropdown(response.names)
     channelNamesCall(response.names[0])
@@ -24,7 +53,7 @@ function apiKeyLogin(apiKey, apiSecret) {
   channelCall()
 }
 
-function createAuthToken(baseRestURL, apiKey, apiSecret, callback) {
+function createAuthToken (baseRestURL, apiKey, apiSecret, callback) {
   var APIPath = '/api/get_timeseries_dataset_names'
   var completeRestURL = baseRestURL + APIPath
   console.log('REST API URL: ' + completeRestURL)
@@ -52,12 +81,12 @@ function createAuthToken(baseRestURL, apiKey, apiSecret, callback) {
 }
 
 // datasetCall retrieves the names of abailable datasets/
-function datasetCall(dataset) {
+function datasetCall (dataset) {
   var headerNames = ['name', 'Channel']
   var headerValues = [$('#select_dataset :selected').text(), 'dataset_name']
   var APIPath = '/api/get_channel_data'
 
-  getRequest(baseURL, APIPath, headerNames, headerValues, function childrenCallBack(response) {
+  getRequest(baseURL, APIPath, headerNames, headerValues, function childrenCallBack (response) {
     resetData()
     channelNamesCall($('#select_dataset :selected').text())
     data = processData(JSON.parse(response.data))
@@ -65,17 +94,17 @@ function datasetCall(dataset) {
 }
 
 // channelNames call sends channel names to createDatasetDropdown to create the dropdown selection
-function channelNamesCall(dataset) {
+function channelNamesCall (dataset) {
   var headerNames = ['Name']
   var headerValues = [dataset]
   var APIPath = '/api/get_channels'
-  getRequest(baseURL, APIPath, headerNames, headerValues, function childrenCallBack(response) {
+  getRequest(baseURL, APIPath, headerNames, headerValues, function childrenCallBack (response) {
     createChannelDropdown(response.data)
   })
 }
 
 // CreateDatasetDropdown populates a dropdown box for the user to select a dataset
-function createDatasetDropdown(response) {
+function createDatasetDropdown (response) {
   var select, option
   select = document.getElementById('select_dataset')
   $('#select_dataset').empty()
@@ -88,7 +117,7 @@ function createDatasetDropdown(response) {
 }
 
 // CreateChannelDropdown populates a dropdown box for the user to select a channel
-function createChannelDropdown(response) {
+function createChannelDropdown (response) {
   var select, option
   select = document.getElementById('select_channel')
   $('#select_channel').empty()
@@ -100,12 +129,12 @@ function createChannelDropdown(response) {
   }
 }
 
-function channelCall() {
+function channelCall () {
   var headerNames = ['Name', 'Channel']
   var headerValues = [$('#select_dataset :selected').text(), $('#select_channel :selected').text()]
   var APIPath = '/api/get_channel'
 
-  getRequest(baseURL, APIPath, headerNames, headerValues, function childrenCallBack(response) {
+  getRequest(baseURL, APIPath, headerNames, headerValues, function childrenCallBack (response) {
     data = JSON.parse(response.data)
     if (plot !== undefined) {
       addDataSeriesToChart(data, $('#select_channel :selected').text())
@@ -116,14 +145,14 @@ function channelCall() {
   })
 }
 
-function resetData() {
+function resetData () {
   if (plot !== undefined) {
     Plotly.purge('chart_div')
     plot = undefined
   }
 }
 
-function createChart(createChartData, id) {
+function createChart (createChartData, id) {
   if (plot !== undefined) {
     Plotly.purge('chart_div')
   }
@@ -151,12 +180,12 @@ function createChart(createChartData, id) {
   plot = Plotly.newPlot('chart_div', chartData, chartOptions)
 }
 
-function addDataSeriesToChart(newSeries, id) {
+function addDataSeriesToChart (newSeries, id) {
   var newData = processData(newSeries, id)
   Plotly.addTraces('chart_div', newData)
 }
 
-function processData(unprocessedData, id) {
+function processData (unprocessedData, id) {
   var dataTrace = {
     type: 'scatter',
     name: id,
@@ -180,7 +209,7 @@ var initialiseBlackfynnPanel = function () {
   checkForSessionToken()
 }
 
-function logout() {
+function logout () {
   localStorage.clear()
   $('.datasetUI').hide('slow')
   $('.container-login100').show('slow')
@@ -190,7 +219,7 @@ function logout() {
   document.body.scrollTop = document.documentElement.scrollTop = 0
 }
 
-function checkForSessionToken() {
+function checkForSessionToken () {
   const token = localStorage.getItem('auth_token')
   if (token) {
     checkSession(token, response => {
@@ -201,7 +230,7 @@ function checkForSessionToken() {
   }
 }
 
-function createOpenCORlink() {
+function createOpenCORlink () {
   runModelButton = document.getElementById('OpenCORLinkButton')
   runModelButton.onclick = runModel
 
@@ -209,22 +238,22 @@ function createOpenCORlink() {
   exportCSVButton.onclick = exportCSV
 }
 
-function runModel() {
+function runModel () {
   var headerNames = ['unused']
   var headerValues = ['unused']
   var APIPath = '/api/create_openCOR_URL'
-  getRequest(baseURL, APIPath, headerNames, headerValues, function childrenCallBack(response) {
+  getRequest(baseURL, APIPath, headerNames, headerValues, function childrenCallBack (response) {
     var urlPrefix = 'opencor://importFile/'
     window.open(urlPrefix + response.url, '_self')
     document.getElementById('exportURL').innerHTML = 'File is being stored at: ' + response.url
   })
 }
 
-function exportCSV() {
+function exportCSV () {
   var headerNames = ['unused']
   var headerValues = ['unused']
   var APIPath = '/api/create_openCOR_URL'
-  getRequest(baseURL, APIPath, headerNames, headerValues, function childrenCallBack(response) {
+  getRequest(baseURL, APIPath, headerNames, headerValues, function childrenCallBack (response) {
     var urlPrefix = ''
     window.open(urlPrefix + response.url, '_self')
     document.getElementById('exportURL').innerHTML = 'File is being stored at: ' + response.url
@@ -238,7 +267,7 @@ var showUI = function () {
   document.getElementById('instructions_div').style.visiblity = 'visible'
 }
 
-function getRequest(baseRestURL, APIPath, headerNames, headerValues, callback) {
+function getRequest (baseRestURL, APIPath, headerNames, headerValues, callback) {
   var completeRestURL = baseRestURL + APIPath
   console.log('REST API URL: ' + completeRestURL)
   var method = 'GET'
@@ -260,7 +289,7 @@ function getRequest(baseRestURL, APIPath, headerNames, headerValues, callback) {
   request2.send(null)
 }
 
-function loginSwitch() {
+function loginSwitch () {
   if (document.getElementById('login_switch').innerHTML === 'Email/Password') {
     document.getElementById('api_key').placeholder = 'Email'
     document.getElementById('api_key').value = ''
@@ -276,7 +305,7 @@ function loginSwitch() {
   }
 }
 
-function login() {
+function login () {
   showUI()
   if (document.getElementById('login_switch').innerHTML === 'Email/Password') {
     if (document.getElementById('ckb1').checked) {
@@ -290,7 +319,7 @@ function login() {
   }
 }
 
-function emailLogin() {
+function emailLogin () {
   emailLoginPostRequest(baseURL, response => {
     if (document.getElementById('ckb1').checked) {
       localStorage.setItem('auth_token', response.auth_token)
@@ -299,7 +328,7 @@ function emailLogin() {
   })
 }
 
-function emailLoginPostRequest(baseRestURL, callback) {
+function emailLoginPostRequest (baseRestURL, callback) {
   var APIPath = '/api2/auth/register'
   var completeRestURL = baseRestURL + APIPath
   console.log('REST API URL: ' + completeRestURL)
@@ -325,7 +354,7 @@ function emailLoginPostRequest(baseRestURL, callback) {
   request.send(postData)
 }
 
-function createSessionFromKeys(baseRestURL, callback) {
+function createSessionFromKeys (baseRestURL, callback) {
   var APIPath = '/api2/auth/keys'
   var completeRestURL = baseRestURL + APIPath
   console.log('REST API URL: ' + completeRestURL)
@@ -351,7 +380,7 @@ function createSessionFromKeys(baseRestURL, callback) {
   request.send(postData)
 }
 
-function checkSession(sessionToken, callback) {
+function checkSession (sessionToken, callback) {
   var APIPath = '/api2/auth/check'
   var completeRestURL = baseURL + APIPath
   console.log('REST API URL: ' + completeRestURL)

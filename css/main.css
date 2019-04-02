@@ -4,20 +4,19 @@
 
 /*//////////////////////////////////////////////////////////////////
 [ FONT ]*/
-
 @font-face {
   font-family: Ubuntu-Regular;
-  src: url('../fonts/ubuntu/Ubuntu-Regular.ttf'); 
+  src: url('../fonts/ubuntu/Ubuntu-Regular.ttf') format('truetype'); 
 }
 
 @font-face {
   font-family: Ubuntu-Bold;
-  src: url('../fonts/ubuntu/Ubuntu-Bold.ttf'); 
+  src: url('../fonts/ubuntu/Ubuntu-Bold.ttf') format('truetype'); 
 }
 
 @font-face {
   font-family: Montserrat-Regular;
-  src: url('../fonts/montserrat/Montserrat-Regular.ttf'); 
+  src: url('../fonts/montserrat/Montserrat-Regular.ttf') format('truetype'); 
 }
 
 /*//////////////////////////////////////////////////////////////////
@@ -560,7 +559,7 @@ input:checked + .slider:before {
   display: none;
 }
 
-.select2-selection__arrow::before {
+.select2-selection__arrow {
   content: '\f312';
   font-family: Material-Design-Iconic-Font !important;
   font-size: 18px;

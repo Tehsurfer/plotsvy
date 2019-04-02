@@ -5,8 +5,8 @@ const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 module.exports = {
   mode: "none",
   entry: {
-    "physiomeportal": "./src/index.js",
-    "physiomeportal.min": "./src/index.js",
+    "build": "./js/blackfynn_panel.js",
+    "build.min": "./js/blackfynn_panel.js",
   },
   output: {
     path: path.resolve(__dirname, 'build'),
@@ -29,6 +29,16 @@ module.exports = {
         loaders: [
           'raw-loader'
         ]
+      },
+      {
+        test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
+        use: [{
+          loader: 'file-loader',
+          options: {
+            name: '[name].[ext]',
+            outputPath: './fonts/'
+          }
+        }]
       },
       { test: /\.(png|woff|woff2|eot|ttf|svg)$/, loader: 'url-loader?limit=100000' }
     ]
