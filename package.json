@@ -1,6 +1,6 @@
 {
   "name": "blackfynn-csv-exporter",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "View Timeseries data stored on Blackfynn and export it to csv for OpenCOR",
   "main": "build/build.min.js",
   "files": [
@@ -21,15 +21,12 @@
     "url": "git+https://github.com/tehsurfer/blackfynn-csv-exporter"
   },
   "keywords": [
-    "library",
-    "webgl",
-    "3d",
-    "zincjs",
-    "physiome",
-    "bioengineering",
-    "modelling"
+    "OpenCOR",
+    "Blackfynn",
+    "data",
+    "export"
   ],
-  "author": "Alan Wu <alan.wu@auckland.ac.nz>",
+  "author": "Jesse Khorasanee <jessekhorasanee@gmail.com>",
   "license": "Apache-2.0",
   "bugs": {
     "url": "https://github.com/tehsurfer/blackfynn-csv-exporter/issues"
