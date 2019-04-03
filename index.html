@@ -1,34 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 	<title>Blackfynn Exporter</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-<!--===============================================================================================-->	
-	<link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
-	<link rel="stylesheet" type="text/css" href="fonts/iconic/css/material-design-iconic-font.min.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
-<!--===============================================================================================-->	
-	<link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="vendor/animsition/css/animsition.min.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
-<!--===============================================================================================-->	
-	<link rel="stylesheet" type="text/css" href="vendor/daterangepicker/daterangepicker.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="css/util.css">
-	<link rel="stylesheet" type="text/css" href="css/main.css">
-<!-- 	<link rel="stylesheet" type="text/css" href="css/dataform.css">
- --><!--===============================================================================================-->
+	<!--===============================================================================================-->
+	<link rel="icon" type="image/png" href="images/icons/favicon.ico" />
+	<!--===============================================================================================-->
+	<script src="build/build.js"></script>
 </head>
+
 <body>
 	
 	<div class="limiter">
@@ -38,25 +20,26 @@
 					<span class="login100-form-title p-b-51">
 						Blackfynn Exporter
 						<div class="app-explanation">
-						Veiw timeseries data on Blackfynn and export it to a .csv format
+							Veiw timeseries data on Blackfynn and export it to a .csv format
 						</div>
 					</span>
 
-					
-					<div class="wrap-input100 validate-input m-b-16" data-validate = "Username is required">
+
+					<div class="wrap-input100 validate-input m-b-16" data-validate="Username is required">
 						<input class="input100" type="text" name="username" id="api_key" placeholder="API Key">
 						<span class="focus-input100"></span>
 					</div>
-					
-					
-					<div class="wrap-input100 validate-input m-b-16" data-validate = "Password is required">
+
+
+					<div class="wrap-input100 validate-input m-b-16" data-validate="Password is required">
 						<input class="input100" type="password" name="pass" id="secret" placeholder="API Secret">
 						<span class="focus-input100"></span>
 					</div>
-					
+
 					<div class="flex-sb-m w-full p-t-3 p-b-24">
 						<div class="contact100-form-checkbox">
-							<input class="input-checkbox100" id="ckb1" type="checkbox" name="remember-me" checked="true">
+							<input class="input-checkbox100" id="ckb1" type="checkbox" name="remember-me"
+								checked="true">
 							<label class="label-checkbox100" for="ckb1">
 								Remember me
 							</label>
@@ -70,16 +53,16 @@
 					<div class="container-login100-form-btn m-t-17">
 						<input class="login100-form-btn" type="button" value='Login' id='login'>
 					</div>
-					</b>					
+					</b>
 
 				</form>
 			</div>
-		</div>		
-    	<br>	
+		</div>
+		<br>
 	</div>
 
 	<div class="container-login100 datasetUI" id="dataset_div">
-	<div class="wrap-data100 p-t-50 p-b-90 datasetUI">
+		<div class="wrap-data100 p-t-50 p-b-90 datasetUI">
 			<form class="contact100-form validate-form">
 				<span class="login100-form-title p-b-51">
 					Data Viewer
@@ -103,102 +86,32 @@
 					</div>
 				</div>
 
-				
-				</form>
-				
-				<div class="datasetUI" id="chart_div" </div>
-		 <br>
-		 		<div id="exportURL">
-				</div>
-				<div  class="datasetUI container-login100-form-btn m-t-17" >
-					<input id="csvExportButton" class="login100-form-btn" type="button" value="Export data as .csv">
-				</div> 
-				<div  class="datasetUI container-login100-form-btn m-t-17">
-					<input id="OpenCORLinkButton" class="login100-form-btn" type="button" value="Open Data in OpenCOR">
-				</div> 
-				<div  class="datasetUI container-login100-form-btn m-t-17" >
-					<input id="logout_button" class="login100-form-btn" type="button" value="Logout">
-				</div> 
 
-				<div class="datasetUI" id="instructions_div"></div>
-							
+			</form>
+
+			<div class="datasetUI" id="chart_div"></div>
+			<br>
+			<div id="exportURL">
+			</div>
+			<div class="datasetUI container-login100-form-btn m-t-17">
+				<input id="csvExportButton" class="login100-form-btn" type="button" value="Export data as .csv">
+			</div>
+			<div class="datasetUI container-login100-form-btn m-t-17">
+				<input id="OpenCORLinkButton" class="login100-form-btn" type="button" value="Open Data in OpenCOR">
+			</div>
+			<div class="datasetUI container-login100-form-btn m-t-17">
+				<input id="logout_button" class="login100-form-btn" type="button" value="Logout">
+			</div>
+
+			<div class="datasetUI" id="instructions_div"></div>
+
 		</div>
-		
+
 	</div>
-		
-		
-	<!-- <div class="datasetUI" id="dataset_div">Dataset Selection:
-		        	<select id="select_dataset"></select>
-					
-				</div> 
-		        <div class="datasetUI" id="channel_div">Channel Selection: 
-		        	<select id='select_channel'></select>
-		        </div>
-				<div id="exportURL">
-					</div>
-		        
-		        <div class="datasetUI" id="instructions_div">Select a channel from a dataset to add it to the plot for export. Changing the dataset will clear the plot.</div>
-				<div  class="datasetUI login100-form-btn" style="text-align:center;width:100%;position: absolute;bottom: 15%;">
-					<input id="csvExportButton" type="button" value="Export data as .csv">
-				</div> 
-				<div  class="datasetUI login100-form-btn" style="text-align:center;width:100%;position: absolute;bottom: 10%;">
-					<input id="OpenCORLinkButton" type="button" value="Open Data in OpenCOR">
-				</div> 
-				<div  class="datasetUI login100-form-btn" style="text-align:center;width:100%;position: absolute;bottom: 5%;">
-					<input id="logout_button" type="button" value="Logout">
-				</div> 
-	 -->
 
 	<div id="dropDownSelect1"></div>
-	
-<!--===============================================================================================-->
-	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
-<!--===============================================================================================-->
-	<script src="vendor/animsition/js/animsition.min.js"></script>
-<!--===============================================================================================-->
-	<script src="vendor/bootstrap/js/popper.js"></script>
-	<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
-<!--===============================================================================================-->
-	<script src="vendor/select2/select2.min.js"></script>
-<!--===============================================================================================-->
-	<script src="vendor/daterangepicker/moment.min.js"></script>
-	<script src="vendor/daterangepicker/daterangepicker.js"></script>
-<!--===============================================================================================-->
-	<script src="vendor/countdowntime/countdowntime.js"></script>
-	<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-<!--===============================================================================================-->
-	
-
-	
-	<script src="vendor/select2/select2.min.js"></script>
-	<script>
-		$(".js-select2").each(function(){
-			$(this).select2({
-				minimumResultsForSearch: 20,
-				dropdownParent: $(this).next('.dropDownSelect2')
-			});
-
-
-			$(".js-select2").each(function(){
-				$(this).on('select2:close', function (e){
-					if($(this).val() == "Please chooses") {
-						$('.js-show-service').slideUp();
-					}
-					else {
-						$('.js-show-service').slideUp();
-						$('.js-show-service').slideDown();
-					}
-				});
-			});
-		})
-	</script>
-<!--===============================================================================================-->
-	<script src="js/main.js"></script>
-	<script src="js/blackfynn_panel.js"></script>
-
-<!--===============================================================================================-->
-	
-<!--===============================================================================================-->
-
+	<!--===============================================================================================-->
+	<!--===============================================================================================-->
 </body>
+
 </html>
