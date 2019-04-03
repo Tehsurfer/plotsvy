@@ -1,14 +1,14 @@
 {
-  "name": "physiomeportal",
-  "version": "0.2.0alpha",
-  "description": "Physiome Portal",
-  "main": "build/physiomeportal.min.js",
+  "name": "blackfynn-csv-exporter",
+  "version": "1.0.0",
+  "description": "View Timeseries data stored on Blackfynn and export it to csv for OpenCOR",
+  "main": "build/build.min.js",
   "files": [
     "package.json",
     "LICENSE",
     "README.md",
-    "build/physiomeportal.js",
-    "build/physiomeportal.min.js",
+    "build/build.js",
+    "build/build.min.js",
     "webpack.config.js"
   ],
   "scripts": {
@@ -18,7 +18,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/alan-wu/ZincJS.git"
+    "url": "git+https://github.com/tehsurfer/blackfynn-csv-exporter"
   },
   "keywords": [
     "library",
@@ -32,9 +32,9 @@
   "author": "Alan Wu <alan.wu@auckland.ac.nz>",
   "license": "Apache-2.0",
   "bugs": {
-    "url": "https://github.com/alan-wu/MPB/issues"
+    "url": "https://github.com/tehsurfer/blackfynn-csv-exporter/issues"
   },
-  "homepage": "http://alan-wu.github.io/MPB/",
+  "homepage": "https://github.com/tehsurfer/blackfynn-csv-exporter",
   "devDependencies": {
     "file-loader": "^1.1.11",
     "html-loader": "^0.5.5",
@@ -46,20 +46,12 @@
     "webpack-jquery-ui": "^1.0.0"
   },
   "dependencies": {
-    "animate": "^1.0.0",
-    "animsition": "^4.0.2",
-    "bootstrap": "^4.3.1",
-    "daterangepicker": "^3.0.3",
-    "hamburgers": "^1.1.3",
     "jquery": "^3.3.1",
     "perfect-scrollbar": "^1.4.0",
     "plotly": "^1.0.6",
     "popper.js": "^1.14.7",
     "select2": "^4.0.6-rc.1",
     "standard": "^12.0.1",
-    "typeface-montserrat": "0.0.54",
-    "typeface-roboto": "0.0.54",
-    "typeface-ubuntu": "0.0.65",
     "webpack": "^4.29.6"
   }
 }

@@ -2,19 +2,15 @@
 * BlackfynnPanel is used for making calls to blackfynn to collect timeseries data and plot it using plotly
 */
 
-// dat.gui container for cellGui
-var $ = require('jquery')
-require('bootstrap')
-require('select2')
-require('daterangepicker')
-require('animsition')
-require('hamburgers')
-import 'typeface-ubuntu'
-import 'typeface-montserrat'
 require('.././node_modules/select2/dist/css/select2.min.css')
 require('.././css/main.css')
+require('.././css/util.css')
 
-// In your Javascript (external .js resource or <script> tag)
+// dat.gui container for cellGui
+var $ = require('jquery')
+var Plotly = require('plotly')
+require('select2')
+
 $(document).ready(function () {
   $('.js-select2').each(function () {
     $(this).select2({
@@ -22,22 +18,20 @@ $(document).ready(function () {
     })
     $('.js-select2').each(function () {
       $(this).on('select2:close', function (e) {
-        if ($(this).val() === 'Choose a dataset') {
-          $('.js-show-service').slideUp()
-        } else {
-          $('.js-show-service').slideUp()
-          $('.js-show-service').slideDown()
-        }
+        $('.js-show-service').slideUp()
+        $('.js-show-service').slideDown()
       })
     })
   })
+
+  initialiseBlackfynnPanel()
 })
+
+
 
 var times, plot, data, chartOptions, chartData
 
-var baseURL = 'https://blackfynnpythonlink.ml'
-
-this.datasets = []
+var baseURL = 'https://blackfynnpythonlink.ml/'
 
 // login creates logs a user in on the backend with given API keys
 function apiKeyLogin (apiKey, apiSecret) {
@@ -406,4 +400,4 @@ function checkSession (sessionToken, callback) {
   request.send(postData)
 }
 
-initialiseBlackfynnPanel()
+
