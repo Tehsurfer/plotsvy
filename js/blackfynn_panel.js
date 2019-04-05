@@ -6,7 +6,7 @@ require('.././node_modules/select2/dist/css/select2.min.css')
 require('.././css/main.css')
 require('.././css/util.css')
 const UI = require('./ui.js')
-var ui = new UI()
+
 
 // dat.gui container for cellGui
 var $ = require('jquery')
@@ -30,12 +30,13 @@ $(document).ready(function () {
 })
 
 function BlackfynnManager () {
+  var ui = undefined
   var self = this
   self.plot = undefined
   self.baseURL = 'https://blackfynnpythonlink.ml/'
 
   this.initialiseBlackfynnPanel = function () {
-    $('.datasetUI').hide('fast')
+    ui = new UI()
     self.createOpenCORlink()
     document.getElementById('login').onclick = self.login
     document.getElementById('login_switch').onclick = ui.loginSwitch
@@ -177,8 +178,7 @@ function BlackfynnManager () {
 
   this.logout = function () {
     localStorage.clear()
-    $('.datasetUI').hide('slow')
-    $('.container-login100').show('slow')
+    ui.showLogin()
     if (self.plot !== undefined) {
       Plotly.purge('chart_div')
     }
@@ -350,4 +350,3 @@ function getRequest (baseRestURL, APIPath, headerNames, headerValues, callback) 
 }
 
 var blackfynnManger = new BlackfynnManager()
-
