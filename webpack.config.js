@@ -36,11 +36,10 @@ module.exports = {
           loader: 'file-loader',
           options: {
             name: '[name].[ext]',
-            outputPath: './fonts/'
+            outputPath: './fonts/' //direct to the fonts folder
           }
         }]
-      },
-      { test: /\.(png|woff|woff2|eot|ttf|svg)$/, loader: 'url-loader?limit=100000' }
+      }
     ]
   },
   plugins: [
