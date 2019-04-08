@@ -19,7 +19,7 @@ function UI () {
   this.createChannelDropdown = function (channels) {
     var select, option
     select = parentDiv.querySelector('#select_channel')
-    select.empty()
+    select.innerHTML = ''
 
     for (var i in channels) {
       option = document.createElement('option')
@@ -32,7 +32,7 @@ function UI () {
   this.createDatasetDropdown = function (datasets) {
     var select, option
     select = parentDiv.querySelector('#select_dataset')
-    select.empty()
+    select.innerHTML = ''
 
     for (var i in datasets) {
       option = document.createElement('option')

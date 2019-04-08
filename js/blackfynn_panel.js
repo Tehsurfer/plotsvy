@@ -6,13 +6,11 @@ require('.././node_modules/select2/dist/css/select2.min.css')
 require('.././css/main.css')
 require('.././css/util.css')
 const UI = require('./ui.js')
-
+const PlotManager = require('./plot_manager.js')
 
 // dat.gui container for cellGui
 var $ = require('jquery')
-var Plotly = require('plotly')
 require('select2')
-
 $(document).ready(function () {
   $('.js-select2').each(function () {
     $(this).select2({
@@ -33,15 +31,16 @@ function BlackfynnManager () {
   var ui = undefined
   var parentDiv = undefined
   var self = this
-  self.plot = undefined
+  var plot = undefined
   self.baseURL = 'https://blackfynnpythonlink.ml/'
 
   this.initialiseBlackfynnPanel = function () {
     ui = new UI()
+    plot = new PlotManager()
     parentDiv = document.getElementById('blackfynn-panel')
     self.createOpenCORlink()
     parentDiv.querySelector('#login').onclick = self.login
-    parentDiv.querySelector('#login_switch').onclick = ui.loginSwitch
+    parentDiv.querySelector('#login_switch').onclick = ui.loginMethodSwitch
     parentDiv.querySelector('#logout_button').onclick = self.logout
     self.checkForSessionToken()
   }
@@ -88,12 +87,12 @@ function BlackfynnManager () {
   // datasetCall retrieves the names of abailable datasets/
   this.datasetCall = function (dataset) {
     var headerNames = ['name', 'Channel']
-    var headerValues = [$('#blackfynn-panel#select_dataset :selected').text(), 'dataset_name']
+    var headerValues = [$('#select_dataset :selected').text(), 'dataset_name']
     var APIPath = '/api/get_channel_data'
 
     getRequest(self.baseURL, APIPath, headerNames, headerValues, function childrenCallBack(response) {
-      self.resetChart()
-      self.channelNamesCall($('#blackfynn-panel#select_dataset :selected').text())
+      plot.resetChart()
+      self.channelNamesCall($('#select_dataset :selected').text())
     })
   }
 
@@ -110,80 +109,24 @@ function BlackfynnManager () {
 
   this.channelCall = function () {
     var headerNames = ['Name', 'Channel']
-    var headerValues = [$('#blackfynn-panel#select_dataset :selected').text(), $('#blackfynn-panel#select_channel :selected').text()]
+    var headerValues = [$('#select_dataset :selected').text(), $('#select_channel :selected').text()]
     var APIPath = '/api/get_channel'
 
     getRequest(self.baseURL, APIPath, headerNames, headerValues, function childrenCallBack(response) {
       var data = JSON.parse(response.data)
-      if (self.plot !== undefined) {
-        self.addDataSeriesToChart(data, $('#blackfynn-panel#select_channel :selected').text())
+      if (plot.plot !== undefined) {
+        plot.addDataSeriesToChart(data, $('#select_channel :selected').text())
       } else {
-        self.createChart(data, $('#blackfynn-panel#select_channel :selected').text())
+        plot.createChart(data, $('#select_channel :selected').text())
         // parentDiv.querySelector('#chartLoadingGif').remove();
       }
     })
   }
 
-  this.resetChart = function () {
-    if (self.plot !== undefined) {
-      Plotly.purge('chart_div')
-      self.plot = undefined
-    }
-  }
-
-  this.createChart = function (createChartData, id) {
-    if (self.plot !== undefined) {
-      Plotly.purge('chart_div')
-    }
-    parentDiv.querySelector('#chart_div').style.height = '700px'
-
-    var times = []
-    for (var i in createChartData) {
-      times.push(i)
-    }
-
-    var chartData = self.processData(createChartData, times, id)
-
-    var chartOptions = {
-      title: 'Selected Channels Plot ',
-      xaxis: {
-        type: 'seconds',
-        title: 'Seconds'
-      },
-      yaxis: {
-        autorange: true,
-        type: 'linear',
-        title: 'mV'
-      }
-    }
-    self.plot = Plotly.newPlot('chart_div', chartData, chartOptions)
-  }
-
-  this.addDataSeriesToChart = function (newSeries, id) {
-    var newData = self.processData(newSeries, id)
-    Plotly.addTraces('chart_div', newData)
-  }
-
-  this.processData = function (unprocessedData, times, id) {
-    var dataTrace = {
-      type: 'scatter',
-      name: id,
-      mode: 'lines',
-      x: times,
-      y: unprocessedData,
-      line: {
-        color: '#' + (Math.random() * 0xFFFFFF << 0).toString(16)
-      }
-    }
-    return [dataTrace]
-  }
-
   this.logout = function () {
     localStorage.clear()
     ui.showLogin()
-    if (self.plot !== undefined) {
-      Plotly.purge('chart_div')
-    }
+    plot.clearChart()
     document.body.scrollTop = document.documentElement.scrollTop = 0
   }
 
