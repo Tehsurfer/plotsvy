@@ -23,3 +23,25 @@ npm run build
     
     Go to http://0.0.0.0:8000/index.html with Chrome
     
+Using the app and External API's
+-------
+```javascript
+// Initialises app.
+var blackfynnManger = new BlackfynnManager()
+blackfynnManger.initialiseBlackfynnPanel()
+
+
+//Initialises app on document load.
+var blackfynnManger = new BlackfynnManager()
+document.addEventListener("DOMContentLoaded", function(event) { 
+  blackfynnManger.initialiseBlackfynnPanel()
+});
+
+// Send data to app before or after login
+var blackfynnManger = new BlackfynnManager()
+blackfynnManager.insert('<dataset1ID>', '<channel1ID>')
+blackfynnManger.initialiseBlackfynnPanel()
+blacfynnManager.login()
+blackfynnManager.insert('<dataset1ID>', '<channel2ID>')
+
+```
