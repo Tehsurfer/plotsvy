@@ -1,6 +1,6 @@
 {
   "name": "blackfynn-csv-exporter",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "View Timeseries data stored on Blackfynn and export it to csv for OpenCOR",
   "main": "build/build.min.js",
   "files": [

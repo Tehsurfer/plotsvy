@@ -27,11 +27,12 @@ $(document).ready(function () {
   blackfynnManger.initialiseBlackfynnPanel()
 })
 
-function BlackfynnManager () {
+function BlackfynnManager() {
   var ui = undefined
   var parentDiv = undefined
   var self = this
   var plot = undefined
+  var loggedIn = false
   self.baseURL = 'https://blackfynnpythonlink.ml/'
 
   this.initialiseBlackfynnPanel = function () {
@@ -43,6 +44,28 @@ function BlackfynnManager () {
     parentDiv.querySelector('#login_switch').onclick = ui.loginMethodSwitch
     parentDiv.querySelector('#logout_button').onclick = self.logout
     self.checkForSessionToken()
+  }
+
+  this.insert = function (dataset, channel) {
+    if (loggedIn === false) {
+      self.loginWait = setInterval(_ => {
+        if (loggedIn === true) {
+          self.loggedInCallback(dataset, channel)
+        }
+      }, 1000)
+    } else {
+      self.datasetCallFor(dataset, _ => {
+        self.channelCallFor(dataset, channel)
+      })
+    }
+  }
+
+  this.loggedInCallback = function (dataset, channel) {
+    console.log('login resolved')
+    clearInterval(self.loginWait)
+    self.datasetCallFor(dataset, _ => {
+      self.channelCallFor(dataset, channel)
+    })
   }
 
   this.apiKeyLogin = function (apiKey, apiSecret) {
@@ -85,7 +108,7 @@ function BlackfynnManager () {
   }
 
   // datasetCall retrieves the names of abailable datasets/
-  this.datasetCall = function (dataset) {
+  this.datasetCall = function () {
     var headerNames = ['name', 'Channel']
     var headerValues = [$('#select_dataset :selected').text(), 'dataset_name']
     var APIPath = '/api/get_channel_data'
@@ -96,6 +119,17 @@ function BlackfynnManager () {
     })
   }
 
+  this.datasetCallFor = function (dataset, callback) {
+    var headerNames = ['name', 'Channel']
+    var headerValues = [dataset, 'dataset_name']
+    var APIPath = '/api/get_channel_data'
+
+    getRequest(self.baseURL, APIPath, headerNames, headerValues, function childrenCallBack(response) {
+      self.channelNamesCall(dataset)
+    })
+    callback()
+  }
+
   // channelNames call sends channel names to createDatasetDropdown to create the dropdown selection
   this.channelNamesCall = function (dataset) {
     var headerNames = ['Name']
@@ -103,7 +137,7 @@ function BlackfynnManager () {
     var APIPath = '/api/get_channels'
     getRequest(self.baseURL, APIPath, headerNames, headerValues, function childrenCallBack(response) {
       ui.createChannelDropdown(response.data)
-      self.channelCall()
+      loggedIn = true
     })
   }
 
@@ -118,6 +152,22 @@ function BlackfynnManager () {
         plot.addDataSeriesToChart(data, $('#select_channel :selected').text())
       } else {
         plot.createChart(data, $('#select_channel :selected').text())
+        // parentDiv.querySelector('#chartLoadingGif').remove();
+      }
+    })
+  }
+
+  this.channelCallFor = function (dataset, channel) {
+    var headerNames = ['Name', 'Channel']
+    var headerValues = [dataset, channel]
+    var APIPath = '/api/get_channel'
+
+    getRequest(self.baseURL, APIPath, headerNames, headerValues, function childrenCallBack(response) {
+      var data = JSON.parse(response.data)
+      if (plot.plot !== undefined) {
+        plot.addDataSeriesToChart(data, channel)
+      } else {
+        plot.createChart(data, channel)
         // parentDiv.querySelector('#chartLoadingGif').remove();
       }
     })
@@ -171,7 +221,7 @@ function BlackfynnManager () {
     })
   }
 
-  this.login = function () {   
+  this.login = function () {
     if (parentDiv.querySelector('#login_switch').innerHTML === 'Email/Password') {
       if (parentDiv.querySelector('#ckb1').checked) {
         self.createSessionFromKeys(self.baseURL, response => {
@@ -272,7 +322,7 @@ function BlackfynnManager () {
     request.send(postData)
   }
 }
-function getRequest (baseRestURL, APIPath, headerNames, headerValues, callback) {
+function getRequest(baseRestURL, APIPath, headerNames, headerValues, callback) {
   var completeRestURL = baseRestURL + APIPath
   console.log('REST API URL: ' + completeRestURL)
   var method = 'GET'
@@ -295,3 +345,5 @@ function getRequest (baseRestURL, APIPath, headerNames, headerValues, callback) 
 }
 
 var blackfynnManger = new BlackfynnManager()
+
+window.blackfynnManger = blackfynnManger
