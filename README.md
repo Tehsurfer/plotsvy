@@ -23,3 +23,25 @@ npm run build
     
     Go to http://0.0.0.0:8000/index.html with Chrome
     
+Using the app and External API's
+-------
+```javascript
+// Initialises app.
+var blackfynnManger = new BlackfynnManager()
+blackfynnManger.initialiseBlackfynnPanel()
+
+
+//Initialises app on document load.
+var blackfynnManger = new BlackfynnManager()
+document.addEventListener("DOMContentLoaded", function(event) { 
+  blackfynnManger.initialiseBlackfynnPanel()
+});
+
+// Send data to app before or after login
+var blackfynnManger = new BlackfynnManager()
+blackfynnManager.insert('N:package:51ae7443-0e8e-40ac-84bc-a1fcceb9d867','EEG FZ-REF')
+blackfynnManger.initialiseBlackfynnPanel()
+blacfynnManager.login()
+blackfynnManager.insert('Sample Time Series (EEG)','EEG C3-REF')
+
+```
