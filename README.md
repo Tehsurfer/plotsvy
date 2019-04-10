@@ -39,9 +39,9 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
 // Send data to app before or after login
 var blackfynnManger = new BlackfynnManager()
-blackfynnManager.insert('<dataset1ID>', '<channel1ID>')
+blackfynnManager.insert('N:package:51ae7443-0e8e-40ac-84bc-a1fcceb9d867','EEG FZ-REF')
 blackfynnManger.initialiseBlackfynnPanel()
 blacfynnManager.login()
-blackfynnManager.insert('<dataset1ID>', '<channel2ID>')
+blackfynnManager.insert('Sample Time Series (EEG)','EEG C3-REF')
 
 ```
