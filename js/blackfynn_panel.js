@@ -7,10 +7,10 @@ require('.././css/main.css')
 require('.././css/util.css')
 const UI = require('./ui.js')
 const PlotManager = require('./plot_manager.js')
-
-// dat.gui container for cellGui
 var $ = require('jquery')
 require('select2')
+
+// Need to load select2 and blackfynnManger once the DOM is ready
 $(document).ready(function () {
   $('.js-select2').each(function () {
     $(this).select2({
@@ -27,14 +27,18 @@ $(document).ready(function () {
   blackfynnManger.initialiseBlackfynnPanel()
 })
 
+
+// BlackfynnManager(): Manages the HTTP requests to the backend, Tehsurfer/Physiome-Blackfynn-API 
+//                     and drives the plot and ui modules.
 function BlackfynnManager() {
   var ui = undefined
   var parentDiv = undefined
-  var self = this
   var plot = undefined
+  var self = this
   var loggedIn = false
   self.baseURL = 'https://blackfynnpythonlink.ml/'
 
+  // initialiseBlackfynnPanel: sets up ui and plot, needs DOM to be loaded
   this.initialiseBlackfynnPanel = function () {
     ui = new UI()
     plot = new PlotManager()
@@ -43,31 +47,66 @@ function BlackfynnManager() {
     parentDiv.querySelector('#login').onclick = self.login
     parentDiv.querySelector('#login_switch').onclick = ui.loginMethodSwitch
     parentDiv.querySelector('#logout_button').onclick = self.logout
-    self.checkForSessionToken()
+    checkForSessionToken()
   }
 
-  this.insert = function (dataset, channel) {
+  // this.insert : Inserts a channel into plot when the plot is ready
+  //    package : name or id of package, aka file name.
+  //    channel : namer or id of channel.
+  // *note* If the function is used before self.login() then the function will wait for login before 
+  //  adding the channel
+  this.insert = function (package, channel) {
     if (loggedIn === false) {
       self.loginWait = setInterval(_ => {
         if (loggedIn === true) {
-          self.loggedInCallback(dataset, channel)
+          loggedInCallback(package, channel)
         }
       }, 1000)
     } else {
-      self.datasetCallFor(dataset, _ => {
-        self.channelCallFor(dataset, channel)
+      self.datasetCallFor(package, _ => {
+        self.channelCallFor(package, channel)
       })
     }
   }
 
-  this.loggedInCallback = function (dataset, channel) {
+  // loggedInCallback: resolves the setInterval() waiting for login
+  var loggedInCallback = function (package, channel) {
     console.log('login resolved')
     clearInterval(self.loginWait)
-    self.datasetCallFor(dataset, _ => {
-      self.channelCallFor(dataset, channel)
+    self.datasetCallFor(package, _ => {
+      self.channelCallFor(package, channel)
     })
   }
 
+
+  //  checkForSessionToken : Checks if user has a temporary auth token to retrieve blackfynn keys with
+  var checkForSessionToken = function () {
+    const token = localStorage.getItem('auth_token')
+    if (token) {
+      self.checkSession(token, response => {
+        if (response.status === 'success') {
+          self.apiKeyLogin(response.data.api_token, response.data.api_secret)
+        }
+      })
+    }
+  }
+
+  // this.login: calls email or API key login based off the email/apikeys UI switch
+  this.login = function () {
+    if (parentDiv.querySelector('#login_switch').innerHTML === 'Email/Password') {
+      if (parentDiv.querySelector('#ckb1').checked) {
+        self.createSessionFromKeys(self.baseURL, response => {
+          localStorage.setItem('auth_token', response.auth_token)
+        })
+      }
+      self.apiKeyLogin(parentDiv.querySelector('#api_key').value, parentDiv.querySelector('#secret').value)
+    } else {
+      self.emailLogin()
+    }
+    ui.showApp()
+  }
+
+  // this.apiKeyLogin : Uses apiKey and apiSecret to login to Blackfynn
   this.apiKeyLogin = function (apiKey, apiSecret) {
     self.createAuthToken(self.baseURL, apiKey, apiSecret, function authCallBack(response) {
       self.datasets = response
@@ -180,16 +219,7 @@ function BlackfynnManager() {
     document.body.scrollTop = document.documentElement.scrollTop = 0
   }
 
-  this.checkForSessionToken = function () {
-    const token = localStorage.getItem('auth_token')
-    if (token) {
-      self.checkSession(token, response => {
-        if (response.status === 'success') {
-          self.apiKeyLogin(response.data.api_token, response.data.api_secret)
-        }
-      })
-    }
-  }
+  
 
   this.createOpenCORlink = function () {
     var runModelButton = parentDiv.querySelector('#OpenCORLinkButton')
@@ -221,19 +251,7 @@ function BlackfynnManager() {
     })
   }
 
-  this.login = function () {
-    if (parentDiv.querySelector('#login_switch').innerHTML === 'Email/Password') {
-      if (parentDiv.querySelector('#ckb1').checked) {
-        self.createSessionFromKeys(self.baseURL, response => {
-          localStorage.setItem('auth_token', response.auth_token)
-        })
-      }
-      self.apiKeyLogin(parentDiv.querySelector('#api_key').value, parentDiv.querySelector('#secret').value)
-    } else {
-      self.emailLogin()
-    }
-    ui.showApp()
-  }
+  
 
   this.emailLogin = function () {
     self.emailLoginPostRequest(self.baseURL, response => {

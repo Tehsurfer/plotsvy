@@ -23,8 +23,8 @@ function PlotManager() {
     var chartOptions = {
       title: 'Selected Channels Plot ',
       xaxis: {
-        type: 'seconds',
-        title: 'Seconds'
+        type: 'milliseconds',
+        title: 'Milliseconds'
       },
       yaxis: {
         autorange: true,
