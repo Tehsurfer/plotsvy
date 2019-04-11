@@ -43,7 +43,7 @@ function BlackfynnManager() {
     ui = new UI()
     plot = new PlotManager()
     parentDiv = document.getElementById('blackfynn-panel')
-    self.createOpenCORlink()
+    self.initialiseExportLinks()
     parentDiv.querySelector('#login').onclick = self.login
     parentDiv.querySelector('#login_switch').onclick = ui.loginMethodSwitch
     parentDiv.querySelector('#logout_button').onclick = self.logout
@@ -83,9 +83,9 @@ function BlackfynnManager() {
   var checkForSessionToken = function () {
     const token = localStorage.getItem('auth_token')
     if (token) {
-      self.checkSession(token, response => {
+      checkSession(token, response => {
         if (response.status === 'success') {
-          self.apiKeyLogin(response.data.api_token, response.data.api_secret)
+          apiKeyLogin(response.data.api_token, response.data.api_secret)
         }
       })
     }
@@ -95,31 +95,32 @@ function BlackfynnManager() {
   this.login = function () {
     if (parentDiv.querySelector('#login_switch').innerHTML === 'Email/Password') {
       if (parentDiv.querySelector('#ckb1').checked) {
-        self.createSessionFromKeys(self.baseURL, response => {
+        createSessionFromKeys(self.baseURL, response => {
           localStorage.setItem('auth_token', response.auth_token)
         })
       }
-      self.apiKeyLogin(parentDiv.querySelector('#api_key').value, parentDiv.querySelector('#secret').value)
+      apiKeyLogin(parentDiv.querySelector('#api_key').value, parentDiv.querySelector('#secret').value)
     } else {
-      self.emailLogin()
+      emailLogin()
     }
     ui.showApp()
   }
 
-  // this.apiKeyLogin : Uses apiKey and apiSecret to login to Blackfynn
-  this.apiKeyLogin = function (apiKey, apiSecret) {
-    self.createAuthToken(self.baseURL, apiKey, apiSecret, function authCallBack(response) {
+  // apiKeyLogin : Uses apiKey and apiSecret to login to Blackfynn
+  var apiKeyLogin = function (apiKey, apiSecret) {
+    createAuthToken(self.baseURL, apiKey, apiSecret, function authCallBack(response) {
       self.datasets = response
       ui.createDatasetDropdown(response.names)
       self.channelNamesCall(response.names[0])
     })
-    parentDiv.querySelector('#select_dataset').onchange = self.datasetCall
-    parentDiv.querySelector('#select_channel').onchange = self.channelCall
+    parentDiv.querySelector('#select_dataset').onchange = datasetCall
+    parentDiv.querySelector('#select_channel').onchange = channelCall
     ui.hideLogin()
-    self.channelCall()
+    channelCall()
   }
 
-  this.createAuthToken = function (baseRestURL, apiKey, apiSecret, callback) {
+  // createAuthToken : Makes http request to create auth token given API keys
+  var createAuthToken = function (baseRestURL, apiKey, apiSecret, callback) {
     var APIPath = '/api/get_timeseries_dataset_names'
     var completeRestURL = baseRestURL + APIPath
     console.log('REST API URL: ' + completeRestURL)
@@ -146,123 +147,18 @@ function BlackfynnManager() {
     request.send(postData)
   }
 
-  // datasetCall retrieves the names of abailable datasets/
-  this.datasetCall = function () {
-    var headerNames = ['name', 'Channel']
-    var headerValues = [$('#select_dataset :selected').text(), 'dataset_name']
-    var APIPath = '/api/get_channel_data'
-
-    getRequest(self.baseURL, APIPath, headerNames, headerValues, function childrenCallBack(response) {
-      plot.resetChart()
-      self.channelNamesCall($('#select_dataset :selected').text())
-    })
-  }
-
-  this.datasetCallFor = function (dataset, callback) {
-    var headerNames = ['name', 'Channel']
-    var headerValues = [dataset, 'dataset_name']
-    var APIPath = '/api/get_channel_data'
-
-    getRequest(self.baseURL, APIPath, headerNames, headerValues, function childrenCallBack(response) {
-      self.channelNamesCall(dataset)
-    })
-    callback()
-  }
-
-  // channelNames call sends channel names to createDatasetDropdown to create the dropdown selection
-  this.channelNamesCall = function (dataset) {
-    var headerNames = ['Name']
-    var headerValues = [dataset]
-    var APIPath = '/api/get_channels'
-    getRequest(self.baseURL, APIPath, headerNames, headerValues, function childrenCallBack(response) {
-      ui.createChannelDropdown(response.data)
-      loggedIn = true
-    })
-  }
-
-  this.channelCall = function () {
-    var headerNames = ['Name', 'Channel']
-    var headerValues = [$('#select_dataset :selected').text(), $('#select_channel :selected').text()]
-    var APIPath = '/api/get_channel'
-
-    getRequest(self.baseURL, APIPath, headerNames, headerValues, function childrenCallBack(response) {
-      var data = JSON.parse(response.data)
-      if (plot.plot !== undefined) {
-        plot.addDataSeriesToChart(data, $('#select_channel :selected').text())
-      } else {
-        plot.createChart(data, $('#select_channel :selected').text())
-        // parentDiv.querySelector('#chartLoadingGif').remove();
-      }
-    })
-  }
-
-  this.channelCallFor = function (dataset, channel) {
-    var headerNames = ['Name', 'Channel']
-    var headerValues = [dataset, channel]
-    var APIPath = '/api/get_channel'
-
-    getRequest(self.baseURL, APIPath, headerNames, headerValues, function childrenCallBack(response) {
-      var data = JSON.parse(response.data)
-      if (plot.plot !== undefined) {
-        plot.addDataSeriesToChart(data, channel)
-      } else {
-        plot.createChart(data, channel)
-        // parentDiv.querySelector('#chartLoadingGif').remove();
-      }
-    })
-  }
-
-  this.logout = function () {
-    localStorage.clear()
-    ui.showLogin()
-    plot.clearChart()
-    document.body.scrollTop = document.documentElement.scrollTop = 0
-  }
-
-  
-
-  this.createOpenCORlink = function () {
-    var runModelButton = parentDiv.querySelector('#OpenCORLinkButton')
-    runModelButton.onclick = self.runModel
-
-    var exportCSVButton = parentDiv.querySelector('#csvExportButton')
-    exportCSVButton.onclick = self.exportCSV
-  }
-
-  this.runModel = function () {
-    var headerNames = ['unused']
-    var headerValues = ['unused']
-    var APIPath = '/api/create_openCOR_URL'
-    getRequest(self.baseURL, APIPath, headerNames, headerValues, function childrenCallBack(response) {
-      var urlPrefix = 'opencor://importFile/'
-      window.open(urlPrefix + response.url, '_self')
-      parentDiv.querySelector('#exportURL').innerHTML = 'File is being stored at: ' + response.url
-    })
-  }
-
-  this.exportCSV = function () {
-    var headerNames = ['unused']
-    var headerValues = ['unused']
-    var APIPath = '/api/create_openCOR_URL'
-    getRequest(self.baseURL, APIPath, headerNames, headerValues, function childrenCallBack(response) {
-      var urlPrefix = ''
-      window.open(urlPrefix + response.url, '_self')
-      parentDiv.querySelector('#exportURL').innerHTML = 'File is being stored at: ' + response.url
-    })
-  }
-
-  
-
-  this.emailLogin = function () {
-    self.emailLoginPostRequest(self.baseURL, response => {
+  // emailLogin : retrieves keys created from email in backend to use for accessing Blackfynn
+  var emailLogin = function () {
+    emailLoginPostRequest(self.baseURL, response => {
       if (parentDiv.querySelector('#ckb1').checked) {
         localStorage.setItem('auth_token', response.auth_token)
       }
-      self.apiKeyLogin(response.api_token, response.api_secret)
+      apiKeyLogin(response.api_token, response.api_secret)
     })
   }
 
-  this.emailLoginPostRequest = function (baseRestURL, callback) {
+  // emailLoginPostRequest : http request creating/retrieving keys from email and password
+  var emailLoginPostRequest = function (baseRestURL, callback) {
     var APIPath = '/api2/auth/register'
     var completeRestURL = baseRestURL + APIPath
     console.log('REST API URL: ' + completeRestURL)
@@ -288,7 +184,8 @@ function BlackfynnManager() {
     request.send(postData)
   }
 
-  this.createSessionFromKeys = function (baseRestURL, callback) {
+  // createSessionFromKeys : Creates an auth token given a set of API keys to connect with backend
+  var createSessionFromKeys = function (baseRestURL, callback) {
     var APIPath = '/api2/auth/keys'
     var completeRestURL = baseRestURL + APIPath
     console.log('REST API URL: ' + completeRestURL)
@@ -314,7 +211,8 @@ function BlackfynnManager() {
     request.send(postData)
   }
 
-  this.checkSession = function (sessionToken, callback) {
+  // checkSession : http request to check if auth_token is valid and return API keys to use if so
+  var checkSession = function (sessionToken, callback) {
     var APIPath = '/api2/auth/check'
     var completeRestURL = self.baseURL + APIPath
     console.log('REST API URL: ' + completeRestURL)
@@ -340,27 +238,139 @@ function BlackfynnManager() {
     request.send(postData)
   }
 }
-function getRequest(baseRestURL, APIPath, headerNames, headerValues, callback) {
-  var completeRestURL = baseRestURL + APIPath
-  console.log('REST API URL: ' + completeRestURL)
-  var method = 'GET'
-  var url = completeRestURL
-  var async = true
-  var request2 = new XMLHttpRequest()
-  request2.onload = function () {
-    console.log('ONLOAD')
-    var status = request2.status // HTTP response status, e.g., 200 for "200 OK"
-    console.log(status)
-    var response = JSON.parse(request2.responseText)
-    return callback(response)
+
+  // datasetCall retrieves the names of abailable datasets/
+  var datasetCall = function () {
+    var headerNames = ['name', 'Channel']
+    var headerValues = [$('#select_dataset :selected').text(), 'dataset_name']
+    var APIPath = '/api/get_channel_data'
+
+    getRequest(self.baseURL, APIPath, headerNames, headerValues, function childrenCallBack(response) {
+      plot.resetChart()
+      self.channelNamesCall($('#select_dataset :selected').text())
+    })
   }
 
-  request2.open(method, url, async)
-  for (var i in headerNames) {
-    request2.setRequestHeader(headerNames[i], headerValues[i])
+  // datasetCallFor : Used to switch the backend to the correct dataset
+  this.datasetCallFor = function (dataset, callback) {
+    var headerNames = ['name', 'Channel']
+    var headerValues = [dataset, 'dataset_name']
+    var APIPath = '/api/get_channel_data'
+
+    getRequest(self.baseURL, APIPath, headerNames, headerValues, function childrenCallBack(response) {
+      self.channelNamesCall(dataset)
+    })
+    callback()
   }
-  request2.send(null)
-}
+
+  // channelNames : retreives channel names then sends to createDatasetDropdown to create the dropdown selection
+  this.channelNamesCall = function (dataset) {
+    var headerNames = ['Name']
+    var headerValues = [dataset]
+    var APIPath = '/api/get_channels'
+    getRequest(self.baseURL, APIPath, headerNames, headerValues, function childrenCallBack(response) {
+      ui.createChannelDropdown(response.data)
+      loggedIn = true
+    })
+  }
+
+  // channelCall : retrieves data for a channel and plots it
+  var channelCall = function () {
+    var headerNames = ['Name', 'Channel']
+    var headerValues = [$('#select_dataset :selected').text(), $('#select_channel :selected').text()]
+    var APIPath = '/api/get_channel'
+
+    getRequest(self.baseURL, APIPath, headerNames, headerValues, function childrenCallBack(response) {
+      var data = JSON.parse(response.data)
+      if (plot.plot !== undefined) {
+        plot.addDataSeriesToChart(data, $('#select_channel :selected').text())
+      } else {
+        plot.createChart(data, $('#select_channel :selected').text())
+        // parentDiv.querySelector('#chartLoadingGif').remove();
+      }
+    })
+  }
+
+  // this.channelCallFor : retrieves data for a parameter defined dataset and channel
+  this.channelCallFor = function (dataset, channel) {
+    var headerNames = ['Name', 'Channel']
+    var headerValues = [dataset, channel]
+    var APIPath = '/api/get_channel'
+
+    getRequest(self.baseURL, APIPath, headerNames, headerValues, function childrenCallBack(response) {
+      var data = JSON.parse(response.data)
+      if (plot.plot !== undefined) {
+        plot.addDataSeriesToChart(data, channel)
+      } else {
+        plot.createChart(data, channel)
+        // parentDiv.querySelector('#chartLoadingGif').remove();
+      }
+    })
+  }
+
+  // logout : Clears auth token and switches to login 
+  this.logout = function () {
+    localStorage.clear()
+    ui.showLogin()
+    plot.clearChart()
+    document.body.scrollTop = document.documentElement.scrollTop = 0
+  }
+
+  // initialiseExportLinks : initialises export buttons
+  this.initialiseExportLinks = function () {
+    var runModelButton = parentDiv.querySelector('#OpenCORLinkButton')
+    runModelButton.onclick = runModel
+
+    var exportCSVButton = parentDiv.querySelector('#csvExportButton')
+    exportCSVButton.onclick = exportCSV
+  }
+
+  // runModel : Opens the exports in OpenCOR
+  var runModel = function () {
+    var headerNames = ['unused']
+    var headerValues = ['unused']
+    var APIPath = '/api/create_openCOR_URL'
+    getRequest(self.baseURL, APIPath, headerNames, headerValues, function childrenCallBack(response) {
+      var urlPrefix = 'opencor://importFile/'
+      window.open(urlPrefix + response.url, '_self')
+      parentDiv.querySelector('#exportURL').innerHTML = 'File is being stored at: ' + response.url
+    })
+  }
+
+  // exportCSV : saves data as csv file
+  var exportCSV = function () {
+    var headerNames = ['unused']
+    var headerValues = ['unused']
+    var APIPath = '/api/create_openCOR_URL'
+    getRequest(self.baseURL, APIPath, headerNames, headerValues, function childrenCallBack(response) {
+      var urlPrefix = ''
+      window.open(urlPrefix + response.url, '_self')
+      parentDiv.querySelector('#exportURL').innerHTML = 'File is being stored at: ' + response.url
+    })
+  }
+
+  
+  function getRequest(baseRestURL, APIPath, headerNames, headerValues, callback) {
+    var completeRestURL = baseRestURL + APIPath
+    console.log('REST API URL: ' + completeRestURL)
+    var method = 'GET'
+    var url = completeRestURL
+    var async = true
+    var request2 = new XMLHttpRequest()
+    request2.onload = function () {
+      console.log('ONLOAD')
+      var status = request2.status // HTTP response status, e.g., 200 for "200 OK"
+      console.log(status)
+      var response = JSON.parse(request2.responseText)
+      return callback(response)
+    }
+
+    request2.open(method, url, async)
+    for (var i in headerNames) {
+      request2.setRequestHeader(headerNames[i], headerValues[i])
+    }
+    request2.send(null)
+  }
 
 var blackfynnManger = new BlackfynnManager()
 
