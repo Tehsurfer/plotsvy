@@ -3,6 +3,10 @@ var $ = require('jquery')
 
 function UI () {
   var parentDiv = document.getElementById('blackfynn-panel')
+  // parentDiv.querySelector('#dataset_div').style.display = 'none'
+  // parentDiv.querySelector('#channel_div').style.display = 'none'
+  // parentDiv.querySelector('#OpenCORLinkButton').style.display = 'none'
+  // parentDiv.querySelector('#instructions_div').style.display = 'none'
   $('#blackfynn-panel .datasetUI').hide('fast')
   
   this.hideLogin = function () {
@@ -42,10 +46,10 @@ function UI () {
   }
 
   this.showApp = function () {
-    parentDiv.querySelector('#dataset_div').style.visiblity = 'visible'
-    parentDiv.querySelector('#channel_div').style.visiblity = 'visible'
-    parentDiv.querySelector('#OpenCORLinkButton').style.visiblity = 'visible'
-    parentDiv.querySelector('#instructions_div').style.visiblity = 'visible'
+    parentDiv.querySelector('#dataset_div').style.display = 'revert'
+    parentDiv.querySelector('#channel_div').style.display = 'revert'
+    parentDiv.querySelector('#OpenCORLinkButton').style.display = 'revert'
+    parentDiv.querySelector('#instructions_div').style.display = 'revert'
   }
 
   this.loginMethodSwitch = function () {
