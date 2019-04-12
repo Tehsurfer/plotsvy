@@ -12,6 +12,7 @@ function PlotManager() {
       Plotly.purge(chartDiv)
     }
     chartDiv.style.height = '700px'
+    self.initialiseResizeListener(window)
 
     var times = []
     for (var i in createChartData) {
@@ -65,6 +66,15 @@ function PlotManager() {
       }
     }
     return [dataTrace]
+  }
+
+  this.initialiseResizeListener = function (resizeObject) {
+    resizeObject.addEventListener('resize', _ => {
+      Plotly.relayout(chartDiv, {
+        width: resizeObject.innerWidth - 130,
+        height: resizeObject.innerHeight - 350
+      })
+    })
   }
 }
 

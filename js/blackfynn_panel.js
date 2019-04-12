@@ -55,26 +55,26 @@ function BlackfynnManager() {
   //    channel : namer or id of channel.
   // *note* If the function is used before self.login() then the function will wait for login before 
   //  adding the channel
-  this.insert = function (package, channel) {
+  this.insert = function (packageName, channel) {
     if (loggedIn === false) {
       self.loginWait = setInterval(_ => {
         if (loggedIn === true) {
-          loggedInCallback(package, channel)
+          loggedInCallback(packageName, channel)
         }
       }, 1000)
     } else {
-      self.datasetCallFor(package, _ => {
-        self.channelCallFor(package, channel)
+      self.datasetCallFor(packageName, _ => {
+        self.channelCallFor(packageName, channel)
       })
     }
   }
 
   // loggedInCallback: resolves the setInterval() waiting for login
-  var loggedInCallback = function (package, channel) {
+  var loggedInCallback = function (packageName, channel) {
     console.log('login resolved')
     clearInterval(self.loginWait)
-    self.datasetCallFor(package, _ => {
-      self.channelCallFor(package, channel)
+    self.datasetCallFor(packageName, _ => {
+      self.channelCallFor(packageName, channel)
     })
   }
 
@@ -116,7 +116,6 @@ function BlackfynnManager() {
     parentDiv.querySelector('#select_dataset').onchange = datasetCall
     parentDiv.querySelector('#select_channel').onchange = channelCall
     ui.hideLogin()
-    channelCall()
   }
 
   // createAuthToken : Makes http request to create auth token given API keys
@@ -237,7 +236,6 @@ function BlackfynnManager() {
     request.setRequestHeader('Accept', 'application/json')
     request.send(postData)
   }
-}
 
   // datasetCall retrieves the names of abailable datasets/
   var datasetCall = function () {
@@ -349,7 +347,6 @@ function BlackfynnManager() {
     })
   }
 
-  
   function getRequest(baseRestURL, APIPath, headerNames, headerValues, callback) {
     var completeRestURL = baseRestURL + APIPath
     console.log('REST API URL: ' + completeRestURL)
@@ -371,7 +368,7 @@ function BlackfynnManager() {
     }
     request2.send(null)
   }
+}
+var blackfynnManager = new BlackfynnManager()
 
-var blackfynnManger = new BlackfynnManager()
-
-window.blackfynnManger = blackfynnManger
+window.blackfynnManger = blackfynnManager
