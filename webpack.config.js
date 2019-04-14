@@ -40,7 +40,7 @@ module.exports = {
           loader: 'file-loader',
           options: {
             name: '[name].[ext]',
-            outputPath: './fonts/' //direct to the fonts folder
+            outputPath: './fonts/' // direct to the fonts folder
           }
         }]
       }

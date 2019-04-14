@@ -36,7 +36,7 @@ function BlackfynnManager() {
   var plot = undefined
   var self = this
   var loggedIn = false
-  self.baseURL = 'https://blackfynnpythonlink.ml/'
+  self.baseURL = 'https://blackfynnpythonlink.ml'
 
   // initialiseBlackfynnPanel: sets up ui and plot, needs DOM to be loaded
   this.initialiseBlackfynnPanel = function () {

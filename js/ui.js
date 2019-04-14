@@ -17,6 +17,12 @@ function UI () {
   this.showLogin = function () {
     $('#blackfynn-panel .datasetUI').hide('slow')
     $('#blackfynn-panel .container-login100').show('slow')
+    clearSelect(parentDiv.querySelector('#dataset_div'))
+    clearSelect(parentDiv.querySelector('#channel_div'))
+  }
+
+  var clearSelect = function (select) { 
+    for (let a in select.options) { select.options.remove(0) }
   }
 
   // CreateChannelDropdown populates a dropdown box for the user to select a channel
