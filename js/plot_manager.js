@@ -16,7 +16,7 @@ function PlotManager() {
 
     var times = []
     for (var i in createChartData) {
-      times.push(i)
+      times.push(i*4)
     }
 
     var chartData = processData(createChartData, times, id)

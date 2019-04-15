@@ -275,8 +275,9 @@ function BlackfynnManager() {
 
   // channelCall : retrieves data for a channel and plots it
   var channelCall = function () {
-    var headerNames = ['Name', 'Channel']
-    var headerValues = [$('#select_dataset :selected').text(), $('#select_channel :selected').text()]
+    var headerNames = ['Name', 'Channel', 'Length']
+    var inputLegth = inputParse(parentDiv.querySelector('#lengthInput').value)
+    var headerValues = [$('#select_dataset :selected').text(), $('#select_channel :selected').text(), inputLegth]
     var APIPath = '/api/get_channel'
 
     getRequest(self.baseURL, APIPath, headerNames, headerValues, function childrenCallBack(response) {
@@ -370,6 +371,20 @@ function BlackfynnManager() {
     request2.send(null)
   }
 }
+
+function inputParse (input) {
+  var numericVal = input.replace(/[^\d.]/g, '')
+  if (numericVal.length === 0) {
+    return '1s'
+  }
+  var indexMinutes = input.indexOf('m')
+  if (indexMinutes > input.length - 3) {
+    return numericVal + 'm'
+  } else {
+    return numericVal + 's'
+  }
+}
+
 var blackfynnManager = new BlackfynnManager()
 
 window.blackfynnManger = blackfynnManager
