@@ -44,7 +44,7 @@ function BlackfynnManager() {
     plot = new PlotManager()
     parentDiv = document.getElementById('blackfynn-panel')
     self.initialiseExportLinks()
-    parentDiv.querySelector('#login').onclick = self.login
+    parentDiv.querySelector('#login').onclick = () => self.login(ui.hideLogin)
     parentDiv.querySelector('#login_switch').onclick = ui.loginMethodSwitch
     parentDiv.querySelector('#logout_button').onclick = self.logout
     checkForSessionToken()
@@ -80,46 +80,56 @@ function BlackfynnManager() {
 
 
   //  checkForSessionToken : Checks if user has a temporary auth token to retrieve blackfynn keys with
-  var checkForSessionToken = function () {
+  var checkForSessionToken = async function () {
     const token = localStorage.getItem('auth_token')
     if (token) {
-      checkSession(token, response => {
+      checkSession(token, async(response) => {
         if (response.status === 'success') {
-          apiKeyLogin(response.data.api_token, response.data.api_secret)
+          let status = await apiKeyLogin(response.data.api_token, response.data.api_secret)
+          if (status == 200) {
+            ui.hideLogin()
+          }
         }
       })
     }
   }
 
   // this.login: calls email or API key login based off the email/apikeys UI switch
-  this.login = function () {
+  this.login = async function (callback) {
+    var status = 500
     if (parentDiv.querySelector('#login_switch').innerHTML === 'Email/Password') {
       if (parentDiv.querySelector('#ckb1').checked) {
         createSessionFromKeys(self.baseURL, response => {
           localStorage.setItem('auth_token', response.auth_token)
         })
       }
-      apiKeyLogin(parentDiv.querySelector('#api_key').value, parentDiv.querySelector('#secret').value)
+      status = await apiKeyLogin(parentDiv.querySelector('#api_key').value, parentDiv.querySelector('#secret').value)
     } else {
-      emailLogin()
+      status = await emailLogin()
     }
-    ui.showApp()
+    if (status == 200) {
+      callback()
+    }
+    return status
   }
 
   // apiKeyLogin : Uses apiKey and apiSecret to login to Blackfynn
-  var apiKeyLogin = function (apiKey, apiSecret) {
-    createAuthToken(self.baseURL, apiKey, apiSecret, function authCallBack(response) {
-      self.datasets = response
-      ui.createDatasetDropdown(response.names)
-      self.channelNamesCall(response.names[0])
+  async function apiKeyLogin (apiKey, apiSecret) {
+    var status = 500
+    await getDatsetsForKey(self.baseURL, apiKey, apiSecret, async (response) => {
+      if (response.status == 200) {
+        ui.hideLogin()
+        ui.createDatasetDropdown(response.names)
+        self.channelNamesCall(response.names[0])
+        parentDiv.querySelector('#select_dataset').onchange = datasetCall
+        parentDiv.querySelector('#select_channel').onchange = channelCall
+      }
+      return response.status
     })
-    parentDiv.querySelector('#select_dataset').onchange = datasetCall
-    parentDiv.querySelector('#select_channel').onchange = channelCall
-    ui.hideLogin()
   }
 
-  // createAuthToken : Makes http request to create auth token given API keys
-  var createAuthToken = function (baseRestURL, apiKey, apiSecret, callback) {
+  // getDatsetsForKey : Makes http request to create auth token given API keys
+  var getDatsetsForKey = async function (baseRestURL, apiKey, apiSecret, callback) {
     var APIPath = '/api/get_timeseries_dataset_names'
     var completeRestURL = baseRestURL + APIPath
     console.log('REST API URL: ' + completeRestURL)
@@ -135,6 +145,7 @@ function BlackfynnManager() {
         var status = request.status // HTTP response status, e.g., 200 for "200 OK"
         console.log(status)
         var response = JSON.parse(request.responseText)
+        response.status = status
         console.log(response)
         return callback(response)
       }
@@ -147,17 +158,19 @@ function BlackfynnManager() {
   }
 
   // emailLogin : retrieves keys created from email in backend to use for accessing Blackfynn
-  var emailLogin = function () {
-    emailLoginPostRequest(self.baseURL, response => {
+  var emailLogin = async function () {
+    var status
+    await emailLoginPostRequest(self.baseURL, async (response) => {
       if (parentDiv.querySelector('#ckb1').checked) {
         localStorage.setItem('auth_token', response.auth_token)
       }
-      apiKeyLogin(response.api_token, response.api_secret)
+      status = await apiKeyLogin(response.api_token, response.api_secret)
+      return status
     })
   }
 
   // emailLoginPostRequest : http request creating/retrieving keys from email and password
-  var emailLoginPostRequest = function (baseRestURL, callback) {
+  var emailLoginPostRequest = async function (baseRestURL, callback) {
     var APIPath = '/api2/auth/register'
     var completeRestURL = baseRestURL + APIPath
     console.log('REST API URL: ' + completeRestURL)
