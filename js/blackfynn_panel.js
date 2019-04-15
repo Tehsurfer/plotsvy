@@ -85,10 +85,7 @@ function BlackfynnManager() {
     if (token) {
       checkSession(token, async(response) => {
         if (response.status === 'success') {
-          let status = await apiKeyLogin(response.data.api_token, response.data.api_secret)
-          if (status == 200) {
-            ui.hideLogin()
-          }
+          apiKeyLogin(response.data.api_token, response.data.api_secret)
         }
       })
     }
@@ -96,26 +93,20 @@ function BlackfynnManager() {
 
   // this.login: calls email or API key login based off the email/apikeys UI switch
   this.login = async function (callback) {
-    var status = 500
     if (parentDiv.querySelector('#login_switch').innerHTML === 'Email/Password') {
       if (parentDiv.querySelector('#ckb1').checked) {
         createSessionFromKeys(self.baseURL, response => {
           localStorage.setItem('auth_token', response.auth_token)
         })
       }
-      status = await apiKeyLogin(parentDiv.querySelector('#api_key').value, parentDiv.querySelector('#secret').value)
+      apiKeyLogin(parentDiv.querySelector('#api_key').value, parentDiv.querySelector('#secret').value)
     } else {
-      status = await emailLogin()
+      emailLogin()
     }
-    if (status == 200) {
-      callback()
-    }
-    return status
   }
 
   // apiKeyLogin : Uses apiKey and apiSecret to login to Blackfynn
   async function apiKeyLogin (apiKey, apiSecret) {
-    var status = 500
     await getDatsetsForKey(self.baseURL, apiKey, apiSecret, async (response) => {
       if (response.status == 200) {
         ui.hideLogin()
@@ -124,7 +115,6 @@ function BlackfynnManager() {
         parentDiv.querySelector('#select_dataset').onchange = datasetCall
         parentDiv.querySelector('#select_channel').onchange = channelCall
       }
-      return response.status
     })
   }
 
@@ -159,13 +149,11 @@ function BlackfynnManager() {
 
   // emailLogin : retrieves keys created from email in backend to use for accessing Blackfynn
   var emailLogin = async function () {
-    var status
-    await emailLoginPostRequest(self.baseURL, async (response) => {
+    emailLoginPostRequest(self.baseURL, async (response) => {
       if (parentDiv.querySelector('#ckb1').checked) {
         localStorage.setItem('auth_token', response.auth_token)
       }
-      status = await apiKeyLogin(response.api_token, response.api_secret)
-      return status
+      apiKeyLogin(response.api_token, response.api_secret)
     })
   }
 
