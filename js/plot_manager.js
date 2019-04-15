@@ -7,7 +7,7 @@ function PlotManager() {
   var self = this
   self.plot = undefined
 
-  this.createChart = function (createChartData, id) {
+  this.createChart = function (createChartData, samplesPerSecond, length, id) {
     if (self.plot !== undefined) {
       Plotly.purge(chartDiv)
     }
@@ -16,7 +16,7 @@ function PlotManager() {
 
     var times = []
     for (var i in createChartData) {
-      times.push(i)
+      times.push(i * length / samplesPerSecond)
     }
 
     var chartData = processData(createChartData, times, id)
@@ -24,8 +24,8 @@ function PlotManager() {
     var chartOptions = {
       title: 'Selected Channels Plot ',
       xaxis: {
-        type: 'milliseconds',
-        title: 'Milliseconds'
+        type: 'seconds',
+        title: 'Seconds'
       },
       yaxis: {
         autorange: true,
@@ -49,8 +49,12 @@ function PlotManager() {
     }
   }
 
-  this.addDataSeriesToChart = function (newSeries, id) {
-    var newData = processData(newSeries, id)
+  this.addDataSeriesToChart = function (newSeries, samplesPerSecond, length, id) {
+    var times = []
+    for (var i in newSeries) {
+      times.push(i * length / samplesPerSecond)
+    }
+    var newData = processData(newSeries, times, id)
     Plotly.addTraces(chartDiv, newData)
   }
 
