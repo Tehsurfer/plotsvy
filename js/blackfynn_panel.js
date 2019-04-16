@@ -378,7 +378,7 @@ function inputParse (input) {
     return '1s'
   }
   var indexMinutes = input.indexOf('m')
-  if (indexMinutes > input.length - 3) {
+  if (indexMinutes > 0 && indexMinutes > input.length - 3) {
     return numericVal + 'm'
   } else {
     return numericVal + 's'
