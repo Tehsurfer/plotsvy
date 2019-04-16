@@ -16,7 +16,7 @@ function PlotManager() {
 
     var times = []
     for (var i in createChartData) {
-      times.push(i * length / samplesPerSecond)
+      times.push(i / samplesPerSecond)
     }
 
     var chartData = processData(createChartData, times, id)
@@ -52,7 +52,8 @@ function PlotManager() {
   this.addDataSeriesToChart = function (newSeries, samplesPerSecond, length, id) {
     var times = []
     for (var i in newSeries) {
-      times.push(i * length / samplesPerSecond)
+      times.push(i / samplesPerSecond)
+      window.times = times
     }
     var newData = processData(newSeries, times, id)
     Plotly.addTraces(chartDiv, newData)
