@@ -36,7 +36,7 @@ function BlackfynnManager() {
   var plot = undefined
   var self = this
   var loggedIn = false
-  self.baseURL = 'https://blackfynnpythonlink.ml'
+  self.baseURL = 'http://127.0.0.1:82/'
 
   // initialiseBlackfynnPanel: sets up ui and plot, needs DOM to be loaded
   this.initialiseBlackfynnPanel = function () {
@@ -112,12 +112,12 @@ function BlackfynnManager() {
         ui.hideLogin()
         ui.createDatasetDropdown(response.names)
         self.channelNamesCall(response.names[0])
-        parentDiv.querySelector('#select_dataset').onchange = datasetCall
+        parentDiv.querySelector('#select_dataset').onchange = self.channelNamesCall
         parentDiv.querySelector('#select_channel').onchange = channelCall
       }
     })
   }
-
+ff
   // getDatsetsForKey : Makes http request to create auth token given API keys
   var getDatsetsForKey = async function (baseRestURL, apiKey, apiSecret, callback) {
     var APIPath = '/api/get_timeseries_dataset_names'
@@ -263,10 +263,12 @@ function BlackfynnManager() {
   }
 
   // channelNames : retreives channel names then sends to createDatasetDropdown to create the dropdown selection
-  this.channelNamesCall = function (dataset) {
+  this.channelNamesCall = function (dset='') {    
     var headerNames = ['Name']
+    var dataset = $('#select_dataset :selected').text()
     var headerValues = [dataset]
     var APIPath = '/api/get_channels'
+    plot.resetChart()
     getRequest(self.baseURL, APIPath, headerNames, headerValues, function childrenCallBack(response) {
       ui.createChannelDropdown(response.data)
       loggedIn = true
@@ -349,6 +351,7 @@ function BlackfynnManager() {
     })
   }
 
+  // getRequest: A generic get request function
   function getRequest(baseRestURL, APIPath, headerNames, headerValues, callback) {
     var completeRestURL = baseRestURL + APIPath
     console.log('REST API URL: ' + completeRestURL)
