@@ -24,7 +24,7 @@ $(document).ready(function () {
     })
   })
 
-  blackfynnManger.initialiseBlackfynnPanel()
+  blackfynnManager.initialiseBlackfynnPanel()
 })
 
 
@@ -117,7 +117,7 @@ function BlackfynnManager() {
       }
     })
   }
-ff
+
   // getDatsetsForKey : Makes http request to create auth token given API keys
   var getDatsetsForKey = async function (baseRestURL, apiKey, apiSecret, callback) {
     var APIPath = '/api/get_timeseries_dataset_names'
@@ -390,4 +390,4 @@ function inputParse (input) {
 
 var blackfynnManager = new BlackfynnManager()
 
-window.blackfynnManger = blackfynnManager
+window.blackfynnManager = blackfynnManager
