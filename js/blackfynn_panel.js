@@ -43,7 +43,6 @@ function BlackfynnManager() {
     ui = new UI()
     plot = new PlotManager()
     parentDiv = document.getElementById('blackfynn-panel')
-    self.initialiseExportLinks()
 
     self.examplePlotSetup()
     parentDiv.querySelector('#select_channel').onchange = channelCall
@@ -70,76 +69,6 @@ function BlackfynnManager() {
 
     plot.addDataSeriesToChart(data[selectedChannel], samplesPerSecond, selectedChannel)
 
-  }
-
-
-  // initialiseExportLinks : initialises export buttons
-  this.initialiseExportLinks = function () {
-    var runModelButton = parentDiv.querySelector('#OpenCORLinkButton')
-    runModelButton.onclick = runModel
-
-    var exportCSVButton = parentDiv.querySelector('#csvExportButton')
-    exportCSVButton.onclick = exportCSV
-  }
-
-  // runModel : Opens the exports in OpenCOR
-  var runModel = function () {
-    var headerNames = ['unused']
-    var headerValues = ['unused']
-    var APIPath = '/api/create_openCOR_URL'
-    getRequest(self.baseURL, APIPath, headerNames, headerValues, function childrenCallBack(response) {
-      var urlPrefix = 'opencor://importFile/'
-      window.open(urlPrefix + response.url, '_self')
-      parentDiv.querySelector('#exportURL').innerHTML = 'File is being stored at: ' + response.url
-    })
-  }
-
-  // exportCSV : saves data as csv file
-  var exportCSV = function () {
-    var headerNames = ['unused']
-    var headerValues = ['unused']
-    var APIPath = '/api/create_openCOR_URL'
-    getRequest(self.baseURL, APIPath, headerNames, headerValues, function childrenCallBack(response) {
-      var urlPrefix = ''
-      window.open(urlPrefix + response.url, '_self')
-      parentDiv.querySelector('#exportURL').innerHTML = 'File is being stored at: ' + response.url
-    })
-  }
-
-  // getRequest: A generic get request function
-  function getRequest(baseRestURL, APIPath, headerNames, headerValues, callback) {
-    var completeRestURL = baseRestURL + APIPath
-    console.log('REST API URL: ' + completeRestURL)
-    var method = 'GET'
-    var url = completeRestURL
-    var async = true
-    var request2 = new XMLHttpRequest()
-    request2.onload = function () {
-      console.log('ONLOAD')
-      var status = request2.status // HTTP response status, e.g., 200 for "200 OK"
-      console.log(status)
-      var response = JSON.parse(request2.responseText)
-      return callback(response)
-    }
-
-    request2.open(method, url, async)
-    for (var i in headerNames) {
-      request2.setRequestHeader(headerNames[i], headerValues[i])
-    }
-    request2.send(null)
-  }
-}
-
-function inputParse (input) {
-  var numericVal = input.replace(/[^\d.]/g, '')
-  if (numericVal.length === 0) {
-    return '1s'
-  }
-  var indexMinutes = input.indexOf('m')
-  if (indexMinutes > 0 && indexMinutes > input.length - 3) {
-    return numericVal + 'm'
-  } else {
-    return numericVal + 's'
   }
 }
 
