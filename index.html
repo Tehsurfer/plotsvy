@@ -13,53 +13,6 @@
 
 <body>
 	<div id='blackfynn-panel'>
-		<div class="limiter">
-			<div class="container-login100">
-				<div class="wrap-login100 p-t-50 p-b-90">
-					<form class="login100-form validate-form flex-sb flex-w">
-						<span class="login100-form-title p-b-51">
-							Blackfynn Exporter
-							<div class="app-explanation">
-								Veiw timeseries data on Blackfynn and export it to a .csv format
-							</div>
-						</span>
-
-
-						<div class="wrap-input100 validate-input m-b-16" data-validate="Username is required">
-							<input class="input100" type="text" name="username" id="api_key" placeholder="API Key">
-							<span class="focus-input100"></span>
-						</div>
-
-
-						<div class="wrap-input100 validate-input m-b-16" data-validate="Password is required">
-							<input class="input100" type="password" name="pass" id="secret" placeholder="API Secret">
-							<span class="focus-input100"></span>
-						</div>
-
-						<div class="flex-sb-m w-full p-t-3 p-b-24">
-							<div class="contact100-form-checkbox">
-								<input class="input-checkbox100" id="ckb1" type="checkbox" name="remember-me"
-									checked="true">
-								<label class="label-checkbox100" for="ckb1">
-									Remember me
-								</label>
-							</div>
-
-							<div>
-								<a href="#" class="txt1" id="login_switch">Email/Password</a>
-							</div>
-						</div>
-
-						<div class="container-login100-form-btn m-t-17">
-							<input class="login100-form-btn" type="button" value='Login' id='login'>
-						</div>
-						</b>
-
-					</form>
-				</div>
-			</div>
-			<br>
-		</div>
 
 		<div class="container-login100 datasetUI" id="dataset_div">
 			<div class="wrap-data100 p-t-50 p-b-90 datasetUI">
@@ -67,15 +20,6 @@
 					<span class="login100-form-title p-b-51">
 						Data Viewer
 					</span>
-					<div class=" input100 wrap-input100 input100-select bg1 datasetUI">
-						<span class="label-input100"></span>
-						<div id="dataset_div">
-							<select class="js-select2" name="service" id="select_dataset">
-								<option>Dataset Selection</option>
-							</select>
-							<div class="dropDownSelect2"></div>
-						</div>
-					</div>
 					<div class=" input100 wrap-input100 input100-select bg1 datasetUI">
 						<span class="label-input100"></span>
 						<div id="channel_div">
@@ -102,9 +46,6 @@
 				</div>
 				<div class="datasetUI container-login100-form-btn m-t-17">
 					<input id="OpenCORLinkButton" class="login100-form-btn" type="button" value="Open Data in OpenCOR">
-				</div>
-				<div class="datasetUI container-login100-form-btn m-t-17">
-					<input id="logout_button" class="login100-form-btn" type="button" value="Logout">
 				</div>
 
 				<div class="datasetUI" id="instructions_div"></div>

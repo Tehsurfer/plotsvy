@@ -7,22 +7,8 @@ function UI () {
   // parentDiv.querySelector('#channel_div').style.display = 'none'
   // parentDiv.querySelector('#OpenCORLinkButton').style.display = 'none'
   // parentDiv.querySelector('#instructions_div').style.display = 'none'
-  $('#blackfynn-panel .datasetUI').hide('fast')
+
   
-  this.hideLogin = function () {
-    $('#blackfynn-panel .container-login100').hide('slow')
-    $('#blackfynn-panel .datasetUI').show('slow')
-    showApp()
-  }
-
-  this.showLogin = function () {
-    $('#blackfynn-panel .datasetUI').hide('slow')
-    $('#blackfynn-panel .container-login100').show('slow')
-    clearSelect(parentDiv.querySelector('#dataset_div'))
-    clearSelect(parentDiv.querySelector('#channel_div'))
-    hideApp()
-  }
-
   var clearSelect = function (select) { 
     for (let a in select.options) { select.options.remove(0) }
   }
@@ -60,28 +46,6 @@ function UI () {
     parentDiv.querySelector('#instructions_div').style.display = 'revert'
   }
 
-  var hideApp = function () {
-    parentDiv.querySelector('#dataset_div').style.display = 'none'
-    parentDiv.querySelector('#channel_div').style.display = 'none'
-    parentDiv.querySelector('#OpenCORLinkButton').style.display = 'none'
-    parentDiv.querySelector('#instructions_div').style.display = 'none'
-  }
-
-  this.loginMethodSwitch = function () {
-    if (parentDiv.querySelector('#login_switch').innerHTML === 'Email/Password') {
-      parentDiv.querySelector('#api_key').placeholder = 'Email'
-      parentDiv.querySelector('#api_key').value = ''
-      parentDiv.querySelector('#secret').placeholder = 'Password'
-      parentDiv.querySelector('#secret').value = ''
-      parentDiv.querySelector('#login_switch').innerHTML = 'API Keys'
-    } else {
-      parentDiv.querySelector('#api_key').placeholder = 'API Key'
-      parentDiv.querySelector('#api_key').value = ''
-      parentDiv.querySelector('#secret').placeholder = 'API Secret'
-      parentDiv.querySelector('#secret').value = ''
-      parentDiv.querySelector('#login_switch').innerHTML = 'Email/Password'
-    }
-  }
 }
 
 module.exports = UI

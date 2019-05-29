@@ -7,7 +7,7 @@ function PlotManager() {
   var self = this
   self.plot = undefined
 
-  this.createChart = function (createChartData, samplesPerSecond, length, id) {
+  this.createChart = function (createChartData, samplesPerSecond, id) {
     if (self.plot !== undefined) {
       Plotly.purge(chartDiv)
     }
@@ -49,7 +49,7 @@ function PlotManager() {
     }
   }
 
-  this.addDataSeriesToChart = function (newSeries, samplesPerSecond, length, id) {
+  this.addDataSeriesToChart = function (newSeries, samplesPerSecond, id) {
     var times = []
     for (var i in newSeries) {
       times.push(i / samplesPerSecond)
