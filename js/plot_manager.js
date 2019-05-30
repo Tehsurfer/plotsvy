@@ -50,6 +50,12 @@ function PlotManager() {
   }
 
   this.addDataSeriesToChart = function (newSeries, samplesPerSecond, id) {
+
+    if (self.plot === undefined){
+      self.createChart(newSeries, samplesPerSecond, id)
+      return
+    }
+
     var times = []
     for (var i in newSeries) {
       times.push(i / samplesPerSecond)
