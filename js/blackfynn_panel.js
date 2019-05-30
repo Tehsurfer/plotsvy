@@ -13,20 +13,7 @@ require('select2')
 
 // Need to load select2 and blackfynnManger once the DOM is ready
 $(document).ready(function () {
-  $('.js-select2').each(function () {
-    $(this).select2({
-      minimumResultsForSearch: 20
-    })
-    $('.js-select2').each(function () {
-      $(this).on('select2:close', function (e) {
-        $('.js-show-service').slideUp()
-        $('.js-show-service').slideDown()
-      })
-    })
-  })
 
-  blackfynnManager.initialiseBlackfynnPanel()
-  blackfynnManager.openCSV('https://blackfynnpythonlink.ml/data/F9NBX1.csv')
 })
 
 
@@ -37,9 +24,9 @@ function BlackfynnManager() {
   var parentDiv = undefined
   var plot = undefined
   var csv = undefined
-  var self = this
+  var _this = this
   var loggedIn = false
-  self.baseURL = 'http://127.0.0.1:82/'
+  _this.baseURL = 'http://127.0.0.1:82/'
 
   // initialiseBlackfynnPanel: sets up ui and plot, needs DOM to be loaded
   this.initialiseBlackfynnPanel = function () {
@@ -48,7 +35,7 @@ function BlackfynnManager() {
     csv = new CsvManager()
     parentDiv = document.getElementById('blackfynn-panel')
 
-    self.examplePlotSetup()
+    _this.examplePlotSetup()
     parentDiv.querySelector('#select_channel').onchange = channelCall
 
 
@@ -62,7 +49,7 @@ function BlackfynnManager() {
     plot.createChart(data, samplesPerSecond, data.length, channelNames[0])
   }
 
-  channelCall = function(){
+  var channelCall = function(){
     selectedChannel = $('#select_channel :selected').text()
     data = {
       'one': [1,2,3,4],
@@ -75,9 +62,8 @@ function BlackfynnManager() {
 
   }
 
-  csvChannelCall = function(){
+  var csvChannelCall = function(){
     selectedChannel = $('#select_channel :selected').text()
-    console.log(csv.getColoumnByName(selectedChannel))
     plot.addDataSeriesToChart(csv.getColoumnByName(selectedChannel), csv.getSampleRate(), selectedChannel)
   }
 
@@ -90,9 +76,24 @@ function BlackfynnManager() {
       parentDiv.querySelector('#select_channel').onchange = csvChannelCall
     })
   }
+
+  var initialiseObject = function(){
+    $('.js-select2').each(function () {
+      $(this).select2({
+        minimumResultsForSearch: 20
+      })
+      $('.js-select2').each(function () {
+        $(this).on('select2:close', function (e) {
+          $('.js-show-service').slideUp()
+          $('.js-show-service').slideDown()
+        })
+      })
+    })
+  
+    _this.initialiseBlackfynnPanel()
+    // _this.openCSV('https://blackfynnpythonlink.ml/data/F9NBX1.csv')
+  }
+  initialiseObject()
 }
 
-var blackfynnManager = new BlackfynnManager()
-
-
-window.blackfynnManager = blackfynnManager
+exports.BlackfynnManager = BlackfynnManager
