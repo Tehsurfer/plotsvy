@@ -25,6 +25,10 @@ function CsvManager() {
         return self.csv_data.data.map( (row) => { return row[index]})
     }
 
+    this.getHeaderByIndex = function(index){
+        return self.csv_data.data[0][index]
+    }
+
     this.getColoumnByName = function(column_name){
         var column_index = 0
         for (i in self.csv_data.data[0]){
@@ -34,7 +38,6 @@ function CsvManager() {
         }
         return this.getColoumnByIndex(column_index)       
     }
-
 
 }
 

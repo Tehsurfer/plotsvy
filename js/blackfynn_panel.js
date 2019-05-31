@@ -73,10 +73,24 @@ function BlackfynnManager() {
 
     csv.loadFile(url, ()=>{
       ui.createChannelDropdown(csv.getHeaders())
-      plot.addDataSeriesToChart(csv.getColoumnByIndex(1), csv.getSampleRate(), 'gg')
+      plot.addDataSeriesToChart(csv.getColoumnByIndex(1), csv.getSampleRate(), csv.getHeaderByIndex(1))
       parentDiv.querySelector('#select_channel').onchange = csvChannelCall
     })
   }
+
+  this.plotByIndex = function(index){
+    var channelName = csv.getHeaderByIndex(index)
+    plot.addDataSeriesToChart(csv.getColoumnByIndex(index), csv.getSampleRate(), channelName)
+  }
+
+  this.plotByName = function(channelName){
+    plot.addDataSeriesToChart(csv.getColoumnByName(channelName), csv.getSampleRate(), channelName)
+  }
+
+  this.clearChart = function(){
+    plot.clearChart()
+  }
+
 
   var initialiseObject = function(){
     $('.js-select2').each(function () {
