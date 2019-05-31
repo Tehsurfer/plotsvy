@@ -30,10 +30,11 @@ function BlackfynnManager() {
 
   // initialiseBlackfynnPanel: sets up ui and plot, needs DOM to be loaded
   this.initialiseBlackfynnPanel = function () {
-    ui = new UI()
-    plot = new PlotManager()
-    csv = new CsvManager()
     parentDiv = document.getElementById('blackfynn-panel')
+    ui = new UI(parentDiv)
+    plot = new PlotManager(parentDiv)
+    csv = new CsvManager()
+    
 
     _this.examplePlotSetup()
     parentDiv.querySelector('#select_channel').onchange = channelCall
@@ -91,9 +92,19 @@ function BlackfynnManager() {
     })
   
     _this.initialiseBlackfynnPanel()
+    _this.updateSize()
     // _this.openCSV('https://blackfynnpythonlink.ml/data/F9NBX1.csv')
   }
+
+  this.updateSize = function(){
+    var blackfynn_panel = document.getElementById('blackfynn-panel')
+    var dataset_div = document.getElementById('dataset_div')
+    var chart_height = blackfynn_panel.clientHeight - dataset_div.offsetHeight
+
+    plot.resizePlot(blackfynn_panel.clientWidth, chart_height)
+  }
   initialiseObject()
+
 }
 
 exports.BlackfynnManager = BlackfynnManager

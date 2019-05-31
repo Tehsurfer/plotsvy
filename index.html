@@ -4,52 +4,53 @@
 <head>
 	<title>Blackfynn Exporter</title>
 	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<!--===============================================================================================-->
 	<link rel="icon" type="image/png" href="images/icons/favicon.ico" />
 	<!--===============================================================================================-->
 	<script src="build/build.js"></script>
+	<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
 </head>
 
-<body>
-	<div id='blackfynn-panel'>
+<body> 
 
-		<div class="container-login100 datasetUI" id="dataset_div">
-			<div class="wrap-data100 p-t-50 p-b-90 datasetUI">
-				<form class="contact100-form validate-form">
-					<span class="login100-form-title p-b-51">
-						Data Viewer
-					</span>
-					<div class=" input100 wrap-input100 input100-select bg1 datasetUI">
-						<span class="label-input100"></span>
-						<div id="channel_div">
-							<select class="js-select2" name="service" id="select_channel">
-								<option>Channel Selection</option>
-							</select>
-							<div class="dropDownSelect2"></div>
+	<div id='half-height' style="height: 40% !important">
+		<div id='blackfynn-panel' style="position: relative; height: 500px;">
+			<div class="container-login100 datasetUI" id="dataset_div">
+				<div class="wrap-data100 p-t-10 p-b-10 datasetUI">
+					<form class="contact100-form validate-form">
+						<span class="login100-form-title p-b-21">
+							Data Viewer
+						</span>
+						<div class=" input100 wrap-input100 input100-select bg1 datasetUI">
+							<span class="label-input100"></span>
+							<div id="channel_div">
+								<select class="js-select2" name="service" id="select_channel">
+									<option>Channel Selection</option>
+								</select>
+								<div class="dropDownSelect2"></div>
+							</div>
 						</div>
+					</form>
+					<br>
+					<div id="exportURL">
 					</div>
+	
 
-
-				</form>
-
-				<div class="datasetUI" id="chart_div"></div>
-				<br>
-				<div id="exportURL">
 				</div>
-				<script>
-					//var blackfynn_panel = require("blackfynn_panel").blackfynn_panel;
-					
-					var myPanel = new blackfynn_panel.BlackfynnManager();
-				
-				</script>
-
 			</div>
-
+			<div class="datasetUI" id="chart_div" style="height:50%; padding: 15px"></div>
 		</div>
 	</div>
 	<!--===============================================================================================-->
 	<!--===============================================================================================-->
 </body>
+
+<script>
+		//var blackfynn_panel = require("blackfynn_panel").blackfynn_panel;
+		
+		var myPanel = new blackfynn_panel.BlackfynnManager();
+	
+</script>
 
 </html>

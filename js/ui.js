@@ -1,8 +1,7 @@
 // login creates logs a user in on the backend with given API keys
 var $ = require('jquery')
 
-function UI () {
-  var parentDiv = document.getElementById('blackfynn-panel')
+function UI (parentDiv) {
   // parentDiv.querySelector('#dataset_div').style.display = 'none'
   // parentDiv.querySelector('#channel_div').style.display = 'none'
   // parentDiv.querySelector('#OpenCORLinkButton').style.display = 'none'

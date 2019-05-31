@@ -7,14 +7,10 @@ function CsvManager() {
     self.csv_data = undefined
 
     this.loadFile = function(file_url, callback) {
-
-        const cors = 'https://cors-anywhere.herokuapp.com/'
-
-        $.get(cors+file_url).then( (response) => {
+        $.get(file_url).then( (response) => {
             self.csv_data = Papa.parse(response)
             callback()
-          });
-        
+          });   
     }
 
     this.getHeaders = function(){

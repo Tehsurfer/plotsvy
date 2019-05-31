@@ -1,8 +1,7 @@
 // plot_manager.js, manages the plot and its data
 const Plotly = require('plotly.js/dist/plotly-basic.min.js')
 
-function PlotManager() {
-  var parentDiv = document.getElementById('blackfynn-panel')
+function PlotManager(parentDiv) {
   var chartDiv = parentDiv.querySelector('#chart_div')
   var self = this
   self.plot = undefined
@@ -11,8 +10,7 @@ function PlotManager() {
     if (self.plot !== undefined) {
       Plotly.purge(chartDiv)
     }
-    chartDiv.style.height = '700px'
-    self.initialiseResizeListener(window)
+    // self.initialiseResizeListener(parentDiv)
 
     var times = []
     for (var i in createChartData) {
@@ -79,11 +77,18 @@ function PlotManager() {
     return [dataTrace]
   }
 
+  this.resizePlot = function( width, height ){
+    Plotly.relayout(chartDiv, {
+      width: width,
+      height: height
+    })
+  }
+
   this.initialiseResizeListener = function (resizeObject) {
     resizeObject.addEventListener('resize', _ => {
       Plotly.relayout(chartDiv, {
         width: resizeObject.innerWidth - 130,
-        height: resizeObject.innerHeight - 350
+        height: resizeObject.innerHeight - 150
       })
     })
   }
