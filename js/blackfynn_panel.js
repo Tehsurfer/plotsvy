@@ -8,6 +8,7 @@ require('.././css/util.css')
 const UI = require('./ui.js')
 const PlotManager = require('./plot_manager.js')
 const CsvManager = require('./csv_manager.js')
+const StateManager = require('./state_manager.js')
 var $ = require('jquery')
 require('select2')
 
@@ -24,6 +25,7 @@ function BlackfynnManager() {
   var parentDiv = undefined
   var plot = undefined
   var csv = undefined
+  var state = undefined
   var _this = this
   var loggedIn = false
   _this.baseURL = 'http://127.0.0.1:82/'
@@ -34,7 +36,7 @@ function BlackfynnManager() {
     ui = new UI(parentDiv)
     plot = new PlotManager(parentDiv)
     csv = new CsvManager()
-    
+    state = new StateManager(parentDiv)
 
     _this.examplePlotSetup()
     parentDiv.querySelector('#select_channel').onchange = channelCall
@@ -66,29 +68,50 @@ function BlackfynnManager() {
   var csvChannelCall = function(){
     selectedChannel = $('#select_channel :selected').text()
     plot.addDataSeriesToChart(csv.getColoumnByName(selectedChannel), csv.getSampleRate(), selectedChannel)
+    state.selectedChannels.push(selectedChannel)
   }
 
 
   this.openCSV = function(url){
-
-    csv.loadFile(url, ()=>{
-      ui.createChannelDropdown(csv.getHeaders())
-      plot.addDataSeriesToChart(csv.getColoumnByIndex(1), csv.getSampleRate(), csv.getHeaderByIndex(1))
-      parentDiv.querySelector('#select_channel').onchange = csvChannelCall
+    return new Promise(function(resolve, reject){
+      csv.loadFile(url, ()=>{
+        ui.createChannelDropdown(csv.getHeaders())
+        // plot.addDataSeriesToChart(csv.getColoumnByIndex(1), csv.getSampleRate(), csv.getHeaderByIndex(1))
+        parentDiv.querySelector('#select_channel').onchange = csvChannelCall
+        state.setURL(url)
+        resolve()
+      })
     })
   }
 
   this.plotByIndex = function(index){
     var channelName = csv.getHeaderByIndex(index)
     plot.addDataSeriesToChart(csv.getColoumnByIndex(index), csv.getSampleRate(), channelName)
+    state.selectedChannels.push(channelName)
   }
 
   this.plotByName = function(channelName){
     plot.addDataSeriesToChart(csv.getColoumnByName(channelName), csv.getSampleRate(), channelName)
+    state.selectedChannels.push(channelName)
   }
 
   this.clearChart = function(){
     plot.clearChart()
+  }
+
+  this.exportState = function(){
+    return JSON.stringify(state)
+  }
+
+  this.loadState = function(jsonString){
+    state.loadFromJSON(jsonString)
+    _this.openCSV(state.csvURL).then( _ => {
+      state.loadFromJSON(jsonString)
+      for (i in state.selectedChannels){
+        _this.plotByName(state.selectedChannels[i])
+      }
+    })
+    
   }
 
 
