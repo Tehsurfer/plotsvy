@@ -28,7 +28,6 @@ function BlackfynnManager() {
   var state = undefined
   var _this = this
   var loggedIn = false
-  _this.baseURL = 'http://127.0.0.1:82/'
 
   // initialiseBlackfynnPanel: sets up ui and plot, needs DOM to be loaded
   this.initialiseBlackfynnPanel = function () {
@@ -37,14 +36,10 @@ function BlackfynnManager() {
     plot = new PlotManager(parentDiv)
     csv = new CsvManager()
     state = new StateManager(parentDiv)
-
-    _this.examplePlotSetup()
-    parentDiv.querySelector('#select_channel').onchange = channelCall
-
-
   }
 
   this.examplePlotSetup = function(){
+    parentDiv.querySelector('#select_channel').onchange = testChannelCall
     channelNames = ['one', 'two', 'three']
     ui.createChannelDropdown(channelNames)
     data = [1,2,3,4]
@@ -52,7 +47,7 @@ function BlackfynnManager() {
     plot.createChart(data, samplesPerSecond, data.length, channelNames[0])
   }
 
-  var channelCall = function(){
+  var testChannelCall = function(){
     selectedChannel = $('#select_channel :selected').text()
     data = {
       'one': [1,2,3,4],
@@ -76,7 +71,7 @@ function BlackfynnManager() {
     return new Promise(function(resolve, reject){
       csv.loadFile(url, ()=>{
         ui.createChannelDropdown(csv.getHeaders())
-        // plot.addDataSeriesToChart(csv.getColoumnByIndex(1), csv.getSampleRate(), csv.getHeaderByIndex(1))
+        plot.addDataSeriesToChart(csv.getColoumnByIndex(1), csv.getSampleRate(), csv.getHeaderByIndex(1))
         parentDiv.querySelector('#select_channel').onchange = csvChannelCall
         state.setURL(url)
         resolve()
@@ -130,7 +125,6 @@ function BlackfynnManager() {
   
     _this.initialiseBlackfynnPanel()
     _this.updateSize()
-    // _this.openCSV('https://blackfynnpythonlink.ml/data/F9NBX1.csv')
   }
 
   this.updateSize = function(){
