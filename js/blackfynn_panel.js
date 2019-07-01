@@ -124,7 +124,6 @@ function BlackfynnManager() {
     })
   
     _this.initialiseBlackfynnPanel()
-    _this.updateSize()
   }
 
   this.updateSize = function(){
