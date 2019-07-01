@@ -3,14 +3,14 @@ const Plotly = require('plotly.js/dist/plotly-basic.min.js')
 
 function PlotManager(parentDiv) {
   var chartDiv = parentDiv.querySelector('#chart_div')
-  var self = this
-  self.plot = undefined
+  var _this = this
+  _this.plot = undefined
 
   this.createChart = function (createChartData, samplesPerSecond, id) {
-    if (self.plot !== undefined) {
+    if (_this.plot !== undefined) {
       Plotly.purge(chartDiv)
     }
-    // self.initialiseResizeListener(parentDiv)
+    // _this.initialiseResizeListener(parentDiv)
 
     var times = []
     for (var i in createChartData) {
@@ -31,26 +31,26 @@ function PlotManager(parentDiv) {
         title: 'mV'
       }
     }
-    self.plot = Plotly.react(chartDiv, chartData, chartOptions)
+    _this.plot = Plotly.react(chartDiv, chartData, chartOptions)
   }
 
   this.resetChart = function () {
-    if (self.plot !== undefined) {
+    if (_this.plot !== undefined) {
       Plotly.purge(chartDiv)
-      self.plot = undefined
+      _this.plot = undefined
     }
   }
 
   this.clearChart = function () {
-    if (self.plot !== undefined) {
+    if (_this.plot !== undefined) {
       Plotly.purge(chartDiv)
     }
   }
 
   this.addDataSeriesToChart = function (newSeries, samplesPerSecond, id) {
 
-    if (self.plot === undefined){
-      self.createChart(newSeries, samplesPerSecond, id)
+    if (_this.plot === undefined){
+      _this.createChart(newSeries, samplesPerSecond, id)
       return
     }
 
@@ -78,6 +78,9 @@ function PlotManager(parentDiv) {
   }
 
   this.resizePlot = function( width, height ){
+    if (_this.plot === undefined){
+      _this.plot = Plotly.react(chartDiv)
+    }
     Plotly.relayout(chartDiv, {
       width: width,
       height: height
