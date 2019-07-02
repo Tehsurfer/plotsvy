@@ -10,6 +10,7 @@ function PlotManager(parentDiv) {
     if (_this.plot !== undefined) {
       Plotly.purge(chartDiv)
     }
+    _this.numberOfTraces = 0
     // _this.initialiseResizeListener(parentDiv)
 
     var times = []
@@ -38,12 +39,14 @@ function PlotManager(parentDiv) {
     if (_this.plot !== undefined) {
       Plotly.purge(chartDiv)
       _this.plot = undefined
+      _this.numberOfTraces = 0
     }
   }
 
   this.clearChart = function () {
     if (_this.plot !== undefined) {
       Plotly.purge(chartDiv)
+      _this.numberOfTraces = 0
     }
   }
 
@@ -59,8 +62,11 @@ function PlotManager(parentDiv) {
       times.push(i / samplesPerSecond)
       window.times = times
     }
+    var layout = {grid: {rows: _this.numberOfTraces, columns: 1, pattern: 'independent'}}
+    _this.numberOfTraces += 1
     var newData = processData(newSeries, times, id)
     Plotly.addTraces(chartDiv, newData)
+    Plotly.relayout(chartDiv, layout)
   }
 
   var processData = function (unprocessedData, times, id) {
@@ -90,8 +96,8 @@ function PlotManager(parentDiv) {
   this.initialiseResizeListener = function (resizeObject) {
     resizeObject.addEventListener('resize', _ => {
       Plotly.relayout(chartDiv, {
-        width: resizeObject.innerWidth - 130,
-        height: resizeObject.innerHeight - 150
+        width: resizeObject.innerWidth - 30,
+        height: resizeObject.innerHeight - 50
       })
     })
   }

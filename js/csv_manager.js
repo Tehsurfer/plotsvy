@@ -3,36 +3,36 @@ var Papa = require('papaparse')
 
 function CsvManager() {
 
-    self = this
-    self.csv_data = undefined
+    _this = this
+    _this.csv_data = undefined
 
     this.loadFile = function(file_url, callback) {
         $.get(file_url).then( (response) => {
-            self.csv_data = Papa.parse(response)
+            _this.csv_data = Papa.parse(response)
             callback()
           });   
     }
 
     this.getHeaders = function(){
-        return self.csv_data.data[0]
+        return _this.csv_data.data[0]
     }
 
     this.getSampleRate = function(){
-        return 1/(self.csv_data.data[1][1] - self.csv_data.data[1][0])
+        return 1/(_this.csv_data.data[1][1] - _this.csv_data.data[1][0])
     }
 
     this.getColoumnByIndex = function(index){
-        return self.csv_data.data.map( (row) => { return row[index]})
+        return _this.csv_data.data.map( (row) => { return row[index]})
     }
 
     this.getHeaderByIndex = function(index){
-        return self.csv_data.data[0][index]
+        return _this.csv_data.data[0][index]
     }
 
     this.getColoumnByName = function(column_name){
         var column_index = 0
-        for (i in self.csv_data.data[0]){
-            if (self.csv_data.data[0][i] === column_name){
+        for (i in _this.csv_data.data[0]){
+            if (_this.csv_data.data[0][i] === column_name){
                 column_index = i
             }
         }

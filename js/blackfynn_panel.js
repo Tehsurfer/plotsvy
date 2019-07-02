@@ -28,6 +28,7 @@ function BlackfynnManager() {
   var state = undefined
   var _this = this
   var loggedIn = false
+  _this.plot = plot
 
   // initialiseBlackfynnPanel: sets up ui and plot, needs DOM to be loaded
   this.initialiseBlackfynnPanel = function () {
