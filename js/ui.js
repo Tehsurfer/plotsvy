@@ -12,6 +12,13 @@ function UI (parentDiv) {
     for (let a in select.options) { select.options.remove(0) }
   }
 
+  this.hideSelector = function(){
+    parentDiv.querySelector('#channel_div').style.display = 'none'
+  }
+  this.showSelector = function(){
+    parentDiv.querySelector('#channel_div').style.display = 'revert'
+  }
+
   // CreateChannelDropdown populates a dropdown box for the user to select a channel
   this.createChannelDropdown = function (channels) {
     var select, option

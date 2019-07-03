@@ -5,12 +5,12 @@ function PlotManager(parentDiv) {
   var chartDiv = parentDiv.querySelector('#chart_div')
   var _this = this
   _this.plot = undefined
+  _this.subplots = false
 
   this.createChart = function (createChartData, samplesPerSecond, id) {
     if (_this.plot !== undefined) {
       Plotly.purge(chartDiv)
     }
-    _this.numberOfTraces = 0
     // _this.initialiseResizeListener(parentDiv)
 
     var times = []
@@ -21,7 +21,6 @@ function PlotManager(parentDiv) {
     var chartData = processData(createChartData, times, id)
 
     var chartOptions = {
-      title: 'Selected Channels Plot ',
       xaxis: {
         type: 'seconds',
         title: 'Seconds'
@@ -39,14 +38,12 @@ function PlotManager(parentDiv) {
     if (_this.plot !== undefined) {
       Plotly.purge(chartDiv)
       _this.plot = undefined
-      _this.numberOfTraces = 0
     }
   }
 
   this.clearChart = function () {
     if (_this.plot !== undefined) {
       Plotly.purge(chartDiv)
-      _this.numberOfTraces = 0
     }
   }
 
@@ -60,10 +57,7 @@ function PlotManager(parentDiv) {
     var times = []
     for (var i in newSeries) {
       times.push(i / samplesPerSecond)
-      window.times = times
     }
-    var layout = {grid: {rows: _this.numberOfTraces, columns: 1, pattern: 'independent'}}
-    _this.numberOfTraces += 1
     var newData = processData(newSeries, times, id)
     Plotly.addTraces(chartDiv, newData)
     Plotly.relayout(chartDiv, layout)
@@ -83,6 +77,79 @@ function PlotManager(parentDiv) {
     return [dataTrace]
   }
 
+  var processDataMatrix = function (data) {
+    var times = data.map( (row) => { return row[0]})
+    var dataTraces = []
+    for (var i in data[0]){
+      if (i == 0){
+        continue
+      }
+      else if (i == 1){
+        var xlabel = 'x'
+        var ylabel = 'y'
+        var ydata = data.map( (row) => { return row[i]})
+      }
+      else{
+        xlabel = 'x' + i
+        ylabel = 'y' + i
+        ydata = data.map( (row) => { return row[i]})
+      }
+
+      if (!_this.subplots){
+        xlabel = 'x'
+        ylabel = 'y'
+      }
+      
+      ydata.pop(0)
+      var dataTrace = {
+        type: 'scatter',
+        name: data[0][i],
+        mode: 'lines',
+        x: times,
+        y: ydata,
+        xaxis: xlabel,
+        yaxis: ylabel,
+        line: {
+          color: '#' + (Math.random() * 0xFFFFFF << 0).toString(16)
+        }
+      }
+      dataTraces.push(dataTrace)
+    }
+    console.log(dataTraces)
+    console.log(data)
+    window.data = data
+    window.dataTraces = dataTraces
+    return dataTraces
+  }
+
+  this.plotAll = function(data){
+    if (!_this.subplots) {
+      var layout = {
+        title: 'Selected Channels Plot ',
+        xaxis: {
+          type: 'seconds',
+          title: 'Seconds'
+        },
+        yaxis: {
+          autorange: true,
+          type: 'linear',
+          title: 'mV'
+        }
+      }
+    } else {
+      var layout = {
+        grid: {
+          rows:  Math.ceil(dataTraces.length/2),
+          columns: 2,
+          pattern: 'independent'}
+      }    
+    }
+    dataTraces = processDataMatrix(data)
+    _this.plot = Plotly.react(chartDiv, dataTraces, layout) 
+    
+  }
+
+
   this.resizePlot = function( width, height ){
     if (_this.plot === undefined){
       _this.plot = Plotly.react(chartDiv)
@@ -96,8 +163,8 @@ function PlotManager(parentDiv) {
   this.initialiseResizeListener = function (resizeObject) {
     resizeObject.addEventListener('resize', _ => {
       Plotly.relayout(chartDiv, {
-        width: resizeObject.innerWidth - 30,
-        height: resizeObject.innerHeight - 50
+        width: resizeObject.innerWidth,
+        height: resizeObject.innerHeight
       })
     })
   }

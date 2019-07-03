@@ -28,7 +28,9 @@ function BlackfynnManager() {
   var state = undefined
   var _this = this
   var loggedIn = false
+  var multiplot = false
   _this.plot = plot
+  
 
   // initialiseBlackfynnPanel: sets up ui and plot, needs DOM to be loaded
   this.initialiseBlackfynnPanel = function () {
@@ -71,13 +73,23 @@ function BlackfynnManager() {
   this.openCSV = function(url){
     return new Promise(function(resolve, reject){
       csv.loadFile(url, ()=>{
+        ui.showSelector()
         ui.createChannelDropdown(csv.getHeaders())
-        plot.addDataSeriesToChart(csv.getColoumnByIndex(1), csv.getSampleRate(), csv.getHeaderByIndex(1))
         parentDiv.querySelector('#select_channel').onchange = csvChannelCall
         state.setURL(url)
         resolve()
       })
     })
+  }
+
+  this.plotAll = function(){
+    plot.plotAll(csv.getAllData())
+    ui.hideSelector()
+    _this.updateSize()   
+  }
+
+  this.setSubplotsFlag = function(flag){
+    plot.subplots = flag  
   }
 
   this.plotByIndex = function(index){
@@ -100,11 +112,17 @@ function BlackfynnManager() {
   }
 
   this.loadState = function(jsonString){
+    plot.clearChart()
     state.loadFromJSON(jsonString)
     _this.openCSV(state.csvURL).then( _ => {
       state.loadFromJSON(jsonString)
-      for (i in state.selectedChannels){
-        _this.plotByName(state.selectedChannels[i])
+      plot.subplots = state.subplots
+      if (state.plotAll) {
+        _this.plotAll()
+      } else {
+        for (i in state.selectedChannels){
+          _this.plotByName(state.selectedChannels[i])
+        }
       }
     })
     

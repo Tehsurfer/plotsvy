@@ -17,6 +17,10 @@ function CsvManager() {
         return _this.csv_data.data[0]
     }
 
+    this.getAllData = function(){
+        return _this.csv_data.data
+    }
+
     this.getSampleRate = function(){
         return 1/(_this.csv_data.data[1][1] - _this.csv_data.data[1][0])
     }
