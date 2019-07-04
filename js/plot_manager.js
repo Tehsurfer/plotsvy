@@ -122,6 +122,7 @@ function PlotManager(parentDiv) {
   }
 
   this.plotAll = function(data){
+    dataTraces = processDataMatrix(data)
     if (!_this.subplots) {
       var layout = {
         title: 'Selected Channels Plot ',
@@ -143,7 +144,6 @@ function PlotManager(parentDiv) {
           pattern: 'independent'}
       }    
     }
-    dataTraces = processDataMatrix(data)
     _this.plot = Plotly.react(chartDiv, dataTraces, layout) 
     
   }
