@@ -25,6 +25,10 @@ function UI (parentDiv) {
     select = parentDiv.querySelector('#select_channel')
     select.innerHTML = ''
 
+    if (channels[0].toLowerCase().includes('time')){
+      channels[0] = 'Select Channel'
+    }
+
     for (var i in channels) {
       option = document.createElement('option')
       option.value = option.text = channels[i]

@@ -29,7 +29,9 @@ function BlackfynnManager() {
   var _this = this
   var loggedIn = false
   var multiplot = false
+  var bc = new BroadcastChannel('plot_channel')
   _this.plot = plot
+  
   
 
   // initialiseBlackfynnPanel: sets up ui and plot, needs DOM to be loaded
@@ -39,6 +41,14 @@ function BlackfynnManager() {
     plot = new PlotManager(parentDiv)
     csv = new CsvManager()
     state = new StateManager(parentDiv)
+  }
+
+  this.openBroadcastChannel = function(name){
+    bc = new BroadcastChannel(name)
+  }
+
+  var sendChannelMessage = function(message){
+    bc.postMessage(message)
   }
 
   this.examplePlotSetup = function(){
@@ -67,6 +77,7 @@ function BlackfynnManager() {
     selectedChannel = $('#select_channel :selected').text()
     plot.addDataSeriesToChart(csv.getColoumnByName(selectedChannel), csv.getSampleRate(), selectedChannel)
     state.selectedChannels.push(selectedChannel)
+    bc.postMessage(_this.exportStateAsString())
   }
 
 
@@ -107,23 +118,32 @@ function BlackfynnManager() {
     plot.clearChart()
   }
 
-  this.exportState = function(){
+  this.exportStateAsString = function(){
     return JSON.stringify(state)
   }
 
+  this.exportState = function(){
+    return state
+  }
+
+
+
   this.loadState = function(jsonString){
-    plot.clearChart()
-    state.loadFromJSON(jsonString)
-    _this.openCSV(state.csvURL).then( _ => {
+    return new Promise(function(resolve, reject){
+      plot.clearChart()
       state.loadFromJSON(jsonString)
-      plot.subplots = state.subplots
-      if (state.plotAll) {
-        _this.plotAll()
-      } else {
-        for (i in state.selectedChannels){
-          _this.plotByName(state.selectedChannels[i])
+      _this.openCSV(state.csvURL).then( _ => {
+        state.loadFromJSON(jsonString)
+        plot.subplots = state.subplots
+        if (state.plotAll) {
+          _this.plotAll()
+        } else {
+          for (i in state.selectedChannels){
+            _this.plotByName(state.selectedChannels[i])
+          }
         }
-      }
+      })
+      resolve()
     })
     
   }

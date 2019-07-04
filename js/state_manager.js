@@ -1,5 +1,5 @@
 function StateManager(parentDiv) {
-  this.parentDiv = parentDiv
+  // this.parentDiv = parentDiv
   this.selectedChannels = []
   this.csvURL = ''
   this.subplots = false
@@ -15,7 +15,7 @@ function StateManager(parentDiv) {
     this.selectedChannels = loadedState.selectedChannels
     this.csvURL = loadedState.csvURL
     this.subplots = loadedState.subplots
-    this.plotAll = locadedState.plotAll
+    this.plotAll = loadedState.plotAll
   }
 }
 module.exports = StateManager

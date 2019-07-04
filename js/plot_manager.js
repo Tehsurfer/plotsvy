@@ -60,7 +60,6 @@ function PlotManager(parentDiv) {
     }
     var newData = processData(newSeries, times, id)
     Plotly.addTraces(chartDiv, newData)
-    Plotly.relayout(chartDiv, layout)
   }
 
   var processData = function (unprocessedData, times, id) {
@@ -112,6 +111,10 @@ function PlotManager(parentDiv) {
         line: {
           color: '#' + (Math.random() * 0xFFFFFF << 0).toString(16)
         }
+      }
+      if (_this.subplots){
+        dataTrace.showlegend = false
+        dataTrace.title = data[0][i]
       }
       dataTraces.push(dataTrace)
     }
