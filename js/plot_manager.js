@@ -118,10 +118,6 @@ function PlotManager(parentDiv) {
       }
       dataTraces.push(dataTrace)
     }
-    console.log(dataTraces)
-    console.log(data)
-    window.data = data
-    window.dataTraces = dataTraces
     return dataTraces
   }
 

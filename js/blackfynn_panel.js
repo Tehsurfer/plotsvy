@@ -9,8 +9,10 @@ const UI = require('./ui.js')
 const PlotManager = require('./plot_manager.js')
 const CsvManager = require('./csv_manager.js')
 const StateManager = require('./state_manager.js')
+const BroadcastChannel = require('broadcast-channel')
 var $ = require('jquery')
 require('select2')
+
 
 // Need to load select2 and blackfynnManger once the DOM is ready
 $(document).ready(function () {
@@ -29,7 +31,7 @@ function BlackfynnManager() {
   var _this = this
   var loggedIn = false
   var multiplot = false
-  var bc = new BroadcastChannel('plot_channel')
+  var bc = new BroadcastChannel.default('plot_channel')
   _this.plot = plot
   
   
@@ -44,7 +46,8 @@ function BlackfynnManager() {
   }
 
   this.openBroadcastChannel = function(name){
-    bc = new BroadcastChannel(name)
+    bc.close()
+    bc = new BroadcastChannel.default(name)
   }
 
   var sendChannelMessage = function(message){
@@ -77,7 +80,7 @@ function BlackfynnManager() {
     selectedChannel = $('#select_channel :selected').text()
     plot.addDataSeriesToChart(csv.getColoumnByName(selectedChannel), csv.getSampleRate(), selectedChannel)
     state.selectedChannels.push(selectedChannel)
-    bc.postMessage(_this.exportStateAsString())
+    bc.postMessage({'state': _this.exportStateAsString()})
   }
 
 
@@ -138,6 +141,7 @@ function BlackfynnManager() {
         if (state.plotAll) {
           _this.plotAll()
         } else {
+          ui.showSelector()
           for (i in state.selectedChannels){
             _this.plotByName(state.selectedChannels[i])
           }
