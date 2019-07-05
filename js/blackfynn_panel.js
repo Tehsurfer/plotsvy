@@ -136,7 +136,6 @@ function BlackfynnManager() {
       plot.clearChart()
       state.loadFromJSON(jsonString)
       _this.openCSV(state.csvURL).then( _ => {
-        state.loadFromJSON(jsonString)
         plot.subplots = state.subplots
         if (state.plotAll) {
           _this.plotAll()
