@@ -15,9 +15,9 @@ require('select2')
 
 
 // Need to load select2 and blackfynnManger once the DOM is ready
-$(document).ready(function () {
+// $(document).ready(function () {
 
-})
+// })
 
 
 // BlackfynnManager(): Manages the HTTP requests to the backend, Tehsurfer/Physiome-Blackfynn-API 
@@ -56,10 +56,10 @@ function BlackfynnManager() {
 
   this.examplePlotSetup = function(){
     parentDiv.querySelector('#select_channel').onchange = testChannelCall
-    channelNames = ['one', 'two', 'three']
+    var channelNames = ['one', 'two', 'three']
     ui.createChannelDropdown(channelNames)
-    data = [1,2,3,4]
-    samplesPerSecond = 1
+    var data = [1,2,3,4]
+    var samplesPerSecond = 1
     plot.createChart(data, samplesPerSecond, data.length, channelNames[0])
   }
 
@@ -77,7 +77,7 @@ function BlackfynnManager() {
   }
 
   var csvChannelCall = function(){
-    selectedChannel = $('#select_channel :selected').text()
+    var selectedChannel = $('#select_channel :selected').text()
     plot.addDataSeriesToChart(csv.getColoumnByName(selectedChannel), csv.getSampleRate(), selectedChannel)
     state.selectedChannels.push(selectedChannel)
     bc.postMessage({'state': _this.exportStateAsString()})

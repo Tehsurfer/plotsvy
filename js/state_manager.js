@@ -11,7 +11,7 @@ function StateManager(parentDiv) {
   }
 
   this.loadFromJSON = function (jsonString) {
-    loadedState = JSON.parse(jsonString)
+    var loadedState = JSON.parse(jsonString)
     this.selectedChannels = loadedState.selectedChannels
     this.csvURL = loadedState.csvURL
     this.subplots = loadedState.subplots

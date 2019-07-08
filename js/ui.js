@@ -29,7 +29,7 @@ function UI (parentDiv) {
       channels[0] = 'Select Channel'
     }
 
-    for (var i in channels) {
+    for (let i in channels) {
       option = document.createElement('option')
       option.value = option.text = channels[i]
       select.add(option)
@@ -42,7 +42,7 @@ function UI (parentDiv) {
     select = parentDiv.querySelector('#select_dataset')
     select.innerHTML = ''
 
-    for (var i in datasets) {
+    for (let i in datasets) {
       option = document.createElement('option')
       option.value = option.text = datasets[i]
       select.add(option)

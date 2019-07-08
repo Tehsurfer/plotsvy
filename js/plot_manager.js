@@ -79,14 +79,16 @@ function PlotManager(parentDiv) {
   var processDataMatrix = function (data) {
     var times = data.map( (row) => { return row[0]})
     var dataTraces = []
+    var dataTrace = {}
+    var xlabel, ylabel, ydata 
     for (var i in data[0]){
       if (i == 0){
         continue
       }
       else if (i == 1){
-        var xlabel = 'x'
-        var ylabel = 'y'
-        var ydata = data.map( (row) => { return row[i]})
+        xlabel = 'x'
+        ylabel = 'y'
+        ydata = data.map( (row) => { return row[i]})
       }
       else{
         xlabel = 'x' + i
@@ -100,7 +102,7 @@ function PlotManager(parentDiv) {
       }
       
       ydata.pop(0)
-      var dataTrace = {
+      dataTrace = {
         type: 'scatter',
         name: data[0][i],
         mode: 'lines',
@@ -122,9 +124,10 @@ function PlotManager(parentDiv) {
   }
 
   this.plotAll = function(data){
-    dataTraces = processDataMatrix(data)
+    var dataTraces = processDataMatrix(data)
+    var layout = {}
     if (!_this.subplots) {
-      var layout = {
+      layout = {
         title: 'Selected Channels Plot ',
         xaxis: {
           type: 'seconds',
@@ -137,7 +140,7 @@ function PlotManager(parentDiv) {
         }
       }
     } else {
-      var layout = {
+      layout = {
         grid: {
           rows:  Math.ceil(dataTraces.length/2),
           columns: 2,
