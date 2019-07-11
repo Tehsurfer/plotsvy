@@ -6,6 +6,8 @@ function UI (parentDiv) {
   // parentDiv.querySelector('#channel_div').style.display = 'none'
   // parentDiv.querySelector('#OpenCORLinkButton').style.display = 'none'
   // parentDiv.querySelector('#instructions_div').style.display = 'none'
+  _this = this
+  _this.dataType = 'scatter'
 
   
   var clearSelect = function (select) { 

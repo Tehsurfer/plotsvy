@@ -66,6 +66,7 @@ function BlackfynnManager() {
   this.openCSV = function(url){
     return new Promise(function(resolve, reject){
       csv.loadFile(url, ()=>{
+        _this.setDataType(csv.getDataType())
         ui.showSelector()
         ui.createChannelDropdown(csv.getHeaders())
         parentDiv.querySelector('#select_channel').onchange = csvChannelCall
@@ -86,9 +87,10 @@ function BlackfynnManager() {
     state.subplots = flag
   }
 
-  this.setPlotType = function(plotType){
-    plot.plotType = plotType
-    state.plotType = plotType
+  this.setDataType = function(dataType){
+    plot.plotType = dataType
+    state.plotType = dataType
+    ui.dataType = dataType
   }
 
   this.plotByIndex = function(index){
