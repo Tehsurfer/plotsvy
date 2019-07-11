@@ -26,7 +26,11 @@ function UI (parentDiv) {
     select.innerHTML = ''
 
     if (channels[0].toLowerCase().includes('time')){
-      channels[0] = 'Select Channel'
+      channels[0] = '-- Select A Channel --'
+    }
+
+    if (channels[0].toLowerCase().includes('name')){
+      channels[0] = '-- Select A Sample --'
     }
 
     for (let i in channels) {

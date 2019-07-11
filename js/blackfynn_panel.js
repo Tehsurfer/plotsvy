@@ -42,6 +42,7 @@ function BlackfynnManager() {
     ui = new UI(parentDiv)
     plot = new PlotManager(parentDiv)
     csv = new CsvManager()
+    _this.csv = csv
     state = new StateManager(parentDiv)
   }
 
@@ -54,31 +55,9 @@ function BlackfynnManager() {
     bc.postMessage(message)
   }
 
-  this.examplePlotSetup = function(){
-    parentDiv.querySelector('#select_channel').onchange = testChannelCall
-    var channelNames = ['one', 'two', 'three']
-    ui.createChannelDropdown(channelNames)
-    var data = [1,2,3,4]
-    var samplesPerSecond = 1
-    plot.createChart(data, samplesPerSecond, data.length, channelNames[0])
-  }
-
-  var testChannelCall = function(){
-    selectedChannel = $('#select_channel :selected').text()
-    data = {
-      'one': [1,2,3,4],
-      'two': [2,2,3,4],
-      'three': [3,2,3,4]
-    }
-    samplesPerSecond = 1
-
-    plot.addDataSeriesToChart(data[selectedChannel], samplesPerSecond, selectedChannel)
-
-  }
-
   var csvChannelCall = function(){
     var selectedChannel = $('#select_channel :selected').text()
-    plot.addDataSeriesToChart(csv.getColoumnByName(selectedChannel), csv.getSampleRate(), selectedChannel)
+    plot.addDataSeriesToChart(csv.getColoumnByName(selectedChannel),csv.getColoumnByIndex(0), selectedChannel)
     state.selectedChannels.push(selectedChannel)
     bc.postMessage({'state': _this.exportStateAsString()})
   }
@@ -108,12 +87,12 @@ function BlackfynnManager() {
 
   this.plotByIndex = function(index){
     var channelName = csv.getHeaderByIndex(index)
-    plot.addDataSeriesToChart(csv.getColoumnByIndex(index), csv.getSampleRate(), channelName)
+    plot.addDataSeriesToChart(csv.getColoumnByIndex(index), csv.getColoumnByIndex(0), channelName)
     state.selectedChannels.push(channelName)
   }
 
   this.plotByName = function(channelName){
-    plot.addDataSeriesToChart(csv.getColoumnByName(channelName), csv.getSampleRate(), channelName)
+    plot.addDataSeriesToChart(csv.getColoumnByName(channelName), csv.getColoumnByIndex(0), channelName)
     state.selectedChannels.push(channelName)
   }
 
@@ -128,8 +107,6 @@ function BlackfynnManager() {
   this.exportState = function(){
     return state
   }
-
-
 
   this.loadState = function(jsonString){
     return new Promise(function(resolve, reject){

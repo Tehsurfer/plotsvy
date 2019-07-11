@@ -6,32 +6,17 @@ function PlotManager(parentDiv) {
   var _this = this
   _this.plot = undefined
   _this.subplots = false
+  _this.plotType = 'bar'
 
-  this.createChart = function (createChartData, samplesPerSecond, id) {
+  this.createChart = function (createChartData, xaxis, id) {
     if (_this.plot !== undefined) {
       Plotly.purge(chartDiv)
     }
     // _this.initialiseResizeListener(parentDiv)
 
-    var times = []
-    for (var i in createChartData) {
-      times.push(i / samplesPerSecond)
-    }
+    var chartData = processData(createChartData, xaxis, id)
 
-    var chartData = processData(createChartData, times, id)
-
-    var chartOptions = {
-      xaxis: {
-        type: 'seconds',
-        title: 'Seconds'
-      },
-      yaxis: {
-        autorange: true,
-        type: 'linear',
-        title: 'mV'
-      }
-    }
-    _this.plot = Plotly.react(chartDiv, chartData, chartOptions)
+    _this.plot = Plotly.react(chartDiv, chartData, getLayout())
   }
 
   this.resetChart = function () {
@@ -47,27 +32,51 @@ function PlotManager(parentDiv) {
     }
   }
 
-  this.addDataSeriesToChart = function (newSeries, samplesPerSecond, id) {
+  this.addDataSeriesToChart = function (newSeries, xaxis, id) {
+ 
+    xaxis.shift() // Remove the header
 
     if (_this.plot === undefined){
-      _this.createChart(newSeries, samplesPerSecond, id)
+      _this.createChart(newSeries, xaxis, id)
       return
     }
-
-    var times = []
-    for (var i in newSeries) {
-      times.push(i / samplesPerSecond)
-    }
-    var newData = processData(newSeries, times, id)
+    var newData = processData(newSeries, xaxis, id)
     Plotly.addTraces(chartDiv, newData)
   }
 
-  var processData = function (unprocessedData, times, id) {
+  var getLayout = function(){
+    var layout
+    if(_this.plotType === 'bar'){
+      layout = {barmode: 'group'};
+    } else if ( !_this.subplots ){
+      layout = {
+        title: 'Selected Channels Plot ',
+        xaxis: {
+          type: 'seconds',
+          title: 'Seconds'
+        },
+        yaxis: {
+          autorange: true,
+          type: 'linear',
+          title: 'mV'
+        }
+      }
+    } else {
+      layout = {
+        grid: {
+          rows:  Math.ceil(dataTraces.length/2),
+          columns: 2,
+          pattern: 'independent'
+        }
+      }  
+    }
+  }
+
+  var processData = function (unprocessedData, xaxis, id) {
     var dataTrace = {
-      type: 'scatter',
+      type: _this.plotType,
       name: id,
-      mode: 'lines',
-      x: times,
+      x: xaxis,
       y: unprocessedData,
       line: {
         color: '#' + (Math.random() * 0xFFFFFF << 0).toString(16)
@@ -103,9 +112,8 @@ function PlotManager(parentDiv) {
       
       ydata.pop(0)
       dataTrace = {
-        type: 'scatter',
+        type: _this.plotType,
         name: data[0][i],
-        mode: 'lines',
         x: times,
         y: ydata,
         xaxis: xlabel,
@@ -125,32 +133,8 @@ function PlotManager(parentDiv) {
 
   this.plotAll = function(data){
     var dataTraces = processDataMatrix(data)
-    var layout = {}
-    if (!_this.subplots) {
-      layout = {
-        title: 'Selected Channels Plot ',
-        xaxis: {
-          type: 'seconds',
-          title: 'Seconds'
-        },
-        yaxis: {
-          autorange: true,
-          type: 'linear',
-          title: 'mV'
-        }
-      }
-    } else {
-      layout = {
-        grid: {
-          rows:  Math.ceil(dataTraces.length/2),
-          columns: 2,
-          pattern: 'independent'}
-      }    
-    }
-    _this.plot = Plotly.react(chartDiv, dataTraces, layout) 
-    
+    _this.plot = Plotly.react(chartDiv, dataTraces, getLayout())     
   }
-
 
   this.resizePlot = function( width, height ){
     if (_this.plot === undefined){
