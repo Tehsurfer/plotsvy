@@ -4,6 +4,7 @@ function StateManager(parentDiv) {
   this.csvURL = ''
   this.subplots = false
   this.plotAll = true
+  this.plotType = 'scatter'
 
   this.setURL = function (url) {
     this.selectedChannels = []
@@ -16,6 +17,7 @@ function StateManager(parentDiv) {
     this.csvURL = loadedState.csvURL
     this.subplots = loadedState.subplots
     this.plotAll = loadedState.plotAll
+    this.plotType = loadedState.plotType
   }
 }
 module.exports = StateManager

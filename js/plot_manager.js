@@ -6,7 +6,7 @@ function PlotManager(parentDiv) {
   var _this = this
   _this.plot = undefined
   _this.subplots = false
-  _this.plotType = 'bar'
+  _this.plotType = 'scatter'
 
   this.createChart = function (createChartData, xaxis, id) {
     if (_this.plot !== undefined) {
@@ -110,7 +110,7 @@ function PlotManager(parentDiv) {
         ylabel = 'y'
       }
       
-      ydata.pop(0)
+      ydata.shift()
       dataTrace = {
         type: _this.plotType,
         name: data[0][i],

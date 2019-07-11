@@ -83,6 +83,12 @@ function BlackfynnManager() {
 
   this.setSubplotsFlag = function(flag){
     plot.subplots = flag  
+    state.subplots = flag
+  }
+
+  this.setPlotType = function(plotType){
+    plot.plotType = plotType
+    state.plotType = plotType
   }
 
   this.plotByIndex = function(index){
@@ -97,7 +103,7 @@ function BlackfynnManager() {
   }
 
   this.clearChart = function(){
-    plot.clearChart()
+    plot.resetChart()
   }
 
   this.exportStateAsString = function(){
@@ -113,6 +119,7 @@ function BlackfynnManager() {
       plot.clearChart()
       state.loadFromJSON(jsonString)
       _this.openCSV(state.csvURL).then( _ => {
+        plot.plotType = state.plotType
         plot.subplots = state.subplots
         if (state.plotAll) {
           _this.plotAll()
