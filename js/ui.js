@@ -1,5 +1,6 @@
 // login creates logs a user in on the backend with given API keys
 var $ = require('jquery')
+const dat = require('dat.gui');
 
 function UI (parentDiv) {
   // parentDiv.querySelector('#dataset_div').style.display = 'none'
@@ -8,6 +9,11 @@ function UI (parentDiv) {
   // parentDiv.querySelector('#instructions_div').style.display = 'none'
   _this = this
   _this.dataType = 'scatter'
+  const gui = new dat.GUI()
+  var folder = gui.addFolder('Channels')
+  var settings = {}
+  var checkboxes = []
+  var checkboxElements = []
 
   
   var clearSelect = function (select) { 
@@ -21,8 +27,25 @@ function UI (parentDiv) {
     parentDiv.querySelector('#channel_div').style.display = 'revert'
   }
 
+  this.hideDatGui = function(){
+    parentDiv.querySelector('.dg')[0].style.display = 'none'
+  }
+  this.showDatGui = function(){
+    parentDiv.querySelector('.dg')[0].style.display = 'revert'
+  }
+
+   //Currently not working
+   this.checkAllBoxes = function(){
+    for (let i in checkboxElements){
+      checkboxElements[i].object[Object.keys(checkboxElements[i].object)][0] = true
+      checkboxElements[i].updateDisplay()
+      checkboxElements[i].__prev = checkboxElements[i].__checkbox.checked
+    }
+  }
+
   // CreateChannelDropdown populates a dropdown box for the user to select a channel
-  this.createChannelDropdown = function (channels) {
+  this.createSelectDropdown = function (channels) {
+    // this.hideDatGui()
     var select, option
     select = parentDiv.querySelector('#select_channel')
     select.innerHTML = ''
@@ -42,26 +65,30 @@ function UI (parentDiv) {
     }
   }
 
-  // CreateDatasetDropdown populates a dropdown box for the user to select a dataset
-  this.createDatasetDropdown = function (datasets) {
-    var select, option
-    select = parentDiv.querySelector('#select_dataset')
-    select.innerHTML = ''
+  this.createDatGuiDropdown = function (channels, onchangeFunc) {
+    this.hideSelector()
 
-    for (let i in datasets) {
-      option = document.createElement('option')
-      option.value = option.text = datasets[i]
-      select.add(option)
+    if (channels[0].toLowerCase().includes('time')){
+      channels.shift()
     }
-  }
-
-  var showApp = function () {
-    parentDiv.querySelector('#dataset_div').style.display = 'revert'
-    parentDiv.querySelector('#channel_div').style.display = 'revert'
-    parentDiv.querySelector('#OpenCORLinkButton').style.display = 'revert'
-    parentDiv.querySelector('#instructions_div').style.display = 'revert'
-  }
-
+    checkboxes = []
+    for (let i in channels) {
+      let name = channels[i]
+      let checkbox = {}
+      checkbox[name] = false
+      checkboxes.push(checkbox)
+      var el = folder.add(checkboxes[i], name)
+      checkboxElements.push(el)
+      // el.__li.onclick = () => onchangeFunc(name)
+      el.__checkbox.onclick = () => onchangeFunc(name, i, checkboxes[i][name])
+    }
+    window.checkboxes = checkboxes
+    folder.open()
+    for (let i in channels) {
+      parentDiv.querySelectorAll('.property-name')[i].style.width = '90%'
+    }
+   
+  }  
 }
 
 module.exports = UI

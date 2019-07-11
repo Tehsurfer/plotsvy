@@ -62,14 +62,31 @@ function BlackfynnManager() {
     bc.postMessage({'state': _this.exportStateAsString()})
   }
 
+  var checkBoxCall = function(channel, index, flag){
+    if (!flag) {
+      plot.addDataSeriesFromDatGui(csv.getColoumnByIndex(index), csv.getColoumnByIndex(0), channel, index)
+      state.selectedChannels.push(channel)
+    }
+    else {
+      plot.removeSeries(index)
+      stateInd = state.selectedChannels.indexOf(index)
+      state.selectedChannels.slice( stateInd, stateInd + 1)
+    }
+    bc.postMessage({'state': _this.exportStateAsString()})
+  }
+
 
   this.openCSV = function(url){
     return new Promise(function(resolve, reject){
       csv.loadFile(url, ()=>{
         _this.setDataType(csv.getDataType())
         ui.showSelector()
-        ui.createChannelDropdown(csv.getHeaders())
-        parentDiv.querySelector('#select_channel').onchange = csvChannelCall
+        if( csv.getHeaders().length < 50){ 
+          ui.createDatGuiDropdown(csv.getHeaders(), checkBoxCall)
+        } else {
+          ui.createSelectDropdown(csv.getHeaders())
+          parentDiv.querySelector('#select_channel').onchange = csvChannelCall
+        }
         state.setURL(url)
         resolve()
       })

@@ -3,6 +3,7 @@ const Plotly = require('plotly.js/dist/plotly-basic.min.js')
 
 function PlotManager(parentDiv) {
   var chartDiv = parentDiv.querySelector('#chart_div')
+  var indexList = []
   var _this = this
   _this.plot = undefined
   _this.subplots = false
@@ -42,6 +43,25 @@ function PlotManager(parentDiv) {
     }
     var newData = processData(newSeries, xaxis, id)
     Plotly.addTraces(chartDiv, newData)
+    indexList.push(index)
+  }
+
+  this.addDataSeriesFromDatGui = function (newSeries, xaxis, id, index) {
+ 
+    xaxis.shift() // Remove the header
+
+    if (_this.plot === undefined){
+      _this.createChart(newSeries, xaxis, id)
+      return
+    }
+    var newData = processData(newSeries, xaxis, id)
+    Plotly.addTraces(chartDiv, newData)
+  }
+
+  this.removeSeries = function(index){
+    traceNumber = Number(indexList.indexOf(index))
+    Plotly.deleteTraces(chartDiv, traceNumber)
+   indexList.slice(traceNumber, traceNumber+1)
   }
 
   var getLayout = function(){
