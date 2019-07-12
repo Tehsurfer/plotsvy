@@ -76,6 +76,26 @@ function CsvManager() {
     })
   }
 
+  this.exportForOpenCor = function(){
+    var headerList = []
+    var data 
+    var selectedData = []
+    headerList.push(_this.getHeaderByIndex(0))
+    selectedData.push(_this.getColoumnByIndex(0))
+    for (let i in state.selectedChannels){
+      headerList.push(state.selectedChannels[i])
+      selectedData.push(_this.getColoumnByName(state.selectedChannels[i]))
+    }
+    data = transpose(selectedData)
+    data[0] = convertHeadersToOpencor(data[0])
+    filename = 'sparc-export-' + Math.random().toString(36).slice(-5)  + '.csv'
+    downloadCSV({
+      filename: filename,
+      data: data,
+      columns: headerList
+    })
+  }
+
   var toObject = function(data){
     var object = {}
     for (let i in data[0]){
@@ -86,6 +106,48 @@ function CsvManager() {
 
   var transpose = function(array){
     return array[0].map((col, i) => array.map(row => row[i]));
+  }
+
+  var convertHeadersToOpencor = function(csvHeaders){
+    headers = [...csvHeaders]
+    if (headers[0].toLowerCase().includes('seconds')) {
+      headers[0] = 'environment | time (second)'
+    } else if (!headers[0].toLowerCase().includes('minute')) {
+      headers[0] = 'environment | time (minute)'
+    } else if (!headers[0].toLowerCase().includes('ms')) {
+      headers[0] = 'environment | time (millisecond)'
+    } else if (!headers[0].toLowerCase().includes('millisecond')) {
+      headers[0] = 'environment | time (millisecond)'
+    } else {
+      headers[0] = 'environment | time (unknown unit)'
+    }
+
+    for (let i in headers){
+      if (i === 0){
+        continue
+      } 
+      if (headers[i].toLowerCase().includes('mv') || headers[i].toLowerCase().includes('millivolts') ){
+        headers[i].replace('mv','')
+        headers[i].replace('millivolts','')
+        headers[i].replace('(','')
+        headers[i].replace(')','')
+        headers[i] += ' | V (millivolt)'
+      }
+      else if (headers[i].toLowerCase().includes(' v') || headers[i].toLowerCase().includes('volts')){
+        headers[i].replace('mv','')
+        headers[i].replace('volts','')
+        headers[i].replace('(','')
+        headers[i].replace(')','')
+        headers[i] += ' | V (volt)'
+      }
+      else if (headers[i].toLowerCase().includes('(')){
+        unit = '(' + headers[i].split('(')[1].split(')')[0] + ')' 
+        headers[i] = headers[i].split('(')[0] + ' | ' + unit[0].toUpperCase() + ' ' + unit 
+      } else {
+        headers[i] += ' | x (Unknown Unit)'
+      }
+    }
+    return headers
   }
 
   var downloadCSV = (args) => {  
