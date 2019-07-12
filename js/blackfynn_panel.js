@@ -64,7 +64,7 @@ function BlackfynnManager() {
 
   var checkBoxCall = function(channel, index, flag){
     if (!flag) {
-      plot.addDataSeriesFromDatGui(csv.getColoumnByIndex(index), csv.getColoumnByIndex(0), channel, index)
+      plot.addDataSeriesFromDatGui(csv.getColoumnByIndex(Number(index) + 1), csv.getColoumnByIndex(0), channel, index)
       state.selectedChannels.push(channel)
     }
     else {
@@ -131,6 +131,10 @@ function BlackfynnManager() {
 
   this.exportState = function(){
     return state
+  }
+
+  this.exportCSV = function(){
+    csv.export(state)
   }
 
   this.loadState = function(jsonString){

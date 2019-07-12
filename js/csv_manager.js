@@ -58,6 +58,67 @@ function CsvManager() {
     return this.getColoumnByIndex(column_index)
   }
 
+  this.export = function(state){
+    var headerList = []
+    var data = _this.getAllData()
+    var selectedData = []
+    headerList.push(_this.getHeaderByIndex(0))
+    selectedData.push(_this.getColoumnByIndex(0))
+    for (let i in state.selectedChannels){
+      headerList.push(state.selectedChannels[i])
+      selectedData.push(_this.getColoumnByName(state.selectedChannels[i]))
+    }
+    filename = 'sparc-export-' + Math.random().toString(36).slice(-5)  + '.csv'
+    downloadCSV({
+      filename: filename,
+      data: transpose(selectedData),
+      columns: headerList
+    })
+  }
+
+  var toObject = function(data){
+    var object = {}
+    for (let i in data[0]){
+      object[data[0][i]] = data.map((row) => { return row[i] })
+    }
+    return [object]
+  }
+
+  var transpose = function(array){
+    return array[0].map((col, i) => array.map(row => row[i]));
+  }
+
+  var downloadCSV = (args) => {  
+
+    /* Use like so: 
+     downloadCSV({ 
+      filename: 'filename.csv',
+      data: [{'a': '1', 'b': '2'}],
+      columns: ['a','b']
+      });
+     */
+
+    let filename = args.filename || 'export.csv';
+    let columns = args.columns || null;
+
+    let csv = Papa.unparse(args.data)
+    if (csv == null) return;
+
+    var blob = new Blob([csv]);
+    if (window.navigator.msSaveOrOpenBlob)  // IE hack; see http://msdn.microsoft.com/en-us/library/ie/hh779016.aspx
+        window.navigator.msSaveBlob(blob, args.filename);
+    else
+    {
+        var a = window.document.createElement("a");
+        a.href = window.URL.createObjectURL(blob, {type: "text/plain"});
+        a.download = filename;
+        document.body.appendChild(a);
+        a.click();  // IE: "Access is denied"; see: https://connect.microsoft.com/IE/feedback/details/797361/ie-10-treats-blob-url-as-cross-origin-and-denies-access
+        document.body.removeChild(a);
+    }
+
+  }
+
 }
 
 

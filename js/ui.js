@@ -7,7 +7,7 @@ function UI (parentDiv) {
   // parentDiv.querySelector('#channel_div').style.display = 'none'
   // parentDiv.querySelector('#OpenCORLinkButton').style.display = 'none'
   // parentDiv.querySelector('#instructions_div').style.display = 'none'
-  _this = this
+  var _this = this
   _this.dataType = 'scatter'
   const gui = new dat.GUI()
   var folder = gui.addFolder('Channels')
@@ -37,15 +37,13 @@ function UI (parentDiv) {
    //Currently not working
    this.checkAllBoxes = function(){
     for (let i in checkboxElements){
-      checkboxElements[i].object[Object.keys(checkboxElements[i].object)][0] = true
-      checkboxElements[i].updateDisplay()
-      checkboxElements[i].__prev = checkboxElements[i].__checkbox.checked
+      checkboxElements[i].__checkbox.checked = true
     }
   }
 
   // CreateChannelDropdown populates a dropdown box for the user to select a channel
   this.createSelectDropdown = function (channels) {
-    // this.hideDatGui()
+    this.hideDatGui()
     var select, option
     select = parentDiv.querySelector('#select_channel')
     select.innerHTML = ''
@@ -67,25 +65,26 @@ function UI (parentDiv) {
 
   this.createDatGuiDropdown = function (channels, onchangeFunc) {
     this.hideSelector()
-
+    _this.channels = [...channels]
     if (channels[0].toLowerCase().includes('time')){
       channels.shift()
     }
     checkboxes = []
-    for (let i in channels) {
-      let name = channels[i]
+    for (let i in _this.channels) {
+      let name = _this.channels[i]
       let checkbox = {}
       checkbox[name] = false
       checkboxes.push(checkbox)
       var el = folder.add(checkboxes[i], name)
       checkboxElements.push(el)
+      window.el = el
       // el.__li.onclick = () => onchangeFunc(name)
       el.__checkbox.onclick = () => onchangeFunc(name, i, checkboxes[i][name])
     }
     window.checkboxes = checkboxes
     folder.open()
-    for (let i in channels) {
-      parentDiv.querySelectorAll('.property-name')[i].style.width = '90%'
+    for (let i in _this.channels) {
+      document.getElementsByClassName('property-name')[i].style.width = '90%'
     }
    
   }  
