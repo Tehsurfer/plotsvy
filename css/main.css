@@ -1,9 +1,12 @@
+.dat-gui-container{
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 95%;
+  z-index: 5;
+}
 
-
-
-
-/*//////////////////////////////////////////////////////////////////
-[ FONT ]*/
 @font-face {
   font-family: Ubuntu-Regular;
   src: url('../fonts/ubuntu_regular-webfont.woff') format('woff'); 
@@ -14,22 +17,6 @@
   src: url('../fonts/ubuntu-bold-webfont.woff') format('woff'); 
 }
 fontawesome-webfont.woff
-
-/*//////////////////////////////////////////////////////////////////
-[ dat-gui ]*/
-
-.dat-gui-container{
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 95%;
-  z-index: 5;
-}
-
-
-/*//////////////////////////////////////////////////////////////////
-[ login ]*/
 
 .limiter {
   width: 100%;
@@ -69,8 +56,6 @@ fontawesome-webfont.woff
 }
 
 
-/*==================================================================
-[ Form ]*/
 
 .login100-form {
   width: 100%;
@@ -88,8 +73,7 @@ fontawesome-webfont.woff
   display: block;
 }
 
-/*==================================================================
-[ Restyle Select2 ]*/
+
 
 .select2-container {
   display: block;
@@ -112,8 +96,7 @@ fontawesome-webfont.woff
   left: -40px;
 }
 
-/*------------------------------------------------------------------
-[ in select ]*/
+
 .select2-container .select2-selection--single .select2-selection__rendered {
   font-family: Ubuntu-Bold;
   font-size: 18px;
@@ -152,8 +135,6 @@ fontawesome-webfont.woff
 }
 
 
-/*------------------------------------------------------------------
-[ Dropdown option ]*/
 .select2-container--open .select2-dropdown {
   z-index: 1251;
   width: calc(100% + 2px);

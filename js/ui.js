@@ -27,14 +27,14 @@ function UI (parentDiv) {
     parentDiv.querySelector('#channel_div').style.display = 'none'
   }
   this.showSelector = function(){
-    parentDiv.querySelector('#channel_div').style.display = 'revert'
+    parentDiv.querySelector('#channel_div').style.display = ''
   }
 
   this.hideDatGui = function(){
-    parentDiv.querySelector('.dg')[0].style.display = 'none'
+    parentDiv.querySelector('.dat-gui-container').style.display = 'none'
   }
   this.showDatGui = function(){
-    parentDiv.querySelector('.dg')[0].style.display = 'revert'
+    parentDiv.querySelector('.dat-gui-container').style.display = ''
   }
 
    //Currently not working
@@ -46,7 +46,7 @@ function UI (parentDiv) {
 
   // CreateChannelDropdown populates a dropdown box for the user to select a channel
   this.createSelectDropdown = function (channels) {
-    // this.hideDatGui()
+    this.hideDatGui()
     var select, option
     select = parentDiv.querySelector('#select_channel')
     select.innerHTML = ''
@@ -68,6 +68,7 @@ function UI (parentDiv) {
 
   this.createDatGuiDropdown = function (channels, onchangeFunc) {
     this.hideSelector()
+    this.showDatGui()
     _this.channels = [...channels]
     if (channels[0].toLowerCase().includes('time')){
       channels.shift()
