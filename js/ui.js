@@ -1,6 +1,6 @@
 // login creates logs a user in on the backend with given API keys
 var $ = require('jquery')
-const dat = require('dat.gui');
+const dat = require('./dat-gui.js');
 
 function UI (parentDiv) {
   // parentDiv.querySelector('#dataset_div').style.display = 'none'
@@ -9,7 +9,10 @@ function UI (parentDiv) {
   // parentDiv.querySelector('#instructions_div').style.display = 'none'
   var _this = this
   _this.dataType = 'scatter'
-  const gui = new dat.GUI()
+  const gui = new dat.GUI({autoPlace: false})
+  gui.domElement.id = 'gui'
+  gui.close()
+  document.getElementsByClassName('dat-gui-container')[0].appendChild(gui.domElement)
   var folder = gui.addFolder('Channels')
   var settings = {}
   var checkboxes = []
@@ -43,7 +46,7 @@ function UI (parentDiv) {
 
   // CreateChannelDropdown populates a dropdown box for the user to select a channel
   this.createSelectDropdown = function (channels) {
-    this.hideDatGui()
+    // this.hideDatGui()
     var select, option
     select = parentDiv.querySelector('#select_channel')
     select.innerHTML = ''
@@ -83,9 +86,6 @@ function UI (parentDiv) {
     }
     window.checkboxes = checkboxes
     folder.open()
-    for (let i in _this.channels) {
-      document.getElementsByClassName('property-name')[i].style.width = '90%'
-    }
    
   }  
 }

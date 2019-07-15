@@ -16,6 +16,19 @@
 fontawesome-webfont.woff
 
 /*//////////////////////////////////////////////////////////////////
+[ dat-gui ]*/
+
+.dat-gui-container{
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 95%;
+  z-index: 5;
+}
+
+
+/*//////////////////////////////////////////////////////////////////
 [ login ]*/
 
 .limiter {

@@ -19,11 +19,11 @@ module.exports = {
     rules: [
       { test: /\.(html)$/, use: [{ loader: 'html-loader' }]},
       { test: /\.css$/, use: [ 'style-loader', 'css-loader' ] },
-      { test: /\.(jpe?g|gif)$/i,
+      { test: /\.(jpe?g|gif|png)$/i,
         loader:"file-loader",
         query:{
           name:'[name].[ext]',
-          outputPath:'images/' }
+          outputPath:'css/images/' }
       },
       { test: /\.(vs|fs)$/i,
         loaders: [
