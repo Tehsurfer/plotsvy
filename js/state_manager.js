@@ -3,13 +3,8 @@ function StateManager(parentDiv) {
   this.selectedChannels = []
   this.csvURL = ''
   this.subplots = false
-  this.plotAll = true
+  this.plotAll = false
   this.plotType = 'scatter'
-
-  this.setURL = function (url) {
-    this.selectedChannels = []
-    this.csvURL = url
-  }
 
   this.loadFromJSON = function (jsonString) {
     var loadedState = JSON.parse(jsonString)

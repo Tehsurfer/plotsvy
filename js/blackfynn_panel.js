@@ -82,13 +82,40 @@ function BlackfynnManager() {
       csv.loadFile(url, ()=>{
         _this.setDataType(csv.getDataType())
         ui.showSelector()
-        if( csv.getHeaders().length < 50){ 
-          ui.createDatGuiDropdown(csv.getHeaders(), checkBoxCall)
+        var headers = [...csv.getHeaders()]
+        headers.shift()
+        if (state.plotAll) {
+          _this.plotAll()
+        }
+        if( headers.length < 50){ 
+          ui.createDatGuiDropdown(headers, checkBoxCall)
         } else {
-          ui.createSelectDropdown(csv.getHeaders())
+          ui.createSelectDropdown(headers)
           parentDiv.querySelector('#select_channel').onchange = csvChannelCall
         }
-        state.setURL(url)
+        state.csvURL = url
+        state.selectedChannels = []
+        resolve()
+      })
+    })
+  }
+
+  var openCSVfromState = function(url){
+    return new Promise(function(resolve, reject){
+      csv.loadFile(url, ()=>{
+        _this.setDataType(csv.getDataType())
+        ui.showSelector()
+        var headers = [...csv.getHeaders()]
+        headers.shift()
+        if (state.plotAll) {
+          _this.plotAll()
+        }
+        if( headers.length < 50){ 
+          ui.createDatGuiDropdown(headers, checkBoxCall)
+        } else {
+          ui.createSelectDropdown(headers)
+          parentDiv.querySelector('#select_channel').onchange = csvChannelCall
+        }
         resolve()
       })
     })
@@ -97,6 +124,7 @@ function BlackfynnManager() {
   this.plotAll = function(){
     plot.plotAll(csv.getAllData())
     ui.hideSelector()
+    ui.hideDatGui()
     _this.updateSize()   
   }
 
@@ -142,19 +170,16 @@ function BlackfynnManager() {
     return new Promise(function(resolve, reject){
       plot.clearChart()
       state.loadFromJSON(jsonString)
-      _this.openCSV(state.csvURL).then( _ => {
+      openCSVfromState(state.csvURL).then( _ => {
         plot.plotType = state.plotType
         plot.subplots = state.subplots
-        if (state.plotAll) {
-          _this.plotAll()
-        } else {
-          ui.showSelector()
-          for (i in state.selectedChannels){
+        if (!state.plotAll) {
+          for (let i in state.selectedChannels){
             _this.plotByName(state.selectedChannels[i])
           }
         }
+        resolve()
       })
-      resolve()
     })
     
   }
