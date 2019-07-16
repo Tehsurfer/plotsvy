@@ -38,8 +38,12 @@ function BlackfynnManager() {
   
 
   // initialiseBlackfynnPanel: sets up ui and plot, needs DOM to be loaded
-  this.initialiseBlackfynnPanel = function () {
-    parentDiv = document.getElementById('blackfynn-panel')
+  this.initialiseBlackfynnPanel = function (targetDiv) {
+    if (targetDiv === undefined){
+      parentDiv = document.getElementById('blackfynn-panel')
+    } else {
+      parentDiv = targetDiv
+    }
     ui = new UI(parentDiv)
     plot = new PlotManager(parentDiv)
     csv = new CsvManager()
@@ -202,8 +206,8 @@ function BlackfynnManager() {
   }
 
   this.updateSize = function(){
-    var blackfynn_panel = document.getElementById('blackfynn-panel')
-    var dataset_div = document.getElementById('dataset_div')
+    var blackfynn_panel = parentDiv
+    var dataset_div = parentDiv.querySelector('#dataset_div')
     var chart_height = blackfynn_panel.clientHeight - dataset_div.offsetHeight
 
     plot.resizePlot(blackfynn_panel.clientWidth, chart_height)
