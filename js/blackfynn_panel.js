@@ -23,7 +23,7 @@ require('select2')
 
 // BlackfynnManager(): Manages the HTTP requests to the backend, Tehsurfer/Physiome-Blackfynn-API 
 //                     and drives the plot and ui modules.
-function BlackfynnManager() {
+function BlackfynnManager(targetDiv = undefined) {
   var ui = undefined
   var parentDiv = undefined
   var plot = undefined
@@ -35,11 +35,10 @@ function BlackfynnManager() {
   var bc = new BroadcastChannel.default('plot_channel')
   _this.plot = plot
   
-  
 
   // initialiseBlackfynnPanel: sets up ui and plot, needs DOM to be loaded
   this.initialiseBlackfynnPanel = function (targetDiv) {
-    if (targetDiv === undefined){
+    if (targetDiv === null || targetDiv === undefined){
       parentDiv = document.getElementById('blackfynn-panel')
     } else {
       parentDiv = targetDiv
@@ -202,7 +201,7 @@ function BlackfynnManager() {
       })
     })
   
-    _this.initialiseBlackfynnPanel()
+  
   }
 
   this.updateSize = function(){
@@ -212,6 +211,7 @@ function BlackfynnManager() {
 
     plot.resizePlot(blackfynn_panel.clientWidth, chart_height)
   }
+  _this.initialiseBlackfynnPanel(targetDiv)
   initialiseObject()
 
 }
