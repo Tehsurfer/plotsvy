@@ -23,7 +23,7 @@ require('select2')
 
 // BlackfynnManager(): Manages the HTTP requests to the backend, Tehsurfer/Physiome-Blackfynn-API 
 //                     and drives the plot and ui modules.
-function BlackfynnManager(targetDiv = undefined) {
+function BlackfynnManager(targetDiv) {
   var ui = undefined
   var parentDiv = undefined
   var plot = undefined
@@ -34,15 +34,16 @@ function BlackfynnManager(targetDiv = undefined) {
   var multiplot = false
   var bc = new BroadcastChannel.default('plot_channel')
   _this.plot = plot
+
+  if (targetDiv === null || targetDiv === undefined){
+    parentDiv = document.getElementById('blackfynn-panel')
+  } else {
+    parentDiv = targetDiv
+  }
   
 
   // initialiseBlackfynnPanel: sets up ui and plot, needs DOM to be loaded
-  this.initialiseBlackfynnPanel = function (targetDiv) {
-    if (targetDiv === null || targetDiv === undefined){
-      parentDiv = document.getElementById('blackfynn-panel')
-    } else {
-      parentDiv = targetDiv
-    }
+  this.initialiseBlackfynnPanel = function () {
     ui = new UI(parentDiv)
     plot = new PlotManager(parentDiv)
     csv = new CsvManager()
@@ -68,13 +69,13 @@ function BlackfynnManager(targetDiv = undefined) {
 
   var checkBoxCall = function(channel, index, flag){
     if (!flag) {
-      plot.addDataSeriesFromDatGui(csv.getColoumnByIndex(Number(index) + 1), csv.getColoumnByIndex(0), channel, index)
+      plot.addDataSeriesFromDatGui(csv.getColoumnByIndex(index), csv.getColoumnByIndex(0), channel, index)
       state.selectedChannels.push(channel)
     }
     else {
       plot.removeSeries(index)
-      stateInd = state.selectedChannels.indexOf(index)
-      state.selectedChannels.slice( stateInd, stateInd + 1)
+      ch_ind = state.selectedChannels.indexOf(channel)
+      state.selectedChannels.splice( ch_ind, ch_ind + 1)
     }
     bc.postMessage({'state': _this.exportStateAsString()})
   }
@@ -90,7 +91,7 @@ function BlackfynnManager(targetDiv = undefined) {
         if (state.plotAll) {
           _this.plotAll()
         }
-        if( headers.length < 50){ 
+        if( headers.length < 100){ 
           ui.createDatGuiDropdown(headers, checkBoxCall)
         } else {
           ui.createSelectDropdown(headers)
@@ -113,7 +114,7 @@ function BlackfynnManager(targetDiv = undefined) {
         if (state.plotAll) {
           _this.plotAll()
         } else {
-          if( headers.length < 50){ 
+          if( headers.length < 100){ 
             ui.createDatGuiDropdown(headers, checkBoxCall)
           } else {
             ui.createSelectDropdown(headers)
@@ -204,6 +205,14 @@ function BlackfynnManager(targetDiv = undefined) {
         _this.plotByNamePromise(channels[i])
       }
     })
+    for (let i in channels){
+      for (let j in ui.checkboxElements){
+        if (ui.checkboxElements[j].property === channels[i]){
+          ui.checkboxElements[j].__checkbox.checked = true
+          break
+        }
+      }
+    }
   }
 
 
@@ -230,7 +239,7 @@ function BlackfynnManager(targetDiv = undefined) {
 
     plot.resizePlot(blackfynn_panel.clientWidth, chart_height)
   }
-  _this.initialiseBlackfynnPanel(targetDiv)
+  _this.initialiseBlackfynnPanel()
   initialiseObject()
 
 }

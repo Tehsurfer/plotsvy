@@ -14,11 +14,11 @@ function UI (parentDiv) {
 
   var settings = {}
   var checkboxes = []
-  var checkboxElements = []
+  _this.checkboxElements = []
 
   this.buildDatGui = function(){
     if (gui !== undefined){
-      gui.destroy()
+      return
     }
     gui = new dat.GUI({autoPlace: false})
     gui.domElement.id = 'gui'
@@ -49,8 +49,8 @@ function UI (parentDiv) {
 
    //Currently not working
    this.checkAllBoxes = function(){
-    for (let i in checkboxElements){
-      checkboxElements[i].__checkbox.checked = true
+    for (let i in _this.checkboxElements){
+      _this.checkboxElements[i].__checkbox.checked = true
     }
   }
 
@@ -86,6 +86,12 @@ function UI (parentDiv) {
     if (channels[0].toLowerCase().includes('time')){
       channels.shift()
     }
+    if (_this.checkboxElements.length > 0){
+      for(let i in _this.checkboxElements){
+        folder.remove(_this.checkboxElements[i])
+      }
+    }
+    _this.checkboxElements = []
     checkboxes = []
     for (let i in _this.channels) {
       let name = _this.channels[i]
@@ -93,12 +99,9 @@ function UI (parentDiv) {
       checkbox[name] = false
       checkboxes.push(checkbox)
       var el = folder.add(checkboxes[i], name)
-      checkboxElements.push(el)
-      window.el = el
-      // el.__li.onclick = () => onchangeFunc(name)
-      el.__checkbox.onclick = () => onchangeFunc(name, i, checkboxes[i][name])
+      _this.checkboxElements.push(el)
+      el.__checkbox.onclick = () => onchangeFunc(name, Number(i)+1, checkboxes[i][name])
     }
-    window.checkboxes = checkboxes
     folder.open()
    
   }  

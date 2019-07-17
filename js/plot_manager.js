@@ -60,7 +60,7 @@ function PlotManager(parentDiv) {
   this.removeSeries = function(index){
     traceNumber = Number(indexList.indexOf(index))
     Plotly.deleteTraces(chartDiv, traceNumber)
-   indexList.slice(traceNumber, traceNumber+1)
+    indexList.slice(traceNumber, traceNumber+1)
   }
 
   var getLayout = function(){
