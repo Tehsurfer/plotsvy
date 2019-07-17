@@ -43,7 +43,6 @@ function PlotManager(parentDiv) {
     }
     var newData = processData(newSeries, xaxis, id)
     Plotly.addTraces(chartDiv, newData)
-    indexList.push(index)
   }
 
   this.addDataSeriesFromDatGui = function (newSeries, xaxis, id, index) {
@@ -61,7 +60,7 @@ function PlotManager(parentDiv) {
   this.removeSeries = function(index){
     traceNumber = Number(indexList.indexOf(index))
     Plotly.deleteTraces(chartDiv, traceNumber)
-   indexList.slice(traceNumber, traceNumber+1)
+    indexList.slice(traceNumber, traceNumber+1)
   }
 
   var getLayout = function(){

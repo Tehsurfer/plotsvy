@@ -1,6 +1,6 @@
 // login creates logs a user in on the backend with given API keys
 var $ = require('jquery')
-const dat = require('./dat-gui.js');
+const dat = require('dat.gui');
 
 function UI (parentDiv) {
   // parentDiv.querySelector('#dataset_div').style.display = 'none'
@@ -9,47 +9,59 @@ function UI (parentDiv) {
   // parentDiv.querySelector('#instructions_div').style.display = 'none'
   var _this = this
   _this.dataType = 'scatter'
-  const gui = new dat.GUI({autoPlace: false})
-  gui.domElement.id = 'gui'
-  gui.close()
-  document.getElementsByClassName('dat-gui-container')[0].appendChild(gui.domElement)
-  var folder = gui.addFolder('Channels')
+  var gui = undefined
+  var folder = undefined
+
   var settings = {}
   var checkboxes = []
-  var checkboxElements = []
+  _this.checkboxElements = []
 
+  this.buildDatGui = function(){
+    if (gui !== undefined){
+      return
+    }
+    gui = new dat.GUI({autoPlace: false})
+    gui.domElement.id = 'gui'
+    gui.close()
+    parentDiv.querySelector('.dat-gui-container').appendChild(gui.domElement)
+    folder = gui.addFolder('Channels')
+  }
   
   var clearSelect = function (select) { 
-    for (let a in select.options) { select.options.remove(0) }
+    if (select.options !== undefined){
+      for (let a in select.options) { select.options.remove(0) }
+    }
   }
 
   this.hideSelector = function(){
     parentDiv.querySelector('#channel_div').style.display = 'none'
   }
   this.showSelector = function(){
-    parentDiv.querySelector('#channel_div').style.display = 'revert'
+    parentDiv.querySelector('#channel_div').style.display = ''
   }
 
   this.hideDatGui = function(){
-    parentDiv.querySelector('.dg')[0].style.display = 'none'
+    parentDiv.querySelector('.dat-gui-container').style.display = 'none'
   }
   this.showDatGui = function(){
-    parentDiv.querySelector('.dg')[0].style.display = 'revert'
+    parentDiv.querySelector('.dat-gui-container').style.display = ''
   }
 
    //Currently not working
    this.checkAllBoxes = function(){
-    for (let i in checkboxElements){
-      checkboxElements[i].__checkbox.checked = true
+    for (let i in _this.checkboxElements){
+      _this.checkboxElements[i].__checkbox.checked = true
     }
   }
 
   // CreateChannelDropdown populates a dropdown box for the user to select a channel
-  this.createSelectDropdown = function (channels) {
-    // this.hideDatGui()
+  this.createSelectDropdown = function (channelsIn) {
+    _this.hideDatGui()
+    _this.showSelector()
     var select, option
     select = parentDiv.querySelector('#select_channel')
     select.innerHTML = ''
+    var channels = [...channelsIn]
 
     if (channels[0].toLowerCase().includes('time')){
       channels[0] = '-- Select A Channel --'
@@ -67,11 +79,19 @@ function UI (parentDiv) {
   }
 
   this.createDatGuiDropdown = function (channels, onchangeFunc) {
-    this.hideSelector()
+    _this.buildDatGui()
+    _this.hideSelector()
+    _this.showDatGui()
     _this.channels = [...channels]
     if (channels[0].toLowerCase().includes('time')){
       channels.shift()
     }
+    if (_this.checkboxElements.length > 0){
+      for(let i in _this.checkboxElements){
+        folder.remove(_this.checkboxElements[i])
+      }
+    }
+    _this.checkboxElements = []
     checkboxes = []
     for (let i in _this.channels) {
       let name = _this.channels[i]
@@ -79,12 +99,9 @@ function UI (parentDiv) {
       checkbox[name] = false
       checkboxes.push(checkbox)
       var el = folder.add(checkboxes[i], name)
-      checkboxElements.push(el)
-      window.el = el
-      // el.__li.onclick = () => onchangeFunc(name)
-      el.__checkbox.onclick = () => onchangeFunc(name, i, checkboxes[i][name])
+      _this.checkboxElements.push(el)
+      el.__checkbox.onclick = () => onchangeFunc(name, Number(i)+1, checkboxes[i][name])
     }
-    window.checkboxes = checkboxes
     folder.open()
    
   }  

@@ -23,7 +23,7 @@ require('select2')
 
 // BlackfynnManager(): Manages the HTTP requests to the backend, Tehsurfer/Physiome-Blackfynn-API 
 //                     and drives the plot and ui modules.
-function BlackfynnManager() {
+function BlackfynnManager(targetDiv) {
   var ui = undefined
   var parentDiv = undefined
   var plot = undefined
@@ -34,12 +34,16 @@ function BlackfynnManager() {
   var multiplot = false
   var bc = new BroadcastChannel.default('plot_channel')
   _this.plot = plot
-  
+
+  if (targetDiv === null || targetDiv === undefined){
+    parentDiv = document.getElementById('blackfynn-panel')
+  } else {
+    parentDiv = targetDiv
+  }
   
 
   // initialiseBlackfynnPanel: sets up ui and plot, needs DOM to be loaded
   this.initialiseBlackfynnPanel = function () {
-    parentDiv = document.getElementById('blackfynn-panel')
     ui = new UI(parentDiv)
     plot = new PlotManager(parentDiv)
     csv = new CsvManager()
@@ -65,13 +69,13 @@ function BlackfynnManager() {
 
   var checkBoxCall = function(channel, index, flag){
     if (!flag) {
-      plot.addDataSeriesFromDatGui(csv.getColoumnByIndex(Number(index) + 1), csv.getColoumnByIndex(0), channel, index)
+      plot.addDataSeriesFromDatGui(csv.getColoumnByIndex(index), csv.getColoumnByIndex(0), channel, index)
       state.selectedChannels.push(channel)
     }
     else {
       plot.removeSeries(index)
-      stateInd = state.selectedChannels.indexOf(index)
-      state.selectedChannels.slice( stateInd, stateInd + 1)
+      ch_ind = state.selectedChannels.indexOf(channel)
+      state.selectedChannels.splice( ch_ind, ch_ind + 1)
     }
     bc.postMessage({'state': _this.exportStateAsString()})
   }
@@ -82,13 +86,42 @@ function BlackfynnManager() {
       csv.loadFile(url, ()=>{
         _this.setDataType(csv.getDataType())
         ui.showSelector()
-        if( csv.getHeaders().length < 50){ 
-          ui.createDatGuiDropdown(csv.getHeaders(), checkBoxCall)
+        var headers = [...csv.getHeaders()]
+        headers.shift()
+        if (state.plotAll) {
+          _this.plotAll()
+        }
+        if( headers.length < 100){ 
+          ui.createDatGuiDropdown(headers, checkBoxCall)
         } else {
-          ui.createSelectDropdown(csv.getHeaders())
+          ui.createSelectDropdown(headers)
           parentDiv.querySelector('#select_channel').onchange = csvChannelCall
         }
-        state.setURL(url)
+        state.csvURL = url
+        state.selectedChannels = []
+        resolve()
+      })
+    })
+  }
+
+  var openCSVfromState = function(url){
+    return new Promise(function(resolve, reject){
+      csv.loadFile(url, ()=>{
+        _this.setDataType(csv.getDataType())
+        ui.showSelector()
+        var headers = [...csv.getHeaders()]
+        headers.shift()
+        if (state.plotAll) {
+          _this.plotAll()
+        } else {
+          if( headers.length < 100){ 
+            ui.createDatGuiDropdown(headers, checkBoxCall)
+          } else {
+            ui.createSelectDropdown(headers)
+            parentDiv.querySelector('#select_channel').onchange = csvChannelCall
+          }
+        }
+
         resolve()
       })
     })
@@ -97,7 +130,9 @@ function BlackfynnManager() {
   this.plotAll = function(){
     plot.plotAll(csv.getAllData())
     ui.hideSelector()
+    ui.hideDatGui()
     _this.updateSize()   
+    state.plotAll = true
   }
 
   this.setSubplotsFlag = function(flag){
@@ -115,6 +150,13 @@ function BlackfynnManager() {
     var channelName = csv.getHeaderByIndex(index)
     plot.addDataSeriesToChart(csv.getColoumnByIndex(index), csv.getColoumnByIndex(0), channelName)
     state.selectedChannels.push(channelName)
+  }
+
+  this.plotByNamePromise = function(channelName){
+    return new Promise(function(resolve, reject) {
+      plot.addDataSeriesToChart(csv.getColoumnByName(channelName), csv.getColoumnByIndex(0), channelName)
+      resolve()
+    })
   }
 
   this.plotByName = function(channelName){
@@ -142,21 +184,35 @@ function BlackfynnManager() {
     return new Promise(function(resolve, reject){
       plot.clearChart()
       state.loadFromJSON(jsonString)
-      _this.openCSV(state.csvURL).then( _ => {
+      openCSVfromState(state.csvURL).then( _ => {
         plot.plotType = state.plotType
         plot.subplots = state.subplots
-        if (state.plotAll) {
-          _this.plotAll()
-        } else {
-          ui.showSelector()
-          for (i in state.selectedChannels){
-            _this.plotByName(state.selectedChannels[i])
-          }
+        if (!state.plotAll) {
+          plotStateChannels(state.selectedChannels)
         }
+        resolve()
       })
-      resolve()
     })
     
+  }
+
+  var plotStateChannels = function(channels){
+    _this.plotByNamePromise(channels[0]).then(_ => {
+      for (let i = 0; i <channels.length; i++){
+        if (i === 0){
+          continue
+        }
+        _this.plotByNamePromise(channels[i])
+      }
+    })
+    for (let i in channels){
+      for (let j in ui.checkboxElements){
+        if (ui.checkboxElements[j].property === channels[i]){
+          ui.checkboxElements[j].__checkbox.checked = true
+          break
+        }
+      }
+    }
   }
 
 
@@ -173,16 +229,17 @@ function BlackfynnManager() {
       })
     })
   
-    _this.initialiseBlackfynnPanel()
+  
   }
 
   this.updateSize = function(){
-    var blackfynn_panel = document.getElementById('blackfynn-panel')
-    var dataset_div = document.getElementById('dataset_div')
+    var blackfynn_panel = parentDiv
+    var dataset_div = parentDiv.querySelector('#dataset_div')
     var chart_height = blackfynn_panel.clientHeight - dataset_div.offsetHeight
 
     plot.resizePlot(blackfynn_panel.clientWidth, chart_height)
   }
+  _this.initialiseBlackfynnPanel()
   initialiseObject()
 
 }
