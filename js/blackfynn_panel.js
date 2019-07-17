@@ -112,13 +112,15 @@ function BlackfynnManager(targetDiv = undefined) {
         headers.shift()
         if (state.plotAll) {
           _this.plotAll()
-        }
-        if( headers.length < 50){ 
-          ui.createDatGuiDropdown(headers, checkBoxCall)
         } else {
-          ui.createSelectDropdown(headers)
-          parentDiv.querySelector('#select_channel').onchange = csvChannelCall
+          if( headers.length < 50){ 
+            ui.createDatGuiDropdown(headers, checkBoxCall)
+          } else {
+            ui.createSelectDropdown(headers)
+            parentDiv.querySelector('#select_channel').onchange = csvChannelCall
+          }
         }
+
         resolve()
       })
     })
@@ -129,6 +131,7 @@ function BlackfynnManager(targetDiv = undefined) {
     ui.hideSelector()
     ui.hideDatGui()
     _this.updateSize()   
+    state.plotAll = true
   }
 
   this.setSubplotsFlag = function(flag){
@@ -146,6 +149,13 @@ function BlackfynnManager(targetDiv = undefined) {
     var channelName = csv.getHeaderByIndex(index)
     plot.addDataSeriesToChart(csv.getColoumnByIndex(index), csv.getColoumnByIndex(0), channelName)
     state.selectedChannels.push(channelName)
+  }
+
+  this.plotByNamePromise = function(channelName){
+    return new Promise(function(resolve, reject) {
+      plot.addDataSeriesToChart(csv.getColoumnByName(channelName), csv.getColoumnByIndex(0), channelName)
+      resolve()
+    })
   }
 
   this.plotByName = function(channelName){
@@ -177,14 +187,23 @@ function BlackfynnManager(targetDiv = undefined) {
         plot.plotType = state.plotType
         plot.subplots = state.subplots
         if (!state.plotAll) {
-          for (let i in state.selectedChannels){
-            _this.plotByName(state.selectedChannels[i])
-          }
+          plotStateChannels(state.selectedChannels)
         }
         resolve()
       })
     })
     
+  }
+
+  var plotStateChannels = function(channels){
+    _this.plotByNamePromise(channels[0]).then(_ => {
+      for (let i = 0; i <channels.length; i++){
+        if (i === 0){
+          continue
+        }
+        _this.plotByNamePromise(channels[i])
+      }
+    })
   }
 
 
