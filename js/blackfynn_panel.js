@@ -56,7 +56,7 @@ function BlackfynnManager(targetDiv) {
     bc = new BroadcastChannel.default(name)
   }
 
-  var sendChannelMessage = function(message){
+  this.sendChannelMessage = function(message){
     bc.postMessage(message)
   }
 
@@ -213,6 +213,26 @@ function BlackfynnManager(targetDiv) {
         }
       }
     }
+  }
+
+  this.listenOn = function(name){
+    _this.bc2 = new BroadcastChannel.default(name)
+    _this.bc2.onmessage = (ev) => processResults(ev)
+  }
+
+  var processResults = function(event){
+    data = JSON.parse(event.data.data)
+    sampleRate = data.sampleRate
+    ydata = data.y
+    xaxis = []
+    for (let i = 0; i < ydata.length; i++){
+      xaxis.push(i*sampleRate)
+    }
+    plot.addDataSeriesToChart(ydata, xaxis, 'results')
+  }
+
+  this.initialiseForSim = function(){
+    ui.createSimDatGui()
   }
 
 

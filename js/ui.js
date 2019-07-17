@@ -78,6 +78,31 @@ function UI (parentDiv) {
     }
   }
 
+  this.createSimDatGui = function(){
+    if ( gui === undefined){
+      _this.buildDatGui()
+    }
+    _this.hideSelector()
+    _this.showDatGui()
+    gui.add(simGui, 'Slider', 0, 50)
+    gui.add(simGui, 'Parameter A')
+    gui.add(simGui, 'Parameter B')
+    gui.add(simGui, 'Parameter C')
+    gui.add(simGui, 'Run Simulation')
+  }
+
+  var simGui = {
+    Slider: 50,
+    'Parameter A': false,
+    'Parameter B': false,
+    'Parameter C': false,
+    'Run Simulation': () => simRun()
+  }
+
+  var simRun = function(){
+    console.log('running simulation with parameters', simGui.Slider, simGui['Parameter A'], simGui['Parameter B'])
+  }
+
   this.createDatGuiDropdown = function (channels, onchangeFunc) {
     _this.buildDatGui()
     _this.hideSelector()
