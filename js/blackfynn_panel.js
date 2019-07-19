@@ -86,6 +86,7 @@ function BlackfynnManager(targetDiv) {
       csv.loadFile(url).then( _ =>{
         _this.setDataType(csv.getDataType())
         ui.showSelector()
+        ui.buildDatGui(exportObject)
         var headers = [...csv.getHeaders()]
         headers.shift()
         if (state.plotAll) {
@@ -104,11 +105,21 @@ function BlackfynnManager(targetDiv) {
     })
   }
 
+  var exportObject = {      
+    'Export as CSV': () => csv.export(state),
+    'Open in OpenCOR': () => csv.exportForOpenCOR(state) 
+  }
+
+
+
+
+
   var openCSVfromState = function(url){
     return new Promise(function(resolve, reject){
       csv.loadFile(url).then( _ =>{
         _this.setDataType(csv.getDataType())
         ui.showSelector()
+        ui.buildDatGui(exportObject)
         var headers = [...csv.getHeaders()]
         headers.shift()
         if (state.plotAll) {
@@ -180,6 +191,10 @@ function BlackfynnManager(targetDiv) {
     csv.export(state)
   }
 
+  this.exportToOpenCOR = function(){
+    csv.exportToOpenCOR(state)
+  }
+
   this.loadState = function(jsonString){
     return new Promise(function(resolve, reject){
       _this.clearChart()
@@ -193,7 +208,6 @@ function BlackfynnManager(targetDiv) {
         resolve()
       })
     })
-    
   }
 
   var plotStateChannels = function(channels){

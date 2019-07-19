@@ -78,7 +78,7 @@ function CsvManager() {
     })
   }
 
-  this.exportForOpenCor = function(){
+  this.exportForOpenCOR = function(state){
     var headerList = []
     var data 
     var selectedData = []
@@ -182,7 +182,6 @@ function CsvManager() {
     }
 
   }
-
 }
 
 

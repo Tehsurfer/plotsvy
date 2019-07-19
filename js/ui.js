@@ -16,7 +16,7 @@ function UI (parentDiv) {
   var checkboxes = []
   _this.checkboxElements = []
 
-  this.buildDatGui = function(){
+  this.buildDatGui = function(exportObj){
     if (gui !== undefined){
       return
     }
@@ -24,8 +24,12 @@ function UI (parentDiv) {
     gui.domElement.id = 'gui'
     gui.close()
     parentDiv.querySelector('.dat-gui-container').appendChild(gui.domElement)
+    gui.add(exportObj, 'Export as CSV')
+    gui.add(exportObj, 'Open in OpenCOR')
     folder = gui.addFolder('Channels')
   }
+
+ 
   
   var clearSelect = function (select) { 
     if (select.options !== undefined){
@@ -104,7 +108,6 @@ function UI (parentDiv) {
   }
 
   this.createDatGuiDropdown = function (channels, onchangeFunc) {
-    _this.buildDatGui()
     _this.hideSelector()
     _this.showDatGui()
     _this.channels = [...channels]
