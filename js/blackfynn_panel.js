@@ -5,7 +5,6 @@
 require('.././node_modules/select2/dist/css/select2.min.css')
 require('.././css/main.css')
 require('.././css/util.css')
-require('.././css/dat-gui-swec.css')
 const UI = require('./ui.js')
 const PlotManager = require('./plot_manager.js')
 const CsvManager = require('./csv_manager.js')
