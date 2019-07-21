@@ -146,12 +146,14 @@ function PlotManager(parentDiv) {
 
   this.plotAll = function(data){
     var dataTraces = processDataMatrix(data)
-    _this.plot = Plotly.react(chartDiv, dataTraces, getLayout())     
+    _this.plot = Plotly.react(chartDiv, dataTraces, getLayout())  
+    _this.plot = undefined   
   }
 
   this.resizePlot = function( width, height ){
     if (_this.plot === undefined){
       _this.plot = Plotly.react(chartDiv)
+      _this.plot = undefined
     }
     Plotly.relayout(chartDiv, {
       width: width,

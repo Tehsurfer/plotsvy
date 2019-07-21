@@ -116,20 +116,25 @@ function BlackfynnManager(targetDiv) {
 
   var openCSVfromState = function(url){
     return new Promise(function(resolve, reject){
+      if (url === undefined){
+        console.log('Error! Not loading any data into chart!')
+        reject()
+      }
       csv.loadFile(url).then( _ =>{
         _this.setDataType(csv.getDataType())
         ui.showSelector()
-        ui.buildDatGui(exportObject)
         var headers = [...csv.getHeaders()]
         headers.shift()
         if (state.plotAll) {
           _this.plotAll()
         } else {
           if( headers.length < 100){ 
+            ui.buildDatGui(exportObject)
             ui.createDatGuiDropdown(headers, checkBoxCall)
           } else {
             ui.createSelectDropdown(headers)
             parentDiv.querySelector('#select_channel').onchange = csvChannelCall
+            ui.buildDatGui(exportObject)
           }
         }
 
@@ -202,7 +207,7 @@ function BlackfynnManager(targetDiv) {
       openCSVfromState(state.csvURL).then( _ => {
         plot.plotType = state.plotType
         plot.subplots = state.subplots
-        if (!state.plotAll) {
+        if (!state.plotAll && state.selectedChannels !== undefined) {
           plotStateChannels(state.selectedChannels)
         }
         resolve()

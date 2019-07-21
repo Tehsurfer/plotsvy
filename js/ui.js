@@ -60,7 +60,7 @@ function UI (parentDiv) {
 
   // CreateChannelDropdown populates a dropdown box for the user to select a channel
   this.createSelectDropdown = function (channelsIn) {
-    _this.hideDatGui()
+    // _this.hideDatGui()
     _this.showSelector()
     var select, option
     select = parentDiv.querySelector('#select_channel')
