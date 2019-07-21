@@ -8,11 +8,21 @@ function StateManager(parentDiv) {
 
   this.loadFromJSON = function (jsonString) {
     var loadedState = JSON.parse(jsonString)
-    this.selectedChannels = loadedState.selectedChannels
-    this.csvURL = loadedState.csvURL
-    this.subplots = loadedState.subplots
-    this.plotAll = loadedState.plotAll
-    this.plotType = loadedState.plotType
+    if (loadedState.selectedChannels !== undefined){
+      this.selectedChannels = loadedState.selectedChannels
+    }
+    if (loadedState.csvURL !== undefined){
+      this.csvURL = loadedState.csvURL
+    }
+    if (loadedState.subplots !== undefined){
+      this.subplots = loadedState.subplots
+    }
+    if (loadedState.plotAll !== undefined){
+      this.plotAll = loadedState.plotAll
+    }
+    if (loadedState.plotType !== undefined){
+      this.plotType = loadedState.plotType
+    }
   }
 }
 module.exports = StateManager

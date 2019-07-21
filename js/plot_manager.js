@@ -152,8 +152,8 @@ function PlotManager(parentDiv) {
 
   this.resizePlot = function( width, height ){
     if (_this.plot === undefined){
-      _this.plot = Plotly.react(chartDiv)
-      _this.plot = undefined
+      console.log('No chart available to resize! Resize cancelled')
+      return
     }
     Plotly.relayout(chartDiv, {
       width: width,

@@ -271,11 +271,10 @@ function BlackfynnManager(targetDiv) {
   }
 
   this.updateSize = function(){
-    var blackfynn_panel = parentDiv
     var dataset_div = parentDiv.querySelector('#dataset_div')
-    var chart_height = blackfynn_panel.clientHeight - dataset_div.offsetHeight
+    var chart_height = parentDiv.clientHeight - dataset_div.offsetHeight
 
-    plot.resizePlot(blackfynn_panel.clientWidth, chart_height)
+    plot.resizePlot(parentDiv.clientWidth, chart_height)
   }
   _this.initialiseBlackfynnPanel()
   initialiseObject()
