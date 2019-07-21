@@ -3,8 +3,9 @@
   top: 0;
   left: 0;
   right: 0;
+  width: 5%;
   height: 95%;
-  z-index: 5;
+  z-index: 3;
 }
 
 @font-face {
@@ -48,8 +49,8 @@ fontawesome-webfont.woff
   position: relative;
 }
 
-.wrap-data100 {
-  width: 90%;
+.wrap-data48 {
+  width: 48%;
   background: #fff;
   border-radius: 10px;
   position: relative;
