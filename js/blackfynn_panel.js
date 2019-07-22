@@ -2,7 +2,7 @@
 * BlackfynnPanel is used for making calls to blackfynn to collect timeseries data and plot it using plotly
 */
 
-require('.././node_modules/select2/dist/css/select2.min.css')
+require('select2/dist/css/select2.min.css')
 require('.././css/main.css')
 require('.././css/util.css')
 const UI = require('./ui.js')
@@ -206,7 +206,7 @@ function BlackfynnManager(targetDiv) {
       openCSVfromState(state.csvURL).then( _ => {
         plot.plotType = state.plotType
         plot.subplots = state.subplots
-        if (!state.plotAll && state.selectedChannels !== undefined) {
+        if (!state.plotAll && state.selectedChannels !== undefined && state.selectedChannels === []) {
           plotStateChannels(state.selectedChannels)
         }
         resolve()
@@ -255,17 +255,18 @@ function BlackfynnManager(targetDiv) {
 
 
   var initialiseObject = function(){
-    $('.js-select2').each(function () {
-      $(this).select2({
-        minimumResultsForSearch: 20
-      })
+    setTimeout(
       $('.js-select2').each(function () {
-        $(this).on('select2:close', function (e) {
-          $('.js-show-service').slideUp()
-          $('.js-show-service').slideDown()
+        $(this).select2({
+          minimumResultsForSearch: 20
         })
-      })
-    })
+        $('.js-select2').each(function () {
+          $(this).on('select2:close', function (e) {
+            $('.js-show-service').slideUp()
+            $('.js-show-service').slideDown()
+          })
+        })
+      }), 2000)
   
   
   }
