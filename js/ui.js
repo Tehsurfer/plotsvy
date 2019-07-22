@@ -26,7 +26,7 @@ function UI (parentDiv) {
     parentDiv.querySelector('.dat-gui-container').appendChild(gui.domElement)
     gui.add(exportObj, 'Export as CSV')
     gui.add(exportObj, 'Open in OpenCOR')
-    folder = gui.addFolder('Channels')
+    
   }
 
  
@@ -111,6 +111,7 @@ function UI (parentDiv) {
     _this.hideSelector()
     _this.showDatGui()
     _this.channels = [...channels]
+    folder = gui.addFolder('Channels')
     if (channels[0].toLowerCase().includes('time')){
       channels.shift()
     }
