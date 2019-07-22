@@ -41,7 +41,6 @@
     "file-loader": "^1.1.11",
     "html-loader": "^0.5.5",
     "ify-loader": "^1.1.0",
-    "jquery": "^3.4.0",
     "perfect-scrollbar": "^1.4.0",
     "popper.js": "^1.14.7",
     "raw-loader": "^0.5.1",
@@ -56,6 +55,7 @@
   },
   "dependencies": {
     "plotly.js": "^1.48.3",
+    "jquery": "^3.4.0",
     "select2": "^4.0.6-rc.1",
     "broadcast-channel": "^2.1.12",
     "dat.gui": "^0.7.6",
