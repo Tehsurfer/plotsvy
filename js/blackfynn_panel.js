@@ -206,9 +206,14 @@ function BlackfynnManager(targetDiv) {
       openCSVfromState(state.csvURL).then( _ => {
         plot.plotType = state.plotType
         plot.subplots = state.subplots
-        if (!state.plotAll && state.selectedChannels !== undefined && state.selectedChannels === []) {
-          plotStateChannels(state.selectedChannels)
+        if (state.selectedChannels !== undefined){
+          if (state.length > 0){
+            if (!state.plotAll) {
+              plotStateChannels(state.selectedChannels)
+            }
+          }
         }
+
         resolve()
       })
     })
@@ -255,7 +260,7 @@ function BlackfynnManager(targetDiv) {
 
 
   var initialiseObject = function(){
-    setTimeout(
+    setTimeout(function(){
       $('.js-select2').each(function () {
         $(this).select2({
           minimumResultsForSearch: 20
@@ -266,7 +271,8 @@ function BlackfynnManager(targetDiv) {
             $('.js-show-service').slideDown()
           })
         })
-      }), 2000)
+      })
+    }, 2000)
   
   
   }
