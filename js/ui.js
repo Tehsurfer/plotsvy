@@ -1,6 +1,9 @@
 // login creates logs a user in on the backend with given API keys
-var $ = require('jquery')
 const dat = require('dat.gui');
+const Choices = require('choices.js')
+require('choices.js/public/assets/styles/choices.css')
+require('.././css/main.css')
+require('.././css/util.css')
 
 function UI (parentDiv) {
   // parentDiv.querySelector('#dataset_div').style.display = 'none'
@@ -80,6 +83,7 @@ function UI (parentDiv) {
       option.value = option.text = channels[i]
       select.add(option)
     }
+    var choice = new Choices(select)
   }
 
   this.createSimDatGui = function(){

@@ -8,16 +8,12 @@
   z-index: 3;
 }
 
-@font-face {
-  font-family: Ubuntu-Regular;
-  src: url('../fonts/ubuntu_regular-webfont.woff') format('woff'); 
-}
 
-@font-face {
-  font-family: Ubuntu-Bold;
-  src: url('../fonts/ubuntu-bold-webfont.woff') format('woff'); 
-}
-fontawesome-webfont.woff
+font-family: Ubuntu-Regular;
+
+
+
+
 
 .limiter {
   width: 100%;
@@ -63,7 +59,7 @@ fontawesome-webfont.woff
 }
 
 .login100-form-title {
-  font-family: Ubuntu-Bold;
+  font-family: Ubuntu;
   font-size: 30px;
   color: #403866;
   line-height: 1.2;
@@ -72,17 +68,18 @@ fontawesome-webfont.woff
 
   width: 100%;
   display: block;
+  margin-bottom: 0 !important;
 }
 
 
 
-.select2-container {
+.choices {
   display: block;
   max-width: 100% !important;
   width: auto !important;
 }
 
-.select2-container .select2-selection--single {
+.choices__list .choices__list--single {
   display: -webkit-box;
   display: -webkit-flex;
   display: -moz-box;
@@ -94,12 +91,16 @@ fontawesome-webfont.woff
   height: 40px;
   outline: none;
   position: relative;
-  left: -40px;
+}
+.choices[data-type*="select-one"]:after {
+  top: 8%;
 }
 
 
+
+
 .select2-container .select2-selection--single .select2-selection__rendered {
-  font-family: Ubuntu-Bold;
+  font-family: Ubuntu;
   font-size: 18px;
   color: #555555;
   line-height: 1.2;
@@ -135,15 +136,20 @@ fontawesome-webfont.woff
   color: #555555;
 }
 
+.choices__list--dropdown{
+  border-radius: 10px;
+  overflow: hidden;
+  background-color:  rgba(171, 171, 189, 1);
+}
 
-.select2-container--open .select2-dropdown {
+
+.choices__list--dropdown .is-active {
   z-index: 1251;
   width: calc(100% + 2px);
   border: 0px solid transparent;
   border-radius: 10px;
   overflow: hidden;
   background-color:  rgba(171, 171, 189, 1);
-  left: -40px;
 
   box-shadow: 0 3px 10px 0px rgba(0, 0, 0, 0.2);
   -moz-box-shadow: 0 3px 10px 0px rgba(0, 0, 0, 0.2);
@@ -183,21 +189,73 @@ fontawesome-webfont.woff
   color: white;
 }
 
-.select2-results__options {
-  font-family: Ubuntu-Bold;
+.choices[data-type*="select-one"].is-open:after{
+  display: none
+}
+
+.choices__inner {
+  padding: 0px !important;
+  border-radius: 10px !important;
+  display: -webkit-box !important;
+  display: -webkit-flex !important;
+  display: -moz-box !important;
+  display: -ms-flexbox !important;
+  display: flex !important;
+  align-items: center;
+  background-color: rgba(171, 171, 189, 0.233);
+  border: none;
+  height: 40px !important;
+  outline: none;
+  position: relative;
+  min-width: 40px !important;
+}
+
+.choices {
+  font-family: Ubuntu;
   font-size: 14px;
   color: #555555;
   line-height: 1.2;
 }
 
+.choices__input {
+  font-family: Ubuntu;
+  font-size: 14px;
+  color: #555555;
+}
+
+.choices__list--dropdown .choices__item--selectable.is-highlighted {
+  background-color: #d28b8b82;
+}
+
+.choices__list--dropdown{
+  width: calc(100% + 2px);
+  border: 0px solid transparent;
+  border-radius: 10px !important;
+  overflow: hidden;
+  background-color:  rgba(171, 171, 189, 1);
+  top: 0% !important;
+
+  box-shadow: 0 3px 10px 0px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: 0 3px 10px 0px rgba(0, 0, 0, 0.2);
+  -webkit-box-shadow: 0 3px 10px 0px rgba(0, 0, 0, 0.2);
+  -o-box-shadow: 0 3px 10px 0px rgba(0, 0, 0, 0.2);
+  -ms-box-shadow: 0 3px 10px 0px rgba(0, 0, 0, 0.2);
+}
+
+
 .select2-search--dropdown .select2-search__field {
   border: 1px solid #aaa;
   outline: none;
-  font-family: Ubuntu-Bold;
+  font-family: Ubuntu;
   font-size: 15px;
   color: #333333;
   line-height: 1.2;
 }
+.choices[data-type*="select-one"]:after {
+  right: 10% !important;
+}
+
+
 
 .wrap-input100 .dropDownSelect2 .select2-container--open {
   width: 100% !important;

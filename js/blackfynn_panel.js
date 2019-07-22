@@ -11,7 +11,7 @@ const CsvManager = require('./csv_manager.js')
 const StateManager = require('./state_manager.js')
 const BroadcastChannel = require('broadcast-channel')
 var $ = require('jquery')
-require('select2')
+
 
 
 // Need to load select2 and blackfynnManger once the DOM is ready
@@ -260,21 +260,7 @@ function BlackfynnManager(targetDiv) {
 
 
   var initialiseObject = function(){
-    setTimeout(function(){
-      $('.js-select2').each(function () {
-        $(this).select2({
-          minimumResultsForSearch: 20
-        })
-        $('.js-select2').each(function () {
-          $(this).on('select2:close', function (e) {
-            $('.js-show-service').slideUp()
-            $('.js-show-service').slideDown()
-          })
-        })
-      })
-    }, 2000)
-  
-  
+
   }
 
   this.updateSize = function(){
