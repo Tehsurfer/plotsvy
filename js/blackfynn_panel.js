@@ -99,6 +99,11 @@ function BlackfynnManager(targetDiv) {
         }
         state.csvURL = url
         state.selectedChannels = []
+        if (!state.plotAll){
+          _this.plotByIndex(1)
+          _this.updateSize() 
+        }
+
         resolve()
       })
     })
@@ -106,8 +111,11 @@ function BlackfynnManager(targetDiv) {
 
   var exportObject = {      
     'Export as CSV': () => csv.export(state),
-    'Open in OpenCOR': () => csv.exportForOpenCOR(state) 
+    'Open in OpenCOR': () => csv.exportForOpenCOR(state),
+    'Show All': () => _this.plotAll(),
+    'Hide All': () => _this.hideAll()
   }
+
 
 
 
@@ -135,8 +143,12 @@ function BlackfynnManager(targetDiv) {
             parentDiv.querySelector('#select_channel').onchange = csvChannelCall
             ui.buildDatGui(exportObject)
           }
+          if (!state.plotAll){
+            _this.plotByIndex(1)
+            _this.updateSize() 
+          }
         }
-
+        
         resolve()
       })
     })
@@ -145,9 +157,15 @@ function BlackfynnManager(targetDiv) {
   this.plotAll = function(){
     plot.plotAll(csv.getAllData())
     ui.hideSelector()
-    ui.hideDatGui()
-    _this.updateSize()   
+    setTimeout( _this.updateSize, 1000)   
     state.plotAll = true
+  }
+
+  this.hideAll = function(){
+    _this.clearChart()
+    _this.plotByIndex(1)
+    _this.updateSize()   
+    state.plotAll = false
   }
 
   this.setSubplotsFlag = function(flag){

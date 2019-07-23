@@ -27,9 +27,10 @@ function UI (parentDiv) {
     gui.domElement.id = 'gui'
     gui.close()
     parentDiv.querySelector('.dat-gui-container').appendChild(gui.domElement)
+    gui.add(exportObj, 'Show All')
+    gui.add(exportObj, 'Hide All')
     gui.add(exportObj, 'Export as CSV')
-    gui.add(exportObj, 'Open in OpenCOR')
-    
+    gui.add(exportObj, 'Open in OpenCOR') 
   }
 
  
