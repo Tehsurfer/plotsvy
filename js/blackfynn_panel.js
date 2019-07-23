@@ -10,7 +10,6 @@ const PlotManager = require('./plot_manager.js')
 const CsvManager = require('./csv_manager.js')
 const StateManager = require('./state_manager.js')
 const BroadcastChannel = require('broadcast-channel')
-var $ = require('jquery')
 
 
 
@@ -60,7 +59,7 @@ function BlackfynnManager(targetDiv) {
   }
 
   var csvChannelCall = function(){
-    var selectedChannel = $('#select_channel :selected').text()
+    var selectedChannel = parentDiv.querySelector('#select_channel').textContent
     plot.addDataSeriesToChart(csv.getColoumnByName(selectedChannel),csv.getColoumnByIndex(0), selectedChannel)
     state.selectedChannels.push(selectedChannel)
     bc.postMessage({'state': _this.exportStateAsString()})
@@ -101,9 +100,9 @@ function BlackfynnManager(targetDiv) {
         state.selectedChannels = []
         if (!state.plotAll){
           _this.plotByIndex(1)
-          _this.updateSize() 
+          setTimeout(_this.updateSize, 800) 
         }
-
+        setTimeout( () => bc.postMessage({'state': _this.exportStateAsString()}), 800)
         resolve()
       })
     })
