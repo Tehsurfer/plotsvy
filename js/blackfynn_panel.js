@@ -143,7 +143,7 @@ function BlackfynnManager(targetDiv) {
             parentDiv.querySelector('#select_channel').onchange = csvChannelCall
             ui.buildDatGui(exportObject)
           }
-          if (!state.plotAll){
+          if (!state.plotAll && state.selectedChannels.length === 0){
             _this.plotByIndex(1)
             _this.updateSize() 
           }
@@ -157,14 +157,25 @@ function BlackfynnManager(targetDiv) {
   this.plotAll = function(){
     plot.plotAll(csv.getAllData())
     ui.hideSelector()
-    setTimeout( _this.updateSize, 1000)   
+    if (csv.getHeaders().length < 100){  
+      for (let i in ui.checkboxElements){
+          ui.checkboxElements[i].__checkbox.checked = true
+      } 
+    }
+
+    setTimeout( _this.updateSize, 1000)
     state.plotAll = true
   }
 
   this.hideAll = function(){
     _this.clearChart()
     _this.plotByIndex(1)
-    _this.updateSize()   
+    if (csv.getHeaders().length > 100){
+      ui.showSelector()
+    } else {
+      ui.checkboxElements[0].__checkbox.checked = true
+    }
+    setTimeout( _this.updateSize, 1000)     
     state.plotAll = false
   }
 
@@ -225,7 +236,7 @@ function BlackfynnManager(targetDiv) {
         plot.plotType = state.plotType
         plot.subplots = state.subplots
         if (state.selectedChannels !== undefined){
-          if (state.length > 0){
+          if (state.selectedChannels.length > 0){
             if (!state.plotAll) {
               plotStateChannels(state.selectedChannels)
             }

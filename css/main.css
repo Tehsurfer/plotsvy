@@ -252,7 +252,7 @@ font-family: Ubuntu-Regular;
   line-height: 1.2;
 }
 .choices[data-type*="select-one"]:after {
-  right: 10% !important;
+  right: 5% !important;
 }
 
 

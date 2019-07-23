@@ -18,6 +18,7 @@ function UI (parentDiv) {
   var settings = {}
   var checkboxes = []
   _this.checkboxElements = []
+  _this.choice = undefined
 
   this.buildDatGui = function(exportObj){
     if (gui !== undefined){
@@ -84,7 +85,9 @@ function UI (parentDiv) {
       option.value = option.text = channels[i]
       select.add(option)
     }
-    var choice = new Choices(select)
+    if (_this.choice === undefined){
+      _this.choice = new Choices(select)
+    }
   }
 
   this.createSimDatGui = function(){
