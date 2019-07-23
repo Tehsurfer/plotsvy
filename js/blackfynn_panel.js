@@ -2,7 +2,6 @@
 * BlackfynnPanel is used for making calls to blackfynn to collect timeseries data and plot it using plotly
 */
 
-require('select2/dist/css/select2.min.css')
 require('.././css/main.css')
 require('.././css/util.css')
 const UI = require('./ui.js')

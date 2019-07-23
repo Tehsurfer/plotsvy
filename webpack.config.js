@@ -33,17 +33,7 @@ module.exports = {
       {
         test: /node_modules/,
         loader: 'ify-loader'
-      },
-      {
-        test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
-        use: [{
-          loader: 'file-loader',
-          options: {
-            name: '[name].[ext]',
-            outputPath: './fonts/' // direct to the fonts folder
-          }
-        }]
-      }
+      }      
     ]
   },
   plugins: [
@@ -53,11 +43,5 @@ module.exports = {
         compress: true
       }
     }),
-    new webpack.ProvidePlugin({
-      $: "jquery",
-      jQuery: "jquery",
-      "window.jQuery": "jquery",
-      "window.$": "jquery"
-    })
   ]
 };

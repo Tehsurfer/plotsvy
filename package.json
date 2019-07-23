@@ -58,9 +58,7 @@
     "broadcast-channel": "^2.1.12",
     "choices.js": "^7.0.0",
     "dat.gui": "^0.7.6",
-    "jquery": "^3.4.0",
     "papaparse": "^4.6.3",
-    "plotly.js": "^1.48.3",
-    "select2": "^4.0.6-rc.1"
+    "plotly.js": "^1.48.3"
   }
 }
