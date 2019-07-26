@@ -1,3 +1,5 @@
+const BroadcastChannel = require('broadcast-channel')
+
 function SimProcessor(parentDiv, plot) {
   _this = this
   _this.plot = plot
@@ -11,7 +13,8 @@ function SimProcessor(parentDiv, plot) {
   }
 
   var processResults = function(results){
-    var data = results.data.data
+    console.log(results)
+    var data = results.data
     var y = data.y
     var sampleRate = data.sampleRate
     var heartRate = data.heartRate
@@ -24,8 +27,9 @@ function SimProcessor(parentDiv, plot) {
       'x': x,
       'heartRate': heartRate
     }
+    parentDiv.querySelector('#heart_rate').innerText += heartRate
     plot.addDataSeriesToChart(y, x, 'Sim Results')
   }
 }
 
-exports.SimProcessor = SimProcessor
+module.exports = SimProcessor

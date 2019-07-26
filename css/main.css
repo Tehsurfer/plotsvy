@@ -71,6 +71,19 @@ font-family: Ubuntu-Regular;
   margin-bottom: 0 !important;
 }
 
+.heart-rate {
+  font-family: Ubuntu;
+  font-size: 14px;
+  color: #403866;
+  line-height: 1.2;
+  text-transform: uppercase;
+  text-align: center;
+
+  width: 100%;
+  visibility: hidden;
+  margin-bottom: 5;
+}
+
 
 
 .choices {

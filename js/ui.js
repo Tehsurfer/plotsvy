@@ -90,9 +90,9 @@ function UI (parentDiv) {
     }
   }
 
-  this.createSimDatGui = function(){
+  this.createSimDatGui = function(exportObj){
     if ( gui === undefined){
-      _this.buildDatGui()
+      _this.buildDatGui(exportObj)
     }
     _this.hideSelector()
     _this.showDatGui()
@@ -112,6 +112,8 @@ function UI (parentDiv) {
   }
 
   var simRun = function(){
+    heartDiv = document.createElement('Div')
+    parentDiv.querySelector("#heart-rate").style.visibility = 'visible'
     console.log('running simulation with parameters', simGui.Slider, simGui['Parameter A'], simGui['Parameter B'])
   }
 

@@ -7,6 +7,7 @@ require('.././css/util.css')
 const UI = require('./ui.js')
 const PlotManager = require('./plot_manager.js')
 const CsvManager = require('./csv_manager.js')
+const SimProcessor = require('./sim_processor.js')
 const StateManager = require('./state_manager.js')
 const BroadcastChannel = require('broadcast-channel')
 
@@ -31,6 +32,7 @@ function BlackfynnManager(targetDiv) {
   var multiplot = false
   var bc = new BroadcastChannel.default('plot_channel')
   _this.plot = plot
+  _this.sim = undefined
 
   if (targetDiv === null || targetDiv === undefined){
     parentDiv = document.getElementById('blackfynn-panel')
@@ -46,6 +48,7 @@ function BlackfynnManager(targetDiv) {
     csv = new CsvManager()
     _this.csv = csv
     state = new StateManager(parentDiv)
+    _this.sim = new SimProcessor(parentDiv, plot)
   }
 
   this.openBroadcastChannel = function(name){
@@ -113,7 +116,6 @@ function BlackfynnManager(targetDiv) {
     'Show All': () => _this.plotAll(),
     'Hide All': () => _this.hideAll()
   }
-
 
 
 
@@ -282,7 +284,7 @@ function BlackfynnManager(targetDiv) {
   }
 
   this.initialiseForSim = function(){
-    ui.createSimDatGui()
+    ui.createSimDatGui(exportObject)
   }
 
 

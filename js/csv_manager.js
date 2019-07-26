@@ -8,7 +8,7 @@ function CsvManager() {
 
   this.loadFile = function (file_url) {
     return new Promise(function(resolve, reject){
-      $.get(file_url).then((response) => {
+      fetch(file_url).then((response) => {
         _this.csv_data = Papa.parse(response)
         resolve()
       });
