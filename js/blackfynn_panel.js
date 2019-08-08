@@ -114,7 +114,8 @@ function BlackfynnManager(targetDiv) {
     'Export as CSV': () => csv.export(state),
     'Open in OpenCOR': () => csv.exportForOpenCOR(state),
     'Show All': () => _this.plotAll(),
-    'Hide All': () => _this.hideAll()
+    'Hide All': () => _this.hideAll(),
+    'Switch Axes': () => _this.switchAxes()
   }
 
 
@@ -128,30 +129,33 @@ function BlackfynnManager(targetDiv) {
         reject()
       }
       csv.loadFile(url).then( _ =>{
-        _this.setDataType(csv.getDataType())
-        ui.showSelector()
-        var headers = [...csv.getHeaders()]
-        headers.shift()
-        if (state.plotAll) {
-          _this.plotAll()
-        } else {
-          if( headers.length < 100){ 
-            ui.buildDatGui(exportObject)
-            ui.createDatGuiDropdown(headers, checkBoxCall)
-          } else {
-            ui.createSelectDropdown(headers)
-            parentDiv.querySelector('#select_channel').onchange = csvChannelCall
-            ui.buildDatGui(exportObject)
-          }
-          if (!state.plotAll && state.selectedChannels.length === 0){
-            _this.plotByIndex(1)
-            _this.updateSize() 
-          }
-        }
-        
+        setup()        
         resolve()
       })
     })
+  }
+
+  var setup = function () {
+    _this.setDataType(csv.getDataType())
+    ui.showSelector()
+    var headers = [...csv.getHeaders()]
+    headers.shift()
+    if (state.plotAll) {
+      _this.plotAll()
+    } else {
+      if( headers.length < 100){ 
+        ui.buildDatGui(exportObject)
+        ui.createDatGuiDropdown(headers, checkBoxCall)
+      } else {
+        ui.createSelectDropdown(headers)
+        parentDiv.querySelector('#select_channel').onchange = csvChannelCall
+        ui.buildDatGui(exportObject)
+      }
+      if (!state.plotAll && state.selectedChannels.length === 0){
+        _this.plotByIndex(1)
+        _this.updateSize() 
+      }
+    }
   }
 
   this.plotAll = function(){
@@ -210,6 +214,13 @@ function BlackfynnManager(targetDiv) {
 
   this.clearChart = function(){
     plot.resetChart()
+    state.selectedChannels = []
+  }
+
+  this.switchAxes = function () {
+    _this.clearChart()
+    csv.transposeSelf()
+    setup()
   }
 
   this.exportStateAsString = function(){

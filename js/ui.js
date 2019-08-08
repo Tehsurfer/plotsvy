@@ -30,6 +30,7 @@ function UI (parentDiv) {
     parentDiv.querySelector('.dat-gui-container').appendChild(gui.domElement)
     gui.add(exportObj, 'Show All')
     gui.add(exportObj, 'Hide All')
+    gui.add(exportObj, 'Switch Axes')
     gui.add(exportObj, 'Export as CSV')
     gui.add(exportObj, 'Open in OpenCOR') 
   }
@@ -80,14 +81,15 @@ function UI (parentDiv) {
       channels[0] = '-- Select A Sample --'
     }
 
+    if (_this.choice !== undefined){
+      _this.choice.destroy()
+    }
     for (let i in channels) {
       option = document.createElement('option')
       option.value = option.text = channels[i]
       select.add(option)
     }
-    if (_this.choice === undefined){
-      _this.choice = new Choices(select)
-    }
+    _this.choice = new Choices(select)
   }
 
   this.createSimDatGui = function(exportObj){

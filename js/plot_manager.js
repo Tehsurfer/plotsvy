@@ -25,6 +25,8 @@ function PlotManager(parentDiv) {
       Plotly.purge(chartDiv)
       _this.plot = undefined
     }
+    indexList = []
+    
   }
 
   this.addDataSeriesToChart = function (newSeries, xaxis, id) {

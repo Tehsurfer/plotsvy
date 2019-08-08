@@ -10,9 +10,14 @@ function CsvManager() {
     return new Promise(function(resolve, reject){
       $.get(file_url).then((response) => {
         _this.csv_data = Papa.parse(response)
-        resolve()
+        resolve() 
       });
     })
+  }
+
+  this.transposeSelf = function () {
+    var tempData = transpose(_this.csv_data.data)
+    _this.csv_data.data = tempData
   }
 
   this.getDataType = function () {
