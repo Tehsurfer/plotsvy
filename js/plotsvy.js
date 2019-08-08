@@ -1,5 +1,5 @@
 /**
-* BlackfynnPanel is used for making calls to blackfynn to collect timeseries data and plot it using plotly
+* Plotsvy.js is used to manage csv and plotly wrappers
 */
 
 require('.././css/main.css')
@@ -11,29 +11,20 @@ const SimProcessor = require('./sim_processor.js')
 const StateManager = require('./state_manager.js')
 const BroadcastChannel = require('broadcast-channel')
 
-
-
-// Need to load select2 and blackfynnManger once the DOM is ready
-// $(document).ready(function () {
-
-// })
-
-
-// BlackfynnManager(): Manages the HTTP requests to the backend, Tehsurfer/Physiome-Blackfynn-API 
-//                     and drives the plot and ui modules.
-function BlackfynnManager(targetDiv) {
+// Plotsvy:   Manages the interactions between modules.
+//  param: targetDiv - the div container the plot ends up in
+function Plotsvy(targetDiv) {
   var ui = undefined
   var parentDiv = undefined
   var plot = undefined
   var csv = undefined
   var state = undefined
   var _this = this
-  var loggedIn = false
-  var multiplot = false
   var bc = new BroadcastChannel.default('plot_channel')
   _this.plot = plot
   _this.sim = undefined
 
+  // Assume default HTML is used if none is provided
   if (targetDiv === null || targetDiv === undefined){
     parentDiv = document.getElementById('blackfynn-panel')
   } else {
@@ -41,8 +32,8 @@ function BlackfynnManager(targetDiv) {
   }
   
 
-  // initialiseBlackfynnPanel: sets up ui and plot, needs DOM to be loaded
-  this.initialiseBlackfynnPanel = function () {
+  // initialise: sets up ui and plot, needs DOM to be loaded
+  this.initialise = function () {
     ui = new UI(parentDiv)
     plot = new PlotManager(parentDiv)
     csv = new CsvManager()
@@ -60,6 +51,7 @@ function BlackfynnManager(targetDiv) {
     bc.postMessage(message)
   }
 
+  // csvChannelCall: Add trace to plot from the choices.js select box
   var csvChannelCall = function(){
     var selectedChannel = parentDiv.querySelector('#select_channel').textContent
     plot.addDataSeriesToChart(csv.getColoumnByName(selectedChannel),csv.getColoumnByIndex(0), selectedChannel)
@@ -67,15 +59,16 @@ function BlackfynnManager(targetDiv) {
     bc.postMessage({'state': _this.exportStateAsString()})
   }
 
+  // checkBoxCall: Function to pass to dat.gui to add trace to plot
   var checkBoxCall = function(channel, index, flag){
-    if (!flag) {
+    if (!flag) { // Flag lets us know if checkbox was checked before this click
       plot.addDataSeriesFromDatGui(csv.getColoumnByIndex(index), csv.getColoumnByIndex(0), channel, index)
       state.selectedChannels.push(channel)
     }
     else {
       plot.removeSeries(index)
       ch_ind = state.selectedChannels.indexOf(channel)
-      state.selectedChannels.splice( ch_ind, ch_ind + 1)
+      state.selectedChannels.splice( ch_ind, ch_ind + 1) // Remove channel index
     }
     bc.postMessage({'state': _this.exportStateAsString()})
   }
@@ -83,44 +76,13 @@ function BlackfynnManager(targetDiv) {
 
   this.openCSV = function(url){
     return new Promise(function(resolve, reject){
-      csv.loadFile(url).then( _ =>{
-        _this.setDataType(csv.getDataType())
-        ui.showSelector()
-        ui.buildDatGui(exportObject)
-        var headers = [...csv.getHeaders()]
-        headers.shift()
-        if (state.plotAll) {
-          _this.plotAll()
-        }
-        if( headers.length < 100){ 
-          ui.createDatGuiDropdown(headers, checkBoxCall)
-        } else {
-          ui.createSelectDropdown(headers)
-          parentDiv.querySelector('#select_channel').onchange = csvChannelCall
-        }
-        state.csvURL = url
-        state.selectedChannels = []
-        if (!state.plotAll){
-          _this.plotByIndex(1)
-          setTimeout(_this.updateSize, 800) 
-        }
+      csv.loadFile(url).then( _=>{
+        setup()
         setTimeout( () => bc.postMessage({'state': _this.exportStateAsString()}), 800)
         resolve()
       })
     })
   }
-
-  var exportObject = {      
-    'Export as CSV': () => csv.export(state),
-    'Open in OpenCOR': () => csv.exportForOpenCOR(state),
-    'Show All': () => _this.plotAll(),
-    'Hide All': () => _this.hideAll(),
-    'Switch Axes': () => _this.switchAxes()
-  }
-
-
-
-
 
   var openCSVfromState = function(url){
     return new Promise(function(resolve, reject){
@@ -128,13 +90,14 @@ function BlackfynnManager(targetDiv) {
         console.log('Error! Not loading any data into chart!')
         reject()
       }
-      csv.loadFile(url).then( _ =>{
+      csv.loadFile(url).then( _=>{
         setup()        
         resolve()
       })
     })
   }
 
+  // setup: calls UI depending on type of data and plots data depending on state.plotall 
   var setup = function () {
     _this.setDataType(csv.getDataType())
     ui.showSelector()
@@ -153,20 +116,19 @@ function BlackfynnManager(targetDiv) {
       }
       if (!state.plotAll && state.selectedChannels.length === 0){
         _this.plotByIndex(1)
-        _this.updateSize() 
+        setTimeout(_this.updateSize, 500)  
       }
     }
   }
 
   this.plotAll = function(){
-    plot.plotAll(csv.getAllData())
+    plot.plotAll(csv.getAllData()) // plot all
     ui.hideSelector()
     if (csv.getHeaders().length < 100){  
       for (let i in ui.checkboxElements){
-          ui.checkboxElements[i].__checkbox.checked = true
+          ui.checkboxElements[i].__checkbox.checked = true // update dat.gui
       } 
     }
-
     setTimeout( _this.updateSize, 1000)
     state.plotAll = true
   }
@@ -183,16 +145,6 @@ function BlackfynnManager(targetDiv) {
     state.plotAll = false
   }
 
-  this.setSubplotsFlag = function(flag){
-    plot.subplots = flag  
-    state.subplots = flag
-  }
-
-  this.setDataType = function(dataType){
-    plot.plotType = dataType
-    state.plotType = dataType
-    ui.dataType = dataType
-  }
 
   this.plotByIndex = function(index){
     var channelName = csv.getHeaderByIndex(index)
@@ -212,17 +164,6 @@ function BlackfynnManager(targetDiv) {
     state.selectedChannels.push(channelName)
   }
 
-  this.clearChart = function(){
-    plot.resetChart()
-    state.selectedChannels = []
-  }
-
-  this.switchAxes = function () {
-    _this.clearChart()
-    csv.transposeSelf()
-    setup()
-  }
-
   this.exportStateAsString = function(){
     return JSON.stringify(state)
   }
@@ -231,12 +172,16 @@ function BlackfynnManager(targetDiv) {
     return state
   }
 
-  this.exportCSV = function(){
-    csv.export(state)
+
+  this.setSubplotsFlag = function(flag){
+    plot.subplots = flag  
+    state.subplots = flag
   }
 
-  this.exportToOpenCOR = function(){
-    csv.exportToOpenCOR(state)
+  this.setDataType = function(dataType){
+    plot.plotType = dataType
+    state.plotType = dataType
+    ui.dataType = dataType
   }
 
   this.loadState = function(jsonString){
@@ -278,6 +223,8 @@ function BlackfynnManager(targetDiv) {
     }
   }
 
+  // ------------ SIM UI Management ------------------
+
   this.listenOn = function(name){
     _this.bc2 = new BroadcastChannel.default(name)
     _this.bc2.onmessage = (ev) => processResults(ev)
@@ -297,21 +244,41 @@ function BlackfynnManager(targetDiv) {
   this.initialiseForSim = function(){
     ui.createSimDatGui(exportObject)
   }
+  // --------------------------------------------------
 
+  this.clearChart = function(){
+    plot.resetChart()
+    state.selectedChannels = []
+  }
 
-  var initialiseObject = function(){
+  this.switchAxes = function () {
+    _this.clearChart()
+    csv.transposeSelf()
+    setup()
+  }
 
+  this.exportCSV = function(){
+    csv.export(state)
+  }
+
+  this.exportToOpenCOR = function(){
+    csv.exportToOpenCOR(state)
+  }
+  var exportObject = {      
+    'Export as CSV': () => csv.export(state),
+    'Open in OpenCOR': () => csv.exportForOpenCOR(state),
+    'Show All': () => _this.plotAll(),
+    'Hide All': () => _this.hideAll(),
+    'Switch Axes': () => _this.switchAxes()
   }
 
   this.updateSize = function(){
     var dataset_div = parentDiv.querySelector('#dataset_div')
     var chart_height = parentDiv.clientHeight - dataset_div.offsetHeight
-
     plot.resizePlot(parentDiv.clientWidth, chart_height)
   }
-  _this.initialiseBlackfynnPanel()
-  initialiseObject()
 
+  _this.initialise()
 }
 
-exports.BlackfynnManager = BlackfynnManager
+exports.Plotsvy = Plotsvy

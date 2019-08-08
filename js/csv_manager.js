@@ -8,11 +8,12 @@ function CsvManager() {
 
   this.loadFile = function (file_url) {
     return new Promise(function(resolve, reject){
-      $.get(file_url).then((response) => {
-        _this.csv_data = Papa.parse(response)
-        resolve() 
-      });
-    })
+      fetch(file_url).then(response => response.text())
+        .then( data => {
+          _this.csv_data = Papa.parse(data)
+          resolve() 
+        })
+      })
   }
 
   this.transposeSelf = function () {
@@ -101,14 +102,6 @@ function CsvManager() {
       data: data,
       columns: headerList
     })
-  }
-
-  var toObject = function(data){
-    var object = {}
-    for (let i in data[0]){
-      object[data[0][i]] = data.map((row) => { return row[i] })
-    }
-    return [object]
   }
 
   var transpose = function(array){

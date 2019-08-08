@@ -5,13 +5,13 @@ const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 module.exports = {
   mode: "none",
   entry: {
-    "build": "./js/blackfynn_panel.js",
-    "build.min": "./js/blackfynn_panel.js",
+    "build": "./js/plotsvy.js",
+    "build.min": "./js/plotsvy.js",
   },
   output: {
     path: path.resolve(__dirname, 'build'),
     filename: "[name].js",
-    library: 'blackfynn_panel',
+    library: 'plotsvy',
     libraryTarget: 'umd',
     globalObject: 'this'
   },

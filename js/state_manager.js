@@ -1,5 +1,4 @@
 function StateManager(parentDiv) {
-  // this.parentDiv = parentDiv
   this.selectedChannels = []
   this.csvURL = ''
   this.subplots = false
