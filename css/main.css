@@ -8,12 +8,7 @@
   z-index: 3;
 }
 
-
 font-family: Ubuntu-Regular;
-
-
-
-
 
 .limiter {
   width: 100%;
@@ -52,8 +47,6 @@ font-family: Ubuntu-Regular;
   position: relative;
 }
 
-
-
 .login100-form {
   width: 100%;
 }
@@ -84,8 +77,6 @@ font-family: Ubuntu-Regular;
   margin-bottom: 5;
 }
 
-
-
 .choices {
   display: block;
   max-width: 100% !important;
@@ -108,9 +99,6 @@ font-family: Ubuntu-Regular;
 .choices[data-type*="select-one"]:after {
   top: 8%;
 }
-
-
-
 
 .select2-container .select2-selection--single .select2-selection__rendered {
   font-family: Ubuntu;

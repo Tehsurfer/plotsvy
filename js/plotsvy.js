@@ -26,7 +26,7 @@ function Plotsvy(targetDiv) {
 
   // Assume default HTML is used if none is provided
   if (targetDiv === null || targetDiv === undefined){
-    parentDiv = document.getElementById('blackfynn-panel')
+    parentDiv = document.getElementById('plotsvy-example-panel')
   } else {
     parentDiv = targetDiv
   }

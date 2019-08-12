@@ -1,4 +1,3 @@
-var $ = require('jquery')
 var Papa = require('papaparse')
 
 function CsvManager() {
