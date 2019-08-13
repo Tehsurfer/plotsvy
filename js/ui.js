@@ -32,7 +32,8 @@ function UI (parentDiv) {
     gui.add(exportObj, 'Hide All')
     gui.add(exportObj, 'Switch Axes')
     gui.add(exportObj, 'Export as CSV')
-    gui.add(exportObj, 'Open in OpenCOR') 
+    gui.add(exportObj, 'Open in OpenCOR')
+    return gui 
   }
 
  

@@ -232,6 +232,10 @@ function Plotsvy(targetDiv) {
   this.exportObject = function () {
     return exportObject
   }
+
+  this.getDatGui = function () {
+    return ui.buildDatGui()
+  }
   // --------------------------------------------------
 
   this.clearChart = function () {
