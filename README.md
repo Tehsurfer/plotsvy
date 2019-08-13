@@ -1,10 +1,10 @@
-Tehsurfer/blackfynn-csv-exporter
-[![Netlify Status](https://api.netlify.com/api/v1/badges/75636c30-c9c2-41d4-8499-ee2826664aac/deploy-status)](https://app.netlify.com/sites/bf-export/deploys)
+Tehsurfer/plotsvy
+[![Netlify Status](https://api.netlify.com/api/v1/badges/a81b760a-7b4e-461a-9362-aab4104e2e97/deploy-status)](https://app.netlify.com/sites/plotsvy-demo/deploys)
 ======
 A Web viewer for viewing and exporting data from Blackfynn to CSV format for OpenCOR
 
 View the current online version at:
-https://blackfynnpythonlink.ml/blackfynn-csv-exporter/
+https://plotsvy-demo.netlify.com
 
 Devloper Installation
 ------
@@ -13,7 +13,7 @@ Devloper Installation
 3. Navigate to the /blackfynn-csv-export directory and: 
 ```
 npm install
-npm run build
+npm run pub
 ```
 4. Open index.html in Firefox 
 
