@@ -78,6 +78,7 @@ function Plotsvy(targetDiv) {
     return new Promise(function (resolve, reject) {
       csv.loadFile(url).then(_ => {
         setup()
+        state.csvURL = url
         setTimeout(() => bc.postMessage({ 'state': _this.exportStateAsString() }), 800)
         resolve()
       })
@@ -234,7 +235,7 @@ function Plotsvy(targetDiv) {
   }
 
   this.getDatGui = function () {
-    return ui.buildDatGui()
+    return ui.buildDatGui(exportObject)
   }
   // --------------------------------------------------
 
