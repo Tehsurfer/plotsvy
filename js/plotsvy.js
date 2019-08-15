@@ -5,7 +5,7 @@
 require('.././css/main.css')
 require('.././css/util.css')
 const UI = require('./ui.js')
-const PlotManager = require('./plot_manager.js')
+const PlotManager = require('plotly-wrappers')
 const CsvManager = require('./csv_manager.js')
 const SimProcessor = require('./sim_processor.js')
 const StateManager = require('./state_manager.js')
@@ -34,8 +34,9 @@ function Plotsvy(targetDiv) {
 
   // initialise: sets up ui and plot, needs DOM to be loaded
   this.initialise = function () {
+    var chartDiv = parentDiv.querySelector('#chart_div')
     ui = new UI(parentDiv)
-    plot = new PlotManager(parentDiv)
+    plot = new PlotManager(chartDiv)
     csv = new CsvManager()
     _this.csv = csv
     state = new StateManager(parentDiv)
