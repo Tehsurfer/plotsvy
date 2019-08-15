@@ -6,7 +6,7 @@ require('.././css/main.css')
 require('.././css/util.css')
 const UI = require('./ui.js')
 const PlotManager = require('plotly-wrappers')
-const CsvManager = require('./csv_manager.js')
+const CsvManager = require('sparccsv')
 const StateManager = require('./state_manager.js')
 const BroadcastChannel = require('broadcast-channel')
 
