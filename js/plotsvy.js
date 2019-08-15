@@ -155,13 +155,24 @@ function Plotsvy(targetDiv) {
 
   this.plotByNamePromise = function (channelName) {
     return new Promise(function (resolve, reject) {
-      plot.addDataSeriesToChart(csv.getColoumnByName(channelName), csv.getColoumnByIndex(0), channelName)
-      resolve()
+      searchResult = csv.getColoumnByName(channelName)
+      if (searchResult === false){
+        console.log('Could not find channel: "'+ channelName +'" in the loaded csv file')
+        reject()
+      } else {
+        plot.addDataSeriesToChart(searchResult, csv.getColoumnByIndex(0), channelName)
+        resolve()
+      }
     })
   }
 
   this.plotByName = function (channelName) {
-    plot.addDataSeriesToChart(csv.getColoumnByName(channelName), csv.getColoumnByIndex(0), channelName)
+    searchResult = csv.getColoumnByName(channelName)
+    if (searchResult === false){
+      console.log('Could not find channel: "'+ channelName +'" in the loaded csv file')
+      return false
+    }
+    plot.addDataSeriesToChart(searchResult, csv.getColoumnByIndex(0), channelName)
     state.selectedChannels.push(channelName)
   }
 
@@ -206,19 +217,25 @@ function Plotsvy(targetDiv) {
   }
 
   var plotStateChannels = function (channels) {
-    _this.plotByNamePromise(channels[0]).then(_ => {
-      for (let i = 0; i < channels.length; i++) {
-        if (i === 0) {
-          continue
+    if (Array.isArray(channels) === false){ //check if channels is string
+      _this.plotByNamePromise(channels)
+      state.selectedChannels = [state.selectedChannels] //if channels aren't in array make one
+    } else {
+      _this.plotByNamePromise(channels[0]).then(_ => { //allow first plot to finish
+        for (let i = 0; i < channels.length; i++) {
+          if (i === 0) {
+            continue
+          }
+          _this.plotByNamePromise(channels[i]) //add remaining channels
         }
-        _this.plotByNamePromise(channels[i])
-      }
-    })
-    for (let i in channels) {
-      for (let j in ui.checkboxElements) {
-        if (ui.checkboxElements[j].property === channels[i]) {
-          ui.checkboxElements[j].__checkbox.checked = true
-          break
+      })
+      // Update dat gui via search
+      for (let i in channels) {
+        for (let j in ui.checkboxElements) {
+          if (ui.checkboxElements[j].property === channels[i]) {
+            ui.checkboxElements[j].__checkbox.checked = true
+            break
+          }
         }
       }
     }

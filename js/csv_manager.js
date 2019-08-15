@@ -62,6 +62,9 @@ function CsvManager() {
         column_index = i
       }
     }
+    if (column_index === 0){
+      return false // if coloumn not found
+    }
     return this.getColoumnByIndex(column_index)
   }
 
