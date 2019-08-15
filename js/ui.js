@@ -93,33 +93,6 @@ function UI (parentDiv) {
     _this.choice = new Choices(select)
   }
 
-  this.createSimDatGui = function(exportObj){
-    if ( gui === undefined){
-      _this.buildDatGui(exportObj)
-    }
-    _this.hideSelector()
-    _this.showDatGui()
-    gui.add(simGui, 'Slider', 0, 50)
-    gui.add(simGui, 'Parameter A')
-    gui.add(simGui, 'Parameter B')
-    gui.add(simGui, 'Parameter C')
-    gui.add(simGui, 'Run Simulation')
-  }
-
-  var simGui = {
-    Slider: 50,
-    'Parameter A': false,
-    'Parameter B': false,
-    'Parameter C': false,
-    'Run Simulation': () => simRun()
-  }
-
-  var simRun = function(){
-    heartDiv = document.createElement('Div')
-    parentDiv.querySelector("#heart-rate").style.visibility = 'visible'
-    console.log('running simulation with parameters', simGui.Slider, simGui['Parameter A'], simGui['Parameter B'])
-  }
-
   this.createDatGuiDropdown = function (channels, onchangeFunc) {
     _this.hideSelector()
     _this.showDatGui()

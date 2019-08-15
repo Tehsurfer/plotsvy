@@ -7,7 +7,6 @@ require('.././css/util.css')
 const UI = require('./ui.js')
 const PlotManager = require('plotly-wrappers')
 const CsvManager = require('./csv_manager.js')
-const SimProcessor = require('./sim_processor.js')
 const StateManager = require('./state_manager.js')
 const BroadcastChannel = require('broadcast-channel')
 
@@ -22,7 +21,6 @@ function Plotsvy(targetDiv) {
   var _this = this
   var bc = new BroadcastChannel.default('plot_channel')
   _this.plot = plot
-  _this.sim = undefined
 
   // Assume default HTML is used if none is provided
   if (targetDiv === null || targetDiv === undefined) {
@@ -40,7 +38,6 @@ function Plotsvy(targetDiv) {
     csv = new CsvManager()
     _this.csv = csv
     state = new StateManager(parentDiv)
-    _this.sim = new SimProcessor(parentDiv, plot)
   }
 
   this.openBroadcastChannel = function (name) {
@@ -241,21 +238,6 @@ function Plotsvy(targetDiv) {
       }
     }
   }
-
-  // ------------ External Calls ------------------
-
-  this.addDataSeriesToChart = function (newSeries, xaxis, id) {
-    plot.addDataSeriesToChart(newSeries, xaxis, id)
-  }
-
-  this.exportObject = function () {
-    return exportObject
-  }
-
-  this.getDatGui = function () {
-    return ui.buildDatGui(exportObject)
-  }
-  // --------------------------------------------------
 
   this.clearChart = function () {
     plot.resetChart()
