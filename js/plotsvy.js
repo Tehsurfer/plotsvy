@@ -9,6 +9,7 @@ const PlotManager = require('plotly-wrappers')
 const CsvManager = require('sparccsv')
 const StateManager = require('./state_manager.js')
 const BroadcastChannel = require('broadcast-channel')
+const plotsvy_html = require('.././snippets/plotsvy.html')
 
 // Plotsvy:   Manages the interactions between modules.
 //  param: targetDiv - the div container the plot ends up in
@@ -32,6 +33,7 @@ function Plotsvy(targetDiv) {
 
   // initialise: sets up ui and plot, needs DOM to be loaded
   this.initialise = function () {
+    parentDiv.append(htmlToElement(plotsvy_html))
     var chartDiv = parentDiv.querySelector('#chart_div')
     ui = new UI(parentDiv)
     plot = new PlotManager(chartDiv)
@@ -272,6 +274,13 @@ function Plotsvy(targetDiv) {
   }
 
   _this.initialise()
+}
+
+htmlToElement = (html) => {
+  let template = document.createElement('template');
+  html = html.trim(); // Never return a text node of whitespace as the result
+  template.innerHTML = html;
+  return template.content.firstChild;
 }
 
 exports.Plotsvy = Plotsvy

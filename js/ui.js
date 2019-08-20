@@ -33,7 +33,7 @@ function UI (parentDiv) {
   this.hideSelector = function(){
     parentDiv.querySelector('#channel_div').style.display = 'none'
   }
-  
+
   this.showSelector = function(){
     parentDiv.querySelector('#channel_div').style.display = ''
   }
@@ -101,7 +101,6 @@ function UI (parentDiv) {
       el.__checkbox.onclick = () => onchangeFunc(name, Number(i)+1, checkboxes[i][name])
     }
     folder.open()
-   
   }  
 }
 
