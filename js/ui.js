@@ -6,17 +6,11 @@ require('.././css/main.css')
 require('.././css/util.css')
 
 function UI (parentDiv) {
-  // parentDiv.querySelector('#dataset_div').style.display = 'none'
-  // parentDiv.querySelector('#channel_div').style.display = 'none'
-  // parentDiv.querySelector('#OpenCORLinkButton').style.display = 'none'
-  // parentDiv.querySelector('#instructions_div').style.display = 'none'
   var _this = this
-  _this.dataType = 'scatter'
   var gui = undefined
   var folder = undefined
-
-  var settings = {}
   var checkboxes = []
+  _this.dataType = 'scatter'
   _this.checkboxElements = []
   _this.choice = undefined
 
@@ -36,17 +30,10 @@ function UI (parentDiv) {
     return gui 
   }
 
- 
-  
-  var clearSelect = function (select) { 
-    if (select.options !== undefined){
-      for (let a in select.options) { select.options.remove(0) }
-    }
-  }
-
   this.hideSelector = function(){
     parentDiv.querySelector('#channel_div').style.display = 'none'
   }
+  
   this.showSelector = function(){
     parentDiv.querySelector('#channel_div').style.display = ''
   }
@@ -97,14 +84,10 @@ function UI (parentDiv) {
     _this.hideSelector()
     _this.showDatGui()
     _this.channels = [...channels]
+    gui.removeFolder('Channels')
     folder = gui.addFolder('Channels')
     if (channels[0].toLowerCase().includes('time')){
       channels.shift()
-    }
-    if (_this.checkboxElements.length > 0){
-      for(let i in _this.checkboxElements){
-        folder.remove(_this.checkboxElements[i])
-      }
     }
     _this.checkboxElements = []
     checkboxes = []
@@ -120,6 +103,17 @@ function UI (parentDiv) {
     folder.open()
    
   }  
+}
+
+dat.GUI.prototype.removeFolder = function(name) {
+  var folder = this.__folders[name];
+  if (!folder) {
+    return;
+  }
+  folder.close();
+  this.__ul.removeChild(folder.domElement.parentNode);
+  delete this.__folders[name];
+  this.onResize();
 }
 
 module.exports = UI
