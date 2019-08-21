@@ -18,7 +18,7 @@ function UI (parentDiv) {
     if (gui !== undefined){
       return
     }
-    gui = new dat.GUI({autoPlace: false})
+    gui = new dat.GUI({autoPlace: false, width: 300})
     gui.domElement.id = 'gui'
     gui.close()
     parentDiv.querySelector('.dat-gui-container').appendChild(gui.domElement)

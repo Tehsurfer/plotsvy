@@ -6,6 +6,8 @@ require('.././css/main.css')
 require('.././css/util.css')
 const UI = require('./ui.js')
 const PlotManager = require('plotly-wrappers')
+const FileManager = require('./file_tree_navigation')
+require('js-treeview/dist/treeview.min.css')
 const CsvManager = require('sparccsv')
 const StateManager = require('./state_manager.js')
 const BroadcastChannel = require('broadcast-channel')
@@ -19,6 +21,7 @@ function Plotsvy(targetDiv) {
   var plot = undefined
   var csv = undefined
   var state = undefined
+  var fileNav = undefined
   var _this = this
   var bc = new BroadcastChannel.default('plot_channel')
   _this.plot = plot
@@ -76,6 +79,7 @@ function Plotsvy(targetDiv) {
 
   this.openCSV = function (url) {
     return new Promise(function (resolve, reject) {
+      _this.clearChart()
       csv.loadFile(url).then(_ => {
         setup()
         state.csvURL = url
@@ -120,6 +124,11 @@ function Plotsvy(targetDiv) {
         setTimeout(_this.updateSize, 500)
       }
     }
+  }
+
+  this.createFileNavigation = function(){
+    var fileNavDiv = parentDiv.querySelector('#file_nav')
+    fileNav = new FileManager(fileNavDiv, _this.openCSV)
   }
 
   this.plotAll = function () {
