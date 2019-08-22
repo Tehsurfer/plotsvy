@@ -4,10 +4,10 @@
 
 require('.././css/main.css')
 require('.././css/util.css')
+require('.././css/treeview.css')
 const UI = require('./ui.js')
 const PlotManager = require('plotly-wrappers')
 const FileManager = require('./file_tree_navigation')
-require('js-treeview/dist/treeview.min.css')
 const CsvManager = require('sparccsv')
 const StateManager = require('./state_manager.js')
 const BroadcastChannel = require('broadcast-channel')

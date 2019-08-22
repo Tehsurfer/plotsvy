@@ -1,6 +1,6 @@
 // index.js - Loads file structure and links the html elements to corresponding s3 urls
 
-const TreeView = require('js-treeview')
+const TreeView = require('./js_treeview_mod')
 
 function FileTreeNavigation(targetDiv, callback){ 
     var s3path = 'https://mapcore-bucket1.s3-us-west-2.amazonaws.com/ISAN/csv-data/stellate/'
