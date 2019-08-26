@@ -87,7 +87,8 @@
             text.textContent = item.name;
             if(item.size !== undefined && item.type !== 'directory'){
               let size = (Number(item.size)/1000/1000).toPrecision(3)
-              text.textContent += ' (size: ' + size + ' MB)'
+              text.textContent = text.textContent.split('.')[0]
+              text.textContent += ' ('+ size + 'MB)'
             }
             expando.setAttribute('class', 'tree-expando ' + (item.expanded ? 'expanded' : ''));
             expando.textContent = item.expanded ? '-' : '+';

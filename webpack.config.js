@@ -23,7 +23,7 @@ module.exports = {
         loader:"file-loader",
         query:{
           name:'[name].[ext]',
-          outputPath:'css/images/' }
+          outputPath:'images/' }
       },
       { test: /\.(vs|fs)$/i,
         loaders: [

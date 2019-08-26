@@ -14,10 +14,13 @@
 }
 
 .file-nav-container{
-  left: 300px;
+  position: relative;
+  display: flex;
 }
 
-
+.loading-gif{
+  width: 100%;
+}
 
 .limiter {
   width: 100%;
@@ -54,6 +57,10 @@
   background: #fff;
   border-radius: 10px;
   position: relative;
+}
+
+.channel{
+  display: none;
 }
 
 .login100-form {

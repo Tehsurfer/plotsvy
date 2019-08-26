@@ -15,7 +15,7 @@ const plotsvy_html = require('.././snippets/plotsvy.html')
 
 // Plotsvy:   Manages the interactions between modules.
 //  param: targetDiv - the div container the plot ends up in
-function Plotsvy(targetDiv) {
+function Plotsvy(targetDiv, inputURL) {
   var ui = undefined
   var parentDiv = undefined
   var plot = undefined
@@ -35,7 +35,7 @@ function Plotsvy(targetDiv) {
 
 
   // initialise: sets up ui and plot, needs DOM to be loaded
-  this.initialise = function () {
+  this.initialise = function (overRideUrl) {
     parentDiv.append(htmlToElement(plotsvy_html))
     var chartDiv = parentDiv.querySelector('#chart_div')
     ui = new UI(parentDiv)
@@ -43,6 +43,23 @@ function Plotsvy(targetDiv) {
     csv = new CsvManager()
     _this.csv = csv
     state = new StateManager(parentDiv)
+
+    // Check for fileStructure url
+    if (overRideUrl !== undefined){
+      _this.openInputUrl(inputURL)
+    } else if (inputURL !== undefined){
+      _this.openInputUrl(inputURL)
+    }
+  }
+
+  this.openInputUrl = function(url){
+    if (url.includes('jsonstorage')){ // if it's hosted on jsonstorage it is meta data 
+      ui.showLoadingGif()
+      _this.createFileNavigation(url).then(ui.hideLoadingGif)
+    } else {
+      ui.showLoadingGif()
+      _this.openCSV(url).then( ui.hideLoadingGif)
+    }
   }
 
   this.openBroadcastChannel = function (name) {
@@ -80,10 +97,16 @@ function Plotsvy(targetDiv) {
   this.openCSV = function (url) {
     return new Promise(function (resolve, reject) {
       _this.clearChart()
+      ui.showLoadingGif()
+      if (url === undefined) {
+        console.log('Error! Not loading any data into chart!')
+        reject()
+      }
       csv.loadFile(url).then(_ => {
         setup()
         state.csvURL = url
         setTimeout(() => bc.postMessage({ 'state': _this.exportStateAsString() }), 800)
+        ui.hideLoadingGif()
         resolve()
       })
     })
@@ -91,12 +114,14 @@ function Plotsvy(targetDiv) {
 
   var openCSVfromState = function (url) {
     return new Promise(function (resolve, reject) {
+      ui.showLoadingGif()
       if (url === undefined) {
         console.log('Error! Not loading any data into chart!')
         reject()
       }
       csv.loadFile(url).then(_ => {
         setup()
+        ui.hideLoadingGif()
         resolve()
       })
     })
@@ -126,9 +151,12 @@ function Plotsvy(targetDiv) {
     }
   }
 
-  this.createFileNavigation = function(){
-    var fileNavDiv = parentDiv.querySelector('#file_nav')
-    fileNav = new FileManager(fileNavDiv, _this.openCSV)
+  this.createFileNavigation = function(url){
+    return new Promise(function(resolve, reject){
+      var fileNavDiv = parentDiv.querySelector('#file_nav')
+      fileNav = new FileManager(fileNavDiv, url, _this.openCSV)
+      resolve()
+    })
   }
 
   this.plotAll = function () {
@@ -286,10 +314,10 @@ function Plotsvy(targetDiv) {
 }
 
 htmlToElement = (html) => {
-  let template = document.createElement('template');
-  html = html.trim(); // Never return a text node of whitespace as the result
-  template.innerHTML = html;
-  return template.content.firstChild;
+  let template = document.createElement('template')
+  html = html.trim() // Never return a text node of whitespace as the result
+  template.innerHTML = html
+  return template.content.firstChild
 }
 
-exports.Plotsvy = Plotsvy
+module.exports = exports = Plotsvy

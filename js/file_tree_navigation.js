@@ -2,14 +2,15 @@
 
 const TreeView = require('./js_treeview_mod')
 
-function FileTreeNavigation(targetDiv, callback){ 
+function FileTreeNavigation(targetDiv, metaUrl, callback){ 
     var s3path = 'https://mapcore-bucket1.s3-us-west-2.amazonaws.com/ISAN/csv-data/stellate/'
-    var fileStructureUrl = 'https://jsonstorage.net/api/items/stellate-file-structure'
     var treeData = undefined
 
-    fetch(fileStructureUrl).then(response => {
+    fetch(metaUrl).then(response => {
         response.json().then(json => {
             treeData = json['data']
+            s3path = json['data']['path']
+        
         createNavigation()
         })
     })

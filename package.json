@@ -1,6 +1,6 @@
 {
   "name": "plotsvy",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "A CSV plotter that loads and plots timeseries or static data",
   "main": "build/build.js",
   "files": [
@@ -11,6 +11,7 @@
     "js",
     "fonts",
     "css/fonts",
+    "images",
     "index.html",
     "build/build.js",
     "build/build.min.js",

@@ -45,6 +45,21 @@ function UI (parentDiv) {
     parentDiv.querySelector('.dat-gui-container').style.display = ''
   }
 
+  this.loadingGif = function(target){
+    this.showLoadingGif()
+    target().then( _ => {
+      this.hideLoadingGif()
+    }) 
+  }
+
+  this.showLoadingGif = function(){
+    parentDiv.querySelector('#loading_gif').style.display = ''
+  }
+
+  this.hideLoadingGif = function(){
+    parentDiv.querySelector('#loading_gif').style.display = 'none'
+  }
+
    //Currently not working
    this.checkAllBoxes = function(){
     for (let i in _this.checkboxElements){
