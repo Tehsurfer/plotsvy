@@ -1,0 +1,44 @@
+{
+  "name": "plotsvy-testing",
+  "version": "1.0.0",
+  "description": "Plotsvy Testing",
+  "main": "test.js",
+  "scripts": {
+    "test": "mocha-webpack --watch ",
+    "test-ci": "mocha-webpack",
+    "cover": "cross-env NODE_ENV=coverage nyc --cwd=../ --reporter=lcov --reporter=text npm run test-ci"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Tehsurfer/plotsvy.git"
+  },
+  "author": "Jesse Khorasanee",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Tehsurfer/plotsvy/issues"
+  },
+  "homepage": "https://github.com/Tehsurfer/plotsvy#readme",
+  "dependencies": {
+    "babel-jest": "^24.9.0",
+    "babel-preset-env": "^1.7.0"
+  },
+  "devDependencies": {
+    "babel-loader": "^7.1.4",
+    "canvas": "*",
+    "chai": "*",
+    "cross-env": "*",
+    "gl": "^4.2.2",
+    "html-loader": "^0.5.5",
+    "istanbul-instrumenter-loader": "*",
+    "jsdom": "*",
+    "mocha": "^4.1.0",
+    "mocha-webpack": "^2.0.0-beta.0",
+    "nyc": "^14.1.1",
+    "raw-loader": "^0.5.1",
+    "style-loader": "^0.21.0",
+    "url-loader": "^2.0.0",
+    "webpack": "^4.6.0",
+    "webpack-cli": "^3.3.6",
+    "webpack-node-externals": "^1.7.2"
+  }
+}
