@@ -13,6 +13,10 @@
   width: 300px;
 }
 
+.dg.main{
+  max-height: 10000% !important
+}
+
 .file-nav-container{
   position: relative;
   display: flex;
