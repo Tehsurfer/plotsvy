@@ -22,6 +22,7 @@ function Plotsvy(targetDiv, inputURL) {
   var csv = undefined
   var state = undefined
   var fileNav = undefined
+  var dirString = 'directory-definition'
   var _this = this
   var bc = new BroadcastChannel.default('plot_channel')
   _this.plot = plot
@@ -53,7 +54,7 @@ function Plotsvy(targetDiv, inputURL) {
   }
 
   this.openInputUrl = function(url){
-    if (url.includes('jsonstorage')){ // if it's hosted on jsonstorage it is meta data 
+    if (url.includes(dirString)){ // if it's hosted on jsonstorage it is meta data 
       ui.showLoadingGif()
       _this.createFileNavigation(url).then(ui.hideLoadingGif)
     } else {
