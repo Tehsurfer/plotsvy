@@ -31,11 +31,11 @@ function UI (parentDiv) {
   }
 
   this.hideSelector = function(){
-    parentDiv.querySelector('#channel_div').style.display = 'none'
+    parentDiv.querySelector('.channel').style.display = 'none'
   }
 
   this.showSelector = function(){
-    parentDiv.querySelector('#channel_div').style.display = ''
+    parentDiv.querySelector('.channel').style.display = 'block'
   }
 
   this.hideDatGui = function(){
