@@ -1,6 +1,6 @@
 {
   "name": "plotsvy",
-  "version": "0.3.3",
+  "version": "0.3.4",
   "description": "A CSV plotter that loads and plots timeseries or static data",
   "main": "build/build.js",
   "files": [
@@ -63,8 +63,8 @@
     "choices.js": "^7.0.0",
     "dat.gui": "^0.7.6",
     "papaparse": "^4.6.3",
-    "plotly-wrappers": "^1.0.0",
+    "plotly-wrappers": "^1.0.1",
     "plotly.js": "^1.49.3",
-    "sparccsv": "^1.0.3"
+    "sparccsv": "^1.0.8"
   }
 }

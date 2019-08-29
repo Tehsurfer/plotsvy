@@ -30,6 +30,10 @@ function UI (parentDiv) {
     return gui 
   }
 
+  this.setTitle = function(newTitle){
+    parentDiv.querySelector('#title').innerHTML = newTitle
+  }
+
   this.hideSelector = function(){
     parentDiv.querySelector('.channel').style.display = 'none'
   }
@@ -73,7 +77,7 @@ function UI (parentDiv) {
     _this.showSelector()
     var select, option
     select = parentDiv.querySelector('#select_channel')
-    select.innerHTML = ''
+    select.innerHTML = "<option placeholder>Plot a Data Trace</option>"
     var channels = [...channelsIn]
 
     if (channels[0].toLowerCase().includes('time')){
@@ -92,7 +96,11 @@ function UI (parentDiv) {
       option.value = option.text = channels[i]
       select.add(option)
     }
-    _this.choice = new Choices(select)
+   
+    _this.choice = new Choices(select, {
+      placeholder: true,
+      searchPlaceholderValue: 'Search Traces'
+    })
   }
 
   this.createDatGuiDropdown = function (channels, onchangeFunc) {

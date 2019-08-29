@@ -104,6 +104,7 @@ function Plotsvy(targetDiv, inputURL) {
         reject()
       }
       csv.loadFile(url).then(_ => {
+        ui.setTitle(csv.getTitle(url))
         setup()
         state.csvURL = url
         setTimeout(() => bc.postMessage({ 'state': _this.exportStateAsString() }), 800)
@@ -121,6 +122,7 @@ function Plotsvy(targetDiv, inputURL) {
         reject()
       }
       csv.loadFile(url).then(_ => {
+        ui.setTitle(csv.getTitle(url))
         setup()
         ui.hideLoadingGif()
         resolve()
@@ -130,8 +132,10 @@ function Plotsvy(targetDiv, inputURL) {
 
   // setup: calls UI depending on type of data and plots data depending on state.plotall 
   var setup = function () {
+    plot.setXaxisLabel(csv.getXaxis())
     _this.setDataType(csv.getDataType())
     ui.showSelector()
+    
     var headers = [...csv.getHeaders()]
     headers.shift()
     if (state.plotAll) {
@@ -174,7 +178,6 @@ function Plotsvy(targetDiv, inputURL) {
 
   this.hideAll = function () {
     _this.clearChart()
-    _this.plotByIndex(1)
     if (csv.getHeaders().length > 100) {
       ui.showSelector()
     } else {
