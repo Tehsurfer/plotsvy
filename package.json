@@ -63,7 +63,7 @@
     "choices.js": "^7.0.0",
     "dat.gui": "^0.7.6",
     "papaparse": "^4.6.3",
-    "plotly-wrappers": "^1.0.1",
+    "plotly-wrappers": "^1.0.2",
     "plotly.js": "^1.49.3",
     "sparccsv": "^1.0.8"
   }
