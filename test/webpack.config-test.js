@@ -24,12 +24,7 @@ module.exports = {
           esModules: true
         }
       }: [],
-      { test: /\.(html)$/, use: [{ loader: 'html-loader' }]},
-      {
-        test: /.js$/,
-        exclude: /(node_modules|bower_components)/,
-        loader: 'babel-loader',
-      },
+      { test: /\.(html)$/, use: [{ loader: 'html-loader' }]},  
       { test: /\.css$/, use: [ 'style-loader', 'css-loader' ] },
       { test: /\.(vs|fs)$/i,
         loaders: [

@@ -20,9 +20,16 @@
   "homepage": "https://github.com/Tehsurfer/plotsvy#readme",
   "dependencies": {
     "babel-jest": "^24.9.0",
-    "babel-preset-env": "^1.7.0"
+    "babel-preset-env": "^1.7.0",
+    "isomorphic-fetch": "^2.2.1",
+    "node-fetch": "^2.6.0"
   },
   "devDependencies": {
+    "@babel/cli": "^7.5.5",
+    "@babel/core": "^7.5.5",
+    "@babel/node": "^7.5.5",
+    "@babel/polyfill": "^7.4.4",
+    "@babel/preset-env": "^7.5.5",
     "babel-loader": "^7.1.4",
     "canvas": "*",
     "chai": "*",
@@ -30,7 +37,8 @@
     "gl": "^4.2.2",
     "html-loader": "^0.5.5",
     "istanbul-instrumenter-loader": "*",
-    "jsdom": "*",
+    "jsdom": "^15.1.1",
+    "jsdom-global": "^3.0.2",
     "mocha": "^4.1.0",
     "mocha-webpack": "^2.0.0-beta.0",
     "nyc": "^14.1.1",
