@@ -180,9 +180,7 @@ function Plotsvy(targetDiv, inputURL) {
     _this.clearChart()
     if (csv.getHeaders().length > 100) {
       ui.showSelector()
-    } else {
-      ui.checkboxElements[0].__checkbox.checked = true
-    }
+    } 
     setTimeout(_this.updateSize, 1000)
     state.plotAll = false
   }
