@@ -1,0 +1,3385 @@
+{
+    "data": {
+      "path": "https://mapcore-bucket1.s3-us-west-2.amazonaws.com/ISAN/csv-data/stellate/",
+      "name": "Stellate-Ephys-Files",
+      "children": [
+        {
+          "path": "sample_1",
+          "name": "sample_1",
+          "children": [
+            {
+              "path": "sample_1\\cell_1",
+              "name": "cell_1",
+              "children": [
+                {
+                  "path": "sample_1\\cell_1\\18907000_channel_1.csv",
+                  "name": "18907000_channel_1.csv",
+                  "size": 4400682,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_1\\cell_1\\18907000_channel_2.csv",
+                  "name": "18907000_channel_2.csv",
+                  "size": 5151581,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_1\\cell_1\\18907000_channel_3.csv",
+                  "name": "18907000_channel_3.csv",
+                  "size": 3774711,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_1\\cell_1\\18907001_channel_1.csv",
+                  "name": "18907001_channel_1.csv",
+                  "size": 1561818,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_1\\cell_1\\18907001_channel_2.csv",
+                  "name": "18907001_channel_2.csv",
+                  "size": 1238128,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_1\\cell_1\\18907002_channel_1.csv",
+                  "name": "18907002_channel_1.csv",
+                  "size": 2462311,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_1\\cell_1\\18907002_channel_2.csv",
+                  "name": "18907002_channel_2.csv",
+                  "size": 2873780,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_1\\cell_1\\18907002_channel_3.csv",
+                  "name": "18907002_channel_3.csv",
+                  "size": 2102439,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_1\\cell_1\\18907003_channel_1.csv",
+                  "name": "18907003_channel_1.csv",
+                  "size": 1559384,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_1\\cell_1\\18907003_channel_2.csv",
+                  "name": "18907003_channel_2.csv",
+                  "size": 1238174,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_1\\cell_1\\18907004_channel_1.csv",
+                  "name": "18907004_channel_1.csv",
+                  "size": 18795969,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_1\\cell_1\\18907004_channel_2.csv",
+                  "name": "18907004_channel_2.csv",
+                  "size": 21833674,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_1\\cell_1\\18907004_channel_3.csv",
+                  "name": "18907004_channel_3.csv",
+                  "size": 16085951,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_1\\cell_1\\18907005_channel_1.csv",
+                  "name": "18907005_channel_1.csv",
+                  "size": 923589,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_1\\cell_1\\18907005_channel_2.csv",
+                  "name": "18907005_channel_2.csv",
+                  "size": 976697,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_1\\cell_1\\18907006_channel_1.csv",
+                  "name": "18907006_channel_1.csv",
+                  "size": 925086,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_1\\cell_1\\18907006_channel_2.csv",
+                  "name": "18907006_channel_2.csv",
+                  "size": 976607,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_1\\cell_1\\18907007_channel_1.csv",
+                  "name": "18907007_channel_1.csv",
+                  "size": 922237,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_1\\cell_1\\18907007_channel_2.csv",
+                  "name": "18907007_channel_2.csv",
+                  "size": 976783,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_1\\cell_1\\18907008_channel_1.csv",
+                  "name": "18907008_channel_1.csv",
+                  "size": 921065,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_1\\cell_1\\18907008_channel_2.csv",
+                  "name": "18907008_channel_2.csv",
+                  "size": 977382,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_1\\cell_1\\18907009_channel_1.csv",
+                  "name": "18907009_channel_1.csv",
+                  "size": 919652,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_1\\cell_1\\18907009_channel_2.csv",
+                  "name": "18907009_channel_2.csv",
+                  "size": 976996,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_1\\cell_1\\18907010_channel_1.csv",
+                  "name": "18907010_channel_1.csv",
+                  "size": 718781,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_1\\cell_1\\18907010_channel_2.csv",
+                  "name": "18907010_channel_2.csv",
+                  "size": 837067,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_1\\cell_1\\18907010_channel_3.csv",
+                  "name": "18907010_channel_3.csv",
+                  "size": 612577,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_1\\cell_1\\18907011_channel_1.csv",
+                  "name": "18907011_channel_1.csv",
+                  "size": 920390,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_1\\cell_1\\18907011_channel_2.csv",
+                  "name": "18907011_channel_2.csv",
+                  "size": 976926,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_1\\cell_1\\18907012_channel_1.csv",
+                  "name": "18907012_channel_1.csv",
+                  "size": 2518148,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_1\\cell_1\\18907012_channel_2.csv",
+                  "name": "18907012_channel_2.csv",
+                  "size": 2925693,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_1\\cell_1\\18907012_channel_3.csv",
+                  "name": "18907012_channel_3.csv",
+                  "size": 2151337,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_1\\cell_1\\18907013_channel_1.csv",
+                  "name": "18907013_channel_1.csv",
+                  "size": 760490,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_1\\cell_1\\18907014_channel_1.csv",
+                  "name": "18907014_channel_1.csv",
+                  "size": 921399,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_1\\cell_1\\18907014_channel_2.csv",
+                  "name": "18907014_channel_2.csv",
+                  "size": 976672,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_1\\cell_1\\18907015_channel_1.csv",
+                  "name": "18907015_channel_1.csv",
+                  "size": 917376,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_1\\cell_1\\18907015_channel_2.csv",
+                  "name": "18907015_channel_2.csv",
+                  "size": 977747,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_1\\cell_1\\18907016_channel_1.csv",
+                  "name": "18907016_channel_1.csv",
+                  "size": 916591,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_1\\cell_1\\18907016_channel_2.csv",
+                  "name": "18907016_channel_2.csv",
+                  "size": 977683,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_1\\cell_1\\18907017_channel_1.csv",
+                  "name": "18907017_channel_1.csv",
+                  "size": 917334,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_1\\cell_1\\18907017_channel_2.csv",
+                  "name": "18907017_channel_2.csv",
+                  "size": 977511,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_1\\cell_1\\18907018_channel_1.csv",
+                  "name": "18907018_channel_1.csv",
+                  "size": 1590056,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_1\\cell_1\\18907018_channel_2.csv",
+                  "name": "18907018_channel_2.csv",
+                  "size": 1854062,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_1\\cell_1\\18907018_channel_3.csv",
+                  "name": "18907018_channel_3.csv",
+                  "size": 1360671,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_1\\cell_1\\18907019_channel_1.csv",
+                  "name": "18907019_channel_1.csv",
+                  "size": 916624,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_1\\cell_1\\18907019_channel_2.csv",
+                  "name": "18907019_channel_2.csv",
+                  "size": 978558,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_1\\cell_1\\18907020_channel_1.csv",
+                  "name": "18907020_channel_1.csv",
+                  "size": 917319,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_1\\cell_1\\18907020_channel_2.csv",
+                  "name": "18907020_channel_2.csv",
+                  "size": 978901,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_1\\cell_1\\18907021_channel_1.csv",
+                  "name": "18907021_channel_1.csv",
+                  "size": 108861414,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_1\\cell_1\\18907021_channel_2.csv",
+                  "name": "18907021_channel_2.csv",
+                  "size": 126426292,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_1\\cell_1\\18907021_channel_3.csv",
+                  "name": "18907021_channel_3.csv",
+                  "size": 94943275,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_1\\cell_1\\18907022_channel_1.csv",
+                  "name": "18907022_channel_1.csv",
+                  "size": 914030,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_1\\cell_1\\18907022_channel_2.csv",
+                  "name": "18907022_channel_2.csv",
+                  "size": 971206,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_1\\cell_1\\18907023_channel_1.csv",
+                  "name": "18907023_channel_1.csv",
+                  "size": 913342,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_1\\cell_1\\18907023_channel_2.csv",
+                  "name": "18907023_channel_2.csv",
+                  "size": 970917,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_1\\cell_1\\18907024_channel_1.csv",
+                  "name": "18907024_channel_1.csv",
+                  "size": 14685397,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_1\\cell_1\\18907024_channel_2.csv",
+                  "name": "18907024_channel_2.csv",
+                  "size": 17134466,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_1\\cell_1\\18907024_channel_3.csv",
+                  "name": "18907024_channel_3.csv",
+                  "size": 12862056,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_1\\cell_1\\18907025_channel_1.csv",
+                  "name": "18907025_channel_1.csv",
+                  "size": 912291,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_1\\cell_1\\18907025_channel_2.csv",
+                  "name": "18907025_channel_2.csv",
+                  "size": 969857,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_1\\cell_1\\18907026_channel_1.csv",
+                  "name": "18907026_channel_1.csv",
+                  "size": 913314,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_1\\cell_1\\18907026_channel_2.csv",
+                  "name": "18907026_channel_2.csv",
+                  "size": 969553,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_1\\cell_1\\18907027_channel_1.csv",
+                  "name": "18907027_channel_1.csv",
+                  "size": 913447,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_1\\cell_1\\18907027_channel_2.csv",
+                  "name": "18907027_channel_2.csv",
+                  "size": 969062,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_1\\cell_1\\18907028_channel_1.csv",
+                  "name": "18907028_channel_1.csv",
+                  "size": 914544,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_1\\cell_1\\18907028_channel_2.csv",
+                  "name": "18907028_channel_2.csv",
+                  "size": 969075,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_1\\cell_1\\18907029_channel_1.csv",
+                  "name": "18907029_channel_1.csv",
+                  "size": 915124,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_1\\cell_1\\18907029_channel_2.csv",
+                  "name": "18907029_channel_2.csv",
+                  "size": 969959,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_1\\cell_1\\18907030_channel_1.csv",
+                  "name": "18907030_channel_1.csv",
+                  "size": 915844,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_1\\cell_1\\18907030_channel_2.csv",
+                  "name": "18907030_channel_2.csv",
+                  "size": 969511,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_1\\cell_1\\18907031_channel_1.csv",
+                  "name": "18907031_channel_1.csv",
+                  "size": 915205,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_1\\cell_1\\18907031_channel_2.csv",
+                  "name": "18907031_channel_2.csv",
+                  "size": 970665,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_1\\cell_1\\18907032_channel_1.csv",
+                  "name": "18907032_channel_1.csv",
+                  "size": 596945,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_1\\cell_1\\18907032_channel_2.csv",
+                  "name": "18907032_channel_2.csv",
+                  "size": 629525,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_1\\cell_1\\18907033_channel_1.csv",
+                  "name": "18907033_channel_1.csv",
+                  "size": 756341,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_1\\cell_1\\18907033_channel_2.csv",
+                  "name": "18907033_channel_2.csv",
+                  "size": 806191,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_1\\cell_1\\18907034_channel_1.csv",
+                  "name": "18907034_channel_1.csv",
+                  "size": 916363,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_1\\cell_1\\18907034_channel_2.csv",
+                  "name": "18907034_channel_2.csv",
+                  "size": 978985,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_1\\cell_1\\18907035_channel_1.csv",
+                  "name": "18907035_channel_1.csv",
+                  "size": 916391,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_1\\cell_1\\18907035_channel_2.csv",
+                  "name": "18907035_channel_2.csv",
+                  "size": 978680,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_1\\cell_1\\18907036_channel_1.csv",
+                  "name": "18907036_channel_1.csv",
+                  "size": 437402,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_1\\cell_1\\18907036_channel_2.csv",
+                  "name": "18907036_channel_2.csv",
+                  "size": 462673,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_1\\cell_1\\18907037_channel_1.csv",
+                  "name": "18907037_channel_1.csv",
+                  "size": 756537,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_1\\cell_1\\18907037_channel_2.csv",
+                  "name": "18907037_channel_2.csv",
+                  "size": 806618,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_1\\cell_1\\18907038_channel_1.csv",
+                  "name": "18907038_channel_1.csv",
+                  "size": 915191,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_1\\cell_1\\18907038_channel_2.csv",
+                  "name": "18907038_channel_2.csv",
+                  "size": 978654,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_1\\cell_1\\18907039_channel_1.csv",
+                  "name": "18907039_channel_1.csv",
+                  "size": 917328,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_1\\cell_1\\18907039_channel_2.csv",
+                  "name": "18907039_channel_2.csv",
+                  "size": 978671,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_1\\cell_1\\18907040_channel_1.csv",
+                  "name": "18907040_channel_1.csv",
+                  "size": 917024,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_1\\cell_1\\18907040_channel_2.csv",
+                  "name": "18907040_channel_2.csv",
+                  "size": 978947,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_1\\cell_1\\18907041_channel_1.csv",
+                  "name": "18907041_channel_1.csv",
+                  "size": 920191,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_1\\cell_1\\18907041_channel_2.csv",
+                  "name": "18907041_channel_2.csv",
+                  "size": 978492,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_1\\cell_1\\18907042_channel_1.csv",
+                  "name": "18907042_channel_1.csv",
+                  "size": 4027005,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_1\\cell_1\\18907042_channel_2.csv",
+                  "name": "18907042_channel_2.csv",
+                  "size": 4841835,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_1\\cell_1\\18907042_channel_3.csv",
+                  "name": "18907042_channel_3.csv",
+                  "size": 3658715,
+                  "extension": ".csv",
+                  "type": "file"
+                }
+              ],
+              "size": 542199159,
+              "type": "directory"
+            }
+          ],
+          "size": 542199159,
+          "type": "directory"
+        },
+        {
+          "path": "sample_2",
+          "name": "sample_2",
+          "children": [
+            {
+              "path": "sample_2\\cell_1",
+              "name": "cell_1",
+              "children": [
+                {
+                  "path": "sample_2\\cell_1\\18525000_channel_1.csv",
+                  "name": "18525000_channel_1.csv",
+                  "size": 54960934,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_2\\cell_1\\18525000_channel_2.csv",
+                  "name": "18525000_channel_2.csv",
+                  "size": 63866184,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_2\\cell_1\\18525000_channel_3.csv",
+                  "name": "18525000_channel_3.csv",
+                  "size": 51310044,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_2\\cell_1\\18525001_channel_1.csv",
+                  "name": "18525001_channel_1.csv",
+                  "size": 916498,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_2\\cell_1\\18525001_channel_2.csv",
+                  "name": "18525001_channel_2.csv",
+                  "size": 983440,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_2\\cell_1\\18525002_channel_1.csv",
+                  "name": "18525002_channel_1.csv",
+                  "size": 917241,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_2\\cell_1\\18525002_channel_2.csv",
+                  "name": "18525002_channel_2.csv",
+                  "size": 983259,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_2\\cell_1\\18525003_channel_1.csv",
+                  "name": "18525003_channel_1.csv",
+                  "size": 598269,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_2\\cell_1\\18525003_channel_2.csv",
+                  "name": "18525003_channel_2.csv",
+                  "size": 637419,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_2\\cell_1\\18525004_channel_1.csv",
+                  "name": "18525004_channel_1.csv",
+                  "size": 1395487,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_2\\cell_1\\18525004_channel_2.csv",
+                  "name": "18525004_channel_2.csv",
+                  "size": 1631184,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_2\\cell_1\\18525004_channel_3.csv",
+                  "name": "18525004_channel_3.csv",
+                  "size": 1214749,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_2\\cell_1\\18525005_channel_1.csv",
+                  "name": "18525005_channel_1.csv",
+                  "size": 1562158,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_2\\cell_1\\18525005_channel_2.csv",
+                  "name": "18525005_channel_2.csv",
+                  "size": 1233173,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_2\\cell_1\\18525006_channel_1.csv",
+                  "name": "18525006_channel_1.csv",
+                  "size": 915563,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_2\\cell_1\\18525006_channel_2.csv",
+                  "name": "18525006_channel_2.csv",
+                  "size": 982091,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_2\\cell_1\\18525007_channel_1.csv",
+                  "name": "18525007_channel_1.csv",
+                  "size": 437970,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_2\\cell_1\\18525007_channel_2.csv",
+                  "name": "18525007_channel_2.csv",
+                  "size": 464153,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_2\\cell_1\\18525008_channel_1.csv",
+                  "name": "18525008_channel_1.csv",
+                  "size": 918690,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_2\\cell_1\\18525008_channel_2.csv",
+                  "name": "18525008_channel_2.csv",
+                  "size": 982099,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_2\\cell_1\\18525009_channel_1.csv",
+                  "name": "18525009_channel_1.csv",
+                  "size": 440866,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_2\\cell_1\\18525009_channel_2.csv",
+                  "name": "18525009_channel_2.csv",
+                  "size": 463800,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_2\\cell_1\\18525010_channel_1.csv",
+                  "name": "18525010_channel_1.csv",
+                  "size": 923905,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_2\\cell_1\\18525010_channel_2.csv",
+                  "name": "18525010_channel_2.csv",
+                  "size": 982340,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_2\\cell_1\\18525011_channel_1.csv",
+                  "name": "18525011_channel_1.csv",
+                  "size": 17927668,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_2\\cell_1\\18525011_channel_2.csv",
+                  "name": "18525011_channel_2.csv",
+                  "size": 20788045,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_2\\cell_1\\18525011_channel_3.csv",
+                  "name": "18525011_channel_3.csv",
+                  "size": 15243755,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_2\\cell_1\\18525012_channel_1.csv",
+                  "name": "18525012_channel_1.csv",
+                  "size": 917237,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_2\\cell_1\\18525012_channel_2.csv",
+                  "name": "18525012_channel_2.csv",
+                  "size": 982288,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_2\\cell_1\\18525013_channel_1.csv",
+                  "name": "18525013_channel_1.csv",
+                  "size": 917451,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_2\\cell_1\\18525013_channel_2.csv",
+                  "name": "18525013_channel_2.csv",
+                  "size": 982041,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_2\\cell_1\\18525014_channel_1.csv",
+                  "name": "18525014_channel_1.csv",
+                  "size": 437946,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_2\\cell_1\\18525014_channel_2.csv",
+                  "name": "18525014_channel_2.csv",
+                  "size": 463675,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_2\\cell_1\\18525015_channel_1.csv",
+                  "name": "18525015_channel_1.csv",
+                  "size": 278107,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_2\\cell_1\\18525015_channel_2.csv",
+                  "name": "18525015_channel_2.csv",
+                  "size": 291342,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_2\\cell_1\\18525016_channel_1.csv",
+                  "name": "18525016_channel_1.csv",
+                  "size": 757223,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_2\\cell_1\\18525016_channel_2.csv",
+                  "name": "18525016_channel_2.csv",
+                  "size": 809238,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_2\\cell_1\\18525017_channel_1.csv",
+                  "name": "18525017_channel_1.csv",
+                  "size": 13117723,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_2\\cell_1\\18525017_channel_2.csv",
+                  "name": "18525017_channel_2.csv",
+                  "size": 15243895,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_2\\cell_1\\18525017_channel_3.csv",
+                  "name": "18525017_channel_3.csv",
+                  "size": 11127823,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_2\\cell_1\\18525018_channel_1.csv",
+                  "name": "18525018_channel_1.csv",
+                  "size": 759440,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_2\\cell_1\\18525018_channel_2.csv",
+                  "name": "18525018_channel_2.csv",
+                  "size": 809417,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_2\\cell_1\\18525019_channel_1.csv",
+                  "name": "18525019_channel_1.csv",
+                  "size": 913406,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_2\\cell_1\\18525019_channel_2.csv",
+                  "name": "18525019_channel_2.csv",
+                  "size": 982146,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_2\\cell_1\\18525020_channel_1.csv",
+                  "name": "18525020_channel_1.csv",
+                  "size": 4275030,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_2\\cell_1\\18525020_channel_2.csv",
+                  "name": "18525020_channel_2.csv",
+                  "size": 4975733,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_2\\cell_1\\18525020_channel_3.csv",
+                  "name": "18525020_channel_3.csv",
+                  "size": 3662259,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_2\\cell_1\\18525021_channel_1.csv",
+                  "name": "18525021_channel_1.csv",
+                  "size": 438247,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_2\\cell_1\\18525021_channel_2.csv",
+                  "name": "18525021_channel_2.csv",
+                  "size": 463925,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_2\\cell_1\\18525022_channel_1.csv",
+                  "name": "18525022_channel_1.csv",
+                  "size": 278204,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_2\\cell_1\\18525022_channel_2.csv",
+                  "name": "18525022_channel_2.csv",
+                  "size": 291080,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_2\\cell_1\\18525023_channel_1.csv",
+                  "name": "18525023_channel_1.csv",
+                  "size": 9614962,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_2\\cell_1\\18525023_channel_2.csv",
+                  "name": "18525023_channel_2.csv",
+                  "size": 11171308,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_2\\cell_1\\18525023_channel_3.csv",
+                  "name": "18525023_channel_3.csv",
+                  "size": 8240390,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_2\\cell_1\\18525024_channel_1.csv",
+                  "name": "18525024_channel_1.csv",
+                  "size": 437913,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_2\\cell_1\\18525024_channel_2.csv",
+                  "name": "18525024_channel_2.csv",
+                  "size": 463474,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_2\\cell_1\\18525025_channel_1.csv",
+                  "name": "18525025_channel_1.csv",
+                  "size": 917167,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_2\\cell_1\\18525025_channel_2.csv",
+                  "name": "18525025_channel_2.csv",
+                  "size": 981414,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_2\\cell_1\\18525026_channel_1.csv",
+                  "name": "18525026_channel_1.csv",
+                  "size": 4622583,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_2\\cell_1\\18525026_channel_2.csv",
+                  "name": "18525026_channel_2.csv",
+                  "size": 5383685,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_2\\cell_1\\18525026_channel_3.csv",
+                  "name": "18525026_channel_3.csv",
+                  "size": 3956947,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_2\\cell_1\\18525027_channel_1.csv",
+                  "name": "18525027_channel_1.csv",
+                  "size": 757981,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_2\\cell_1\\18525027_channel_2.csv",
+                  "name": "18525027_channel_2.csv",
+                  "size": 808424,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_2\\cell_1\\18525028_channel_1.csv",
+                  "name": "18525028_channel_1.csv",
+                  "size": 916734,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_2\\cell_1\\18525028_channel_2.csv",
+                  "name": "18525028_channel_2.csv",
+                  "size": 982097,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_2\\cell_1\\18525029_channel_1.csv",
+                  "name": "18525029_channel_1.csv",
+                  "size": 917137,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_2\\cell_1\\18525029_channel_2.csv",
+                  "name": "18525029_channel_2.csv",
+                  "size": 981094,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_2\\cell_1\\18525030_channel_1.csv",
+                  "name": "18525030_channel_1.csv",
+                  "size": 918109,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_2\\cell_1\\18525030_channel_2.csv",
+                  "name": "18525030_channel_2.csv",
+                  "size": 981569,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_2\\cell_1\\18525031_channel_1.csv",
+                  "name": "18525031_channel_1.csv",
+                  "size": 917030,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_2\\cell_1\\18525031_channel_2.csv",
+                  "name": "18525031_channel_2.csv",
+                  "size": 981497,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_2\\cell_1\\18525032_channel_1.csv",
+                  "name": "18525032_channel_1.csv",
+                  "size": 918131,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_2\\cell_1\\18525032_channel_2.csv",
+                  "name": "18525032_channel_2.csv",
+                  "size": 980881,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_2\\cell_1\\18525033_channel_1.csv",
+                  "name": "18525033_channel_1.csv",
+                  "size": 918360,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_2\\cell_1\\18525033_channel_2.csv",
+                  "name": "18525033_channel_2.csv",
+                  "size": 980851,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_2\\cell_1\\18525034_channel_1.csv",
+                  "name": "18525034_channel_1.csv",
+                  "size": 7307599,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_2\\cell_1\\18525034_channel_2.csv",
+                  "name": "18525034_channel_2.csv",
+                  "size": 8509688,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_2\\cell_1\\18525034_channel_3.csv",
+                  "name": "18525034_channel_3.csv",
+                  "size": 6305220,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_2\\cell_1\\18525035_channel_1.csv",
+                  "name": "18525035_channel_1.csv",
+                  "size": 1558534,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_2\\cell_1\\18525035_channel_2.csv",
+                  "name": "18525035_channel_2.csv",
+                  "size": 1254584,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_2\\cell_1\\18525036_channel_1.csv",
+                  "name": "18525036_channel_1.csv",
+                  "size": 5771224,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_2\\cell_1\\18525036_channel_2.csv",
+                  "name": "18525036_channel_2.csv",
+                  "size": 6857541,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_2\\cell_1\\18525036_channel_3.csv",
+                  "name": "18525036_channel_3.csv",
+                  "size": 5084137,
+                  "extension": ".csv",
+                  "type": "file"
+                }
+              ],
+              "size": 409254125,
+              "type": "directory"
+            }
+          ],
+          "size": 409254125,
+          "type": "directory"
+        },
+        {
+          "path": "sample_4",
+          "name": "sample_4",
+          "children": [
+            {
+              "path": "sample_4\\cell_1",
+              "name": "cell_1",
+              "children": [
+                {
+                  "path": "sample_4\\cell_1\\18105092_channel_1.csv",
+                  "name": "18105092_channel_1.csv",
+                  "size": 6089002,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_1\\18105092_channel_2.csv",
+                  "name": "18105092_channel_2.csv",
+                  "size": 7183607,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_1\\18105092_channel_3.csv",
+                  "name": "18105092_channel_3.csv",
+                  "size": 5830816,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_1\\18105093_channel_1.csv",
+                  "name": "18105093_channel_1.csv",
+                  "size": 758359,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_1\\18105093_channel_2.csv",
+                  "name": "18105093_channel_2.csv",
+                  "size": 713893,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_1\\18105094_channel_1.csv",
+                  "name": "18105094_channel_1.csv",
+                  "size": 756704,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_1\\18105095_channel_1.csv",
+                  "name": "18105095_channel_1.csv",
+                  "size": 764384,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_1\\18105096_channel_1.csv",
+                  "name": "18105096_channel_1.csv",
+                  "size": 915199,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_1\\18105096_channel_2.csv",
+                  "name": "18105096_channel_2.csv",
+                  "size": 948056,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_1\\18105097_channel_1.csv",
+                  "name": "18105097_channel_1.csv",
+                  "size": 2292176,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_1\\18105097_channel_2.csv",
+                  "name": "18105097_channel_2.csv",
+                  "size": 2651360,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_1\\18105097_channel_3.csv",
+                  "name": "18105097_channel_3.csv",
+                  "size": 2196810,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_1\\18105098_channel_1.csv",
+                  "name": "18105098_channel_1.csv",
+                  "size": 919187,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_1\\18105098_channel_2.csv",
+                  "name": "18105098_channel_2.csv",
+                  "size": 949236,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_1\\18105099_channel_1.csv",
+                  "name": "18105099_channel_1.csv",
+                  "size": 918734,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_1\\18105099_channel_2.csv",
+                  "name": "18105099_channel_2.csv",
+                  "size": 948373,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_1\\18105100_channel_1.csv",
+                  "name": "18105100_channel_1.csv",
+                  "size": 915852,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_1\\18105100_channel_2.csv",
+                  "name": "18105100_channel_2.csv",
+                  "size": 948647,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_1\\18105101_channel_1.csv",
+                  "name": "18105101_channel_1.csv",
+                  "size": 757298,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_1\\18105101_channel_2.csv",
+                  "name": "18105101_channel_2.csv",
+                  "size": 782065,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_1\\18105102_channel_1.csv",
+                  "name": "18105102_channel_1.csv",
+                  "size": 917478,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_1\\18105102_channel_2.csv",
+                  "name": "18105102_channel_2.csv",
+                  "size": 948671,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_1\\18105103_channel_1.csv",
+                  "name": "18105103_channel_1.csv",
+                  "size": 598875,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_1\\18105103_channel_2.csv",
+                  "name": "18105103_channel_2.csv",
+                  "size": 615667,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_1\\18105104_channel_1.csv",
+                  "name": "18105104_channel_1.csv",
+                  "size": 917054,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_1\\18105104_channel_2.csv",
+                  "name": "18105104_channel_2.csv",
+                  "size": 948345,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_1\\18105105_channel_1.csv",
+                  "name": "18105105_channel_1.csv",
+                  "size": 914325,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_1\\18105105_channel_2.csv",
+                  "name": "18105105_channel_2.csv",
+                  "size": 948159,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_1\\18105106_channel_1.csv",
+                  "name": "18105106_channel_1.csv",
+                  "size": 913042,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_1\\18105106_channel_2.csv",
+                  "name": "18105106_channel_2.csv",
+                  "size": 948433,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_1\\18105107_channel_1.csv",
+                  "name": "18105107_channel_1.csv",
+                  "size": 912598,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_1\\18105107_channel_2.csv",
+                  "name": "18105107_channel_2.csv",
+                  "size": 947644,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_1\\18105108_channel_1.csv",
+                  "name": "18105108_channel_1.csv",
+                  "size": 435863,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_1\\18105108_channel_2.csv",
+                  "name": "18105108_channel_2.csv",
+                  "size": 450124,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_1\\18105109_channel_1.csv",
+                  "name": "18105109_channel_1.csv",
+                  "size": 756688,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_1\\18105109_channel_2.csv",
+                  "name": "18105109_channel_2.csv",
+                  "size": 780954,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_1\\18105110_channel_1.csv",
+                  "name": "18105110_channel_1.csv",
+                  "size": 21393822,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_1\\18105110_channel_2.csv",
+                  "name": "18105110_channel_2.csv",
+                  "size": 24716107,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_1\\18105110_channel_3.csv",
+                  "name": "18105110_channel_3.csv",
+                  "size": 20525886,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_1\\18105111_channel_1.csv",
+                  "name": "18105111_channel_1.csv",
+                  "size": 920856,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_1\\18105111_channel_2.csv",
+                  "name": "18105111_channel_2.csv",
+                  "size": 948974,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_1\\18105112_channel_1.csv",
+                  "name": "18105112_channel_1.csv",
+                  "size": 919491,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_1\\18105112_channel_2.csv",
+                  "name": "18105112_channel_2.csv",
+                  "size": 948134,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_1\\18105113_channel_1.csv",
+                  "name": "18105113_channel_1.csv",
+                  "size": 921336,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_1\\18105113_channel_2.csv",
+                  "name": "18105113_channel_2.csv",
+                  "size": 949332,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_1\\18105114_channel_1.csv",
+                  "name": "18105114_channel_1.csv",
+                  "size": 918077,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_1\\18105114_channel_2.csv",
+                  "name": "18105114_channel_2.csv",
+                  "size": 950487,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_1\\18105115_channel_1.csv",
+                  "name": "18105115_channel_1.csv",
+                  "size": 8372742,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_1\\18105115_channel_2.csv",
+                  "name": "18105115_channel_2.csv",
+                  "size": 9678416,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_1\\18105115_channel_3.csv",
+                  "name": "18105115_channel_3.csv",
+                  "size": 8012550,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_1\\18105116_channel_1.csv",
+                  "name": "18105116_channel_1.csv",
+                  "size": 918365,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_1\\18105116_channel_2.csv",
+                  "name": "18105116_channel_2.csv",
+                  "size": 951399,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_1\\18105117_channel_1.csv",
+                  "name": "18105117_channel_1.csv",
+                  "size": 601379,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_1\\18105117_channel_2.csv",
+                  "name": "18105117_channel_2.csv",
+                  "size": 617927,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_1\\18105118_channel_1.csv",
+                  "name": "18105118_channel_1.csv",
+                  "size": 1227735,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_1\\18105118_channel_2.csv",
+                  "name": "18105118_channel_2.csv",
+                  "size": 1422668,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_1\\18105118_channel_3.csv",
+                  "name": "18105118_channel_3.csv",
+                  "size": 1175808,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_1\\18105119_channel_1.csv",
+                  "name": "18105119_channel_1.csv",
+                  "size": 594403,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_1\\18105119_channel_2.csv",
+                  "name": "18105119_channel_2.csv",
+                  "size": 617316,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_1\\18105120_channel_1.csv",
+                  "name": "18105120_channel_1.csv",
+                  "size": 785156,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_1\\18105120_channel_2.csv",
+                  "name": "18105120_channel_2.csv",
+                  "size": 914985,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_1\\18105120_channel_3.csv",
+                  "name": "18105120_channel_3.csv",
+                  "size": 761264,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_1\\18105121_channel_1.csv",
+                  "name": "18105121_channel_1.csv",
+                  "size": 440437,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_1\\18105121_channel_2.csv",
+                  "name": "18105121_channel_2.csv",
+                  "size": 451659,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_1\\18105122_channel_1.csv",
+                  "name": "18105122_channel_1.csv",
+                  "size": 790336,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_1\\18105122_channel_2.csv",
+                  "name": "18105122_channel_2.csv",
+                  "size": 915888,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_1\\18105122_channel_3.csv",
+                  "name": "18105122_channel_3.csv",
+                  "size": 763647,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_1\\18105123_channel_1.csv",
+                  "name": "18105123_channel_1.csv",
+                  "size": 437478,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_1\\18105123_channel_2.csv",
+                  "name": "18105123_channel_2.csv",
+                  "size": 451280,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_1\\18105124_channel_1.csv",
+                  "name": "18105124_channel_1.csv",
+                  "size": 993719,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_1\\18105124_channel_2.csv",
+                  "name": "18105124_channel_2.csv",
+                  "size": 1155556,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_1\\18105124_channel_3.csv",
+                  "name": "18105124_channel_3.csv",
+                  "size": 957153,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_1\\18105125_channel_1.csv",
+                  "name": "18105125_channel_1.csv",
+                  "size": 597567,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_1\\18105125_channel_2.csv",
+                  "name": "18105125_channel_2.csv",
+                  "size": 618404,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_1\\18105126_channel_1.csv",
+                  "name": "18105126_channel_1.csv",
+                  "size": 3101948,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_1\\18105126_channel_2.csv",
+                  "name": "18105126_channel_2.csv",
+                  "size": 3593808,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_1\\18105126_channel_3.csv",
+                  "name": "18105126_channel_3.csv",
+                  "size": 2836415,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_1\\18105127_channel_1.csv",
+                  "name": "18105127_channel_1.csv",
+                  "size": 759721,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_1\\18105127_channel_2.csv",
+                  "name": "18105127_channel_2.csv",
+                  "size": 714908,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_1\\18105128_channel_1.csv",
+                  "name": "18105128_channel_1.csv",
+                  "size": 597993,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_1\\18105129_channel_1.csv",
+                  "name": "18105129_channel_1.csv",
+                  "size": 3393443,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_1\\18105129_channel_2.csv",
+                  "name": "18105129_channel_2.csv",
+                  "size": 3924339,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_1\\18105129_channel_3.csv",
+                  "name": "18105129_channel_3.csv",
+                  "size": 3249660,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_1\\18105130_channel_1.csv",
+                  "name": "18105130_channel_1.csv",
+                  "size": 758522,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_1\\18105130_channel_2.csv",
+                  "name": "18105130_channel_2.csv",
+                  "size": 714121,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_1\\18105131_channel_1.csv",
+                  "name": "18105131_channel_1.csv",
+                  "size": 918220,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_1\\18105132_channel_1.csv",
+                  "name": "18105132_channel_1.csv",
+                  "size": 597527,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_1\\18105133_channel_1.csv",
+                  "name": "18105133_channel_1.csv",
+                  "size": 916938,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_1\\18105133_channel_2.csv",
+                  "name": "18105133_channel_2.csv",
+                  "size": 948039,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_1\\18105134_channel_1.csv",
+                  "name": "18105134_channel_1.csv",
+                  "size": 28764735,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_1\\18105134_channel_2.csv",
+                  "name": "18105134_channel_2.csv",
+                  "size": 33251833,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_1\\18105134_channel_3.csv",
+                  "name": "18105134_channel_3.csv",
+                  "size": 27622124,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_1\\18105135_channel_1.csv",
+                  "name": "18105135_channel_1.csv",
+                  "size": 917251,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_1\\18105135_channel_2.csv",
+                  "name": "18105135_channel_2.csv",
+                  "size": 948780,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_1\\18105136_channel_1.csv",
+                  "name": "18105136_channel_1.csv",
+                  "size": 12373779,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_1\\18105136_channel_2.csv",
+                  "name": "18105136_channel_2.csv",
+                  "size": 14678415,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_1\\18105136_channel_3.csv",
+                  "name": "18105136_channel_3.csv",
+                  "size": 12155864,
+                  "extension": ".csv",
+                  "type": "file"
+                }
+              ],
+              "size": 328269800,
+              "type": "directory"
+            },
+            {
+              "path": "sample_4\\cell_2",
+              "name": "cell_2",
+              "children": [
+                {
+                  "path": "sample_4\\cell_2\\18105002_channel_1.csv",
+                  "name": "18105002_channel_1.csv",
+                  "size": 5324698,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_2\\18105002_channel_2.csv",
+                  "name": "18105002_channel_2.csv",
+                  "size": 6315289,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_2\\18105002_channel_3.csv",
+                  "name": "18105002_channel_3.csv",
+                  "size": 4637180,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_2\\18105003_channel_1.csv",
+                  "name": "18105003_channel_1.csv",
+                  "size": 766938,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_2\\18105003_channel_2.csv",
+                  "name": "18105003_channel_2.csv",
+                  "size": 628374,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_2\\18105004_channel_1.csv",
+                  "name": "18105004_channel_1.csv",
+                  "size": 917212,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_2\\18105005_channel_1.csv",
+                  "name": "18105005_channel_1.csv",
+                  "size": 437371,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_2\\18105006_channel_1.csv",
+                  "name": "18105006_channel_1.csv",
+                  "size": 4119245,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_2\\18105006_channel_2.csv",
+                  "name": "18105006_channel_2.csv",
+                  "size": 4810513,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_2\\18105006_channel_3.csv",
+                  "name": "18105006_channel_3.csv",
+                  "size": 3557296,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_2\\18105007_channel_1.csv",
+                  "name": "18105007_channel_1.csv",
+                  "size": 760993,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_2\\18105007_channel_2.csv",
+                  "name": "18105007_channel_2.csv",
+                  "size": 629474,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_2\\18105008_channel_1.csv",
+                  "name": "18105008_channel_1.csv",
+                  "size": 917319,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_2\\18105009_channel_1.csv",
+                  "name": "18105009_channel_1.csv",
+                  "size": 916553,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_2\\18105009_channel_2.csv",
+                  "name": "18105009_channel_2.csv",
+                  "size": 954929,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_2\\18105010_channel_1.csv",
+                  "name": "18105010_channel_1.csv",
+                  "size": 919674,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_2\\18105010_channel_2.csv",
+                  "name": "18105010_channel_2.csv",
+                  "size": 956443,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_2\\18105011_channel_1.csv",
+                  "name": "18105011_channel_1.csv",
+                  "size": 925377,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_2\\18105011_channel_2.csv",
+                  "name": "18105011_channel_2.csv",
+                  "size": 955315,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_2\\18105012_channel_1.csv",
+                  "name": "18105012_channel_1.csv",
+                  "size": 922174,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_2\\18105012_channel_2.csv",
+                  "name": "18105012_channel_2.csv",
+                  "size": 956568,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_2\\18105013_channel_1.csv",
+                  "name": "18105013_channel_1.csv",
+                  "size": 10997975,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_2\\18105013_channel_2.csv",
+                  "name": "18105013_channel_2.csv",
+                  "size": 12853830,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_2\\18105013_channel_3.csv",
+                  "name": "18105013_channel_3.csv",
+                  "size": 9474162,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_2\\18105014_channel_1.csv",
+                  "name": "18105014_channel_1.csv",
+                  "size": 916006,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_2\\18105014_channel_2.csv",
+                  "name": "18105014_channel_2.csv",
+                  "size": 958222,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_2\\18105015_channel_1.csv",
+                  "name": "18105015_channel_1.csv",
+                  "size": 30951091,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_2\\18105015_channel_2.csv",
+                  "name": "18105015_channel_2.csv",
+                  "size": 36110167,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_2\\18105015_channel_3.csv",
+                  "name": "18105015_channel_3.csv",
+                  "size": 26712548,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_2\\18105016_channel_1.csv",
+                  "name": "18105016_channel_1.csv",
+                  "size": 917470,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_2\\18105016_channel_2.csv",
+                  "name": "18105016_channel_2.csv",
+                  "size": 958142,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_2\\18105017_channel_1.csv",
+                  "name": "18105017_channel_1.csv",
+                  "size": 37484347,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_2\\18105017_channel_2.csv",
+                  "name": "18105017_channel_2.csv",
+                  "size": 43768768,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_2\\18105017_channel_3.csv",
+                  "name": "18105017_channel_3.csv",
+                  "size": 32368955,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_2\\18105018_channel_1.csv",
+                  "name": "18105018_channel_1.csv",
+                  "size": 916737,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_2\\18105018_channel_2.csv",
+                  "name": "18105018_channel_2.csv",
+                  "size": 960147,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_2\\18105019_channel_1.csv",
+                  "name": "18105019_channel_1.csv",
+                  "size": 916693,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_2\\18105019_channel_2.csv",
+                  "name": "18105019_channel_2.csv",
+                  "size": 959961,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_2\\18105020_channel_1.csv",
+                  "name": "18105020_channel_1.csv",
+                  "size": 916817,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_2\\18105020_channel_2.csv",
+                  "name": "18105020_channel_2.csv",
+                  "size": 960631,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_2\\18105021_channel_1.csv",
+                  "name": "18105021_channel_1.csv",
+                  "size": 757822,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_2\\18105021_channel_2.csv",
+                  "name": "18105021_channel_2.csv",
+                  "size": 793014,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_2\\18105022_channel_1.csv",
+                  "name": "18105022_channel_1.csv",
+                  "size": 437863,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_2\\18105022_channel_2.csv",
+                  "name": "18105022_channel_2.csv",
+                  "size": 455972,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_2\\18105023_channel_1.csv",
+                  "name": "18105023_channel_1.csv",
+                  "size": 437958,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_2\\18105023_channel_2.csv",
+                  "name": "18105023_channel_2.csv",
+                  "size": 455603,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_2\\18105024_channel_1.csv",
+                  "name": "18105024_channel_1.csv",
+                  "size": 438027,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_2\\18105024_channel_2.csv",
+                  "name": "18105024_channel_2.csv",
+                  "size": 455886,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_2\\18105025_channel_1.csv",
+                  "name": "18105025_channel_1.csv",
+                  "size": 757828,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_2\\18105025_channel_2.csv",
+                  "name": "18105025_channel_2.csv",
+                  "size": 793212,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_2\\18105026_channel_1.csv",
+                  "name": "18105026_channel_1.csv",
+                  "size": 5193363,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_2\\18105026_channel_2.csv",
+                  "name": "18105026_channel_2.csv",
+                  "size": 6103930,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_2\\18105026_channel_3.csv",
+                  "name": "18105026_channel_3.csv",
+                  "size": 4467196,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_2\\18105027_channel_1.csv",
+                  "name": "18105027_channel_1.csv",
+                  "size": 916807,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_2\\18105027_channel_2.csv",
+                  "name": "18105027_channel_2.csv",
+                  "size": 962814,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_2\\18105028_channel_1.csv",
+                  "name": "18105028_channel_1.csv",
+                  "size": 916849,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_2\\18105028_channel_2.csv",
+                  "name": "18105028_channel_2.csv",
+                  "size": 962707,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_2\\18105029_channel_1.csv",
+                  "name": "18105029_channel_1.csv",
+                  "size": 757222,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_2\\18105029_channel_2.csv",
+                  "name": "18105029_channel_2.csv",
+                  "size": 794099,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_2\\18105030_channel_1.csv",
+                  "name": "18105030_channel_1.csv",
+                  "size": 916811,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_2\\18105030_channel_2.csv",
+                  "name": "18105030_channel_2.csv",
+                  "size": 961757,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_2\\18105031_channel_1.csv",
+                  "name": "18105031_channel_1.csv",
+                  "size": 916996,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_2\\18105031_channel_2.csv",
+                  "name": "18105031_channel_2.csv",
+                  "size": 965590,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_2\\18105032_channel_1.csv",
+                  "name": "18105032_channel_1.csv",
+                  "size": 14443619,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_2\\18105032_channel_2.csv",
+                  "name": "18105032_channel_2.csv",
+                  "size": 16987545,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_2\\18105032_channel_3.csv",
+                  "name": "18105032_channel_3.csv",
+                  "size": 12429071,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_2\\18105033_channel_1.csv",
+                  "name": "18105033_channel_1.csv",
+                  "size": 917215,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_2\\18105033_channel_2.csv",
+                  "name": "18105033_channel_2.csv",
+                  "size": 963260,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_2\\18105034_channel_1.csv",
+                  "name": "18105034_channel_1.csv",
+                  "size": 23028113,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_2\\18105034_channel_2.csv",
+                  "name": "18105034_channel_2.csv",
+                  "size": 27007405,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_2\\18105034_channel_3.csv",
+                  "name": "18105034_channel_3.csv",
+                  "size": 19843114,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_2\\18105035_channel_1.csv",
+                  "name": "18105035_channel_1.csv",
+                  "size": 919804,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_2\\18105035_channel_2.csv",
+                  "name": "18105035_channel_2.csv",
+                  "size": 963321,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_2\\18105036_channel_1.csv",
+                  "name": "18105036_channel_1.csv",
+                  "size": 14804740,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_2\\18105036_channel_2.csv",
+                  "name": "18105036_channel_2.csv",
+                  "size": 17817778,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_2\\18105036_channel_3.csv",
+                  "name": "18105036_channel_3.csv",
+                  "size": 13011267,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_2\\18105037_channel_1.csv",
+                  "name": "18105037_channel_1.csv",
+                  "size": 870972,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_2\\18105037_channel_2.csv",
+                  "name": "18105037_channel_2.csv",
+                  "size": 962465,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_2\\18105038_channel_1.csv",
+                  "name": "18105038_channel_1.csv",
+                  "size": 212297,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_2\\18105038_channel_2.csv",
+                  "name": "18105038_channel_2.csv",
+                  "size": 251508,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_2\\18105038_channel_3.csv",
+                  "name": "18105038_channel_3.csv",
+                  "size": 195996,
+                  "extension": ".csv",
+                  "type": "file"
+                }
+              ],
+              "size": 487680420,
+              "type": "directory"
+            },
+            {
+              "path": "sample_4\\cell_3",
+              "name": "cell_3",
+              "children": [
+                {
+                  "path": "sample_4\\cell_3\\18105039_channel_1.csv",
+                  "name": "18105039_channel_1.csv",
+                  "size": 3195904,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_3\\18105039_channel_2.csv",
+                  "name": "18105039_channel_2.csv",
+                  "size": 3781239,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_3\\18105039_channel_3.csv",
+                  "name": "18105039_channel_3.csv",
+                  "size": 2948093,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_3\\18105040_channel_1.csv",
+                  "name": "18105040_channel_1.csv",
+                  "size": 278341,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_3\\18105040_channel_2.csv",
+                  "name": "18105040_channel_2.csv",
+                  "size": 257078,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_3\\18105041_channel_1.csv",
+                  "name": "18105041_channel_1.csv",
+                  "size": 766236,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_3\\18105041_channel_2.csv",
+                  "name": "18105041_channel_2.csv",
+                  "size": 686389,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_3\\18105042_channel_1.csv",
+                  "name": "18105042_channel_1.csv",
+                  "size": 4222110,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_3\\18105042_channel_2.csv",
+                  "name": "18105042_channel_2.csv",
+                  "size": 4884807,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_3\\18105042_channel_3.csv",
+                  "name": "18105042_channel_3.csv",
+                  "size": 3710355,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_3\\18105043_channel_1.csv",
+                  "name": "18105043_channel_1.csv",
+                  "size": 763660,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_3\\18105043_channel_2.csv",
+                  "name": "18105043_channel_2.csv",
+                  "size": 638637,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_3\\18105044_channel_1.csv",
+                  "name": "18105044_channel_1.csv",
+                  "size": 476061,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_3\\18105044_channel_2.csv",
+                  "name": "18105044_channel_2.csv",
+                  "size": 549587,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_3\\18105044_channel_3.csv",
+                  "name": "18105044_channel_3.csv",
+                  "size": 412335,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_3\\18105045_channel_1.csv",
+                  "name": "18105045_channel_1.csv",
+                  "size": 761519,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_3\\18105045_channel_2.csv",
+                  "name": "18105045_channel_2.csv",
+                  "size": 639218,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_3\\18105046_channel_1.csv",
+                  "name": "18105046_channel_1.csv",
+                  "size": 919863,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_3\\18105047_channel_1.csv",
+                  "name": "18105047_channel_1.csv",
+                  "size": 1851301,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_3\\18105047_channel_2.csv",
+                  "name": "18105047_channel_2.csv",
+                  "size": 2150048,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_3\\18105047_channel_3.csv",
+                  "name": "18105047_channel_3.csv",
+                  "size": 1606226,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_3\\18105048_channel_1.csv",
+                  "name": "18105048_channel_1.csv",
+                  "size": 920391,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_3\\18105048_channel_2.csv",
+                  "name": "18105048_channel_2.csv",
+                  "size": 951723,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_3\\18105049_channel_1.csv",
+                  "name": "18105049_channel_1.csv",
+                  "size": 916888,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_3\\18105049_channel_2.csv",
+                  "name": "18105049_channel_2.csv",
+                  "size": 951500,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_3\\18105050_channel_1.csv",
+                  "name": "18105050_channel_1.csv",
+                  "size": 917256,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_3\\18105050_channel_2.csv",
+                  "name": "18105050_channel_2.csv",
+                  "size": 950502,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_3\\18105051_channel_1.csv",
+                  "name": "18105051_channel_1.csv",
+                  "size": 917808,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_3\\18105051_channel_2.csv",
+                  "name": "18105051_channel_2.csv",
+                  "size": 948580,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_3\\18105052_channel_1.csv",
+                  "name": "18105052_channel_1.csv",
+                  "size": 757173,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_3\\18105052_channel_2.csv",
+                  "name": "18105052_channel_2.csv",
+                  "size": 782497,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_3\\18105053_channel_1.csv",
+                  "name": "18105053_channel_1.csv",
+                  "size": 438445,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_3\\18105053_channel_2.csv",
+                  "name": "18105053_channel_2.csv",
+                  "size": 450784,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_3\\18105054_channel_1.csv",
+                  "name": "18105054_channel_1.csv",
+                  "size": 438741,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_3\\18105054_channel_2.csv",
+                  "name": "18105054_channel_2.csv",
+                  "size": 450408,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_3\\18105055_channel_1.csv",
+                  "name": "18105055_channel_1.csv",
+                  "size": 1125778,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_3\\18105055_channel_2.csv",
+                  "name": "18105055_channel_2.csv",
+                  "size": 1303971,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_3\\18105055_channel_3.csv",
+                  "name": "18105055_channel_3.csv",
+                  "size": 977398,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_3\\18105056_channel_1.csv",
+                  "name": "18105056_channel_1.csv",
+                  "size": 3284333,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_3\\18105056_channel_2.csv",
+                  "name": "18105056_channel_2.csv",
+                  "size": 3798463,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_3\\18105056_channel_3.csv",
+                  "name": "18105056_channel_3.csv",
+                  "size": 2855619,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_3\\18105057_channel_1.csv",
+                  "name": "18105057_channel_1.csv",
+                  "size": 919814,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_3\\18105057_channel_2.csv",
+                  "name": "18105057_channel_2.csv",
+                  "size": 947690,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_3\\18105058_channel_1.csv",
+                  "name": "18105058_channel_1.csv",
+                  "size": 4518846,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_3\\18105058_channel_2.csv",
+                  "name": "18105058_channel_2.csv",
+                  "size": 5234520,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_3\\18105058_channel_3.csv",
+                  "name": "18105058_channel_3.csv",
+                  "size": 3940275,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_3\\18105059_channel_1.csv",
+                  "name": "18105059_channel_1.csv",
+                  "size": 1078729,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_3\\18105060_channel_1.csv",
+                  "name": "18105060_channel_1.csv",
+                  "size": 5778409,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_3\\18105060_channel_2.csv",
+                  "name": "18105060_channel_2.csv",
+                  "size": 6682075,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_3\\18105060_channel_3.csv",
+                  "name": "18105060_channel_3.csv",
+                  "size": 5030543,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_3\\18105061_channel_1.csv",
+                  "name": "18105061_channel_1.csv",
+                  "size": 919668,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_3\\18105061_channel_2.csv",
+                  "name": "18105061_channel_2.csv",
+                  "size": 949398,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_3\\18105062_channel_1.csv",
+                  "name": "18105062_channel_1.csv",
+                  "size": 12056364,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_3\\18105062_channel_2.csv",
+                  "name": "18105062_channel_2.csv",
+                  "size": 13942073,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_3\\18105062_channel_3.csv",
+                  "name": "18105062_channel_3.csv",
+                  "size": 10492204,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_3\\18105063_channel_1.csv",
+                  "name": "18105063_channel_1.csv",
+                  "size": 919438,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_3\\18105063_channel_2.csv",
+                  "name": "18105063_channel_2.csv",
+                  "size": 950452,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_3\\18105064_channel_1.csv",
+                  "name": "18105064_channel_1.csv",
+                  "size": 919224,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_3\\18105064_channel_2.csv",
+                  "name": "18105064_channel_2.csv",
+                  "size": 950467,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_3\\18105065_channel_1.csv",
+                  "name": "18105065_channel_1.csv",
+                  "size": 919475,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_3\\18105065_channel_2.csv",
+                  "name": "18105065_channel_2.csv",
+                  "size": 950267,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_3\\18105066_channel_1.csv",
+                  "name": "18105066_channel_1.csv",
+                  "size": 919257,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_3\\18105066_channel_2.csv",
+                  "name": "18105066_channel_2.csv",
+                  "size": 949770,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_3\\18105067_channel_1.csv",
+                  "name": "18105067_channel_1.csv",
+                  "size": 918592,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_3\\18105067_channel_2.csv",
+                  "name": "18105067_channel_2.csv",
+                  "size": 949714,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_3\\18105068_channel_1.csv",
+                  "name": "18105068_channel_1.csv",
+                  "size": 918873,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_3\\18105068_channel_2.csv",
+                  "name": "18105068_channel_2.csv",
+                  "size": 948056,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_3\\18105069_channel_1.csv",
+                  "name": "18105069_channel_1.csv",
+                  "size": 1356358,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_3\\18105069_channel_2.csv",
+                  "name": "18105069_channel_2.csv",
+                  "size": 1575112,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_3\\18105069_channel_3.csv",
+                  "name": "18105069_channel_3.csv",
+                  "size": 1176522,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_3\\18105070_channel_1.csv",
+                  "name": "18105070_channel_1.csv",
+                  "size": 920315,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_3\\18105070_channel_2.csv",
+                  "name": "18105070_channel_2.csv",
+                  "size": 949298,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_3\\18105071_channel_1.csv",
+                  "name": "18105071_channel_1.csv",
+                  "size": 919682,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_3\\18105071_channel_2.csv",
+                  "name": "18105071_channel_2.csv",
+                  "size": 949322,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_3\\18105072_channel_1.csv",
+                  "name": "18105072_channel_1.csv",
+                  "size": 919470,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_3\\18105072_channel_2.csv",
+                  "name": "18105072_channel_2.csv",
+                  "size": 950181,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_3\\18105073_channel_1.csv",
+                  "name": "18105073_channel_1.csv",
+                  "size": 919642,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_3\\18105073_channel_2.csv",
+                  "name": "18105073_channel_2.csv",
+                  "size": 948941,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_3\\18105074_channel_1.csv",
+                  "name": "18105074_channel_1.csv",
+                  "size": 3246522,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_3\\18105074_channel_2.csv",
+                  "name": "18105074_channel_2.csv",
+                  "size": 3759180,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_3\\18105074_channel_3.csv",
+                  "name": "18105074_channel_3.csv",
+                  "size": 2958225,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_3\\18105075_channel_1.csv",
+                  "name": "18105075_channel_1.csv",
+                  "size": 757549,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_3\\18105075_channel_2.csv",
+                  "name": "18105075_channel_2.csv",
+                  "size": 686889,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_3\\18105076_channel_1.csv",
+                  "name": "18105076_channel_1.csv",
+                  "size": 758289,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_3\\18105077_channel_1.csv",
+                  "name": "18105077_channel_1.csv",
+                  "size": 916361,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_3\\18105077_channel_2.csv",
+                  "name": "18105077_channel_2.csv",
+                  "size": 946941,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_3\\18105078_channel_1.csv",
+                  "name": "18105078_channel_1.csv",
+                  "size": 918115,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_3\\18105078_channel_2.csv",
+                  "name": "18105078_channel_2.csv",
+                  "size": 950766,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_3\\18105079_channel_1.csv",
+                  "name": "18105079_channel_1.csv",
+                  "size": 916955,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_3\\18105079_channel_2.csv",
+                  "name": "18105079_channel_2.csv",
+                  "size": 947242,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_3\\18105080_channel_1.csv",
+                  "name": "18105080_channel_1.csv",
+                  "size": 917250,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_3\\18105080_channel_2.csv",
+                  "name": "18105080_channel_2.csv",
+                  "size": 949084,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_3\\18105081_channel_1.csv",
+                  "name": "18105081_channel_1.csv",
+                  "size": 918777,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_3\\18105081_channel_2.csv",
+                  "name": "18105081_channel_2.csv",
+                  "size": 949052,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_3\\18105082_channel_1.csv",
+                  "name": "18105082_channel_1.csv",
+                  "size": 2215739,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_3\\18105082_channel_2.csv",
+                  "name": "18105082_channel_2.csv",
+                  "size": 2564024,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_3\\18105082_channel_3.csv",
+                  "name": "18105082_channel_3.csv",
+                  "size": 1967776,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_3\\18105083_channel_1.csv",
+                  "name": "18105083_channel_1.csv",
+                  "size": 920598,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_3\\18105083_channel_2.csv",
+                  "name": "18105083_channel_2.csv",
+                  "size": 948592,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_3\\18105084_channel_1.csv",
+                  "name": "18105084_channel_1.csv",
+                  "size": 918486,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_3\\18105084_channel_2.csv",
+                  "name": "18105084_channel_2.csv",
+                  "size": 948873,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_3\\18105085_channel_1.csv",
+                  "name": "18105085_channel_1.csv",
+                  "size": 917408,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_3\\18105085_channel_2.csv",
+                  "name": "18105085_channel_2.csv",
+                  "size": 947908,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_3\\18105086_channel_1.csv",
+                  "name": "18105086_channel_1.csv",
+                  "size": 919512,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_3\\18105086_channel_2.csv",
+                  "name": "18105086_channel_2.csv",
+                  "size": 948981,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_3\\18105087_channel_1.csv",
+                  "name": "18105087_channel_1.csv",
+                  "size": 918650,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_3\\18105087_channel_2.csv",
+                  "name": "18105087_channel_2.csv",
+                  "size": 949014,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_3\\18105088_channel_1.csv",
+                  "name": "18105088_channel_1.csv",
+                  "size": 17967924,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_3\\18105088_channel_2.csv",
+                  "name": "18105088_channel_2.csv",
+                  "size": 20773615,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_3\\18105088_channel_3.csv",
+                  "name": "18105088_channel_3.csv",
+                  "size": 15682857,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_3\\18105089_channel_1.csv",
+                  "name": "18105089_channel_1.csv",
+                  "size": 915036,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_3\\18105089_channel_2.csv",
+                  "name": "18105089_channel_2.csv",
+                  "size": 948354,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_3\\18105090_channel_1.csv",
+                  "name": "18105090_channel_1.csv",
+                  "size": 8954570,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_3\\18105090_channel_2.csv",
+                  "name": "18105090_channel_2.csv",
+                  "size": 10658258,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_3\\18105090_channel_3.csv",
+                  "name": "18105090_channel_3.csv",
+                  "size": 8036450,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_3\\18105091_channel_1.csv",
+                  "name": "18105091_channel_1.csv",
+                  "size": 26297846,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_3\\18105091_channel_2.csv",
+                  "name": "18105091_channel_2.csv",
+                  "size": 30282055,
+                  "extension": ".csv",
+                  "type": "file"
+                },
+                {
+                  "path": "sample_4\\cell_3\\18105091_channel_3.csv",
+                  "name": "18105091_channel_3.csv",
+                  "size": 22853950,
+                  "extension": ".csv",
+                  "type": "file"
+                }
+              ],
+              "size": 355879974,
+              "type": "directory"
+            }
+          ],
+          "size": 1171830194,
+          "type": "directory"
+        }
+      ],
+      "size": 2123348776,
+      "type": "directory"
+    }
+  }
