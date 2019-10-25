@@ -1,28 +1,31 @@
 <div id='plotsvy-example-panel' style="position: relative; min-height: 400px;">
     <div class="drop-down-container">
         <div class="dat-gui-container">
+            <div id='directory-title' class="directory-title multi-file">Directory Navigation</div>
             <div id='file_nav' class="file-nav-container"></div>
         </div>
-           </div>
-        <div class="container-login100 datasetUI" id="dataset_div">
-            <div class="wrap-data48 p-t-5 p-b-5 datasetUI">
-                <span id='title' class="login100-form-title">
-                    Data Viewer
-                </span>
-                <div class="heart-rate" id="heart_rate">Heart Rate: </div>
-                <div class=" input100 wrap-input100 input100-select bg1 datasetUI">
-                    <div id='loading_gif'><img id="load" class="loading-gif"  src="./../images/loading.gif" alt="loading..."/></div>
-                    <span class="label-input100"></span>
-                    <div id="channel_div" class="channel">
-                        <select name="service" id="select_channel">
-                            
-                        </select>
-                    </div>
+    </div>
+    <div class="container-login100 datasetUI" id="dataset_div">
+        <div class="wrap-data48 p-t-5 p-b-5 datasetUI">
+            <span id='title' class="login100-form-title">
+                Data Viewer
+            </span>
+            <div class="heart-rate" id="heart_rate">Heart Rate: </div>
+            <div class=" input100 wrap-input100 input100-select bg1 datasetUI">
+                <div id='app-explanation' class='explanation multi-file'>To view a set of data, open up the directory
+                    and navigate to a sample</div>
+                <div id='loading_gif'><img id="load" class="loading-gif" src="./../images/loading.gif"
+                        alt="loading..." /></div>
+                <span class="label-input100"></span>
+                <div id="channel_div" class="channel">
+                    <select name="service" id="select_channel">
+
+                    </select>
                 </div>
-                <br>
             </div>
+            <br>
         </div>
-    
+    </div>
+
     <div class="datasetUI" id="chart_div"></div>
 </div>
-

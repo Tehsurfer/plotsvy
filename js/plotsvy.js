@@ -109,6 +109,7 @@ function Plotsvy(targetDiv, inputURL) {
         state.csvURL = url
         setTimeout(() => bc.postMessage({ 'state': _this.exportStateAsString() }), 800)
         ui.hideLoadingGif()
+        parentDiv.querySelector('.explanation').style.display = 'none'
         resolve()
       })
     })
@@ -160,6 +161,9 @@ function Plotsvy(targetDiv, inputURL) {
     return new Promise(function(resolve, reject){
       var fileNavDiv = parentDiv.querySelector('#file_nav')
       fileNav = new FileManager(fileNavDiv, url, _this.openCSV)
+      multi_file_els = parentDiv.querySelector('.multi-file')
+      for (i=0;i<multi_file_els.length;i++){
+        multi_file_els[i].style.display = 'block'}
       resolve()
     })
   }

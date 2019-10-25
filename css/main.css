@@ -25,6 +25,36 @@
   width: 100%;
 }
 
+.directory-title{
+  font-family: 'Asap', sans-serif;
+  font-size: 17px;
+  color: #403866;
+  line-height: 1.2;
+  /* text-align: center; */
+  width: 100;
+  display: block;
+  margin-top: 10;
+  margin-bottom: 0 !important;
+  /* text-transform: uppercase; */
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.explanation{
+  font-family: sans-serif;
+  font-size: 15px;
+  color: #5d5b65;
+  line-height: 1.2;
+  text-align: center;
+  width: 100;
+  display: block;
+  margin-bottom: 0 !important;
+}
+
+.multi-file{
+  display: "";
+}
+
 .limiter {
   width: 100%;
   margin: 0 auto;
