@@ -1,7 +1,6 @@
 function StateManager(parentDiv) {
   this.selectedChannels = []
   this.csvURL = ''
-  this.subplots = false
   this.plotAll = false
   this.plotType = 'scatter'
 
@@ -12,9 +11,6 @@ function StateManager(parentDiv) {
     }
     if (loadedState.csvURL !== undefined){
       this.csvURL = loadedState.csvURL
-    }
-    if (loadedState.subplots !== undefined){
-      this.subplots = loadedState.subplots
     }
     if (loadedState.plotAll !== undefined){
       this.plotAll = loadedState.plotAll

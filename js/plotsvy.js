@@ -24,10 +24,10 @@ function Plotsvy(targetDiv, inputURL) {
   var fileNav = undefined
   var dirString = 'directory-meta'
   var _this = this
-  var bc = new BroadcastChannel.default('plot_channel')
+  var bc = new BroadcastChannel.default('plot_channel') // For updating other web apps working with Plotsvy
   _this.plot = plot
 
-  // Assume default HTML is used if none is provided
+  // If targetDiv is not provided, we will assume it already exists (this is used for the demo)
   if (targetDiv === null || targetDiv === undefined) {
     parentDiv = document.getElementById('plotsvy-example-panel')
   } else {
@@ -35,7 +35,7 @@ function Plotsvy(targetDiv, inputURL) {
   }
 
 
-  // initialise: sets up ui and plot, needs DOM to be loaded
+  // initialise: Sets up ui and plot, requires DOM to be loaded (Note: Called on construction)
   this.initialise = function (overRideUrl) {
     parentDiv.append(htmlToElement(plotsvy_html))
     var chartDiv = parentDiv.querySelector('#chart_div')
@@ -45,7 +45,7 @@ function Plotsvy(targetDiv, inputURL) {
     _this.csv = csv
     state = new StateManager(parentDiv)
 
-    // Check for fileStructure url
+    // Check if we have have a URL yet
     if (overRideUrl !== undefined){
       _this.openInputUrl(inputURL)
     } else if (inputURL !== undefined){
@@ -53,18 +53,21 @@ function Plotsvy(targetDiv, inputURL) {
     }
   }
 
+  // openInputUrl: Opens url in directory or single file mode based on urlstring
   this.openInputUrl = function(url){
-    if (url.includes(dirString)){ // if it's hosted on jsonstorage it is meta data 
+
+    // Multi File
+    if (url.includes(dirString)){ 
       ui.showLoadingGif()
-      parentDiv.querySelectorAll('.multi-file')[0].style.display = 'block'
-      parentDiv.querySelectorAll('.multi-file')[1].style.display = 'block'
+      ui.showDirectoryContent()
       _this.createFileNavigation(url).then( _=>{
         ui.hideLoadingGif()
       })
-
-    } else {
+    
+    // Single File
+    } else { 
       ui.showLoadingGif()
-      _this.openCSV(url).then( ui.hideLoadingGif)
+      _this.openCSV(url).then(ui.hideLoadingGif)
     }
   }
 
@@ -77,7 +80,7 @@ function Plotsvy(targetDiv, inputURL) {
     bc.postMessage(message)
   }
 
-  // csvChannelCall: Add trace to plot from the choices.js select box
+  // csvChannelCall: Adds a trace to the plot from 'select_channel' div
   var csvChannelCall = function () {
     var selectedChannel = parentDiv.querySelector('#select_channel').textContent
     plot.addDataSeriesToChart(csv.getColoumnByName(selectedChannel), csv.getColoumnByIndex(0), selectedChannel)
@@ -94,7 +97,7 @@ function Plotsvy(targetDiv, inputURL) {
     else {
       plot.removeSeries(index)
       ch_ind = state.selectedChannels.indexOf(channel)
-      state.selectedChannels.splice(ch_ind, ch_ind + 1) // Remove channel index
+      state.selectedChannels.splice(ch_ind, ch_ind + 1) // Removes channel index
     }
     bc.postMessage({ 'state': _this.exportStateAsString() })
   }
@@ -104,10 +107,6 @@ function Plotsvy(targetDiv, inputURL) {
     return new Promise(function (resolve, reject) {
       _this.clearChart()
       ui.showLoadingGif()
-      if (url === undefined) {
-        console.log('Error! Not loading any data into chart!')
-        reject()
-      }
       csv.loadFile(url).then(_ => {
         ui.setTitle(csv.getTitle(url))
         setup()
@@ -139,7 +138,7 @@ function Plotsvy(targetDiv, inputURL) {
     })
   }
 
-  // setup: calls UI depending on type of data and plots data depending on state.plotall 
+  // setup: Creates different UI's depending on type of data and plots data depending on state.plotall 
   var setup = function () {
     plot.setXaxisLabel(csv.getXaxis())
     _this.setDataType(csv.getDataType())
@@ -150,10 +149,15 @@ function Plotsvy(targetDiv, inputURL) {
     if (state.plotAll) {
       _this.plotAll()
     } else {
+
+      // Dat.gui UI
       if (headers.length < 100) {
         ui.buildDatGui(exportObject)
         ui.createDatGuiDropdown(headers, checkBoxCall)
-      } else {
+      } 
+
+      // Select2 UI for navigating large amounts of headers
+      else { 
         ui.createSelectDropdown(headers)
         parentDiv.querySelector('#select_channel').onchange = csvChannelCall
         ui.buildDatGui(exportObject)
@@ -165,6 +169,7 @@ function Plotsvy(targetDiv, inputURL) {
     }
   }
 
+  // createFileNavigation: Uses a meta-data url to create navigation
   this.createFileNavigation = function(url){
     return new Promise(function(resolve, reject){
       var fileNavDiv = parentDiv.querySelector('#file_nav')
@@ -232,12 +237,6 @@ function Plotsvy(targetDiv, inputURL) {
     return state
   }
 
-
-  this.setSubplotsFlag = function (flag) {
-    plot.subplots = flag
-    state.subplots = flag
-  }
-
   this.setDataType = function (dataType) {
     plot.plotType = dataType
     state.plotType = dataType
@@ -250,7 +249,6 @@ function Plotsvy(targetDiv, inputURL) {
       state.loadFromJSON(jsonString)
       openCSVfromState(state.csvURL).then(_ => {
         plot.plotType = state.plotType
-        plot.subplots = state.subplots
         if (state.selectedChannels !== undefined) {
           if (state.selectedChannels.length > 0) {
             if (!state.plotAll) {
@@ -307,6 +305,7 @@ function Plotsvy(targetDiv, inputURL) {
   this.exportToOpenCOR = function () {
     csv.exportToOpenCOR(state)
   }
+
   var exportObject = {
     'Export as CSV': () => csv.export(state),
     'Open in OpenCOR': () => csv.exportForOpenCOR(state),

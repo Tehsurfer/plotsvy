@@ -55,8 +55,6 @@ blackfynnManager.loadState(serialisedPanel)
 bf = new blackfynn_panel.BlackfynnManager()
 bf.openCSV('https://cors-anywhere.herokuapp.com/https://abi-test.ml/Cors_Test/Sample_1_18907001_channel_1.csv')
 bf.plotAll() // Plot all csv channels and remover selector
-bf.setSuplotsFlag(true) // Set to subplots for next plot
-bf.plotAll() 
 bf.openBroadcastChannel('my_name') // set broadcast channel name which returns serialised state on select.onchange
 ```
 

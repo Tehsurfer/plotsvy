@@ -49,6 +49,11 @@ function UI (parentDiv) {
     parentDiv.querySelector('.dat-gui-container').style.display = ''
   }
 
+  this.showDirectoryContent = function(){
+    parentDiv.querySelectorAll('.multi-file')[0].style.display = 'block'
+    parentDiv.querySelectorAll('.multi-file')[1].style.display = 'block'
+  }
+
   this.loadingGif = function(target){
     this.showLoadingGif()
     target().then( _ => {
