@@ -71,8 +71,8 @@
         /**
          * Renders the tree view in the DOM
          */
-        function render(self) {
-          var container = isDOMElement(self.node) ? self.node : document.getElementById(self.node);
+        function render(_this) {
+          var container = isDOMElement(_this.node) ? _this.node : document.getElementById(_this.node);
           var leaves = [], click;
           var renderLeaf = function (item) {
             var leaf = document.createElement('div');
@@ -112,8 +112,8 @@
             return leaf;
           };
   
-          forEach(self.data, function (item) {
-            leaves.push(renderLeaf.call(self, item));
+          forEach(_this.data, function (item) {
+            leaves.push(renderLeaf.call(_this, item));
           });
           container.innerHTML = leaves.map(function (leaf) {
             return leaf.outerHTML;
@@ -125,12 +125,12 @@
             var leaves = parent.parentNode.querySelector('.tree-child-leaves');
             if (leaves) {
               if (leaves.classList.contains('hidden')) {
-                self.expand(parent, leaves);
+                _this.expand(parent, leaves);
               } else {
-                self.collapse(parent, leaves);
+                _this.collapse(parent, leaves);
               }
             } else {
-              emit(self, 'select', {
+              emit(_this, 'select', {
                 target: e,
                 data: data
               });
@@ -175,13 +175,13 @@
         };
   
         TreeView.prototype.expandAll = function () {
-          var self = this;
-          var nodes = document.getElementById(self.node).querySelectorAll('.tree-expando');
+          var _this = this;
+          var nodes = document.getElementById(_this.node).querySelectorAll('.tree-expando');
           forEach(nodes, function (node) {
             var parent = node.parentNode;
             var leaves = parent.parentNode.querySelector('.tree-child-leaves');
             if (parent && leaves && parent.hasAttribute('data-item')) {
-              self.expand(parent, leaves, true);
+              _this.expand(parent, leaves, true);
             }
           });
           emit(this, 'expandAll', {});
@@ -206,13 +206,13 @@
         /**
          */
         TreeView.prototype.collapseAll = function () {
-          var self = this;
-          var nodes = document.getElementById(self.node).querySelectorAll('.tree-expando');
+          var _this = this;
+          var nodes = document.getElementById(_this.node).querySelectorAll('.tree-expando');
           forEach(nodes, function (node) {
             var parent = node.parentNode;
             var leaves = parent.parentNode.querySelector('.tree-child-leaves');
             if (parent && leaves && parent.hasAttribute('data-item')) {
-              self.collapse(parent, leaves, true);
+              _this.collapse(parent, leaves, true);
             }
           });
           emit(this, 'collapseAll', {});

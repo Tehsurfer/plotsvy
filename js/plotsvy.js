@@ -56,7 +56,12 @@ function Plotsvy(targetDiv, inputURL) {
   this.openInputUrl = function(url){
     if (url.includes(dirString)){ // if it's hosted on jsonstorage it is meta data 
       ui.showLoadingGif()
-      _this.createFileNavigation(url).then(ui.hideLoadingGif)
+      parentDiv.querySelectorAll('.multi-file')[0].style.display = 'block'
+      parentDiv.querySelectorAll('.multi-file')[1].style.display = 'block'
+      _this.createFileNavigation(url).then( _=>{
+        ui.hideLoadingGif()
+      })
+
     } else {
       ui.showLoadingGif()
       _this.openCSV(url).then( ui.hideLoadingGif)
@@ -109,7 +114,10 @@ function Plotsvy(targetDiv, inputURL) {
         state.csvURL = url
         setTimeout(() => bc.postMessage({ 'state': _this.exportStateAsString() }), 800)
         ui.hideLoadingGif()
-        parentDiv.querySelector('.explanation').style.display = 'none'
+        parentDiv.querySelectorAll('.multi-file')[1].style.display = 'none'
+        if(fileNav !== undefined){
+          // fileNav.collapseAll()
+        }
         resolve()
       })
     })
@@ -161,9 +169,6 @@ function Plotsvy(targetDiv, inputURL) {
     return new Promise(function(resolve, reject){
       var fileNavDiv = parentDiv.querySelector('#file_nav')
       fileNav = new FileManager(fileNavDiv, url, _this.openCSV)
-      multi_file_els = parentDiv.querySelector('.multi-file')
-      for (i=0;i<multi_file_els.length;i++){
-        multi_file_els[i].style.display = 'block'}
       resolve()
     })
   }

@@ -52,7 +52,7 @@
 }
 
 .multi-file{
-  display: "";
+  display: none;
 }
 
 .limiter {
@@ -239,7 +239,7 @@
 }
 
 .choices[data-type*="select-one"].is-open:after{
-  display: none
+  display: none;
 }
 
 .choices__inner {
