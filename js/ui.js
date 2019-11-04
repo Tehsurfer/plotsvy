@@ -14,7 +14,7 @@ function UI (parentDiv) {
   _this.checkboxElements = []
   _this.choice = undefined
 
-  this.buildDatGui = function(exportObj){
+  this.buildDatGui = function(datguiDefinition){
     if (gui !== undefined){
       return
     }
@@ -22,11 +22,9 @@ function UI (parentDiv) {
     gui.domElement.id = 'gui'
     gui.close()
     parentDiv.querySelector('.dat-gui-container').appendChild(gui.domElement)
-    gui.add(exportObj, 'Show All')
-    gui.add(exportObj, 'Hide All')
-    gui.add(exportObj, 'Switch Axes')
-    gui.add(exportObj, 'Export as CSV')
-    gui.add(exportObj, 'Open in OpenCOR')
+    for (let [key, value] of Object.entries(datguiDefinition)) {
+      gui.add(datguiDefinition, key)
+    }
     return gui 
   }
 

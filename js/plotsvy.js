@@ -44,6 +44,7 @@ function Plotsvy(targetDiv, inputURL) {
     csv = new CsvManager()
     _this.csv = csv
     state = new StateManager(parentDiv)
+    _this.state = state
 
     // Check if we have have a URL yet
     if (overRideUrl !== undefined){
@@ -152,7 +153,7 @@ function Plotsvy(targetDiv, inputURL) {
 
       // Dat.gui UI
       if (headers.length < 100) {
-        ui.buildDatGui(exportObject)
+        ui.buildDatGui(datguiTimeseriesFunctions)
         ui.createDatGuiDropdown(headers, checkBoxCall)
       } 
 
@@ -160,7 +161,7 @@ function Plotsvy(targetDiv, inputURL) {
       else { 
         ui.createSelectDropdown(headers)
         parentDiv.querySelector('#select_channel').onchange = csvChannelCall
-        ui.buildDatGui(exportObject)
+        ui.buildDatGui(datguiStaticFunctions)
       }
       if (!state.plotAll && state.selectedChannels.length === 0) {
         _this.plotByIndex(1)
@@ -306,12 +307,41 @@ function Plotsvy(targetDiv, inputURL) {
     csv.exportToOpenCOR(state)
   }
 
-  var exportObject = {
+  var datguiTimeseriesFunctions = {
     'Export as CSV': () => csv.export(state),
     'Open in OpenCOR': () => csv.exportForOpenCOR(state),
     'Show All': () => _this.plotAll(),
     'Hide All': () => _this.hideAll(),
     'Switch Axes': () => _this.switchAxes()
+  }
+
+  var datguiStaticFunctions = {
+    'Export as CSV': () => csv.export(state),
+    'Open in OpenCOR': () => csv.exportForOpenCOR(state),
+    'Show All': () => _this.plotAll(),
+    'Hide All': () => _this.hideAll(),
+    'Switch Axes': () => _this.switchAxes(),
+    'Plot as Heatmap': () => _this.heatMapPlotSwitch()
+  }
+
+  this.heatMapPlotSwitch = function() {
+    if (_this.state.plotType === 'bar'){
+      _this.heatMapPlot()
+      _this.state.plotType = 'heatmap'
+    } else {
+      plot.resetChart()
+      _this.plotByIndex(1)
+      _this.state.plotType = 'bar'
+    }
+  }
+
+  this.heatMapPlot = function(){
+    var nested_rows = csv.getAllData()
+    var y_headers = csv.getHeaders()
+    csv.transposeSelf()
+    var x_headers = csv.getHeaders()
+    plot.heatMapPlot(nested_rows, x_headers, y_headers)
+    csv.transposeSelf()
   }
 
   this.updateSize = function () {
