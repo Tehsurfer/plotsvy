@@ -1,6 +1,6 @@
 {
   "name": "plotsvy",
-  "version": "0.3.11",
+  "version": "0.4.0",
   "description": "A CSV plotter that loads and plots timeseries or static data",
   "main": "build/build.js",
   "files": [
