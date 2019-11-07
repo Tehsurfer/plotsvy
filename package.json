@@ -1,6 +1,6 @@
 {
   "name": "plotsvy",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "description": "A CSV plotter that loads and plots timeseries or static data",
   "main": "build/build.js",
   "files": [
@@ -18,7 +18,7 @@
     "webpack.config.js"
   ],
   "scripts": {
-    "build": "webpack --config ./webpack.config.prod.js",
+    "build": "SET NODE_ENV=production && webpack --config ./webpack.config.prod.js",
     "dev": "webpack-dev-server --hot --config ./webpack.config.js --open",
     "pub": "webpack --config ./webpack.config.js",
     "start": "http-server",
@@ -49,6 +49,7 @@
     "raw-loader": "^0.5.1",
     "standard": "^12.0.1",
     "style-loader": "^0.21.0",
+    "transform-loader": "^0.2.4",
     "uglifyjs-webpack-plugin": "^1.3.0",
     "url-loader": "^1.1.2",
     "webpack": "^4.39.2",

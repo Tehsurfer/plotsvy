@@ -29,7 +29,15 @@ module.exports = {
         test: /node_modules/,
         loader: 'ify-loader'
       },
-      { test: /\.(gif|png|woff|woff2|eot|ttf|svg)$/, loader: 'url-loader?limit=100000' }
+      { test: /\.(gif|png|woff|woff2|eot|ttf|svg)$/, loader: 'url-loader?limit=100000' },
+      process.env.NODE_ENV === 'production' ? { test: /\.js$/, use: 'babel-loader' } : {},
+        {
+          test: /\.js$/,
+          use: [
+            'ify-loader',
+            'transform-loader?plotly.js/tasks/compress_attributes.js',
+            ]
+        }, 
     ]
   },
   target: 'node', // in order to ignore built-in modules like path, fs, etc.

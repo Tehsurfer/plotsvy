@@ -6,9 +6,9 @@ require('.././css/main.css')
 require('.././css/util.css')
 require('.././css/treeview.css')
 const UI = require('./ui.js')
-const PlotManager = require('plotly-wrappers')
+const PlotManager = require('./plot_manager')
 const FileManager = require('./file_tree_navigation')
-const CsvManager = require('sparccsv')
+const CsvManager = require('./csv_manager')
 const StateManager = require('./state_manager.js')
 const BroadcastChannel = require('broadcast-channel')
 const plotsvy_html = require('.././snippets/plotsvy.html')
@@ -151,9 +151,15 @@ function Plotsvy(targetDiv, inputURL) {
       _this.plotAll()
     } else {
 
+      // Check which functions we need for datgui
+      var datguiFunctions = datguiStaticFunctions
+      if (csv.getDataType() === 'scatter'){
+        datguiFunctions = datguiTimeseriesFunctions
+      }
+
       // Dat.gui UI
       if (headers.length < 100) {
-        ui.buildDatGui(datguiTimeseriesFunctions)
+        ui.buildDatGui(datguiFunctions)
         ui.createDatGuiDropdown(headers, checkBoxCall)
       } 
 
@@ -161,7 +167,7 @@ function Plotsvy(targetDiv, inputURL) {
       else { 
         ui.createSelectDropdown(headers)
         parentDiv.querySelector('#select_channel').onchange = csvChannelCall
-        ui.buildDatGui(datguiStaticFunctions)
+        ui.buildDatGui(datguiFunctions)
       }
       if (!state.plotAll && state.selectedChannels.length === 0) {
         _this.plotByIndex(1)
@@ -333,6 +339,7 @@ function Plotsvy(targetDiv, inputURL) {
       _this.plotByIndex(1)
       _this.state.plotType = 'bar'
     }
+    ui.switchBarHeatmapButton()
   }
 
   this.heatMapPlot = function(){

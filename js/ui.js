@@ -23,7 +23,7 @@ function UI (parentDiv) {
     gui.close()
     parentDiv.querySelector('.dat-gui-container').appendChild(gui.domElement)
     for (let [key, value] of Object.entries(datguiDefinition)) {
-      gui.add(datguiDefinition, key)
+      _this.controller = gui.add(datguiDefinition, key)
     }
     return gui 
   }
@@ -127,8 +127,18 @@ function UI (parentDiv) {
       el.__checkbox.onclick = () => onchangeFunc(name, Number(i)+1, checkboxes[i][name])
     }
     folder.open()
-  }  
+  } 
+  
+  this.switchBarHeatmapButton = function(){
+    if(_this.controller.__li.innerText === 'Plot as Heatmap'){
+      _this.controller.__li.innerText = 'Plot as Bar Graph'
+    } else {
+      _this.controller.__li.innerText = 'Plot as Heatmap'
+    }
+  }
 }
+
+
 
 dat.GUI.prototype.removeFolder = function(name) {
   var folder = this.__folders[name];

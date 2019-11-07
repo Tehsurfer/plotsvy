@@ -2,6 +2,7 @@ var path = require('path');
 var webpack = require('webpack');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
+
 module.exports = {
   mode: "none",
   entry: {
@@ -29,7 +30,14 @@ module.exports = {
         test: /node_modules/,
         loader: 'ify-loader'
       },
-      { test: /\.(gif|png|woff|woff2|eot|ttf|svg)$/, loader: 'url-loader?limit=100000' }      
+      { test: /\.(gif|png|woff|woff2|eot|ttf|svg)$/, loader: 'url-loader?limit=100000' },
+        {
+          test: /\.js$/,
+          use: [
+            'ify-loader',
+            'transform-loader?plotly.js/tasks/compress_attributes.js',
+            ]
+        }, 
     ]
   },
   plugins: [
