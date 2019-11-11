@@ -196,6 +196,7 @@ function PlotlyWrappers(chartDiv) {
       width: width - 8,
       height: height
     })
+    return true
   }
 
   this.initialiseResizeListener = function (resizeObject) {

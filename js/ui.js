@@ -51,7 +51,7 @@ function UI (parentDiv) {
     parentDiv.querySelectorAll('.multi-file')[0].style.display = 'block'
     parentDiv.querySelectorAll('.multi-file')[1].style.display = 'block'
   }
-
+  
   this.loadingGif = function(target){
     this.showLoadingGif()
     target().then( _ => {

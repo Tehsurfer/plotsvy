@@ -40,6 +40,7 @@ function Plotsvy(targetDiv, inputURL) {
     parentDiv.append(htmlToElement(plotsvy_html))
     var chartDiv = parentDiv.querySelector('#chart_div')
     ui = new UI(parentDiv)
+    _this.ui = ui
     plot = new PlotManager(chartDiv)
     csv = new CsvManager()
     _this.csv = csv
@@ -345,10 +346,10 @@ function Plotsvy(targetDiv, inputURL) {
   this.heatMapPlot = function(){
     var nested_rows = csv.getAllData()
     var y_headers = csv.getHeaders()
-    csv.transposeSelf()
-    var x_headers = csv.getHeaders()
+    var x_headers = csv.getColoumnByIndex(0)
+    y_headers.shift()
+    x_headers.shift()
     plot.heatMapPlot(nested_rows, x_headers, y_headers)
-    csv.transposeSelf()
   }
 
   this.updateSize = function () {
