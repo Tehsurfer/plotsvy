@@ -40,7 +40,6 @@ function Plotsvy(targetDiv, inputURL) {
     parentDiv.append(htmlToElement(plotsvy_html))
     var chartDiv = parentDiv.querySelector('#chart_div')
     ui = new UI(parentDiv)
-    _this.ui = ui
     plot = new PlotManager(chartDiv)
     csv = new CsvManager()
     _this.csv = csv
