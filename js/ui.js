@@ -50,6 +50,13 @@ function UI (parentDiv) {
   this.showDirectoryContent = function(){
     parentDiv.querySelectorAll('.multi-file')[0].style.display = 'block'
     parentDiv.querySelectorAll('.multi-file')[1].style.display = 'block'
+    parentDiv.querySelectorAll('#file_nav')[0].style.display = 'block'
+  }
+
+  this.hideDirectoryContent = function(){
+    parentDiv.querySelectorAll('.multi-file')[0].style.display = 'none'
+    parentDiv.querySelectorAll('.multi-file')[1].style.display = 'none'
+    parentDiv.querySelectorAll('#file_nav')[0].style.display = 'none'
   }
   
   this.loadingGif = function(target){

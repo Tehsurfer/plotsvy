@@ -68,6 +68,7 @@ function Plotsvy(targetDiv, inputURL) {
     // Single File
     } else { 
       ui.showLoadingGif()
+      ui.hideDirectoryContent()
       _this.openCSV(url).then(ui.hideLoadingGif)
     }
   }
