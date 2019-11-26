@@ -1,5 +1,6 @@
 Tehsurfer/plotsvy
 [![Netlify Status](https://api.netlify.com/api/v1/badges/a81b760a-7b4e-461a-9362-aab4104e2e97/deploy-status)](https://app.netlify.com/sites/plotsvy-demo/deploys)
+[![npm version](https://badge.fury.io/js/plotsvy.svg)](https://badge.fury.io/js/plotsvy)
 ======
 A CSV file web viewer focused on viewing ephys and RNA seq data.
 
